@@ -1,0 +1,120 @@
+@media only screen and (min-width: $desktop) {
+
+  .menu-item-28, .menu-item-12 {
+    &:hover {
+      background: $fire;
+    }
+    &.current_page_item {
+      background: $fire;
+    }
+  }
+  .menu-item-14 {
+    &:hover {
+      background: $water;
+    }
+    &.current_page_item {
+      background: $water;
+    }
+  }
+
+  .current-menu-ancestor {
+    background: $water;
+    >a {
+      color: #FFF;
+    }
+
+  }
+
+
+  .menu-item-27 {
+    &:hover {
+      background: $ground;
+    }
+    &.current_page_item {
+      background: $ground;
+    }
+  }
+  .menu-item-17 {
+    &:hover {
+      background: $wind;
+    }
+    &.current_page_item {
+      background: $wind;
+    }
+  }
+  .menu-item-26 {
+    &:hover {
+      background: $fire;
+    }
+    &.current_page_item {
+      background: $fire;
+    }
+  }
+
+  .current_page_item {
+    >a {
+      color: #FFF;
+    }
+  }
+
+
+  .sub-menu {
+    li {
+      a {
+        color: #ededed;
+      }
+    }
+
+  }
+
+  nav {
+
+    display: flex;
+
+    div {
+      li {
+        position: relative;
+        height: 100%;
+        //transition: all 300ms;
+
+        ul {
+          display: none;
+          margin: 0;
+          flex-direction: column;
+          position: absolute;
+          width: 100%;
+
+          >li {
+            background: $water;
+            height: 80px;
+
+          }
+        }
+
+        &:hover > ul {
+          display: flex;
+        }
+
+        a {
+          display: flex;
+          height: 100%;
+          align-items: center;
+          padding: 0 $S;
+
+          &:hover {
+            color: #FFF;
+          }
+        }
+      }
+    }
+  }
+
+  #nav-mobile {
+    display: none
+  }
+
+  #toggle-button {
+    display: none
+  }
+
+}

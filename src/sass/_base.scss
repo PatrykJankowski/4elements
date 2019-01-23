@@ -1,0 +1,145 @@
+body {
+  margin: 0;
+  font-size: $paragraph-size;
+  color: $text-main-color;
+  line-height: 1.44;
+  font-family: "Raleway", "Helvetica Neue", Helvetica, sans-serif;
+}
+
+main {
+  display: block;
+  margin-top: 90px;
+
+  & > section {
+    display: flex;
+    //margin-bottom: $XL;
+  }
+
+  > header {
+    width: 100%;
+    height: calc(100vh - 330px);
+    min-height: 300px;
+    max-height: 749px;
+    background: url("img/bg_small.jpg") center;
+    background-size: cover;
+    position: relative;
+  }
+
+}
+
+h1, h2, h3, h4, h5 {
+  margin: $XS 0 $S 0;
+  line-height: 1;
+  font-weight: 500;
+  color: $header-color;
+}
+
+h1 {
+  margin: 0;
+  font-size: $h1-size;
+  color: #fff;
+  text-align: center;
+}
+
+h2 {
+  font-size: $h2-size;
+}
+
+h3 {
+  font-size: $h3-size;
+}
+
+h4 {
+  font-size: $h4-size;
+}
+
+h5 {
+  font-size: $h5-size;
+  margin: 0 0 $XS;
+  color: #fff;
+}
+
+p {
+  font-size: 18px;
+  line-height: 1.22;
+  color: $text-main-color;
+}
+
+a {
+  text-decoration: none;
+  color: $text-main-color;
+}
+
+ul, ol {
+  margin: 0 0 0 $S;
+  padding: 0;
+}
+
+strong {
+  font-weight: 500;
+}
+
+iframe {
+  border: 0;
+}
+
+label {
+  font-size: 16px;
+}
+input, textarea {
+  border: #384a5f 1px solid;
+  border-radius: 2px;
+  padding: 5px 10px;
+  font-size: 16px;
+  font-family: "Raleway", "Helvetica Neue", Helvetica, sans-serif;
+  width: 90%;
+}
+
+input[type="submit"] {
+  width: 120px;
+  height: 30px;
+  padding: 5px 20px;
+  border: none;
+  background: $fire;
+  color: #FFF;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+form {
+  p {
+    margin: 0 0 10px 0;
+  }
+}
+
+
+
+
+
+select::-ms-expand {
+  display: none; //IE11
+}
+
+/* Firefox - removes outline */
+select:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 $text-main-color;
+}
+:focus {
+  outline: none;
+}
+::-moz-focus-inner {
+  border: 0;
+}
+
+
+
+
+.textwidget {
+  p {
+    color: #fff;
+  }
+}
+.widgettitle {
+  color: #fff;
+}

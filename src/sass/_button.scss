@@ -1,0 +1,34 @@
+.button {
+  display: block;
+  width: 212px;
+  margin-top: 20px;
+  padding: 10px;
+  align-self: center;
+  box-sizing: border-box;
+  border: #fff 1px solid;
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 400;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: #fff;
+
+    &.fire {
+      color: $fire;
+    }
+
+    &.water {
+      color: $water;
+    }
+
+    &.ground {
+      color: $ground;
+    }
+
+    &.wind {
+      color: $wind;
+    }
+  }
+}

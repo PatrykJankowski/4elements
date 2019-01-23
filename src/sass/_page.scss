@@ -1,0 +1,21 @@
+.top {
+  padding: $L $S;
+  margin-bottom: $M;
+  display: flex;
+  color: #fff;
+  justify-content: center;
+  text-transform: uppercase;
+
+  &.fire {
+    background: $fire
+  }
+  &.water {
+    background: $water
+  }
+  &.ground {
+    background: $ground
+  }
+  &.wind {
+    background: $wind
+  }
+}
