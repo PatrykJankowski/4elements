@@ -1,11 +1,9 @@
 // Packages
 const gulp = require('gulp'),
-      htmlmin = require('gulp-htmlmin'),
       sass = require('gulp-sass'),
       uglify = require('gulp-uglify-es').default,
       image = require('gulp-image'),
-      clean = require('gulp-clean'),
-      rename = require('gulp-rename');
+      clean = require('gulp-clean');
 
 
 
@@ -16,8 +14,6 @@ gulp.task('clean', function() {
 
 gulp.task('html', () => {
     return gulp.src('./src/*.php')
-        .pipe(rename({extname: '.php'}))
-        //.pipe(htmlmin({collapseWhitespace: true, minifyJS: true, minifyCSS: true, removeComments: true}))
         .pipe(gulp.dest('./dist'))
 });
 

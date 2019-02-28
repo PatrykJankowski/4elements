@@ -7,15 +7,45 @@
   text-transform: uppercase;
 
   &.fire {
-    background: $fire
+    background: $fire;
   }
   &.water {
-    background: $water
+    background: $water;
   }
   &.ground {
-    background: $ground
+    background: $ground;
   }
   &.wind {
-    background: $wind
+    background: $wind;
   }
+}
+
+.bg- {
+  position: absolute;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 1000px;
+
+  &fire {
+    background: $fire;
+  }
+  &water {
+    background: $water;
+  }
+  &ground {
+    background: $ground;
+  }
+  &wind {
+    background: $wind;
+  }
+}
+
+.bg-water {
+  position: absolute;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 1000px;
+  background: $water;
 }

@@ -13,6 +13,7 @@
     "gulp-connect": "^5.6.1",
     "gulp-htmlmin": "^5.0.1",
     "gulp-image": "^4.3.0",
+    "gulp-image-resize": "^0.13.0",
     "gulp-sass": "^4.0.1",
     "gulp-uglify-es": "^1.0.4"
   },

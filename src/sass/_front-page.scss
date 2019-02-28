@@ -11,6 +11,7 @@
 
 .offer {
   padding: $L 0;
+  text-align: center;
 
   img {
     height: 120px;
@@ -27,8 +28,6 @@
   }
 
   a {
-    transition: all 0.3s ease;
-
     &:hover {
       &.fire {
         h4 {color: $fire}
@@ -46,17 +45,13 @@
   }
 }
 
-.offer {
-  text-align: center;
-}
-
 
 .about {
   padding: $XXL 0;
   background: $fire;
   text-align: center;
 
-  p {
+  p, a {
     color: #fff;
   }
 }
@@ -68,7 +63,7 @@
   img {
     width: 100%;
   }
-  li {
+  li, a {
     color: #fff;
   }
 }
@@ -92,7 +87,7 @@
   img {
     width: 100%;
   }
-  li {
+  li, a {
     color: #fff;
   }
 }

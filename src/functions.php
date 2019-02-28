@@ -28,10 +28,10 @@ function my_css_attributes_filter($var) {
 }
 
 
-function add_google_fonts() {
+/*function add_google_fonts() {
     wp_enqueue_style('google_web_fonts', 'https://fonts.googleapis.com/css?family=Raleway:400,500');
 }
-add_action( 'wp_enqueue_scripts', 'add_google_fonts' );
+add_action( 'wp_enqueue_scripts', 'add_google_fonts' );*/
 
 
 

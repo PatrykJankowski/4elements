@@ -4,73 +4,46 @@
 <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_uri(); ?>" />
-    <?php wp_head(); ?>
+    <meta name="theme-color" content="#67b0d6">
+    <link rel="manifest" href="wp-content/themes/4elements/manifest.json">
+    <link rel="stylesheet" type="text/css" href="/wp-content/themes/4elements/style.css" />
 
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133650290-1"></script>
     <script>
-        let navOpened = false;
-        let initHeight = 491;
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-        function slideToggle() {
-
-            let navMobile = document.getElementById('nav-mobile');
-
-            if(navOpened) {
-                navOpened = false;
-                navMobile.style.height = '0';
-                document.getElementById('toggle-button').classList.remove('open');
-            }
-            else {
-                navOpened = true;
-                navMobile.style.height = initHeight + 'px';
-                document.getElementById('toggle-button').classList.add('open');
-            }
-        }
+        gtag('config', 'UA-133650290-1');
     </script>
+
+    <?php wp_head(); ?>
 </head>
 
 
 <body <?php body_class(); ?>>
 
-
-    <section id="nav">
-
-
-        <a href="/4elements">
-            <img id="logo" src="<?php echo get_template_directory_uri() . '/img/logo.png'; ?>" />
+    <div id="nav">
+        <a href="/" title="4elements - nauka pływania, Warszawa">
+            <img id="logo" alt="4elements - nauka pływania, Warszawa" src="/wp-content/themes/4elements/img/logo.png" />
         </a>
-
-
-        <nav role="navigation">
+        <nav>
             <?php wp_nav_menu( array( 'theme_location' => 'main-menu' ) ); ?>
         </nav>
-
-
         <div id="toggle-button" onclick="slideToggle()"><i></i></div>
-
-        <div id="nav-mobile" role="navigation">
+        <div id="nav-mobile">
             <?php wp_nav_menu( array( 'theme_location' => 'main-menu' ) ); ?>
         </div>
+    </div>
 
-    </section>
-
-
-
-
-
-
-
-
-
-
-
-    <main> <!-- closed in footer.php -->
+    <!-- closed in footer.php -->
+    <main>
 
     <?php if ( is_front_page() && !is_home() ) { ?>
-        <header id="header" role="banner">
+        <header id="header">
             <section id="branding">
                 <?php dynamic_sidebar('slogan'); ?>
             </section>
         </header>
     <?php } ?>
-
