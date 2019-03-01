@@ -20,23 +20,52 @@
   }
 }
 
-.bg {
+.bg-water {
   position: absolute;
   left: 0;
   z-index: -1;
   width: 100%;
-  height: 1000px;
+  height: 1050px;
+  background: $water;
+}
 
-  &-fire {
-    background: $fire;
-  }
-  &-water {
-    background: $water;
-  }
-  &-ground {
-    background: $ground;
-  }
-  &-wind {
-    background: $wind;
-  }
+.bg-fire {
+  position: absolute;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 1700px;
+  background: $fire;
+}
+
+.bg-ground {
+  position: absolute;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 1700px;
+  background: $ground
+}
+
+.bg-wind {
+  position: absolute;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 1700px;
+  background: $wind;
+}
+
+.bg-white {
+  position: absolute;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 380px;
+  background: #fff;
+}
+
+.bg-header {
+  margin-top: $L;
+  color: #fff;
 }
