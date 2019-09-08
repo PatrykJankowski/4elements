@@ -4,14 +4,17 @@
     &:hover {
       background: $fire;
     }
+
     &.current_page_item {
       background: $fire;
     }
   }
+
   .menu-item-14 {
     &:hover {
       background: $water;
     }
+
     &.current_page_item {
       background: $water;
     }
@@ -19,17 +22,18 @@
 
   .current-menu-ancestor {
     background: $water;
-    >a {
+
+    > a {
       color: #FFF;
     }
 
   }
 
-
   .menu-item-27 {
     &:hover {
       background: $ground;
     }
+
     &.current_page_item {
       background: $ground;
     }
@@ -38,6 +42,7 @@
     &:hover {
       background: $wind;
     }
+
     &.current_page_item {
       background: $wind;
     }
@@ -46,13 +51,14 @@
     &:hover {
       background: $fire;
     }
+
     &.current_page_item {
       background: $fire;
     }
   }
 
   .current_page_item {
-    >a {
+    > a {
       color: #FFF;
     }
   }
@@ -84,7 +90,7 @@
           position: absolute;
           width: 100%;
 
-          >li {
+          > li {
             background: $water;
             height: 80px;
 

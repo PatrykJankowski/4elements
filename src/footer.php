@@ -39,6 +39,11 @@ if ($post_id === 7 || $post_id === 149 || $post_id === 144 || $post_id === 135 |
                         SCS Aktywna Warszawa<br>
                         ul. Inflancka 8, Warszawa Wola
                     </p>
+                    <br>
+                    <p>
+                        Zespół Szkół nr 39 w Warszawie<br>
+                        ul. Bełska 1/3, Warszawa Mokotów
+                    </p>
                 </div>
                 <div class="c">
                     <p>Adres e-mail: <a class="link" href="mailto:kontakt@4elements.pl">kontakt@4elements.pl</a></p>
