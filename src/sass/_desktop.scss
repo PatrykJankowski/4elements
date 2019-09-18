@@ -1,6 +1,6 @@
 @media only screen and (min-width: $desktop) {
 
-  .menu-item-28, .menu-item-12 {
+  .menu-item-28, .menu-item-12, .menu-item-26 {
     &:hover {
       background: $fire;
     }
@@ -38,22 +38,13 @@
       background: $ground;
     }
   }
-  .menu-item-17 {
+  .menu-item-17, .menu-item-536, .menu-item-619, .menu-item-620 {
     &:hover {
       background: $wind;
     }
 
     &.current_page_item {
       background: $wind;
-    }
-  }
-  .menu-item-26 {
-    &:hover {
-      background: $fire;
-    }
-
-    &.current_page_item {
-      background: $fire;
     }
   }
 
@@ -94,7 +85,7 @@
             background: $water;
             height: 80px;
 
-            &.menu-item-536 {
+            &.menu-item-536, &.menu-item-620 {
               background: $wind;
             }
           }
