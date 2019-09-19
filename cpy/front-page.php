@@ -1,29 +1,30 @@
 <?php get_header(); ?>
 
 <section class="container offer">
+
     <div class="row">
         <div class="c">
-            <a class="offer__element" href="/o-nas-nauka-plywania-w-warszawie/">
-                <img class="offer__img" alt="4elements, Warszawa - ogień" src="/wp-content/themes/4elements/img/ogien.png" />
-                <h4 class="offer__header offer__header--fire">O nas</h4>
+            <a href="/o-nas-nauka-plywania-w-warszawie/" class="fire">
+                <img alt="4elements, Warszawa - ogień" src="/wp-content/themes/4elements/img/ogien.png" />
+                <h4>O nas</h4>
             </a>
         </div>
         <div class="c">
-            <a  class="offer__element" href="/nauka-plywania-warszawa">
-                <img class="offer__img" alt="Nauka pływania, Warszawa - woda" src="/wp-content/themes/4elements/img/woda.png" />
-                <h4 class="offer__header offer__header--water">Nauka pływania</h4>
+            <a href="/nauka-plywania-warszawa" class="water">
+                <img alt="Nauka pływania, Warszawa - woda" src="/wp-content/themes/4elements/img/woda.png" />
+                <h4>Nauka pływania</h4>
             </a>
         </div>
         <div class="c">
-            <a class="offer__element" href="/treningi">
-                <img class="offer__img" alt="Trening personalny, Warszawa - ziemia" src="/wp-content/themes/4elements/img/ziemia.png" />
-                <h4 class="offer__header offer__header--ground">Treningi</h4>
+            <a href="/treningi" class="ground">
+                <img alt="Trening personalny, Warszawa - ziemia" src="/wp-content/themes/4elements/img/ziemia.png" />
+                <h4>Treningi</h4>
             </a>
         </div>
         <div class="c">
-            <a class="offer__element" href="/obozy-sportowe-warszawa">
-                <img class="offer__img" alt="Obozy sportowe, Warszawa - wiatr" src="/wp-content/themes/4elements/img/wiatr.png" />
-                <h4 class="offer__heade offer__header--wind">Obozy sportowe</h4>
+            <a href="/obozy-sportowe-warszawa" class="wind">
+                <img alt="Obozy sportowe, Warszawa - wiatr" src="/wp-content/themes/4elements/img/wiatr.png" />
+                <h4>Obozy sportowe</h4>
             </a>
         </div>
     </div>
@@ -51,7 +52,7 @@
 <section class="trainings">
     <div class="container">
         <div class="row">
-            <div class="c c6">
+            <div class="c c6 inverted">
                 <img alt="Trening personalny, Warszawa" src="/wp-content/themes/4elements/img/zajecia-ogolnorozwojowe.jpg">
             </div>
             <div class="c c4">

@@ -38,6 +38,7 @@
       background: $ground;
     }
   }
+
   .menu-item-17, .menu-item-536, .menu-item-619, .menu-item-620 {
     &:hover {
       background: $wind;
@@ -54,67 +55,11 @@
     }
   }
 
-
   .sub-menu {
     li {
       a {
         color: #ededed;
       }
     }
-
   }
-
-  nav {
-
-    display: flex;
-
-    div {
-      li {
-        position: relative;
-        height: 100%;
-        //transition: all 300ms;
-
-        ul {
-          display: none;
-          margin: 0;
-          flex-direction: column;
-          position: absolute;
-          width: 100%;
-
-          > li {
-            background: $water;
-            height: 80px;
-
-            &.menu-item-536, &.menu-item-620 {
-              background: $wind;
-            }
-          }
-        }
-
-        &:hover > ul {
-          display: flex;
-        }
-
-        a {
-          display: flex;
-          height: 100%;
-          align-items: center;
-          padding: 0 $S;
-
-          &:hover {
-            color: #FFF;
-          }
-        }
-      }
-    }
-  }
-
-  #nav-mobile {
-    display: none
-  }
-
-  #toggle-button {
-    display: none
-  }
-
 }

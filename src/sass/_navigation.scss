@@ -1,71 +1,36 @@
-#logo {
-  display: flex;
-  height: 70px;
-  margin: $XS $XS $XS $M;
-}
 
-#nav-mobile {
+
+
+.nav {
+  display: flex;
   position: fixed;
-  width: 100vw;
+  top: 0;
+  z-index: 2;
   background: #fff;
-  overflow: hidden;
-  height: 0;
-  -webkit-transition: all 0.25s ease-in-out;
-  transition: all 0.25s ease-in-out;
-  top: 90px;
-  left: 0; //IE fix
+  width: 100%;
 
-  .menu-item-12 {
-    display: none;
-  }
-
-  .sub-menu {
+  &__logo {
     display: flex;
+    height: 60px;
+    margin: $XS;
+
+    @media screen and (min-width: $tablet) {
+      height: 70px;
+      margin: $XS $XS $XS $M;
+    }
+  }
+
+  &__toggle-button {
+    display: flex;
+    padding: 8px 20px 8px 10px;
+    cursor: pointer;
+    align-self: center;
+    align-items: flex-end;
+    flex-grow: 1;
     flex-direction: column;
-    width: 100%;
-    margin: 0;
-
-    li {
-      flex-direction: column;
-      padding: 0 0 0 20px;
-    }
   }
 
-  div {
-
-    > ul {
-      margin: 0;
-      border-bottom: 1px solid $text-main-color;
-
-      li {
-        border-top: 1px solid $text-main-color;
-        height: 100%;
-        line-height: 48px;
-        display: block;
-        padding: 0;
-
-        a {
-          font-size: 16px;
-          display: block;
-          padding: 0 $M;
-        }
-      }
-    }
-  }
-}
-
-#toggle-button {
-  display: flex;
-  padding: 8px 20px 8px 10px;
-  cursor: pointer;
-  align-self: center;
-  align-items: flex-end;
-  flex-grow: 1;
-  flex-direction: column;
-
-
-  /* Toggle Button Icon */
-  i {
+  &__toggle-icon {
     display: inline-block;
     position: relative;
     top: 0;
@@ -85,64 +50,162 @@
       transform: rotate(0);
       transition: transform 300ms 100ms;
     }
+
     &:before {
       top: -6px;
     }
+
     &:after {
       top: 6px;
     }
+
+    &--open {
+      background: transparent;
+
+      &:before {
+        top: 0;
+        transform: rotate(135deg);
+      }
+
+      &:after {
+        top: 0;
+        transform: rotate(225deg);
+      }
+    }
   }
 
-  &.open i {
-    background: transparent;
-    &:before {
-      top: 0;
-      transform: rotate(135deg);
+  &__nav-mobile {
+    position: fixed;
+    width: 100vw;
+    background: #fff;
+    overflow: hidden;
+    height: 0;
+    -webkit-transition: all 0.25s ease-in-out;
+    transition: all 0.25s ease-in-out;
+    top: 80px;
+    left: 0; //IE fix
+
+    @media screen and (min-width: $tablet) {
+      top: 90px;
     }
-    &:after {
-      top: 0;
-      transform: rotate(225deg);
+
+    .menu-item-12 {
+      display: none;
+    }
+
+    .sub-menu {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      margin: 0;
+
+      li {
+        flex-direction: column;
+        padding: 0 0 0 20px;
+      }
+
+      a:before {
+        content: "– ";
+      }
+    }
+
+    div {
+      > ul {
+        margin: 0;
+        border-bottom: 1px solid $text-main-color;
+
+        li {
+          border-top: 1px solid $text-main-color;
+          height: 100%;
+          line-height: 42px;
+          display: block;
+          padding: 0;
+
+          a {
+            font-size: 16px;
+            display: block;
+            padding: 0 $S;
+          }
+        }
+      }
     }
   }
-}
 
-
-
-
-
-
-
-#nav {
-  display: flex;
-  position: fixed;
-  top: 0;
-  z-index: 2;
-  background: #fff;
-  width: 100%;
-}
-
-
-
-
-
-
-nav {
-  display: none;
-  flex: 1;
-  text-transform: uppercase;
-
-  &> div {
+  &__nav-desktop {
+    display: none;
     flex: 1;
+    text-transform: uppercase;
+
+    & > div {
+      flex: 1;
+    }
+
+    a {
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    ul {
+      list-style: none;
+    }
   }
-  a {
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: 500;
-  }
-  ul {
-    list-style: none;
+
+  @media only screen and (min-width: $desktop) {
+    &__nav-mobile {
+      display: none;
+    }
+
+    &__nav-desktop {
+      display: flex;
+
+      div {
+        li {
+          position: relative;
+          height: 100%;
+          //transition: all 300ms;
+
+          ul {
+            display: none;
+            margin: 0;
+            flex-direction: column;
+            position: absolute;
+            width: 100%;
+
+            > li {
+              background: $water;
+              height: 80px;
+
+              &.menu-item-536, &.menu-item-620 {
+                background: $wind;
+              }
+            }
+          }
+
+          &:hover > ul {
+            display: flex;
+          }
+
+          a {
+            display: flex;
+            height: 100%;
+            align-items: center;
+            padding: 0 $S;
+
+            &:hover {
+              color: #FFF;
+            }
+          }
+        }
+      }
+    }
+
+    &__toggle-button {
+      display: none;
+    }
   }
 }
+
 
 #menu-menu {
   height: 100%;

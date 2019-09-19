@@ -1,60 +1,26 @@
 @media screen and (min-width: $tablet) {
-  .c {
-    flex: 1;
-  }
-  .c4 {
-    flex-basis: 40%;
-  }
-  .c6 {
-    flex-basis: 60%;
-    padding-left: $L;
-  }
 
 
-  main {
-    > header {
-      background-image: url("img/bg-snowboard.jpg");
-    }
-  }
-
-  .button {
-    align-self: flex-start;
-  }
-
-  .trainings {
-    .row {
-      flex-direction: row-reverse;
-    }
-    .c6 {
-      max-width: 636px; //IE fix
-    }
-  }
-
-  .swimming, .camps {
-    .c6 {
-      padding: 0 $L 0 0;
-      max-width: 636px; //IE fix
-    }
-  }
-
-
-  .offer .c:nth-child(2) {
-    margin: 0 $M/2 0 $M;
-  }
-  .offer .c:nth-child(3) {
-    margin: 0 $M 0 $M/2;
-  }
   .offer {
+    .c:nth-child(2) {
+      margin: 0 $M/2 0 $M;
+    }
+
+    .c:nth-child(3) {
+      margin: 0 $M 0 $M/2;
+    }
+
     h4 {
       margin-bottom: 0;
     }
   }
 
   .posts {
-    .post:first-child {
+    &:first-child {
       margin-right: $M;
     }
-    .post:last-child {
+
+    &:last-child {
       margin-left: $M;
     }
   }

@@ -65,17 +65,17 @@
 
     function slideToggle() {
 
-        let navMobile = document.getElementById('nav__nav-mobile');
+        let navMobile = document.getElementById('nav-mobile');
 
         if (navOpened) {
             navOpened = false;
             navMobile.style.height = '0';
-            document.getElementById('nav__toggle-icon').classList.remove('nav__toggle-icon--open');
+            document.getElementById('toggle-button').classList.remove('open');
         }
         else {
             navOpened = true;
             navMobile.style.height = initHeight + 'px';
-            document.getElementById('nav__toggle-icon').classList.add('nav__toggle-icon--open');
+            document.getElementById('toggle-button').classList.add('open');
         }
     }
 

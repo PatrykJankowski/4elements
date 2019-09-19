@@ -8,40 +8,40 @@
   background: rgba(0, 0, 0, .3);
 }
 
-
-
-
 .offer {
   padding: $L 0;
   text-align: center;
 
-  img {
+  &__img {
     height: 120px;
   }
 
-  h4 {
+  &__header {
     margin-bottom: $L;
-  }
 
-  .wind {
-    h4 {
+    &--wind {
       margin-bottom: 0;
     }
   }
 
-  a {
+  &__element {
+    display: block;
+
     &:hover {
-      &.fire {
-        h4 {color: $fire}
+      .offer__header--fire {
+        color: $fire;
       }
-      &.water {
-        h4 {color: $water}
+
+      .offer__header--water {
+        color: $water;
       }
-      &.ground {
-        h4 {color: $ground}
+
+      .offer__header--ground {
+        color: $ground;
       }
-      &.wind {
-        h4 {color: $wind}
+
+      .offer__header--wind {
+        color: $wind;
       }
     }
   }
@@ -49,9 +49,13 @@
 
 
 .about {
-  padding: $XXL 0;
+  padding: $XL 0;
   background: $fire;
   text-align: center;
+
+  @media screen and (min-width: $tablet) {
+    padding: $XXL 0;
+  }
 
   p, a {
     color: #fff;
@@ -60,11 +64,21 @@
 
 .swimming {
   background: $water;
-  padding: $XXL 0;
+  padding: $XL 0;
+
+  @media screen and (min-width: $tablet) {
+    padding: $XXL 0;
+
+    .c6 {
+      padding: 0 $L 0 0;
+    }
+  }
 
   img {
     width: 100%;
+    margin-bottom: $S;
   }
+
   li, a {
     color: #fff;
   }
@@ -72,11 +86,21 @@
 
 .trainings {
   background: $ground;
-  padding: $XXL 0;
+  padding: $XL 0;
+
+  @media screen and (min-width: $tablet) {
+    padding: $XXL 0;
+
+    .row {
+      flex-direction: row-reverse;
+    }
+  }
 
   img {
     width: 100%;
+    margin-bottom: $S;
   }
+
   li {
     color: #fff;
   }
@@ -84,21 +108,34 @@
 
 .camps {
   background: $wind;
-  padding: $XXL 0;
+  padding: $XL 0;
+
+  @media screen and (min-width: $tablet) {
+    padding: $XXL 0;
+
+    .c6 {
+      padding: 0 $L 0 0;
+    }
+  }
 
   img {
     width: 100%;
+    margin-bottom: $S;
   }
+
   li, a {
     color: #fff;
   }
 }
 
 
-
 .partners {
-  padding: 120px 0;
+  padding: $XL 0;
   text-align: center;
+
+  @media screen and (min-width: $tablet) {
+    padding: $XXL 0;
+  }
 
   h2 {
     margin-top: 0;

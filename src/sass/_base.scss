@@ -8,7 +8,11 @@ body {
 
 main {
   display: block;
-  margin-top: 90px;
+  margin-top: 80px;
+
+  @media screen and (min-width: $tablet) {
+    margin-top: 90px;
+  }
 
   & > section {
     display: flex;
@@ -23,12 +27,15 @@ main {
     background: url("img/bg_small.jpg") center;
     background-size: cover;
     position: relative;
-  }
 
+    @media screen and (min-width: $tablet) {
+      background-image: url("img/bg-snowboard.jpg");
+    }
+  }
 }
 
 h1, h2, h3, h4, h5 {
-  margin: $XS 0 $S 0;
+  margin: $XS 0;
   line-height: 1;
   font-weight: 500;
   color: $header-color;
@@ -55,7 +62,7 @@ h4 {
 
 h5 {
   font-size: $h5-size;
-  margin: 0 0 $XS;
+  margin: 0 0 $S;
   color: #fff;
 }
 
@@ -86,6 +93,7 @@ iframe {
 label {
   font-size: 16px;
 }
+
 input, textarea {
   border: #384a5f 1px solid;
   border-radius: 2px;
@@ -113,9 +121,6 @@ form {
 }
 
 
-
-
-
 select::-ms-expand {
   display: none; //IE11
 }
@@ -125,14 +130,14 @@ select:-moz-focusring {
   color: transparent;
   text-shadow: 0 0 0 $text-main-color;
 }
+
 :focus {
   outline: none;
 }
+
 ::-moz-focus-inner {
   border: 0;
 }
-
-
 
 
 .textwidget {
@@ -140,6 +145,7 @@ select:-moz-focusring {
     color: #fff;
   }
 }
+
 .widgettitle {
   color: #fff;
 }

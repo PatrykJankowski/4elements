@@ -21,22 +21,18 @@
     <?php wp_head(); ?>
 </head>
 
+
 <body <?php body_class(); ?>>
 
-    <div class="nav">
+    <div id="nav">
         <a href="/" title="4elements - nauka pływania, Warszawa">
-            <img class="nav__logo" alt="4elements - nauka pływania, Warszawa" src="/wp-content/themes/4elements/img/logo.png" />
+            <img id="logo" alt="4elements - nauka pływania, Warszawa" src="/wp-content/themes/4elements/img/logo.png" />
         </a>
-
-        <nav class="nav__nav-desktop">
+        <nav>
             <?php wp_nav_menu( array( 'theme_location' => 'main-menu' ) ); ?>
         </nav>
-
-        <div class="nav__toggle-button" onclick="slideToggle()">
-            <div id="nav__toggle-icon" class="nav__toggle-icon"></div>
-        </div>
-
-        <div id="nav__nav-mobile" class="nav__nav-mobile">
+        <div id="toggle-button" onclick="slideToggle()"><i></i></div>
+        <div id="nav-mobile">
             <?php wp_nav_menu( array( 'theme_location' => 'main-menu' ) ); ?>
         </div>
     </div>
