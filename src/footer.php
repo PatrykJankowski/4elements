@@ -61,7 +61,7 @@
 
 <script defer>
     let navOpened = false;
-    let initHeight = 491;
+    let initHeight = 560;
 
     function slideToggle() {
 
