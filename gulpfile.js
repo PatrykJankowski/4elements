@@ -3,9 +3,8 @@ const gulp = require('gulp'),
       sass = require('gulp-sass'),
       uglify = require('gulp-uglify-es').default,
       image = require('gulp-image'),
-      clean = require('gulp-clean');
-
-
+      clean = require('gulp-clean'),
+      webp = require('gulp-webp');
 
 
 gulp.task('clean', function() {
@@ -43,6 +42,7 @@ gulp.task('json', function () {
 gulp.task('images', function() {
     return gulp.src('src/img/*')
         .pipe(image())
+        .pipe(webp())
         .pipe(gulp.dest('dist/img'))
 });
 

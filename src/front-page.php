@@ -10,7 +10,7 @@
         </div>
         <div class="c">
             <a  class="offer__element" href="/nauka-plywania-warszawa">
-                <img class="offer__img" alt="Nauka pływania, Warszawa - woda" src="/wp-content/themes/4elements/img/woda.png" />
+                <img class="offer__img" alt="Nauka pływania w Warszawie - woda" src="/wp-content/themes/4elements/img/woda.png" />
                 <h4 class="offer__header offer__header--water">Nauka pływania</h4>
             </a>
         </div>
@@ -39,7 +39,7 @@
     <div class="container">
         <div class="row">
             <div class="c c6">
-                <img alt="Nauka pływania - Warszawa Wola" src="/wp-content/themes/4elements/img/nauka-plywania-dla-dzieci.jpg">
+                <img alt="Nauka pływania – Warszawa Wola, Mokotów" src="/wp-content/themes/4elements/img/nauka-plywania-dla-dzieci.webp">
             </div>
             <div class="c c4">
                 <?php dynamic_sidebar('swimming'); ?>
@@ -52,7 +52,7 @@
     <div class="container">
         <div class="row">
             <div class="c c6">
-                <img alt="Trening personalny, Warszawa" src="/wp-content/themes/4elements/img/zajecia-ogolnorozwojowe.jpg">
+                <img alt="Zajęcia ogólnorozwojowe, trening personalny, Warszawa" src="/wp-content/themes/4elements/img/treningi.webp">
             </div>
             <div class="c c4">
                 <?php dynamic_sidebar('trainings'); ?>
@@ -65,7 +65,7 @@
     <div class="container">
         <div class="row">
             <div class="c c6">
-                <img alt="Obozy sportowe, Warszawa" src="/wp-content/themes/4elements/img/obozy.jpg">
+                <img alt="Obozy sportowe, Warszawa" src="/wp-content/themes/4elements/img/obozy-sportowe.webp">
             </div>
             <div class="c c4">
                 <?php dynamic_sidebar('camps'); ?>

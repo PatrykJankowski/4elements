@@ -3,10 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "''",
-  "dependencies": {
-    "gulp-compile-handlebars": "^0.6.1",
-    "gulp-hb": "^7.1.0"
-  },
   "devDependencies": {
     "gulp": "^4.0.2",
     "gulp-clean": "^0.4.0",
@@ -15,7 +11,8 @@
     "gulp-image": "^6.0.0",
     "gulp-image-resize": "^0.13.1",
     "gulp-sass": "^4.0.2",
-    "gulp-uglify-es": "^2.0.0"
+    "gulp-uglify-es": "^2.0.0",
+    "gulp-webp": "^4.0.1"
   },
   "scripts": {},
   "repository": {
