@@ -16,7 +16,7 @@
             </a>
         </div>
         <div class="c">
-            <a href="/treningi" class="ground">
+            <a href="/treningi" class="earth">
                 <img alt="Trening personalny, Warszawa - ziemia" src="/wp-content/themes/4elements/img/ziemia.png" />
                 <h4>Treningi</h4>
             </a>

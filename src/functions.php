@@ -73,8 +73,8 @@ function widgets_init()
         'id' => 'slogan',
         'name' => __('Slogan', '4elements'),
         'description' => 'Krótki tekst w nagłówku na stronie głównej',
-        'before_title' => '<h1>',
-        'after_title' => '</h1>',
+        'before_title' => '<h2 class="branding__title">',
+        'after_title' => '</h2>',
         'before_widget' => '',
         'after_widget' => '',
     ));
@@ -82,6 +82,8 @@ function widgets_init()
         'id' => 'about',
         'name' => __('O 4elements', '4elements'),
         'description' => 'Sekcja z krótkim opisem 4elements na stronie głównej',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
         'before_widget' => '',
         'after_widget' => '',
     ));

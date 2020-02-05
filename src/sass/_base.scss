@@ -49,10 +49,8 @@ h1, h2, h3, h4, h5 {
 }
 
 h1 {
-  margin: 0;
   font-size: $h1-size;
   color: #fff;
-  text-align: center;
 }
 
 h2 {
@@ -128,6 +126,13 @@ form {
   }
 }
 
+figure {
+  margin: 0;
+}
+
+figcaption {
+  text-align: center;
+}
 
 select::-ms-expand {
   display: none; //IE11

@@ -213,3 +213,9 @@
   align-items: center;
   justify-content: flex-end;
 }
+
+body.admin-bar {
+  .nav {
+    top: 32px;
+  }
+}

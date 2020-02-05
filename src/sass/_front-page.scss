@@ -1,4 +1,4 @@
-#branding {
+.branding {
   padding: 10px;
   position: absolute;
   left: 50%;
@@ -6,141 +6,127 @@
   transform: translate(-50%, -50%);
   font-size: 40px;
   background: rgba(0, 0, 0, .3);
+
+  &__title {
+    margin: 20px 0 0;
+    color: #fff;
+    text-align: center;
+    font-size: $h2-size;
+  }
 }
 
-.offer {
-  padding: $L 0;
-  text-align: center;
+
+
+
+.front-container {
+  padding: $M 0;
+
+  @media screen and (min-width: $desktop) {
+    padding: $XL 0;
+  }
+
+  &--small {
+    padding: $L 0;
+  }
+
+  &--center {
+    text-align: center;
+  }
+
+  &--fire {
+    background: $fire;
+  }
+
+  &--water {
+    background: $water;
+  }
+
+  &--earth {
+    background: $earth;
+  }
+
+  &--wind {
+    background: $wind;
+  }
 
   &__img {
-    height: 120px;
+    width: 100%;
+    margin-bottom: $S;
+  }
+
+  p, a, li {
+    color: #fff;
+  }
+}
+
+
+
+
+
+.element {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &:hover {
+    .element__header--fire {
+      color: $fire;
+    }
+
+    .element__header--water {
+      color: $water;
+    }
+
+    .element__header--earth {
+      color: $earth;
+    }
+
+    .element__header--wind {
+      color: $wind;
+    }
   }
 
   &__header {
     margin-bottom: $L;
 
-    &--wind {
+    @media screen and (min-width: $desktop) {
       margin-bottom: 0;
     }
   }
 
-  &__element {
-    display: block;
-
-    &:hover {
-      .offer__header--fire {
-        color: $fire;
-      }
-
-      .offer__header--water {
-        color: $water;
-      }
-
-      .offer__header--ground {
-        color: $ground;
-      }
-
-      .offer__header--wind {
-        color: $wind;
-      }
-    }
+  &__img {
+    height: 120px;
   }
 }
 
 
-.about {
-  padding: $XL 0;
-  background: $fire;
-  text-align: center;
 
-  @media screen and (min-width: $tablet) {
-    padding: $XXL 0;
-  }
 
-  p, a {
-    color: #fff;
-  }
-}
-
-.swimming {
-  background: $water;
-  padding: $XL 0;
-
-  @media screen and (min-width: $tablet) {
-    padding: $XXL 0;
-
-    .c6 {
-      padding: 0 $L 0 0;
-    }
-  }
-
-  img {
-    width: 100%;
-    margin-bottom: $S;
-    clip-path: polygon(41.61% 0, 100% 69.79%, 37.46% 100%, 0 57.85%);
-  }
-
-  li, a {
-    color: #fff;
-  }
-}
-
-.trainings {
-  background: $ground;
-  padding: $XL 0;
-
-  @media screen and (min-width: $tablet) {
-    padding: $XXL 0;
-
-    .row {
-      flex-direction: row-reverse;
-    }
-  }
-
-  img {
-    width: 100%;
-    margin-bottom: $S;
-    clip-path: polygon(17.67% 0, 100% 40.24%, 75.58% 100%, 0 100%)
-  }
-
-  li {
-    color: #fff;
-  }
-}
-
-.camps {
-  background: $wind;
-  padding: $XL 0;
-
-  @media screen and (min-width: $tablet) {
-    padding: $XXL 0;
-
-    .c6 {
-      padding: 0 $L 0 0;
-    }
-  }
-
-  img {
-    width: 100%;
-    margin-bottom: $S;
-    clip-path: polygon(17.67% 12px, 100% 0, 91.53% 81.41%, 0 100%)
-  }
-
-  li, a {
-    color: #fff;
-  }
-}
 
 
 .partners {
-  padding: $XL 0;
-  text-align: center;
-
-  @media screen and (min-width: $tablet) {
-    padding: $XXL 0;
-  }
-
   h2 {
     margin-top: 0;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

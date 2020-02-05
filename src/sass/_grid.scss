@@ -6,7 +6,7 @@
   padding: 0 $S;
 
   @media screen and (min-width: $tablet) {
-    padding: 0 $M;
+    padding: $M;
   }
 
   .wp-block-image {
@@ -23,6 +23,10 @@
   flex-direction: row;
   flex-wrap: wrap;
   flex: 1;
+
+  &--revert {
+    flex-direction: row-reverse;
+  }
 }
 
 .c {
@@ -49,5 +53,10 @@
     flex-basis: 60%;
     padding-left: $L;
     max-width: 636px; //IE fix
+
+    &--r {
+      padding-right: $L;
+      padding-left: 0;
+    }
   }
 }

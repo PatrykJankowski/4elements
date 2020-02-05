@@ -1,0 +1,31 @@
+.img {
+    width: 100%;
+
+    &--default {
+        clip-path: polygon(6% 0, 100% 0%, 94% 100%, 0px 100%);
+    }
+
+    &--default-2 {
+        clip-path: polygon(0% 0, 94% 0, 100% 100%, 5% 100%);
+    }
+
+    &--water {
+        clip-path: polygon(42% 0, 100% 70%, 37% 100%, 0 58%);
+    }
+
+    &--earth {
+        clip-path: polygon(17% 0, 100% 40%, 75% 100%, 0 100%);
+    }
+
+    &--wind {
+        clip-path: polygon(16% 10px, 100% 0, 92% 80%, 0 100%);
+    }
+
+    &--mb {
+        margin-bottom: $S;
+
+        @media screen and (min-width: $desktop) {
+            margin-bottom: 0;
+        }
+    }
+}

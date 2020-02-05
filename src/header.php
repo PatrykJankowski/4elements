@@ -46,7 +46,7 @@
 
     <?php if ( is_front_page() && !is_home() ) { ?>
         <header id="header">
-            <section id="branding">
+            <section class="branding">
                 <?php dynamic_sidebar('slogan'); ?>
             </section>
         </header>
