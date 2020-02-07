@@ -30,14 +30,39 @@ main {
     width: 100%;
     height: calc(100vh - 330px);
     min-height: 300px;
-    max-height: 749px;
-    background: url("img/bg_small.jpg") center;
+    max-height: 420px;
+    background: url("img/basen-360.jpg") top left;
     background-size: cover;
     position: relative;
 
-    @media screen and (min-width: $tablet) {
-      background-image: url("img/bg-snowboard.jpg");
+    @media screen and (min-width: 361px) {
+      background-image: url("img/basen-768.jpg");
     }
+
+    @media screen and (min-width: 769px) {
+      background-image: url("img/basen-1024.jpg");
+      max-height: 748px;
+    }
+
+    @media screen and (min-width: 1025px) {
+      background-image: url("img/basen-1366.jpg");
+    }
+
+    @media screen and (min-width: 1367px) {
+      background-image: url("img/basen-1920.jpg");
+    }
+
+    @media screen and (min-width: 1921px) {
+      background-image: url("img/basen-3440.jpg");
+    }
+
+    @media screen and (min-width: 3440px) {
+      background-position: center;
+    }
+
+    /*@media screen and (min-width: 3440px) {
+      background-position: center;
+    }*/
   }
 }
 

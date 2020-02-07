@@ -1104,3 +1104,18 @@ pre.wp-block-verse {
 .wp-block-video figcaption {
   margin-top: 0.5em;
   margin-bottom: 1em; }
+
+
+.wp-block-column {
+  &.is-vertically-aligned-top {
+    align-self: flex-start;
+  }
+
+  &.is-vertically-aligned-center {
+    align-self: center;
+  }
+
+  &.is-vertically-aligned-bottom {
+    align-self: flex-end;
+  }
+}

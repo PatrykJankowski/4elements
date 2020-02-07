@@ -37,7 +37,7 @@
         </div>
 
         <div id="nav__nav-mobile" class="nav__nav-mobile">
-            <?php wp_nav_menu( array( 'theme_location' => 'main-menu' ) ); ?>
+            <?php wp_nav_menu( array( 'theme_location' => 'mobile-menu' ) ); ?>
         </div>
     </div>
 

@@ -57,6 +57,12 @@
   p, a, li {
     color: #fff;
   }
+
+  &--default {
+    p, a, li {
+      color: $text-main-color;
+    }
+  }
 }
 
 

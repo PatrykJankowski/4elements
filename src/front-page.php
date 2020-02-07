@@ -39,7 +39,11 @@
     <div class="container">
         <div class="row row--revert">
             <div class="c c6">
-                <img class="img img--mb img--water" alt="Nauka pływania – Warszawa Wola, Mokotów" src="/wp-content/themes/4elements/img/nauka-plywania-dla-dzieci.webp">
+                <picture>
+                    <source srcset="/wp-content/themes/4elements/img/nauka-plywania-dla-dzieci.webp" type="image/webp">
+                    <source srcset="/wp-content/themes/4elements/img/nauka-plywania-dla-dzieci.jpg" type="image/jpeg">
+                    <img class="img img--mb img--water" alt="Nauka pływania – Warszawa Wola, Mokotów" src="/wp-content/themes/4elements/img/nauka-plywania-dla-dzieci.jpg">
+                </picture>
             </div>
             <div class="c c4">
                 <?php dynamic_sidebar('swimming'); ?>
@@ -52,7 +56,11 @@
     <div class="container">
         <div class="row">
             <div class="c c6 c6--r">
-                <img class="img img--mb img--earth" alt="Zajęcia ogólnorozwojowe i treningi personalne – Warszawa" src="/wp-content/themes/4elements/img/treningi.webp">
+                <picture>
+                    <source srcset="/wp-content/themes/4elements/img/treningi.webp" type="image/webp">
+                    <source srcset="/wp-content/themes/4elements/img/treningi.jpg" type="image/jpeg">
+                    <img class="img img--mb img--earth" alt="Zajęcia ogólnorozwojowe i treningi personalne – Warszawa" src="/wp-content/themes/4elements/img/treningi.jpg">
+                </picture>
             </div>
             <div class="c c4">
                 <?php dynamic_sidebar('trainings'); ?>
@@ -65,7 +73,11 @@
     <div class="container">
         <div class="row row--revert">
             <div class="c c6">
-                <img class="img img--mb img--wind" alt="Obozy sportowe dla dzieci – Warszawa" src="/wp-content/themes/4elements/img/obozy-sportowe.webp">
+                <picture>
+                    <source srcset="/wp-content/themes/4elements/img/obozy-sportowe.webp" type="image/webp">
+                    <source srcset="/wp-content/themes/4elements/img/obozy-sportowe.jpg" type="image/jpeg">
+                    <img class="img img--mb img--wind" alt="Obozy sportowe dla dzieci – Warszawa" src="/wp-content/themes/4elements/img/obozy-sportowe.jpg">
+                </picture>
             </div>
             <div class="c c4">
                 <?php dynamic_sidebar('camps'); ?>
