@@ -10,7 +10,7 @@
   a {
     padding: 10px 30px;
     background: $fire;
-    border-radius: 20px;
+    // border-radius: 20px;
     color: #fff;
     font-weight: 500;
   }
@@ -89,7 +89,11 @@
   img {
     width: 100%;
     margin-bottom: $S;
-    clip-path: polygon(41.61% 0, 100% 69.79%, 37.46% 100%, 0 57.85%);
+   // clip-path: polygon(41.61% 0, 100% 69.79%, 37.46% 100%, 0 57.85%);
+
+    @media screen and (min-width: $desktop) {
+      margin-bottom: 0;
+    }
   }
 
   li, a {
@@ -112,7 +116,11 @@
   img {
     width: 100%;
     margin-bottom: $S;
-    clip-path: polygon(17.67% 0, 100% 40.24%, 75.58% 100%, 0 100%)
+    //clip-path: polygon(17.67% 0, 100% 40.24%, 75.58% 100%, 0 100%)
+
+    @media screen and (min-width: $desktop) {
+      margin-bottom: 0;
+    }
   }
 
   li {
@@ -135,7 +143,11 @@
   img {
     width: 100%;
     margin-bottom: $S;
-    clip-path: polygon(17.67% 12px, 100% 0, 91.53% 81.41%, 0 100%)
+    //clip-path: polygon(17.67% 12px, 100% 0, 91.53% 81.41%, 0 100%)
+
+    @media screen and (min-width: $desktop) {
+      margin-bottom: 0;
+    }
   }
 
   li, a {
