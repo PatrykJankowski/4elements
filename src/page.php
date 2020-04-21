@@ -4,7 +4,7 @@
     $post_id = get_post()->ID;
     if ($post_id === 7 || $post_id === 149 || $post_id === 144 || $post_id === 135 || $post_id === 129 || $post_id === 139 || $post_id === 525) {
         $class = "water";
-    } else if ($post_id === 15 || $post_id === 601) {
+    } else if ($post_id === 15) {
         $class = "wind";
     } else if ($post_id === 22) {
         $class = "ground";

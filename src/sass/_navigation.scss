@@ -104,12 +104,10 @@
     div {
       > ul {
         margin: 0;
-        border-bottom: 1px solid $text-main-color;
 
         li {
-          border-top: 1px solid $text-main-color;
           height: 100%;
-          line-height: 42px;
+          line-height: 40px;
           display: block;
           padding: 0;
 

@@ -7,6 +7,14 @@
   font-size: 40px;
   background: rgba(0, 0, 0, .8);
 
+  h1 {
+    font-size: 24px;
+
+    @media screen and (min-width: $desktop) {
+      font-size: $h1-size;
+    }
+  }
+
   a {
     padding: 10px 30px;
     background: $fire;
@@ -89,7 +97,7 @@
   img {
     width: 100%;
     margin-bottom: $S;
-   // clip-path: polygon(41.61% 0, 100% 69.79%, 37.46% 100%, 0 57.85%);
+    // clip-path: polygon(41.61% 0, 100% 69.79%, 37.46% 100%, 0 57.85%);
 
     @media screen and (min-width: $desktop) {
       margin-bottom: 0;
@@ -116,7 +124,7 @@
   img {
     width: 100%;
     margin-bottom: $S;
-    //clip-path: polygon(17.67% 0, 100% 40.24%, 75.58% 100%, 0 100%)
+    // clip-path: polygon(17.67% 0, 100% 40.24%, 75.58% 100%, 0 100%)
 
     @media screen and (min-width: $desktop) {
       margin-bottom: 0;
