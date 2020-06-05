@@ -107,12 +107,12 @@
 
         li {
           height: 100%;
-          line-height: 40px;
+          line-height: 44px;
           display: block;
           padding: 0;
 
           a {
-            font-size: 16px;
+            font-size: 18px;
             display: block;
             padding: 0 $S;
           }
@@ -141,7 +141,7 @@
     }
   }
 
-  @media only screen and (min-width: $desktop) {
+  @media only screen and (min-width: 1068px) {
     &__nav-mobile {
       display: none;
     }

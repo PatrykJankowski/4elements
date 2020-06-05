@@ -1,5 +1,4 @@
 @media only screen and (min-width: $desktop) {
-
   .menu-item-28, .menu-item-12, .menu-item-26, .menu-item-619 {
     &:hover {
       background: $fire;
@@ -46,6 +45,10 @@
     &.current_page_item {
       background: $wind;
     }
+  }
+
+  .menu-item-17:hover > a, .menu-item-14:hover > a {
+    color: #ededed;
   }
 
   .current_page_item {

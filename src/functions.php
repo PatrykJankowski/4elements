@@ -43,9 +43,10 @@ function setup()
     add_theme_support('post-thumbnails');
     global $content_width;
     if (!isset($content_width)) $content_width = 640;
-    register_nav_menus(
-        array('main-menu' => __('Main Menu', '4elements'))
-    );
+    register_nav_menus( array(
+        'main-menu' => __('Main Menu', '4elements' ),
+        'mobile-menu' => __('Mobile Menu', '4elements' )
+    ));
 }
 
 

@@ -1,26 +1,67 @@
 #branding {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: calc(100% - 20px);
-  padding: 10px;
-  font-size: 40px;
-  background: rgba(0, 0, 0, .8);
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0 $S;
+  max-width: 700px;
+
+  @media screen and (min-width: 340px) {
+    margin-left: $M;
+  }
+
+  @media screen and (min-width: $tablet) {
+    margin-left: $L;
+  }
+
+  @media screen and (min-width: $desktop) {
+    margin-left: $XXL;
+  }
+
+  @media screen and (min-width: 2000px) {
+    margin-left: 400px;
+  }
 
   h1 {
     font-size: 24px;
 
+    @media screen and (min-width: $tablet) {
+      font-size: 38px;
+    }
+
     @media screen and (min-width: $desktop) {
-      font-size: $h1-size;
+      font-size: 44px;
+    }
+  }
+
+  h2 {
+    margin-bottom: $L;
+    font-size: 30px;
+    color: #fff;
+
+    @media screen and (min-width: $tablet) {
+      margin-bottom: $XL;
+      font-size: 56px;
+    }
+
+    @media screen and (min-width: $desktop) {
+      font-size: 70px;
+    }
+  }
+
+  p {
+    font-size: 20px;
+
+    @media screen and (min-width: $tablet) {
+      font-size: 24px;
     }
   }
 
   a {
     padding: 10px 30px;
     background: $fire;
-    // border-radius: 20px;
     color: #fff;
     font-weight: 500;
+    font-size: 18px;
   }
 }
 
@@ -67,40 +108,51 @@
   }
 }
 
-
 .about {
-  padding: $XL 0;
+  padding: $M 0;
   background: $fire;
-  text-align: center;
 
   @media screen and (min-width: $tablet) {
-    padding: $XXL 0;
+    padding: $XL 0;
   }
 
-  p, a {
+  p, a, h2 {
+    max-width: 800px;
     color: #fff;
+  }
+
+  .widgettitle {
+    font-weight: 400;
+    margin: 0;
   }
 }
 
 .swimming {
   background: $water;
-  padding: $XL 0;
+  padding: $M 0;
 
   @media screen and (min-width: $tablet) {
-    padding: $XXL 0;
+    padding: $XL 0;
 
     .c6 {
       padding: 0 $L 0 0;
     }
   }
 
+  @media screen and (min-width: $desktop) {
+    padding: 0;
+  }
+
   img {
     width: 100%;
     margin-bottom: $S;
-    // clip-path: polygon(41.61% 0, 100% 69.79%, 37.46% 100%, 0 57.85%);
 
     @media screen and (min-width: $desktop) {
-      margin-bottom: 0;
+      width: 100%;
+      margin-bottom: 20px;
+      height: 100%;
+      object-fit: cover;
+      min-height: 500px;
     }
   }
 
@@ -111,23 +163,30 @@
 
 .trainings {
   background: $ground;
-  padding: $XL 0;
+  padding: $M 0;
 
   @media screen and (min-width: $tablet) {
-    padding: $XXL 0;
+    padding: $XL 0;
 
     .row {
       flex-direction: row-reverse;
     }
   }
 
+  @media screen and (min-width: $desktop) {
+    padding: 0;
+  }
+
   img {
     width: 100%;
     margin-bottom: $S;
-    // clip-path: polygon(17.67% 0, 100% 40.24%, 75.58% 100%, 0 100%)
 
     @media screen and (min-width: $desktop) {
-      margin-bottom: 0;
+      width: 100%;
+      margin-bottom: 20px;
+      height: 100%;
+      object-fit: cover;
+      min-height: 500px;
     }
   }
 
@@ -138,23 +197,30 @@
 
 .camps {
   background: $wind;
-  padding: $XL 0;
+  padding: $M 0;
 
   @media screen and (min-width: $tablet) {
-    padding: $XXL 0;
+    padding: $XL 0;
 
     .c6 {
       padding: 0 $L 0 0;
     }
   }
 
+  @media screen and (min-width: $desktop) {
+    padding: 0;
+  }
+
   img {
     width: 100%;
     margin-bottom: $S;
-    //clip-path: polygon(17.67% 12px, 100% 0, 91.53% 81.41%, 0 100%)
 
     @media screen and (min-width: $desktop) {
-      margin-bottom: 0;
+      width: 100%;
+      margin-bottom: 20px;
+      height: 100%;
+      object-fit: cover;
+      min-height: 500px;
     }
   }
 
@@ -165,14 +231,14 @@
 
 
 .partners {
-  padding: $XL 0;
+  padding: $M 0 #{$M - 30px};
   text-align: center;
 
   @media screen and (min-width: $tablet) {
-    padding: $XXL 0;
+    padding: $XL 0 #{$XL - 30px};
   }
 
   h2 {
-    margin-top: 0;
+    margin: 0 0 $S;
   }
 }

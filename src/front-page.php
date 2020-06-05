@@ -38,11 +38,13 @@
 <section class="swimming">
     <div class="container">
         <div class="row">
-            <div class="c c6">
+            <div class="c">
                 <img alt="Nauka pływania – Warszawa Wola, Mokotów" src="/wp-content/themes/4elements/img/nauka-plywania-dla-dzieci.webp">
             </div>
-            <div class="c c4">
-                <?php dynamic_sidebar('swimming'); ?>
+            <div class="c">
+                <div class="container__widget">
+                    <?php dynamic_sidebar('swimming'); ?>
+                </div>
             </div>
         </div>
     </div>
@@ -51,11 +53,13 @@
 <section class="trainings">
     <div class="container">
         <div class="row">
-            <div class="c c6">
+            <div class="c">
                 <img alt="Zajęcia ogólnorozwojowe, trening personalny, Warszawa" src="/wp-content/themes/4elements/img/treningi.webp">
             </div>
-            <div class="c c4">
-                <?php dynamic_sidebar('trainings'); ?>
+            <div class="c">
+                <div class="container__widget container__widget--left">
+                    <?php dynamic_sidebar('trainings'); ?>
+                </div>
             </div>
         </div>
     </div>
@@ -64,11 +68,13 @@
 <section class="camps">
     <div class="container">
         <div class="row">
-            <div class="c c6">
+            <div class="c">
                 <img alt="Obozy sportowe, Warszawa" src="/wp-content/themes/4elements/img/obozy-sportowe.webp">
             </div>
-            <div class="c c4">
-                <?php dynamic_sidebar('camps'); ?>
+            <div class="c">
+                <div class="container__widget">
+                    <?php dynamic_sidebar('camps'); ?>
+                </div>
             </div>
         </div>
     </div>

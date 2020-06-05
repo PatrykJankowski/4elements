@@ -18,7 +18,7 @@
         <div class="container">
             <div class="row">
                 <div class="c">
-                    <h5>Nauka pływania, Warszawa</h5>
+                    <h5>4elements Warszawa – nauka pływania</h5>
                     <ul>
                         <li><a href="/nauka-plywania-dla-dzieci-warszawa">Nauka pływania dla dzieci</a></li>
                         <li><a href="/nauka-plywania-dla-doroslych-warszawa">Nauka pływania dla dorosłych</a></li>
@@ -55,13 +55,13 @@
         </div>
     </div>
     <div id="copyright">
-        <?php echo sprintf( __( '%1$s %2$s %3$s | %4$s', '4elements' ), '&copy;', date( 'Y' ), esc_html( get_bloginfo( 'name' )  ), esc_html(get_bloginfo( 'description' ))); echo sprintf( __( '<p>Wykonanie: <a href="https://patrykjankowski.pl" target="_blank">Patryk Jankowski</a></p>', '4elements' ) ); ?>
+        <?php echo sprintf( __( '%1$s %2$s %3$s | %4$s', '4elements' ), '&copy;', date( 'Y' ), esc_html( get_bloginfo( 'name' )  ), esc_html(get_bloginfo( 'description' ))); echo sprintf( __( '<p>Wykonanie: <a style="color: #fff; text-decoration: underline" href="https://softcraft.it" title="SoftCraft – projektujemy strony internetowe i aplikacje mobilne na miarę twoich potrzeb" target="_blank">SoftCraft</a></p>', '4elements' ) ); ?>
     </div>
 </footer>
 
 <script defer>
     let navOpened = false;
-    let initHeight = 521;
+    let initHeight = 408;
 
     function slideToggle() {
 

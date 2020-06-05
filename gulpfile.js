@@ -42,7 +42,7 @@ gulp.task('json', function () {
 gulp.task('images', function() {
     return gulp.src('src/img/*')
         .pipe(image())
-        .pipe(webp())
+        //.pipe(webp())
         .pipe(gulp.dest('dist/img'))
 });
 

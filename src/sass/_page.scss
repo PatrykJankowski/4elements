@@ -69,3 +69,55 @@
   margin-top: $L;
   color: #fff;
 }
+
+
+
+
+
+
+
+.boxes {
+  padding: 0;
+  margin: $S 0 $S;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (min-width: $desktop) {
+    flex-direction: row;
+  }
+
+  &__box {
+    background: $fire;
+    flex: 1;
+    margin: $XS 0 $S;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    color: #fff;
+
+    @media screen and (min-width: $desktop) {
+      margin: 0 $S 0 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &--fire {
+      background: $fire;
+    }
+
+    &--water {
+      background: $water;
+    }
+
+    &--ground {
+      background: $ground;
+    }
+
+    &--wind {
+      background: $wind;
+    }
+  }
+}

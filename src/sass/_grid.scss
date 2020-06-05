@@ -15,6 +15,22 @@
       font-style: italic;
     }
   }
+
+  &__widget {
+    @media screen and (min-width: $desktop) {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+      padding-left: $L;
+    }
+
+    &--left {
+      @media screen and (min-width: $desktop) {
+        padding: 0 $L 0 0;
+      }
+    }
+  }
 }
 
 .row {

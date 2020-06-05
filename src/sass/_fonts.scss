@@ -1,18 +1,14 @@
-@import url('https://fonts.googleapis.com/css?family=Lato:300,400&display=swap');
-
-/*
+//@import url('https://fonts.googleapis.com/css?family=Lato:300,400&display=swap');
 @font-face {
-  font-family: 'Raleway';
-  font-display: swap;
-  font-style: normal;
-  font-weight: 400;
-  src: local('Raleway'), local('Raleway-Regular'), url(fonts/raleway-regular.woff2) format('woff2');
+    font-family: SegoeUI;
+    src: local("Segoe UI"),
+        url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/normal/latest.woff2) format("woff2");
+    font-weight: 400;
+    font-display: swap;
 }
 @font-face {
-  font-family: 'Raleway';
-  font-display: swap;
-  font-style: normal;
-  font-weight: 500;
-  src: local('Raleway Medium'), local('Raleway-Medium'), url(fonts/raleway-medium.woff2) format('woff2');
+    font-family: SegoeUI;
+    src: local("Segoe UI Bold"),
+        url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/bold/latest.woff2) format("woff2");
+    font-weight: 600;
 }
-*/
