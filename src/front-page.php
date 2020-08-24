@@ -15,15 +15,15 @@
             </a>
         </div>
         <div class="c">
+          <a class="offer__element" href="/obozy-sportowe-warszawa">
+            <img class="offer__img" alt="Obozy sportowe, Warszawa - wiatr" src="/wp-content/themes/4elements/img/wiatr.png" />
+            <h4 class="offer__heade offer__header--wind">Obozy sportowe</h4>
+          </a>
+        </div>
+        <div class="c">
             <a class="offer__element" href="/treningi">
                 <img class="offer__img" alt="Trening personalny, Warszawa - ziemia" src="/wp-content/themes/4elements/img/ziemia.png" />
                 <h4 class="offer__header offer__header--ground">Treningi</h4>
-            </a>
-        </div>
-        <div class="c">
-            <a class="offer__element" href="/obozy-sportowe-warszawa">
-                <img class="offer__img" alt="Obozy sportowe, Warszawa - wiatr" src="/wp-content/themes/4elements/img/wiatr.png" />
-                <h4 class="offer__heade offer__header--wind">Obozy sportowe</h4>
             </a>
         </div>
     </div>
@@ -39,7 +39,7 @@
     <div class="container">
         <div class="row">
             <div class="c">
-                <img alt="Nauka pływania – Warszawa Wola, Mokotów" src="/wp-content/themes/4elements/img/nauka-plywania-dla-dzieci.webp">
+                <img alt="Nauka pływania – Warszawa Wola" src="/wp-content/themes/4elements/img/nauka-plywania-dla-dzieci.webp">
             </div>
             <div class="c">
                 <div class="container__widget">
@@ -50,6 +50,21 @@
     </div>
 </section>
 
+<section class="camps">
+  <div class="container">
+    <div class="row">
+      <div class="c">
+        <img alt="Obozy sportowe, Warszawa" src="/wp-content/themes/4elements/img/obozy-sportowe.webp">
+      </div>
+      <div class="c">
+        <div class="container__widget container__widget--left">
+            <?php dynamic_sidebar('camps'); ?>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="trainings">
     <div class="container">
         <div class="row">
@@ -57,23 +72,8 @@
                 <img alt="Zajęcia ogólnorozwojowe, trening personalny, Warszawa" src="/wp-content/themes/4elements/img/treningi.webp">
             </div>
             <div class="c">
-                <div class="container__widget container__widget--left">
-                    <?php dynamic_sidebar('trainings'); ?>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="camps">
-    <div class="container">
-        <div class="row">
-            <div class="c">
-                <img alt="Obozy sportowe, Warszawa" src="/wp-content/themes/4elements/img/obozy-sportowe.webp">
-            </div>
-            <div class="c">
                 <div class="container__widget">
-                    <?php dynamic_sidebar('camps'); ?>
+                    <?php dynamic_sidebar('trainings'); ?>
                 </div>
             </div>
         </div>

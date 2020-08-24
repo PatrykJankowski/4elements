@@ -24,7 +24,7 @@
 <body <?php body_class(); ?>>
 
     <div class="nav">
-        <a href="/" title="4elements - nauka pływania, Warszawa">
+        <a href="/" title="4elements – nauka pływania, Warszawa">
             <img class="nav__logo" alt="4elements - nauka pływania, Warszawa" src="/wp-content/themes/4elements/img/logo.png" />
         </a>
 

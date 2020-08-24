@@ -22,10 +22,12 @@
                     <ul>
                         <li><a href="/nauka-plywania-dla-dzieci-warszawa">Nauka pływania dla dzieci</a></li>
                         <li><a href="/nauka-plywania-dla-doroslych-warszawa">Nauka pływania dla dorosłych</a></li>
-                        <li><a href="/plywanie-korekcyjne">Pływanie korekcyjne</a></li>
-                        <li><a href="/plywalnie-warszawa-wola">Pływalnie i plan zajęć</a></li>
+                        <li><a href="/wazne-informacje-na-start">Ważne informacje</a></li>
+                        <li><a href="/plywalnie-warszawa-wola">Nasze pływalnie</a></li>
                         <li><a href="/nauka-plywania-cennik">Cennik</a></li>
                         <li><a href="/kontakt">Kontakt</a></li>
+                        <li><a href="/regulamin-zajec-nauki-plywania">Regulamin zajęć</a></li>
+                        <li><a href="/rodo">RODO</a></li>
                     </ul>
                 </div>
                 <div class="c">
@@ -38,11 +40,6 @@
                     <p>
                         SCS Aktywna Warszawa<br>
                         ul. Inflancka 8, Warszawa Wola
-                    </p>
-                    <br>
-                    <p>
-                        Zespół Szkół nr 39 w Warszawie<br>
-                        ul. Bełska 1/3, Warszawa Mokotów
                     </p>
                 </div>
                 <div class="c">
