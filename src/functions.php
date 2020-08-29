@@ -1,12 +1,16 @@
 <?php
 
 add_filter('wp_enqueue_scripts', 'remove_shit', PHP_INT_MAX);
-function remove_shit()
-{
-    wp_dequeue_script( 'jquery');
-    wp_deregister_script( 'jquery');
-    wp_dequeue_style('wp-block-library');
-    wp_dequeue_style('contact-form-7');
+
+if (!function_exists('remove_shit')) {
+    function remove_shit() {
+        if (!is_page(array(822))) {
+            wp_dequeue_script('jquery');
+            wp_deregister_script('jquery');
+            wp_dequeue_style('wp-block-library');
+            wp_dequeue_style('contact-form-7');
+        }
+    }
 }
 
 add_action('init', function () {
@@ -107,4 +111,14 @@ function widgets_init()
         'before_widget' => '',
         'after_widget' => '',
     ));
+}
+
+
+
+add_filter( 'ninja_forms_submission_csv_name', 'csv_name' );
+
+function csv_name()
+{
+    $name = 'formularz_rejestracyjny';
+    return $name;
 }
