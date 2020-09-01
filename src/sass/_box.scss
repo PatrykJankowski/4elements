@@ -1,0 +1,51 @@
+.box {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  padding: 40px;
+  border: 1px solid $water;
+
+  &--max-height {
+    height: 300px;
+  }
+
+  &--center {
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+  }
+
+  &--large {
+    p, h4, button {
+      font-size: 22px;
+    }
+  }
+
+  svg {
+    height: 48px;
+  }
+
+  p, h4 {
+    color: $water;
+  }
+
+  .button {
+    background: $water;
+  }
+
+  h4 {
+    font-weight: 600;
+  }
+
+  &--fire {
+    border-color: $fire;
+
+    p, h4 {
+      color: $fire;
+    }
+
+    .button {
+      background: $fire;
+    }
+  }
+}
