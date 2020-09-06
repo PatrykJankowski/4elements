@@ -1,0 +1,47 @@
+.element {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 180px;
+    width: 180px;
+    margin: 60px 0 40px;
+    padding: 40px;
+    border: 1px solid #9E9C9C;
+    border-radius: 50%;
+    color: #9E9C9C;
+    font-size: 18px;
+
+    &:hover {
+        background: #E46015;
+        color: #fff;
+        border: none;
+    }
+
+    &--fire {
+        &:hover {
+            background: $fire;
+        }
+    }
+
+    &--water {
+        &:hover {
+            background: $water;
+        }
+    }
+
+    &--earth {
+        &:hover {
+            background: $ground;
+        }
+    }
+
+    &--wind {
+        &:hover {
+            background: $wind;
+        }
+    }
+
+    img {
+        margin-bottom: 10px;
+    }
+}

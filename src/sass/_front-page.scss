@@ -21,30 +21,23 @@
     margin-left: 400px;
   }
 
-  h1 {
+  h2 {
     font-size: 24px;
+    color: $fire;
 
     @media screen and (min-width: $tablet) {
-      font-size: 38px;
-    }
-
-    @media screen and (min-width: $desktop) {
-      font-size: 44px;
+      font-size: 48px;
     }
   }
 
-  h2 {
+  h1 {
     margin-bottom: $L;
     font-size: 30px;
-    color: #fff;
+    font-weight: 600;
 
     @media screen and (min-width: $tablet) {
       margin-bottom: $XL;
-      font-size: 56px;
-    }
-
-    @media screen and (min-width: $desktop) {
-      font-size: 70px;
+      font-size: 48px;
     }
   }
 
@@ -112,6 +105,9 @@
   }
 }
 
+
+
+
 .about {
   padding: $M 0;
   background: $fire;
@@ -121,8 +117,11 @@
   }
 
   p, a, h2 {
-    max-width: 800px;
     color: #fff;
+  }
+
+  p {
+    margin-bottom: 0;
   }
 
   .widgettitle {
@@ -131,9 +130,16 @@
   }
 }
 
+
+
+
+
 .swimming {
   background: $water;
   padding: $M 0;
+  height: 1600px;
+  background: url("/wp-content/themes/4elements/img/karolina_i_sandra.jpg") no-repeat center;
+  background-size: cover;
 
   @media screen and (min-width: $tablet) {
     padding: $XL 0;
@@ -166,7 +172,6 @@
 }
 
 .camps {
-  background: $wind;
   padding: $M 0;
 
   @media screen and (min-width: $tablet) {

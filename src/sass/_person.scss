@@ -1,0 +1,56 @@
+.person {
+    display: none;
+
+    @media screen and (min-width: 992px) {
+        display: block;
+        width: 350px;
+        margin: 800px auto 0;
+        cursor: pointer;
+    }
+
+    &:hover .person__content {
+        visibility: visible;
+        opacity: 1;
+        transition: opacity 0.3s, visibility 0.3s;
+    }
+
+    &__header {
+        display: flex;
+        align-items: center;
+        padding: $S;
+        background: $fire;
+        font-size: 24px;
+    }
+
+    &__icon {
+        display: inline-flex;
+        margin-left: auto;
+        border: solid #fff;
+        border-width: 0 4px 4px 0;
+        padding: 6px;
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+    }
+
+    &__headline {
+        display: inline-flex;
+        color: #fff;
+        font-weight: 600;
+    }
+
+    &__content {
+        height: 320px;
+        margin-top: 10px;
+        padding: $M;
+        border-top: 2px solid $fire;
+        background: rgba(255, 255, 255, .9);
+
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.3s, visibility 0.3s;
+
+        p {
+            font-size: 18px;
+        }
+    }
+}

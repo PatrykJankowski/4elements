@@ -1,23 +1,23 @@
 </main>
 
-<?php
+  <?php
     $post_id = get_post()->ID;
-    if ($post_id === 7 || $post_id === 149 || $post_id === 144 || $post_id === 135 || $post_id === 129 || $post_id === 139 || $post_id === 525) {
+    if ($post_id === 7 || $post_id === 149 || $post_id === 144 || $post_id === 135 || $post_id === 129 || $post_id === 139) {
         $class = "water";
-    } else if ($post_id === 15) {
-        $class = "wind";
     } else if ($post_id === 22) {
+        $class = "wind";
+    } else if ($post_id === 15 || $post_id === 537 || $post_id === 525 || $post_id === 877) {
         $class = "ground";
     } else  {
         $class = "fire";
     }
-?>
+  ?>
 
 <footer id="footer" class="<?php echo $class ?>">
     <div id="info">
         <div class="container">
             <div class="row">
-                <div class="c">
+                <div class="col-md-4">
                     <h5>4elements Warszawa – nauka pływania</h5>
                     <ul>
                         <li><a href="/nauka-plywania-dla-dzieci-warszawa">Nauka pływania dla dzieci</a></li>
@@ -30,7 +30,7 @@
                         <li><a href="/rodo">RODO</a></li>
                     </ul>
                 </div>
-                <div class="c">
+                <div class="col-md-4">
                     <h5>Nasze Pływalnie</h5>
                     <p>
                         OSiR Wola „FOKA”<br>
@@ -41,12 +41,16 @@
                         SCS Aktywna Warszawa<br>
                         ul. Inflancka 8, Warszawa Wola
                     </p>
+                    <br>
+                    <p>
+                        LAVO<br>
+                        ul. Geodetów 23E, 05-500 Józefosław
+                    </p>
                 </div>
-                <div class="c">
+                <div class="col-md-4">
                     <p>Adres e-mail: <a class="link" href="mailto:kontakt@4elements.pl">kontakt@4elements.pl</a></p>
                     <p>Numer telefonu: 798 968 416 lub 798 784 748</p>
                     <p>Facebook: <a class="link" title="4elements - nauka pływania, Warszawa" href="https://www.facebook.com/4elementspl" target="_blank" rel="nofollow noopener">4elementspl</a></p>
-                    <a class="button <?php echo $class ?>" href="/kontakt">Zapisz się na zajęcia</a>
                 </div>
             </div>
         </div>

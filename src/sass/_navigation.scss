@@ -166,7 +166,11 @@
               background: $water;
               height: 80px;
 
-              &.menu-item-536, &.menu-item-620 {
+              &.menu-item-17, &.menu-item-536, &.menu-item-620, &.menu-item-879 {
+                  background: $ground;
+              }
+
+              &.menu-item-27 {
                 background: $wind;
               }
             }

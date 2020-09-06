@@ -1,11 +1,10 @@
 .box {
   display: flex;
   flex-direction: column;
-  margin-top: 30px;
-  padding: 40px;
-  border: 1px solid $water;
+  padding: 60px;
+  border: 1px solid #9E9C9C;
 
-  &--max-height {
+  &--height-300 {
     height: 300px;
   }
 
@@ -13,6 +12,14 @@
     align-items: center;
     text-align: center;
     justify-content: center;
+  }
+
+  &--mt {
+    margin-top: $L;
+  }
+
+  &--mb {
+    margin-bottom: $L;
   }
 
   &--large {
@@ -25,27 +32,43 @@
     height: 48px;
   }
 
-  p, h4 {
-    color: $water;
-  }
-
-  .button {
-    background: $water;
+  h4 {
+     color: $water;
   }
 
   h4 {
     font-weight: 600;
   }
 
+  &--water {
+    border-color: $water;
+
+    h4 {
+      color: $water;
+    }
+  }
+
   &--fire {
     border-color: $fire;
 
-    p, h4 {
+    h4 {
       color: $fire;
     }
+  }
 
-    .button {
-      background: $fire;
+  &--earth {
+    border-color: $ground;
+
+    h4 {
+      color: $ground;
+    }
+  }
+
+  &--wind {
+    border-color: $wind;
+
+    h4 {
+      color: $wind;
     }
   }
 }

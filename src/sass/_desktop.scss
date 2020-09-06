@@ -22,12 +22,16 @@
   .current-menu-ancestor {
     background: $water;
 
+    &.menu-item-17 {
+      background: $ground;
+    }
+
     > a {
       color: #FFF;
     }
   }
 
-  .menu-item-27 {
+  .menu-item-17 {
     &:hover {
       background: $ground;
     }
@@ -37,7 +41,7 @@
     }
   }
 
-  .menu-item-17, .menu-item-536, .menu-item-620 {
+  .menu-item-27 {
     &:hover {
       background: $wind;
     }

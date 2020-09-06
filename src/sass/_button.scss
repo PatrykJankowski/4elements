@@ -1,18 +1,37 @@
 .button {
-  display: block;
-  width: 216px;
+  display: inline-flex;
+  justify-content: center;
+  width: auto;
+  min-width: 230px;
   margin-top: 20px;
   padding: 10px;
-  box-sizing: border-box;
-  border: #fff 1px solid;
   color: #fff;
-  text-align: center;
-  text-transform: uppercase;
-  font-weight: 400;
+  background: #9E9C9C;
+  font-size: 18px;
   transition: all 0.3s ease;
 
+  &--right {
+    align-self: flex-end;
+  }
+
+  &--fire {
+    background: $fire;
+  }
+
+  &--water {
+    background: $water;
+  }
+
+  &--earth {
+    background: $ground;
+  }
+
+  &--wind {
+    background: $wind;
+  }
+
   &:hover {
-    background: #fff;
+    opacity: .8;
 
     &.fire {
       color: $fire;
