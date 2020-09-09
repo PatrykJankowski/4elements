@@ -22,11 +22,17 @@
     margin-bottom: $L;
   }
 
-  &--large {
+
+  &--small {
+    max-width: 410px;
+    padding: $M;
+  }
+
+/*  &--large {
     p, h4, button {
       font-size: 22px;
     }
-  }
+  }*/
 
   svg {
     height: 48px;

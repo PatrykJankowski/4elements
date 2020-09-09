@@ -15,6 +15,12 @@
         background: #E46015;
         color: #fff;
         border: none;
+
+        &:hover {
+            path {
+                fill: #fff;
+            }
+        }
     }
 
     &--fire {
@@ -41,7 +47,20 @@
         }
     }
 
-    img {
+    svg {
         margin-bottom: 10px;
     }
+}
+
+
+
+.gallery {
+    position: relative;
+    background-color: #000;
+    background-size: cover;
+    min-height: 430px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }

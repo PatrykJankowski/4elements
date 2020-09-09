@@ -1,46 +1,4 @@
 #branding {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-  margin: 0 $S;
-  max-width: 700px;
-
-  @media screen and (min-width: 340px) {
-    margin-left: $M;
-  }
-
-  @media screen and (min-width: $tablet) {
-    margin-left: $L;
-  }
-
-  @media screen and (min-width: $desktop) {
-    margin-left: $XXL;
-  }
-
-  @media screen and (min-width: 2000px) {
-    margin-left: 400px;
-  }
-
-  h2 {
-    font-size: 24px;
-    color: $fire;
-
-    @media screen and (min-width: $tablet) {
-      font-size: 48px;
-    }
-  }
-
-  h1 {
-    margin-bottom: $L;
-    font-size: 30px;
-    font-weight: 600;
-
-    @media screen and (min-width: $tablet) {
-      margin-bottom: $XL;
-      font-size: 48px;
-    }
-  }
-
   p {
     font-size: 20px;
 
@@ -137,11 +95,34 @@
 .swimming {
   background: $water;
   padding: $M 0;
-  height: 1600px;
+  height: 500px;
   background: url("/wp-content/themes/4elements/img/karolina_i_sandra.jpg") no-repeat center;
   background-size: cover;
 
+  @media screen and (max-width: 1920px) {
+    background-image: url("/wp-content/themes/4elements/img/karolina_i_sandra@1920.jpg");
+  }
+
+  @media screen and (max-width: 1366px) {
+    background-image: url("/wp-content/themes/4elements/img/karolina_i_sandra@1366.jpg");
+  }
+
+  @media screen and (max-width: $tablet) {
+    background-image: url("/wp-content/themes/4elements/img/karolina_i_sandra@768.jpg");
+  }
+
+ /* @media screen and (max-width: 414px) {
+    background-image: url("/wp-content/themes/4elements/img/karolina_i_sandra@414.jpg");
+  }
+
+  @media screen and (max-width: 360px) {
+    background-image: url("/wp-content/themes/4elements/img/karolina_i_sandra@360.jpg");
+  }*/
+
+
+
   @media screen and (min-width: $tablet) {
+    height: 1600px;
     padding: $XL 0;
 
     .c6 {
@@ -167,74 +148,6 @@
   }
 
   li, a {
-    color: #fff;
-  }
-}
-
-.camps {
-  padding: $M 0;
-
-  @media screen and (min-width: $tablet) {
-    padding: $XL 0;
-
-    .row {
-      flex-direction: row-reverse;
-    }
-  }
-
-  @media screen and (min-width: $desktop) {
-    padding: 0;
-  }
-
-  img {
-    width: 100%;
-    margin-bottom: $S;
-
-    @media screen and (min-width: $desktop) {
-      width: 100%;
-      margin-bottom: 20px;
-      height: 100%;
-      object-fit: cover;
-      min-height: 500px;
-    }
-  }
-
-  li, a {
-    color: #fff;
-  }
-}
-
-
-.trainings {
-  background: $ground;
-  padding: $M 0;
-
-  @media screen and (min-width: $tablet) {
-    padding: $XL 0;
-
-    .c6 {
-      padding: 0 $L 0 0;
-    }
-  }
-
-  @media screen and (min-width: $desktop) {
-    padding: 0;
-  }
-
-  img {
-    width: 100%;
-    margin-bottom: $S;
-
-    @media screen and (min-width: $desktop) {
-      width: 100%;
-      margin-bottom: 20px;
-      height: 100%;
-      object-fit: cover;
-      min-height: 500px;
-    }
-  }
-
-  li {
     color: #fff;
   }
 }
@@ -248,6 +161,6 @@
   }
 
   h2 {
-    margin: 0 0 $S;
+    margin: 0 0 $M;
   }
 }

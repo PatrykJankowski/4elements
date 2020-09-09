@@ -18,17 +18,14 @@ Text Domain: 4elements
 @import "front-page";
 @import "page";
 
+@import "headings";
+@import "slider";
+@import "panel";
 @import "button";
-@import "boxes";
+@import "box";
 @import "elements";
 @import "person";
 
-@import "tablet";
-@import "desktop";
+@import "gallery";
 
-@import "wp-guthenberg-blocks";
-
-
-
-
-@import "box";
+//@import "wp-guthenberg-blocks";

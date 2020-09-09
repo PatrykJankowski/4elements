@@ -1,0 +1,138 @@
+.slider {
+    position: relative;
+    height: 100%;
+
+    &__img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 1;
+    }
+
+    &__caption {
+        position: absolute;
+        top: 310px;
+        transform: translateY(-50%);
+        margin: 0 $S;
+        width: 100%;
+        max-width: 700px;
+
+        @media screen and (min-width: 340px) {
+            margin-left: $M;
+        }
+
+        @media screen and (min-width: $tablet) {
+            top: 50%;
+            margin-left: 220px;
+        }
+
+        @media screen and (min-width: $desktop) {
+            //margin-left: 200px;
+        }
+
+        @media screen and (min-width: 2000px) {
+            margin-left: 400px;
+        }
+
+        h1 {
+            font-size: 30px;
+            font-weight: 600;
+
+            @media screen and (min-width: $tablet) {
+                font-size: 48px;
+            }
+        }
+
+        h2 {
+            margin-top: 0;
+            font-size: 24px;
+            color: $fire;
+
+            @media screen and (min-width: $tablet) {
+                font-size: 48px;
+            }
+        }
+
+        .textwidget {
+            height: 200px;
+            display: flex;
+            align-items: center;
+        }
+    }
+
+
+    &__slogan {
+        position: absolute;
+        opacity: 1;
+    }
+
+    &__arrows {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    &__arrow {
+        width: 50px;
+        height: 50px;
+        background: rgba(56, 74, 95, .9);
+        border: none;
+        border-radius: 50%;
+        color: #fff;
+        font-size: 28px;
+        cursor: pointer;
+
+        @media screen and (min-width: $tablet) {
+            width: 120px;
+            height: 120px;
+            font-size: 48px;
+        }
+
+        &--left {
+            margin-left: $M;
+
+            @media screen and (min-width: $tablet) {
+                margin-left: $L;
+            }
+        }
+
+        &--right {
+            margin-right: $M;
+
+            @media screen and (min-width: $tablet) {
+                margin-right: $L;
+            }
+        }
+    }
+
+
+    &__badges {
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+
+        @media screen and (min-width: $tablet) {
+            top: unset;
+            bottom: 30px;
+        }
+    }
+
+    &__badge {
+        height: 13px;
+        width: 13px;
+        border: 1px solid #ccc !important;
+        border-radius: 50%;
+        display: inline-block;
+        text-align: center;
+        cursor: pointer;
+
+        &--active {
+            background-color: #fff;
+        }
+    }
+}

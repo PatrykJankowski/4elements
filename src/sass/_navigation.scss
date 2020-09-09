@@ -207,3 +207,84 @@
   align-items: center;
   justify-content: flex-end;
 }
+
+
+
+
+
+
+
+
+
+@media only screen and (min-width: $desktop) {
+  .menu-item-28, .menu-item-12, .menu-item-26, .menu-item-619 {
+    &:hover {
+      background: $fire;
+    }
+
+    &.current_page_item {
+      background: $fire;
+    }
+  }
+
+  .menu-item-14 {
+    &:hover {
+      background: $water;
+    }
+
+    &.current_page_item {
+      background: $water;
+    }
+  }
+
+  .current-menu-ancestor {
+    background: $water;
+
+    &.menu-item-17 {
+      background: $ground;
+    }
+
+    > a {
+      color: #FFF;
+    }
+  }
+
+  .menu-item-17 {
+    &:hover {
+      background: $ground;
+    }
+
+    &.current_page_item {
+      background: $ground;
+    }
+  }
+
+  .menu-item-27 {
+    &:hover {
+      background: $wind;
+    }
+
+    &.current_page_item {
+      background: $wind;
+    }
+  }
+
+  .menu-item-17:hover > a, .menu-item-14:hover > a {
+    color: #ededed;
+  }
+
+  .current_page_item {
+    > a {
+      color: #FFF;
+    }
+  }
+
+  .sub-menu {
+    li {
+      a {
+        color: #ededed;
+      }
+    }
+  }
+}
+

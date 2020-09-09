@@ -1,0 +1,54 @@
+.header {
+    color: $water;
+
+    &--fire {
+        color: $fire;
+    }
+
+    &--earth {
+        color: $ground;
+    }
+
+    &--wind {
+        color: $wind;
+    }
+
+    &--small {
+        font-size: 28px;
+        margin-top: 80px;
+    }
+
+    &--mt {
+        margin-top: $XL;
+    }
+
+    &--mb {
+        margin-bottom: $M;
+    }
+
+    &--center {
+        text-align: center;
+    }
+}
+
+.subheader {
+    margin-bottom: $L;
+    font-size: 30px;
+    color: $water;
+
+    &--small-margin {
+        margin: 0 0 $S;
+    }
+
+    &--center {
+        text-align: center;
+    }
+
+    &--fire {
+        color: $fire;
+    }
+
+    &--earth {
+        color: $ground;
+    }
+}
