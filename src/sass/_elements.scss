@@ -2,14 +2,23 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 180px;
-    width: 180px;
-    margin: 60px 0 40px;
-    padding: 40px;
+    height: 120px;
+    width: 120px;
+    padding: 24px;
+    margin-top: $M;
     border: 1px solid #9E9C9C;
     border-radius: 50%;
     color: #9E9C9C;
-    font-size: 18px;
+    font-size: 16px;
+
+
+    @media screen and (min-width: $tablet) {
+        height: 180px;
+        width: 180px;
+        padding: 40px;
+        margin: 60px 0 40px;
+        font-size: 18px;
+    }
 
     &:hover {
         background: #E46015;
@@ -21,6 +30,15 @@
                 fill: #fff;
             }
         }
+    }
+
+
+    &--mt {
+        margin-top: $L;
+    }
+
+    &--mb {
+        margin-bottom: #{$L - 20px};
     }
 
     &--fire {

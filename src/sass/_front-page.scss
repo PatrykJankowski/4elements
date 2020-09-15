@@ -93,8 +93,8 @@
 
 
 .swimming {
+  flex-direction: column;
   background: $water;
-  padding: $M 0;
   height: 500px;
   background: url("/wp-content/themes/4elements/img/karolina_i_sandra.jpg") no-repeat center;
   background-size: cover;
@@ -120,18 +120,12 @@
   }*/
 
 
-
   @media screen and (min-width: $tablet) {
     height: 1600px;
-    padding: $XL 0;
 
     .c6 {
       padding: 0 $L 0 0;
     }
-  }
-
-  @media screen and (min-width: $desktop) {
-    padding: 0;
   }
 
   img {
@@ -152,8 +146,13 @@
   }
 }
 
+
+
+
+
+
 .partners {
-  padding: $M 0 #{$M - 30px};
+  padding: $M 0 $M;
   text-align: center;
 
   @media screen and (min-width: $tablet) {
@@ -161,6 +160,6 @@
   }
 
   h2 {
-    margin: 0 0 $M;
+    margin: 0 0 $L;
   }
 }

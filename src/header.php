@@ -48,8 +48,7 @@
         <header id="header">
             <div class="slider">
                 <img class="slider__img" src="/wp-content/themes/4elements/img/nauka_plywania_dla_dzieci@1920.jpg">
-                <img class="slider__img" src="/wp-content/themes/4elements/img/bg.jpg">
-
+                <img class="slider__img" src="/wp-content/themes/4elements/img/obozy_zimowe@1920.jpg">
 
                 <div class="slider__caption">
                     <?php dynamic_sidebar('slogan'); ?>
@@ -61,7 +60,7 @@
                 </div>
 
                 <div class="slider__badges">
-                    <span class="slider__badge" onclick="currentDiv(1)"></span>
+                    <span class="slider__badge slider__badge--active" onclick="currentDiv(1)"></span>
                     <span class="slider__badge" onclick="currentDiv(2)"></span>
                 </div>
             </div>

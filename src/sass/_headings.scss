@@ -29,6 +29,28 @@
     &--center {
         text-align: center;
     }
+
+    &--fluid {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         margin: 0 -15px 0 -15px;
+         height: $XL;
+         background-color: rgba(228, 96, 21, .8);
+         color: #fff;
+
+        @media screen and (min-width: $tablet) {
+            height: $XXL;
+        }
+     }
+
+    &--fluid-margins {
+        margin: -$XL -15px 0 -15px;
+
+        @media screen and (min-width: $tablet) {
+            height: $XXL;
+        }
+    }
 }
 
 .subheader {

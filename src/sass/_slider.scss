@@ -7,16 +7,23 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        opacity: 1;
+        opacity: 0;
+        z-index: 0;
+
+        &:first-of-type {
+            z-index: 1;
+            opacity: 1;
+        }
     }
 
     &__caption {
         position: absolute;
-        top: 310px;
+        top: 280px;
         transform: translateY(-50%);
         margin: 0 $S;
-        width: 100%;
+        width: calc(100% - 30px);
         max-width: 700px;
+        z-index: 2;
 
         @media screen and (min-width: 340px) {
             margin-left: $M;
@@ -61,10 +68,19 @@
         }
     }
 
-
     &__slogan {
         position: absolute;
-        opacity: 1;
+        z-index: 0;
+        opacity: 0;
+
+        &:first-of-type {
+            z-index: 1;
+            opacity: 1;
+        }
+
+        p {
+            padding: 0
+        }
     }
 
     &__arrows {
@@ -72,14 +88,19 @@
         justify-content: space-between;
         width: 100%;
         position: absolute;
-        top: 50%;
+        top: 33%;
         transform: translateY(-50%);
+        z-index: 1;
+
+        @media screen and (min-width: $tablet) {
+            top: 50%;
+        }
     }
 
     &__arrow {
         width: 50px;
         height: 50px;
-        background: rgba(56, 74, 95, .9);
+        background: rgba(56, 74, 95, .8);
         border: none;
         border-radius: 50%;
         color: #fff;
@@ -109,12 +130,12 @@
         }
     }
 
-
     &__badges {
         position: absolute;
         top: 10px;
         left: 50%;
         transform: translateX(-50%);
+        z-index: 1;
 
         @media screen and (min-width: $tablet) {
             top: unset;
@@ -125,14 +146,15 @@
     &__badge {
         height: 13px;
         width: 13px;
-        border: 1px solid #ccc !important;
+        border: 1px solid $fire;
         border-radius: 50%;
+        background-color: rgba(228,96,21,.2);
         display: inline-block;
         text-align: center;
         cursor: pointer;
 
         &--active {
-            background-color: #fff;
+            background-color: $fire;
         }
     }
 }
