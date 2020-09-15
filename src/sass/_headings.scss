@@ -48,6 +48,7 @@
         margin: -$XL -15px 0 -15px;
 
         @media screen and (min-width: $tablet) {
+            margin-top: -$XXL;
             height: $XXL;
         }
     }
