@@ -1,12 +1,6 @@
-.justify-content-between {
-  -ms-flex-pack: justify !important;
-  justify-content: space-between !important;
-}
-
-.justify-content-center {
+.grid {
   display: flex;
-  -ms-flex-pack: center !important;
-  justify-content: center !important;
+  justify-content: space-between;
 }
 
 

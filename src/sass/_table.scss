@@ -1,0 +1,18 @@
+.table {
+    width: 100%;
+    margin-bottom: $L;
+    border-spacing: 5px;
+
+    &__header {
+        height: 60px;
+        border: none;
+        background: $water;
+        color: #fff;
+    }
+}
+
+th, td {
+    border: 1px solid $water;
+    padding: $XS $S;
+    text-align: center;
+}

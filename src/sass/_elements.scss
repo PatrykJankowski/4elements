@@ -10,7 +10,7 @@
     border-radius: 50%;
     color: #9E9C9C;
     font-size: 16px;
-
+    transition: all 1s;
 
     @media screen and (min-width: $tablet) {
         height: 180px;
@@ -25,13 +25,14 @@
         color: #fff;
         border: none;
 
-        &:hover {
-            path {
-                fill: #fff;
-            }
+        path {
+            fill: #fff;
         }
     }
 
+    path {
+        transition: all 1s;
+    }
 
     &--mt {
         margin-top: $L;
@@ -68,17 +69,4 @@
     svg {
         margin-bottom: 10px;
     }
-}
-
-
-
-.gallery {
-    position: relative;
-    background-color: #000;
-    background-size: cover;
-    min-height: 430px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
 }

@@ -134,12 +134,53 @@ input[type="submit"] {
   transition: all 0.3s ease;
 }
 
+textarea {
+  min-height: 250px;
+}
+
 form {
   p {
     margin: 0 0 10px 0;
   }
+
+  .nf-form-content input:not([type="button"]), .nf-form-content textarea {
+    border: 1px solid #E5E5E5;
+    background: none;
+  }
+
+  .nf-form-content input[type="button"] {
+    background: $fire;
+    transition: opacity 0.3s;
+
+    &:hover {
+      background: rgba(228, 96, 21, .9);
+      color: #fff;
+    }
+  }
+
+  .nf-form-content {
+    margin: 0;
+  }
 }
 
+.screen-reader-response {
+  font-size: 20px;
+  margin: 10px 0;
+
+  ul {
+    margin: 10px 0 30px 30px;
+  }
+}
+
+.wpcf7-not-valid-tip {
+  font-size: 16px;
+  font-weight: normal;
+  color: red;
+}
+
+.wpcf7-response-output {
+  font-style: italic;
+}
 
 select::-ms-expand {
   display: none; //IE11
@@ -182,42 +223,6 @@ select:-moz-focusring {
 
 
 
-
-
-
-
-
-
-
-
-
-.table {
-  width: 100%;
-  margin-bottom: $L;
-  border-spacing: 5px;
-
-
-  &__header {
-    height: 60px;
-    border: none;
-    background: $water;
-    color: #fff;
-  }
-}
-
-th, td {
-  border: 1px solid $water;
-  padding: $XS $S;
-  text-align: center;
-}
-
-
-
-
-
-
-
-
 .icon-box {
   margin-top: 80px;
   text-align: center;
@@ -240,32 +245,6 @@ th, td {
 
 
 
-
-
-
-.grid {
-  display: flex;
-  justify-content: space-between;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-form .nf-form-content input:not([type="button"]), .nf-form-content textarea {
-  border: 1px solid #E5E5E5;
-  background: none;
-}
-
 .checkbox-container.label-right label {
   font-weight: normal;
 }
@@ -273,3 +252,5 @@ form .nf-form-content input:not([type="button"]), .nf-form-content textarea {
 .nf-error-msg {
   font-size: 16px;
 }
+
+

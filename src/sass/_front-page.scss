@@ -150,13 +150,12 @@
 
 
 
-
 .partners {
-  padding: $M 0 $M;
+  padding: 0 0 $M;
   text-align: center;
 
   @media screen and (min-width: $tablet) {
-    padding: $XL 0 #{$XL - 30px};
+    padding: 0 0 #{$XL - 30px};
   }
 
   h2 {
