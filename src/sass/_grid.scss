@@ -4,6 +4,13 @@
 }
 
 
+.justify-content-center {
+  display: flex;
+  -ms-flex-pack: center !important;
+  justify-content: center !important;
+}
+
+
 .container-fluid, .container-sm, .container-md, .container-lg, .container-xl {
   width: 100%;
   padding-right: 15px;

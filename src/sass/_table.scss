@@ -9,6 +9,22 @@
         background: $water;
         color: #fff;
     }
+
+    &--hide-mobile {
+        display: none;
+
+        @media screen and (min-width: $desktop) {
+            display: table;
+        }
+    }
+
+    &--hide-desktop {
+        display: table;
+
+        @media screen and (min-width: $desktop) {
+            display: none;
+        }
+    }
 }
 
 th, td {
