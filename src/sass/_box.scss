@@ -1,8 +1,12 @@
 .box {
   display: flex;
   flex-direction: column;
-  padding: 60px;
+  padding: $M;
   border: 1px solid #9E9C9C;
+
+  @media screen and (min-width: $desktop) {
+    padding: $L;
+  }
 
   &--height-300 {
     height: 300px;

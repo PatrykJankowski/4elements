@@ -1,0 +1,64 @@
+.tabs {
+    display: flex;
+    margin: 0 5px $L 5px;
+
+    &__tab {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid $water;
+        border-radius: 50%;
+        color: $water;
+        cursor: pointer;
+        transition: all .3s;
+
+        position: relative;
+        width: 50px;
+        height: 50px;
+        margin-bottom: $L;
+
+        @media screen and (min-width: $desktop) {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 0;
+        }
+
+        &--active {
+            background-color: $water;
+            font-weight: 600;
+
+            @media screen and (min-width: $desktop) {
+                color: #fff;
+            }
+        }
+    }
+
+
+    &__description {
+        position: absolute;
+        top: $L;
+        width: 100px;
+        text-align: center;
+        font-size: 14px;
+
+        @media screen and (min-width: $desktop) {
+            position: static;
+            top: 0;
+            font-size: 22px;
+            width: 100%;
+        }
+    }
+
+    &__separator {
+        display: flex;
+        align-self: center;
+        flex: 1;
+        height: 1px;
+        margin-top: -$L;
+        background: $water;
+
+        @media screen and (min-width: $desktop) {
+            margin-top: 0;
+        }
+    }
+}
