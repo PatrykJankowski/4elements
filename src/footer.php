@@ -26,7 +26,7 @@
                         <li><a href="/plywalnie-warszawa-wola">Nasze pływalnie</a></li>
                         <li><a href="/nauka-plywania-cennik">Cennik</a></li>
                         <li><a href="/kontakt">Kontakt</a></li>
-                        <li><a href="/regulamin-zajec-nauki-plywania">Regulamin zajęć</a></li>
+                        <li><a href="/regulamin-zajec-nauki-plywania">Regulamin zajęć i płatności</a></li>
                         <li><a href="/rodo">RODO</a></li>
                     </ul>
                 </div>
@@ -51,6 +51,16 @@
                     <p>Adres e-mail: <a class="link" href="mailto:kontakt@4elements.pl">kontakt@4elements.pl</a></p>
                     <p>Numer telefonu: 798 968 416 lub 798 784 748</p>
                     <p>Facebook: <a class="link" title="4elements - nauka pływania, Warszawa" href="https://www.facebook.com/4elementspl" target="_blank" rel="nofollow noopener">4elementspl</a></p>
+                    <br>
+                    <p>NIP: 5342406357</p>
+                    <p>REGON: 380718013</p>
+                    <br>
+                    <p><b>Operatorzy płatności online:</b></p>
+                    <div style="display: flex;align-items: center;">
+                    <img style="height: 20px; margin-top: 10px;" src="/wp-content/themes/4elements/img/dotpay.png">
+                    <img style="height: 50px; margin: 10px 10px 0;" src="/wp-content/themes/4elements/img/mastercard.svg">
+                    <img style="height: 60px; margin-top: 10px;" src="/wp-content/themes/4elements/img/visa.svg">
+                    </div>
                 </div>
             </div>
         </div>
