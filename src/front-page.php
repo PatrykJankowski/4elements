@@ -55,7 +55,7 @@
                         <i class="person__icon"></i>
                     </div>
                     <div class="person__content">
-                        <p>Ukończyłam Akademię Wychowania Fizycznego w Warszawie.
+                        <p>Ukończyłam Akademię Wychowania Fizycznego w Warszawie na kierunku Turystyka i Rekreacja oraz Wychowanie Fizyczne.
                             Jestem trenerką piłki siatkowej, instruktorką pływania, narciarstwa i piłki ręcznej.
                             Kocham sport i jego wszechstronny rozwój zarówno fizyczny, jak i mentalny.
                            Pasjonuje się olimpizmem i ideą FairPlay.</p>
@@ -75,7 +75,6 @@
                            Zawsza otwarta na nowe doświadczenia, pełna pomysłów i uśmiechu.</p>
                     </div>
                 </div>
-
 
                 <div class="container__widget">
                     <?php /*dynamic_sidebar('swimming'); */?>
