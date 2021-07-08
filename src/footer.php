@@ -46,6 +46,17 @@
                         LAVO<br>
                         ul. Geodetów 23E, 05-500 Józefosław
                     </p>
+                    <br>
+                    <p>
+                      Centrum sportu<br>
+                      ul. Gubinowska 28/30
+                    </p>
+                    <br>
+                    <p>
+                      Centrum sportu<br>
+                      ul. Wiertnicza 26a
+                    </p>
+                    <br>
                 </div>
                 <div class="col-md-4">
                     <p>Adres e-mail: <a class="link" href="mailto:kontakt@4elements.pl">kontakt@4elements.pl</a></p>
