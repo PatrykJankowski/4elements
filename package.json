@@ -10,9 +10,10 @@
     "gulp-htmlmin": "^5.0.1",
     "gulp-image": "^6.0.0",
     "gulp-image-resize": "^0.13.1",
-    "gulp-sass": "^4.0.2",
+    "gulp-sass": "^5.0.0",
     "gulp-uglify-es": "^2.0.0",
-    "gulp-webp": "^4.0.1"
+    "gulp-webp": "^4.0.1",
+    "node-sass": "^6.0.1"
   },
   "scripts": {},
   "repository": {

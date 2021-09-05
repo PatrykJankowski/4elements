@@ -1,6 +1,6 @@
 // Packages
 const gulp = require('gulp'),
-      sass = require('gulp-sass'),
+      sass = require("gulp-sass")(require("node-sass")),
       uglify = require('gulp-uglify-es').default,
       image = require('gulp-image'),
       clean = require('gulp-clean'),

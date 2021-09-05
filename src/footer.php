@@ -43,17 +43,12 @@
                     </p>
                     <br>
                     <p>
-                        LAVO<br>
-                        ul. Geodetów 23E, 05-500 Józefosław
-                    </p>
-                    <br>
-                    <p>
-                      Centrum sportu<br>
+                      Centrum Sportu Wilanów<br>
                       ul. Gubinowska 28/30
                     </p>
                     <br>
                     <p>
-                      Centrum sportu<br>
+                      Centrum Sportu Wilanów<br>
                       ul. Wiertnicza 26a
                     </p>
                     <br>
@@ -63,8 +58,8 @@
                     <p>Numer telefonu: 798 968 416 lub 798 784 748</p>
                     <p>Facebook: <a class="link" title="4elements - nauka pływania, Warszawa" href="https://www.facebook.com/4elementspl" target="_blank" rel="nofollow noopener">4elementspl</a></p>
                     <br>
-                    <p>NIP: 5342406357</p>
-                    <p>REGON: 380718013</p>
+                    <p>NIP: 95125524389</p>
+                    <p>REGON: 389475724</p>
                     <br>
                     <p><b>Operatorzy płatności online:</b></p>
                     <div style="display: flex;align-items: center;">
@@ -77,7 +72,7 @@
         </div>
     </div>
     <div id="copyright">
-        <?php echo sprintf( __( '%1$s %2$s %3$s | %4$s', '4elements' ), '&copy;', date( 'Y' ), esc_html( get_bloginfo( 'name' )  ), esc_html(get_bloginfo( 'description' ))); echo sprintf( __( '<p>Wykonanie: <a style="color: #fff; text-decoration: underline" href="https://softcraft.it" title="SoftCraft – projektujemy strony internetowe i aplikacje mobilne na miarę twoich potrzeb" target="_blank">SoftCraft</a></p>', '4elements' ) ); ?>
+        <?php echo sprintf( __( '%1$s %2$s %3$s | %4$s', '4elements' ), '&copy;', date( 'Y' ), esc_html( get_bloginfo( 'name' )  ), esc_html(get_bloginfo( 'description' ))); echo sprintf( __( '<p>Wykonanie: <a style="color: #fff; text-decoration: underline" href="https://softcraft.it" title="Softcraft – projektujemy strony internetowe i aplikacje mobilne na miarę twoich potrzeb" target="_blank">Softcraft</a></p>', '4elements' ) ); ?>
     </div>
 </footer>
 
