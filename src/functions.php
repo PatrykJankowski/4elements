@@ -7,7 +7,7 @@ if (!function_exists('remove_shit')) {
         if (!is_page(array(822))) {
             wp_dequeue_script('jquery');
             wp_deregister_script('jquery');
-            wp_dequeue_style('wp-block-library');
+            //wp_dequeue_style('wp-block-library');
             wp_dequeue_style('contact-form-7');
         }
     }
