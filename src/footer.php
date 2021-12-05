@@ -58,7 +58,7 @@
                     <p>Numer telefonu: 798 968 416 lub 798 784 748</p>
                     <p>Facebook: <a class="link" title="4elements - nauka pływania, Warszawa" href="https://www.facebook.com/4elementspl" target="_blank" rel="nofollow noopener">4elementspl</a></p>
                     <br>
-                    <p>NIP: 95125524389</p>
+                    <p>NIP: 9512524389</p>
                     <p>REGON: 389475724</p>
                     <br>
                     <p><b>Operatorzy płatności online:</b></p>
