@@ -72,7 +72,7 @@
                     <div class="person__content">
                         <p>Ukończyłam Akademię Wychowania Fizycznego w Warszawie na kierunku Turystyka i Rekreacja oraz Wychowanie Fizyczne.
                            Jestem instruktorką pływania, snowboardu, windsurfingu i fitnessu, a na co dzień pracuję jako nauczycielka wychowania fizycznego.
-                           Zawsza otwarta na nowe doświadczenia, pełna pomysłów i uśmiechu.</p>
+                           Jestem zawsza otwarta na nowe doświadczenia, pełna pomysłów i uśmiechu.</p>
                     </div>
                 </div>
 
@@ -93,7 +93,7 @@
         <div class="row">
             <div class="col">
                 <div class="box box--center box--fluid box--water box--bg-water">
-                    <p>Nauka oraz doskonalenie pływania dla dzieci i dorosłych<br>na pływalniach w Warszawie i Józefosławiu</p>
+                    <p>Nauka oraz doskonalenie pływania dla dzieci i dorosłych<br>na pływalniach w Warszawie</p>
                     <a class="button button--water" href="/nauka-plywania">Zapoznaj się z ofertą</a>
                 </div>
             </div>
@@ -101,7 +101,7 @@
         <div class="row">
             <div class="col">
                 <div class="box box--center box--fluid box--earth box--bg-earth">
-                    <p>Organizacja obozów letnich, zimowych oraz półkolonii</p>
+                    <p>Organizacja obozów letnich, zimowych, półkolonii i obozów rodzinnych</p>
                     <a class="button button--earth" href="/obozy-i-polkolonie">Zapoznaj się z ofertą</a>
                 </div>
             </div>
@@ -137,7 +137,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="box box--center box--fire box--height-150">
-                    <p>Małe grupy  od 2 do 5 osób</p>
+                    <p>Małe grupy od 2 do 5 osób</p>
                 </div>
             </div>
 
@@ -151,7 +151,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="box box--center box--fire box--height-150">
-                    <p>Szeroki  zakres oferty</p>
+                    <p>Szeroki zakres oferty</p>
                 </div>
             </div>
             <div class="col-md-6">
@@ -169,7 +169,7 @@
             </div>
             <div class="col-md-6">
                 <div class="box box--center box--fire box--height-150">
-                    <p>Nieograniczony  zapał :)</p>
+                    <p>Nieograniczony zapał :)</p>
                 </div>
             </div>
         </div>

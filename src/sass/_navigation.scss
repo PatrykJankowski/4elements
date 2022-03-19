@@ -166,7 +166,7 @@
               background: $water;
               height: 80px;
 
-              &.menu-item-17, &.menu-item-536, &.menu-item-620, &.menu-item-879, &.menu-item-1292, &.menu-item-1304 {
+              &.menu-item-17, &.menu-item-536, &.menu-item-619, &.menu-item-620, &.menu-item-879, &.menu-item-1292, &.menu-item-1304 {
                   background: $ground;
               }
 
@@ -221,7 +221,7 @@
 
 
 @media only screen and (min-width: $desktop) {
-  .menu-item-28, .menu-item-12, .menu-item-26, .menu-item-619, &.menu-item-1239 {
+  .menu-item-28, .menu-item-12, .menu-item-26, &.menu-item-1239 {
     &:hover {
       background: $fire;
     }
