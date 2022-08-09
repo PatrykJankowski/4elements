@@ -27,6 +27,7 @@
                         <li><a href="/nauka-plywania-cennik">Cennik</a></li>
                         <li><a href="/kontakt">Kontakt</a></li>
                         <li><a href="/regulamin-zajec-nauki-plywania">Regulamin zajęć i płatności</a></li>
+                        <li><a href="/polityka-prywatnosci">Polityka prywatności</a></li>
                         <li><a href="/rodo">RODO</a></li>
                     </ul>
                 </div>
