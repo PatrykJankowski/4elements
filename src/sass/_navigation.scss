@@ -166,9 +166,9 @@
               background: $water;
               height: 80px;
 
-              &.menu-item-17, &.menu-item-536, &.menu-item-619, &.menu-item-620, &.menu-item-879, &.menu-item-1292, &.menu-item-1304, &.menu-item-1659 {
-                  background: $ground;
-              }
+              //&.menu-item-17, &.menu-item-536, &.menu-item-619, &.menu-item-620, &.menu-item-879, &.menu-item-1292, &.menu-item-1304, &.menu-item-1659 {
+              //    background: $ground;
+              //}
 
               &.menu-item-27 {
                 background: $wind;
@@ -259,6 +259,10 @@
     }
 
     &.current_page_item {
+      background: $ground;
+    }
+
+    .menu-item {
       background: $ground;
     }
   }
