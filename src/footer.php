@@ -25,6 +25,7 @@
                         <li><a href="/wazne-informacje-na-start">Ważne informacje</a></li>
                         <li><a href="/plywalnie-warszawa-wola">Nasze pływalnie</a></li>
                         <li><a href="/nauka-plywania-cennik">Cennik</a></li>
+                        <li><a href="/blog">Blog</a></li>
                         <li><a href="/kontakt">Kontakt</a></li>
                         <li><a href="/regulamin-zajec-nauki-plywania">Regulamin zajęć i płatności</a></li>
                         <li><a href="/polityka-prywatnosci">Polityka prywatności</a></li>
@@ -73,7 +74,7 @@
         </div>
     </div>
     <div id="copyright">
-        <?php echo sprintf( __( '%1$s %2$s %3$s | %4$s', '4elements' ), '&copy;', date( 'Y' ), esc_html( get_bloginfo( 'name' )  ), esc_html(get_bloginfo( 'description' ))); echo sprintf( __( '<p>Wykonanie: <a style="color: #fff; text-decoration: underline" href="https://softcraft.it" title="Softcraft – projektujemy strony internetowe i aplikacje mobilne na miarę twoich potrzeb" target="_blank">Softcraft</a></p>', '4elements' ) ); ?>
+        <?php echo sprintf( __( '%1$s %2$s %3$s | %4$s', '4elements' ), '&copy;', date( 'Y' ), esc_html( get_bloginfo( 'name' )  ), esc_html(get_bloginfo( 'description' ))); echo sprintf( __( '<p>Wykonanie: <a style="color: #fff; text-decoration: underline" href="https://softcraft.pl" title="Softcraft – projektujemy strony internetowe i aplikacje mobilne na miarę twoich potrzeb" target="_blank">Softcraft.pl</a></p>', '4elements' ) ); ?>
     </div>
 </footer>
 

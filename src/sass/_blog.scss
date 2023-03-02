@@ -1,0 +1,121 @@
+#blog {
+    .wp-post-image {
+        width: 100%;
+        object-fit: cover;
+        height: 250px;
+    }
+
+    .title {
+        font-size: 24px;
+    }
+
+    .time {
+        font-size: 16px;
+    }
+
+    .content {
+        font-size: 18px;
+    }
+
+    .more {
+        font-size: 18px;
+        text-decoration: underline;
+    }
+
+    .pagination {
+        text-align: center;
+    }
+}
+
+
+.single-post {
+    .wp-post-image {
+        width: 100%;
+        object-fit: cover;
+        height: 460px;
+    }
+
+    .date {
+        color: $text-main-color;
+        font-size: 16px;
+    }
+
+    .title {
+        font-size: 24px;
+    }
+
+    .content p {
+        font-size: 18px;
+    }
+
+    .content h2 {
+        font-size: 24px;
+    }
+
+    .mt-60 {
+        margin-top: 60px;
+    }
+}
+
+#sidebar {
+    >ul:first-child, >ul:last-child, .pagenav {
+        display: none;
+    }
+
+    >ul:nth-child(2) {
+        li:nth-child(2) {
+            display: none;
+        }
+    }
+
+    ul {
+        margin: 0;
+    }
+
+    li::marker {
+        content: '';
+    }
+    
+    li {
+        font-size: 18px;
+        h2 {
+            margin-top: 0;
+            font-size: 24px;
+        }
+    }
+}
+
+#featured {
+    h1 {
+        color: $text-main-color;
+        margin-bottom: 20px;
+    }
+
+    .wp-post-image {
+        width: 100%;
+        object-fit: cover;
+        height: 200px;
+    }
+
+    .date {
+        color: $text-main-color;
+        font-size: 14px;
+    }
+
+    .title {
+        font-size: 18px;
+    }
+
+    .content {
+        font-size: 16px;
+    }
+
+    .more {
+        font-size: 16px;
+        text-decoration: underline;
+    }
+
+    .mt-60 {
+        margin-top: 60px;
+    }
+}
