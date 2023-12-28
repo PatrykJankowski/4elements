@@ -40,8 +40,8 @@
                     </p>
                     <br>
                     <p>
-                        SCS Aktywna Warszawa<br>
-                        ul. Inflancka 8, Warszawa Wola
+                        Aqua Spa Wilanów<br>
+                        ul. Sarmacka 5
                     </p>
                     <br>
                     <p>
@@ -59,9 +59,6 @@
                     <p>Adres e-mail: <a class="link" href="mailto:kontakt@4elements.pl">kontakt@4elements.pl</a></p>
                     <p>Numer telefonu: 798 968 416 lub 798 784 748</p>
                     <p>Facebook: <a class="link" title="4elements - nauka pływania, Warszawa" href="https://www.facebook.com/4elementspl" target="_blank" rel="nofollow noopener">4elementspl</a></p>
-                    <br>
-                    <p>NIP: 9512524389</p>
-                    <p>REGON: 389475724</p>
                     <br>
                     <p><b>Operatorzy płatności online:</b></p>
                     <div style="display: flex;align-items: center;">
