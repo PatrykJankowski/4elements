@@ -33,12 +33,15 @@
 ## Oficjalne strony
 
 - [Strona główna](https://4elements.pl/): oferta nauki pływania, obozów i treningów.
-- [Nauka pływania dla dzieci](https://4elements.pl/nauka-plywania-dla-dzieci-warszawa/)
-- [Nauka pływania dla dorosłych](https://4elements.pl/nauka-plywania-dla-doroslych-warszawa/)
-- [Ważne informacje na start](https://4elements.pl/wazne-informacje-na-start/): przygotowanie do zajęć, odwołania i płatności.
-- [Pływalnie i grafik](https://4elements.pl/plywalnie-warszawa-wola/)
-- [Cennik](https://4elements.pl/nauka-plywania-cennik/)
-- [Formularz rejestracyjny](https://4elements.pl/formularz-rejestracyjny/)
+- [Nauka pływania w Warszawie](https://4elements.pl/nauka-plywania-warszawa)
+- [Nauka pływania dla dzieci](https://4elements.pl/nauka-plywania-warszawa/dzieci)
+- [Nauka pływania dla dorosłych](https://4elements.pl/nauka-plywania-warszawa/dorosli)
+- [Ważne informacje na start](https://4elements.pl/nauka-plywania-warszawa/wazne-informacje): przygotowanie do zajęć, odwołania i płatności.
+- [Pływalnie i grafik](https://4elements.pl/nauka-plywania-warszawa/plywalnie-i-grafik)
+- [Cennik](https://4elements.pl/nauka-plywania-warszawa/cennik)
+- [Formularz rejestracyjny](https://4elements.pl/nauka-plywania-warszawa/zapisz-sie)
+- [Obozy i półkolonie](https://4elements.pl/obozy-i-polkolonie)
+- [Blog](https://4elements.pl/blog)
 - [Kontakt](https://4elements.pl/kontakt/): kontakt@4elements.pl, 798 968 416, 798 784 748.
 
 ## Wskazówki dla agentów AI
