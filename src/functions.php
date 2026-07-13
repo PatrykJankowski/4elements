@@ -230,6 +230,13 @@ function four_elements_organization_schema()
         'description' => get_bloginfo('description') ?: 'Nauka pływania w Warszawie, obozy i półkolonie.',
         'email' => 'mailto:kontakt@4elements.pl',
         'telephone' => '+48 798 968 416',
+        'openingHours' => 'Mo-Su 08:00-20:00',
+        'openingHoursSpecification' => array(
+            '@type' => 'OpeningHoursSpecification',
+            'dayOfWeek' => array('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'),
+            'opens' => '08:00',
+            'closes' => '20:00',
+        ),
         'sameAs' => array('https://www.facebook.com/4elementspl'),
         'areaServed' => array(
             '@type' => 'City',
@@ -241,6 +248,12 @@ function four_elements_organization_schema()
             'telephone' => '+48 798 968 416',
             'email' => 'kontakt@4elements.pl',
             'availableLanguage' => 'pl',
+            'hoursAvailable' => array(
+                '@type' => 'OpeningHoursSpecification',
+                'dayOfWeek' => array('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'),
+                'opens' => '08:00',
+                'closes' => '20:00',
+            ),
             'areaServed' => 'PL',
         ),
         'location' => array(
@@ -268,6 +281,43 @@ function four_elements_organization_schema()
     );
 
     echo '<script type="application/ld+json">' . wp_json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>' . "\n";
+}
+
+/**
+ * Describe the core offer as individual Service entities. This gives search
+ * engines and AI agents explicit, source-backed links between 4elements and
+ * the services it provides in Warsaw.
+ */
+add_action('wp_head', 'four_elements_service_schema', 22);
+function four_elements_service_schema()
+{
+    if (is_admin()) {
+        return;
+    }
+
+    $organization_id = trailingslashit(home_url('/')) . '#organization';
+    $services = array(
+        array('name' => 'Nauka pływania dla dzieci', 'url' => home_url('/nauka-plywania-dla-dzieci-warszawa/'), 'description' => 'Zajęcia nauki i doskonalenia pływania dla dzieci w Warszawie.'),
+        array('name' => 'Nauka pływania dla dorosłych', 'url' => home_url('/nauka-plywania-dla-doroslych-warszawa/'), 'description' => 'Zajęcia nauki i doskonalenia pływania dla dorosłych w Warszawie.'),
+        array('name' => 'Indywidualna nauka pływania', 'url' => home_url('/nauka-plywania/'), 'description' => 'Indywidualne zajęcia nauki pływania dopasowane do poziomu uczestnika.'),
+        array('name' => 'Obozy i półkolonie', 'url' => home_url('/obozy-i-polkolonie/'), 'description' => 'Obozy sportowe i półkolonie dla dzieci.'),
+        array('name' => 'Treningi sportowe', 'url' => home_url('/treningi/'), 'description' => 'Zajęcia ogólnorozwojowe i treningi sportowe.'),
+    );
+
+    foreach ($services as $service) {
+        $service_schema = array(
+            '@context' => 'https://schema.org',
+            '@type' => 'Service',
+            '@id' => trailingslashit($service['url']) . '#service',
+            'name' => $service['name'],
+            'description' => $service['description'],
+            'url' => $service['url'],
+            'provider' => array('@id' => $organization_id),
+            'areaServed' => array('@type' => 'City', 'name' => 'Warszawa'),
+            'availableLanguage' => 'pl',
+        );
+        echo '<script type="application/ld+json">' . wp_json_encode($service_schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>' . "\n";
+    }
 }
 
 
