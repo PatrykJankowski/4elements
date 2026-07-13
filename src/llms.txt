@@ -1,5 +1,7 @@
 # 4elements Warszawa
 
+> Endpoint pytań językiem naturalnym: `GET https://4elements.pl/ask?query=...` lub `POST https://4elements.pl/ask` z polem `query`. Odpowiedzi są oparte wyłącznie na publicznym FAQ i stronach 4elements oraz zawierają źródła.
+
 > 4elements prowadzi w Warszawie naukę i doskonalenie pływania dla dzieci i dorosłych oraz organizuje obozy i półkolonie dla dzieci.
 
 ## Oficjalny opis

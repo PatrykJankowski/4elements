@@ -280,8 +280,8 @@ function four_elements_faq_items()
     return array(
         array(
             'question' => 'Jak zapisać się na zajęcia nauki pływania?',
-            'answer' => 'Aby zapisać się na zajęcia, wypełnij formularz zapisu dostępny na stronie 4elements.',
-            'answer_html' => 'Aby zapisać się na zajęcia, wypełnij <a href="' . esc_url(home_url('/formularz-rejestracyjny/')) . '">formularz zapisu</a>.',
+            'answer' => 'Aby zapisać się na zajęcia, wypełnij formularz zapisu dostępny na stronie 4elements lub skontaktuj się z nami.',
+            'answer_html' => 'Aby zapisać się na zajęcia, wypełnij <a href="' . esc_url(home_url('/nauka-plywania-warszawa/zapisz-sie/')) . '">formularz zapisu</a> lub skontaktuj się z nami.',
         ),
         array(
             'question' => 'Ile wcześniej należy przyjść na pływalnię?',
@@ -314,6 +314,50 @@ function four_elements_faq_items()
         array(
             'question' => 'Na jakich pływalniach odbywają się zajęcia?',
             'answer' => 'Zajęcia odbywają się w Warszawie: OSiR Wola „FOKA” przy ul. Esperanto 5, Aqua Spa Wilanów przy ul. Sarmackiej 5 oraz Centrum Sportu Wilanów przy ul. Gubinowskiej 28/30 i ul. Wiertniczej 26a.',
+        ),
+        array(
+            'question' => 'Czy dorosły może nauczyć się pływać od zera?',
+            'answer' => 'Tak. Naukę można rozpocząć w każdym wieku. Dobre pierwsze kroki to oswojenie z wodą, nauka spokojnego oddechu i wyporności, a następnie ćwiczenie prostych ruchów pod opieką instruktora.',
+        ),
+        array(
+            'question' => 'Ile czasu trwa nauka pływania?',
+            'answer' => 'Tempo nauki jest indywidualne. Zależy między innymi od wcześniejszych doświadczeń z wodą, regularności zajęć, celu nauki i częstotliwości samodzielnych ćwiczeń. Warto mierzyć postęp kolejnymi umiejętnościami, a nie liczbą lekcji.',
+        ),
+        array(
+            'question' => 'Jak często warto chodzić na naukę pływania?',
+            'answer' => 'Najważniejsza jest regularność. Stałe zajęcia pozwalają utrwalać oddech, pracę nóg i koordynację. Częstotliwość warto dobrać do wieku, poziomu zaawansowania oraz czasu potrzebnego na regenerację.',
+        ),
+        array(
+            'question' => 'Od czego zaczyna się naukę pływania?',
+            'answer' => 'Zwykle od bezpiecznego oswojenia z wodą: zanurzania twarzy, wydechu do wody, unoszenia się na wodzie i poślizgu. Dopiero potem wprowadza się pracę nóg, rąk i łączenie ruchów z oddechem.',
+        ),
+        array(
+            'question' => 'Czy można nauczyć się pływać, gdy boję się wody?',
+            'answer' => 'Tak, ale warto zacząć spokojnie i powiedzieć instruktorowi o obawach. Ćwiczenia powinny odbywać się stopniowo, w bezpiecznych warunkach i bez presji na szybkie przechodzenie do trudniejszych elementów.',
+        ),
+        array(
+            'question' => 'Jak prawidłowo oddychać podczas pływania?',
+            'answer' => 'Podstawą jest spokojny, długi wydech do wody oraz krótki wdech ustami, gdy twarz znajduje się nad powierzchnią. Ćwiczenie oddechu osobno, przy brzegu lub z deską, ułatwia później naukę stylów pływackich.',
+        ),
+        array(
+            'question' => 'Czy do nauki pływania potrzebne są okulary pływackie?',
+            'answer' => 'Nie są obowiązkowe, ale dobrze dopasowane okulary ułatwiają otwieranie oczu pod wodą i koncentrację na ćwiczeniu. Nie powinny być jednak zbyt ciasne ani zastępować nauki swobodnego kontaktu z wodą.',
+        ),
+        array(
+            'question' => 'Lepiej wybrać indywidualną czy grupową naukę pływania?',
+            'answer' => 'Zajęcia indywidualne pozwalają dopasować tempo i ćwiczenia do jednej osoby. Zajęcia grupowe mogą wspierać regularność i motywację. Najlepszy wybór zależy od celu, wieku, poziomu i preferowanego sposobu pracy.',
+        ),
+        array(
+            'question' => 'Czy można nauczyć się pływać samemu?',
+            'answer' => 'Do podstaw można podchodzić samodzielnie, ale początkujący powinien ćwiczyć w bezpiecznym miejscu, pod nadzorem i nie wchodzić do wody sam. Instruktor pomaga szybciej wychwycić błędy techniczne i dobrać ćwiczenia do poziomu.',
+        ),
+        array(
+            'question' => 'Jak pomóc dziecku polubić naukę pływania?',
+            'answer' => 'Pomaga spokojne oswajanie z wodą, zabawa dostosowana do wieku i docenianie małych postępów. Warto unikać porównywania dziecka z innymi oraz dać mu czas na zbudowanie zaufania do wody i instruktora.',
+        ),
+        array(
+            'question' => 'Jak poprawić technikę pływania?',
+            'answer' => 'Najlepiej pracować nad jednym elementem naraz: ułożeniem ciała, oddechem, pracą nóg albo rąk. Regularna informacja zwrotna od instruktora i krótkie, powtarzalne ćwiczenia pomagają utrwalić prawidłowy ruch.',
         ),
     );
 }
@@ -430,6 +474,8 @@ function four_elements_link_headers($headers, $wp)
 
     $links[] = four_elements_format_link_header(home_url('/wp-sitemap.xml'), 'sitemap', 'application/xml');
     $links[] = four_elements_format_link_header(get_template_directory_uri() . '/manifest.json', 'manifest', 'application/manifest+json');
+    $links[] = four_elements_format_link_header(home_url('/openapi.json'), 'service-desc', 'application/vnd.oai.openapi+json;version=3.1');
+    $links[] = four_elements_format_link_header(home_url('/.well-known/agents.json'), 'api-catalog', 'application/json');
 
     if (!is_singular()) {
         $previous = get_previous_posts_page_link();
@@ -568,6 +614,10 @@ function four_elements_agent_endpoints($wp)
     if ($request === 'a2a') {
         four_elements_handle_a2a_request();
     }
+
+    if ($request === 'ask' || $request === 'api/ask') {
+        four_elements_handle_nlweb_request();
+    }
 }
 
 function four_elements_agent_document($type)
@@ -602,10 +652,11 @@ function four_elements_agent_document($type)
                 'mcp' => array('version' => '2025-06-18', 'endpoint' => $mcp_url, 'transport' => 'http'),
                 'a2a' => array('version' => '0.3.0', 'endpoint' => $a2a_url),
             ),
-            'capabilities' => array('public_information', 'site_search', 'faq'),
+            'capabilities' => array('public_information', 'site_search', 'faq', 'nlweb'),
             'auth' => array('required' => false),
             'actions' => array(
                 array('name' => 'find_public_information', 'description' => 'Finds public pages and answers about 4elements.', 'endpoint' => $a2a_url, 'method' => 'POST'),
+                array('name' => 'ask_public_information', 'description' => 'Answers natural-language questions from the public 4elements knowledge base.', 'endpoint' => home_url('/ask'), 'method' => 'GET, POST'),
             ),
         );
     }
@@ -649,6 +700,7 @@ function four_elements_agent_discovery_links()
     echo '<link rel="alternate" type="application/json" title="A2A Agent Card" href="' . esc_url(home_url('/.well-known/agent-card.json')) . '">' . "\n";
     echo '<link rel="alternate" type="application/json" title="MCP Server Card" href="' . esc_url(home_url('/.well-known/mcp/server-card.json')) . '">' . "\n";
     echo '<link rel="alternate" type="application/json" title="Agents Manifest" href="' . esc_url(home_url('/.well-known/agents.json')) . '">' . "\n";
+    echo '<link rel="alternate" type="application/json" title="NLWeb Ask API" href="' . esc_url(home_url('/ask')) . '">' . "\n";
 }
 
 function four_elements_openapi_document()
@@ -660,6 +712,10 @@ function four_elements_openapi_document()
         'paths' => array(
             '/mcp' => array('post' => array('summary' => 'MCP Streamable HTTP JSON-RPC endpoint', 'responses' => array('200' => array('description' => 'MCP response')))),
             '/a2a' => array('post' => array('summary' => 'A2A JSON-RPC endpoint', 'responses' => array('200' => array('description' => 'A2A task response')))),
+            '/ask' => array(
+                'get' => array('summary' => 'NLWeb-compatible public information query', 'parameters' => array(array('name' => 'query', 'in' => 'query', 'required' => true, 'schema' => array('type' => 'string'))), 'responses' => array('200' => array('description' => 'Public information answer'))),
+                'post' => array('summary' => 'NLWeb-compatible public information query', 'responses' => array('200' => array('description' => 'Public information answer'))),
+            ),
         ),
     );
 }
@@ -850,4 +906,160 @@ function four_elements_a2a_reply($message)
         return 'Zapisy prowadzi formularz: ' . home_url('/formularz-rejestracyjny/');
     }
     return 'Publiczne informacje o 4elements znajdziesz na stronie głównej ' . home_url('/') . ', w FAQ ' . home_url('/faq/') . ' oraz na stronie kontaktowej ' . home_url('/kontakt/') . '.';
+}
+
+
+/**
+ * NLWeb-compatible natural-language query endpoint.
+ *
+ * It is intentionally retrieval-only: answers are assembled from the public
+ * FAQ and verified page descriptions, with source URLs in every response.
+ * No visitor query is sent to a third-party AI provider.
+ */
+function four_elements_handle_nlweb_request()
+{
+    four_elements_agent_cors_headers();
+    if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+        status_header(204);
+        exit;
+    }
+
+    if ($_SERVER['REQUEST_METHOD'] !== 'GET' && $_SERVER['REQUEST_METHOD'] !== 'POST') {
+        header('Allow: GET, POST, OPTIONS');
+        four_elements_send_agent_json(array('error' => array('code' => 'method_not_allowed', 'message' => 'Use GET or POST.')), 405);
+    }
+
+    $body = $_SERVER['REQUEST_METHOD'] === 'POST' ? four_elements_agent_request_body() : array();
+    $query = isset($_GET['query']) ? wp_unslash($_GET['query']) : '';
+    if ($query === '' && isset($_GET['q'])) {
+        $query = wp_unslash($_GET['q']);
+    }
+    if ($query === '' && is_array($body) && isset($body['query'])) {
+        $query = $body['query'];
+    }
+    $query = trim(sanitize_text_field((string) $query));
+    if ($query === '') {
+        four_elements_send_agent_json(array(
+            'error' => array('code' => 'missing_query', 'message' => 'Provide a natural-language question in the query parameter.'),
+            'examples' => array('Czy mogę odwołać zajęcia?', 'Gdzie są pływalnie?', 'Jak zapisać dziecko?'),
+        ), 400);
+    }
+    if (strlen($query) > 300) {
+        four_elements_send_agent_json(array('error' => array('code' => 'query_too_long', 'message' => 'The query may contain at most 300 characters.')), 400);
+    }
+
+    $limit = four_elements_nlweb_rate_limit();
+    if (!$limit['allowed']) {
+        header('Retry-After: ' . $limit['retry_after']);
+        four_elements_send_agent_json(array('error' => array('code' => 'rate_limited', 'message' => 'Try again shortly.')), 429);
+    }
+
+    $results = four_elements_nlweb_search($query);
+    four_elements_send_agent_json(array(
+        'protocol' => 'NLWeb-compatible',
+        'version' => '1.0',
+        'query' => $query,
+        'answer' => four_elements_nlweb_answer($results),
+        'results' => $results,
+        'sources' => array_map(function ($result) {
+            return array('title' => $result['title'], 'url' => $result['url']);
+        }, $results),
+        'next' => array('endpoint' => home_url('/ask'), 'method' => 'GET or POST', 'parameter' => 'query'),
+    ));
+}
+
+function four_elements_nlweb_rate_limit()
+{
+    $ip = isset($_SERVER['REMOTE_ADDR']) ? sanitize_text_field($_SERVER['REMOTE_ADDR']) : 'unknown';
+    $key = 'four_elements_ask_' . md5($ip);
+    $current = get_transient($key);
+    $now = time();
+    if (!is_array($current) || empty($current['started']) || $now - (int) $current['started'] >= 60) {
+        set_transient($key, array('started' => $now, 'count' => 1), MINUTE_IN_SECONDS);
+        return array('allowed' => true, 'retry_after' => 0);
+    }
+    if ((int) $current['count'] >= 30) {
+        return array('allowed' => false, 'retry_after' => max(1, 60 - ($now - (int) $current['started'])));
+    }
+    $current['count']++;
+    set_transient($key, $current, max(1, 60 - ($now - (int) $current['started'])));
+    return array('allowed' => true, 'retry_after' => 0);
+}
+
+function four_elements_nlweb_normalize($value)
+{
+    $value = strtolower(remove_accents(wp_strip_all_tags((string) $value)));
+    return preg_replace('/[^a-z0-9]+/', ' ', $value);
+}
+
+function four_elements_nlweb_search($query)
+{
+    $pages = array(
+        array('title' => 'Nauka pływania', 'text' => 'Nauka pływania dla dzieci i dorosłych, zajęcia indywidualne i grupowe.', 'url' => home_url('/nauka-plywania/')),
+        array('title' => 'Cennik', 'text' => 'Aktualne ceny i informacje o płatnościach za zajęcia nauki pływania.', 'url' => home_url('/nauka-plywania-cennik/')),
+        array('title' => 'Pływalnie', 'text' => 'Pływalnie i lokalizacje zajęć w Warszawie, Woli i Wilanowie.', 'url' => home_url('/plywalnie-warszawa-wola/')),
+        array('title' => 'Formularz rejestracyjny', 'text' => 'Zapisy i rejestracja na zajęcia.', 'url' => home_url('/formularz-rejestracyjny/')),
+        array('title' => 'Kontakt', 'text' => 'Kontakt telefoniczny i e-mail z 4elements.', 'url' => home_url('/kontakt/')),
+    );
+    foreach (four_elements_faq_items() as $item) {
+        $pages[] = array('title' => $item['question'], 'text' => $item['answer'], 'url' => home_url('/faq/'), 'answer' => $item['answer']);
+    }
+
+    $synonyms = array(
+        'cena' => array('platnosc', 'oplata', 'wplata', 'cennik'),
+        'koszt' => array('platnosc', 'oplata', 'wplata', 'cennik'),
+        'odwolanie' => array('odwolac', 'odrobic', 'semestr'),
+        'nieobecnosc' => array('odwolac', 'odrobic'),
+        'basen' => array('plywalnia', 'lokalizacja', 'wola', 'wilanow'),
+        'adres' => array('plywalnia', 'lokalizacja', 'warszawa'),
+        'zapis' => array('zapisy', 'rejestracja', 'formularz'),
+        'dziecko' => array('dzieci', 'wiek', 'grupa'),
+        'rodzic' => array('szatni', 'dzieckiem'),
+        'sprzet' => array('czepek', 'recznik', 'klapki', 'okulary'),
+    );
+    $terms = array_filter(explode(' ', four_elements_nlweb_normalize($query)), function ($term) {
+        return strlen($term) > 1;
+    });
+    $matches = array();
+    foreach ($pages as $page) {
+        $haystack = four_elements_nlweb_normalize($page['title'] . ' ' . $page['text']);
+        $score = 0;
+        foreach ($terms as $term) {
+            if (strpos($haystack, $term) !== false) {
+                $score += 5;
+                continue;
+            }
+            if (isset($synonyms[$term])) {
+                foreach ($synonyms[$term] as $synonym) {
+                    if (strpos($haystack, $synonym) !== false) {
+                        $score += 3;
+                        break;
+                    }
+                }
+            }
+        }
+        if ($score > 0) {
+            $page['score'] = $score;
+            $matches[] = $page;
+        }
+    }
+    usort($matches, function ($first, $second) {
+        return $second['score'] - $first['score'];
+    });
+    if (!$matches) {
+        $matches = array(
+            array('title' => 'Najczęściej zadawane pytania', 'text' => 'Odpowiedzi o zajęciach, zapisach, płatnościach i pływalniach.', 'url' => home_url('/faq/'), 'score' => 0),
+            array('title' => 'Kontakt', 'text' => 'Jeśli nie ma odpowiedzi na stronie, skontaktuj się z 4elements.', 'url' => home_url('/kontakt/'), 'score' => 0),
+        );
+    }
+    return array_slice($matches, 0, 3);
+}
+
+function four_elements_nlweb_answer($results)
+{
+    $best = reset($results);
+    if (isset($best['answer'])) {
+        return $best['answer'] . ' Źródło: ' . $best['url'];
+    }
+    return 'Najbardziej pomocna strona: ' . $best['title'] . '. ' . $best['text'] . ' Źródło: ' . $best['url'];
 }
