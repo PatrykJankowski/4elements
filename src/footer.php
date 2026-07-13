@@ -62,9 +62,9 @@
                     <br>
                     <p><b>Operatorzy płatności online:</b></p>
                     <div style="display: flex;align-items: center;">
-                    <img style="height: 20px; margin-top: 10px;" src="/wp-content/themes/4elements/img/dotpay.png">
-                    <img style="height: 50px; margin: 10px 10px 0;" src="/wp-content/themes/4elements/img/mastercard.svg">
-                    <img style="height: 60px; margin-top: 10px;" src="/wp-content/themes/4elements/img/visa.svg">
+                    <img alt="Płatności Dotpay" style="height: 20px; margin-top: 10px;" src="/wp-content/themes/4elements/img/dotpay.png">
+                    <img alt="Płatności Mastercard" style="height: 50px; margin: 10px 10px 0;" src="/wp-content/themes/4elements/img/mastercard.svg">
+                    <img alt="Płatności Visa" style="height: 60px; margin-top: 10px;" src="/wp-content/themes/4elements/img/visa.svg">
                     </div>
                 </div>
             </div>

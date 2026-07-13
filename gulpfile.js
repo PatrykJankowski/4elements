@@ -1,6 +1,5 @@
 // Packages
 const gulp = require('gulp'),
-      sass = require("gulp-sass")(require("node-sass")),
       uglify = require('gulp-uglify-es').default,
       //image = require('gulp-image'),
       clean = require('gulp-clean');
@@ -18,6 +17,7 @@ gulp.task('html', () => {
 });
 
 gulp.task('styles', function() {
+    const sass = require("gulp-sass")(require("node-sass"));
     return gulp.src('src/sass/style.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(sass({outputStyle: 'compressed'}))

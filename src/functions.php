@@ -122,3 +122,255 @@ function csv_name()
     $name = 'formularz_rejestracyjny';
     return $name;
 }
+
+
+/**
+ * SEO and AI-agent support.
+ *
+ * Keep this functionality in the theme so it is deployed together with the
+ * templates. Every feature below is progressive and does not require a plugin.
+ */
+
+add_action('wp_enqueue_scripts', 'four_elements_enqueue_webmcp');
+function four_elements_enqueue_webmcp()
+{
+    if (is_admin()) {
+        return;
+    }
+
+    $script_path = get_template_directory() . '/webmcp.js';
+    $version = file_exists($script_path) ? (string) filemtime($script_path) : null;
+
+    wp_enqueue_script(
+        '4elements-webmcp',
+        get_template_directory_uri() . '/webmcp.js',
+        array(),
+        $version,
+        true
+    );
+
+    wp_localize_script('4elements-webmcp', 'fourElementsAgentData', array(
+        'name' => get_bloginfo('name') ?: '4elements',
+        'description' => get_bloginfo('description'),
+        'homeUrl' => home_url('/'),
+        'currentUrl' => four_elements_canonical_url(),
+        'contact' => array(
+            'email' => 'kontakt@4elements.pl',
+            'phones' => array('798 968 416', '798 784 748'),
+        ),
+        'pages' => array(
+            array('name' => 'Nauka pływania', 'url' => home_url('/nauka-plywania/'), 'keywords' => 'pływanie dzieci dorośli lekcje zajęcia'),
+            array('name' => 'Cennik', 'url' => home_url('/nauka-plywania-cennik/'), 'keywords' => 'cena koszt płatność'),
+            array('name' => 'Pływalnie', 'url' => home_url('/plywalnie-warszawa-wola/'), 'keywords' => 'basen adres lokalizacja Warszawa Wola Wilanów'),
+            array('name' => 'Obozy i półkolonie', 'url' => home_url('/obozy-i-polkolonie/'), 'keywords' => 'obóz półkolonie lato zima dzieci'),
+            array('name' => 'Treningi', 'url' => home_url('/treningi/'), 'keywords' => 'trening zajęcia sportowe personalne'),
+            array('name' => 'Blog', 'url' => home_url('/blog/'), 'keywords' => 'artykuły poradniki aktualności'),
+            array('name' => 'Kontakt', 'url' => home_url('/kontakt/'), 'keywords' => 'telefon email wiadomość'),
+            array('name' => 'Formularz rejestracyjny', 'url' => home_url('/formularz-rejestracyjny/'), 'keywords' => 'zapis zapisy rejestracja'),
+        ),
+    ));
+}
+
+
+add_action('wp_head', 'four_elements_organization_schema', 20);
+function four_elements_organization_schema()
+{
+    if (is_admin()) {
+        return;
+    }
+
+    $home_url = home_url('/');
+    $schema = array(
+        '@context' => 'https://schema.org',
+        '@type' => 'Organization',
+        '@id' => trailingslashit($home_url) . '#organization',
+        'name' => get_bloginfo('name') ?: '4elements',
+        'url' => $home_url,
+        'logo' => array(
+            '@type' => 'ImageObject',
+            'url' => get_template_directory_uri() . '/img/logo.png',
+        ),
+        'description' => get_bloginfo('description') ?: 'Nauka pływania w Warszawie, obozy i półkolonie.',
+        'email' => 'mailto:kontakt@4elements.pl',
+        'telephone' => '+48 798 968 416',
+        'sameAs' => array('https://www.facebook.com/4elementspl'),
+        'areaServed' => array(
+            '@type' => 'City',
+            'name' => 'Warszawa',
+        ),
+        'contactPoint' => array(
+            '@type' => 'ContactPoint',
+            'contactType' => 'customer service',
+            'telephone' => '+48 798 968 416',
+            'email' => 'kontakt@4elements.pl',
+            'availableLanguage' => 'pl',
+            'areaServed' => 'PL',
+        ),
+        'location' => array(
+            array(
+                '@type' => 'Place',
+                'name' => 'OSiR Wola „FOKA”',
+                'address' => array('@type' => 'PostalAddress', 'streetAddress' => 'ul. Esperanto 5', 'addressLocality' => 'Warszawa', 'addressCountry' => 'PL'),
+            ),
+            array(
+                '@type' => 'Place',
+                'name' => 'Aqua Spa Wilanów',
+                'address' => array('@type' => 'PostalAddress', 'streetAddress' => 'ul. Sarmacka 5', 'addressLocality' => 'Warszawa', 'addressCountry' => 'PL'),
+            ),
+            array(
+                '@type' => 'Place',
+                'name' => 'Centrum Sportu Wilanów',
+                'address' => array('@type' => 'PostalAddress', 'streetAddress' => 'ul. Gubinowska 28/30', 'addressLocality' => 'Warszawa', 'addressCountry' => 'PL'),
+            ),
+            array(
+                '@type' => 'Place',
+                'name' => 'Centrum Sportu Wilanów',
+                'address' => array('@type' => 'PostalAddress', 'streetAddress' => 'ul. Wiertnicza 26a', 'addressLocality' => 'Warszawa', 'addressCountry' => 'PL'),
+            ),
+        ),
+    );
+
+    echo '<script type="application/ld+json">' . wp_json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>' . "\n";
+}
+
+
+/**
+ * Return a canonical URL for both singular content and WordPress listings.
+ */
+function four_elements_canonical_url()
+{
+    if (is_404()) {
+        return '';
+    }
+
+    if (is_singular()) {
+        $canonical = wp_get_canonical_url();
+        return $canonical ?: get_permalink();
+    }
+
+    if (is_search()) {
+        return get_search_link(get_search_query(false));
+    }
+
+    return get_pagenum_link(max(1, (int) get_query_var('paged')), false);
+}
+
+
+/**
+ * Advertise canonical, pagination, sitemap and manifest relations as RFC 8288
+ * Link response headers. Existing Link values added by WordPress/plugins stay intact.
+ */
+add_filter('wp_headers', 'four_elements_link_headers', 10, 2);
+function four_elements_link_headers($headers, $wp)
+{
+    if (is_admin()) {
+        return $headers;
+    }
+
+    $links = array();
+    $canonical = four_elements_canonical_url();
+    if ($canonical) {
+        $links[] = four_elements_format_link_header($canonical, 'canonical');
+    }
+
+    $links[] = four_elements_format_link_header(home_url('/wp-sitemap.xml'), 'sitemap', 'application/xml');
+    $links[] = four_elements_format_link_header(get_template_directory_uri() . '/manifest.json', 'manifest', 'application/manifest+json');
+
+    if (!is_singular()) {
+        $previous = get_previous_posts_page_link();
+        $next = get_next_posts_page_link();
+        if ($previous) {
+            $links[] = four_elements_format_link_header($previous, 'prev');
+        }
+        if ($next) {
+            $links[] = four_elements_format_link_header($next, 'next');
+        }
+    }
+
+    $links = array_filter($links);
+    if ($links) {
+        $value = implode(', ', $links);
+        $headers['Link'] = empty($headers['Link']) ? $value : $headers['Link'] . ', ' . $value;
+    }
+
+    return $headers;
+}
+
+function four_elements_format_link_header($url, $relation, $type = '')
+{
+    $url = esc_url_raw($url);
+    if (!$url || preg_match('/[<>\r\n]/', $url)) {
+        return '';
+    }
+
+    $link = '<' . $url . '>; rel="' . $relation . '"';
+    if ($type) {
+        $link .= '; type="' . $type . '"';
+    }
+    return $link;
+}
+
+
+/**
+ * Ensure WordPress-generated images have useful alternative text. Editors can
+ * still explicitly use alt="" for decorative images in post content.
+ */
+add_filter('wp_get_attachment_image_attributes', 'four_elements_attachment_alt', 10, 2);
+function four_elements_attachment_alt($attributes, $attachment)
+{
+    if (!isset($attributes['alt']) || trim($attributes['alt']) === '') {
+        $attributes['alt'] = four_elements_attachment_alt_text($attachment->ID);
+    }
+    return $attributes;
+}
+
+function four_elements_attachment_alt_text($attachment_id)
+{
+    $alt = trim((string) get_post_meta($attachment_id, '_wp_attachment_image_alt', true));
+    if ($alt !== '') {
+        return $alt;
+    }
+
+    $caption = trim((string) wp_get_attachment_caption($attachment_id));
+    if ($caption !== '') {
+        return wp_strip_all_tags($caption);
+    }
+
+    $title = get_the_title($attachment_id);
+    return $title ? wp_strip_all_tags($title) : 'Ilustracja 4elements';
+}
+
+add_filter('the_content', 'four_elements_add_missing_content_alts', 20);
+function four_elements_add_missing_content_alts($content)
+{
+    if (stripos($content, '<img') === false) {
+        return $content;
+    }
+
+    return preg_replace_callback('/<img\b[^>]*>/i', function ($match) {
+        $tag = $match[0];
+        if (preg_match('/\s+alt\s*=/i', $tag)) {
+            return $tag;
+        }
+
+        $alt = '';
+        if (preg_match('/\bwp-image-(\d+)\b/i', $tag, $id_match)) {
+            $alt = four_elements_attachment_alt_text((int) $id_match[1]);
+        }
+
+        if ($alt === '' && preg_match('/\s+src\s*=\s*(["\'])(.*?)\1/i', $tag, $src_match)) {
+            $path = parse_url(html_entity_decode($src_match[2]), PHP_URL_PATH);
+            $filename = pathinfo((string) $path, PATHINFO_FILENAME);
+            $filename = preg_replace('/(?:@\d+|-\d+x\d+)$/', '', $filename);
+            $alt = trim(str_replace(array('-', '_'), ' ', urldecode($filename)));
+        }
+
+        if ($alt === '') {
+            $alt = is_singular() ? 'Ilustracja do: ' . get_the_title() : 'Ilustracja 4elements';
+        }
+
+        return preg_replace_callback('/\s*\/?>$/', function ($ending) use ($alt) {
+            return ' alt="' . esc_attr($alt) . '"' . $ending[0];
+        }, $tag, 1);
+    }, $content);
+}

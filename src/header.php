@@ -5,7 +5,7 @@
     <meta charset="<?php bloginfo( 'charset' ); ?>" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#67b0d6">
-    <link rel="manifest" href="wp-content/themes/4elements/manifest.json">
+    <link rel="manifest" href="<?php echo esc_url(get_template_directory_uri() . '/manifest.json'); ?>">
     <link rel="stylesheet" type="text/css" href="/wp-content/themes/4elements/style.css" />
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -31,7 +31,7 @@
         fbq('track', 'PageView');
     </script>
     <noscript>
-        <img height="1" width="1" src="https://www.facebook.com/tr?id=523605829185138&ev=PageView&noscript=1"/>
+        <img height="1" width="1" alt="" role="presentation" src="https://www.facebook.com/tr?id=523605829185138&ev=PageView&noscript=1"/>
     </noscript>
     <!-- End Facebook Pixel Code -->
     <?php wp_head(); ?>
@@ -63,8 +63,8 @@
     <?php if (is_front_page() && !is_home()) { ?>
         <header id="header">
             <div class="slider">
-                <img class="slider__img" src="/wp-content/themes/4elements/img/nauka_plywania_dla_dzieci@1920.jpg">
-                <img class="slider__img" src="/wp-content/themes/4elements/img/obozy_zimowe@1920.jpg">
+                <img class="slider__img" alt="Nauka pływania dla dzieci w Warszawie" src="/wp-content/themes/4elements/img/nauka_plywania_dla_dzieci@1920.jpg">
+                <img class="slider__img" alt="Zimowy obóz sportowy dla dzieci" src="/wp-content/themes/4elements/img/obozy_zimowe@1920.jpg">
 
                 <div class="slider__caption">
                     <?php dynamic_sidebar('slogan'); ?>
