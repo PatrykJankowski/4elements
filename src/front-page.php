@@ -207,7 +207,7 @@
             <div class="col-md-12">
                 <h2 class="header header--center header--wind">Nasi partnerzy</h2>
                 <a href="http://bedzieladnie.com" target="_blank" rel="nofollow noopener">
-                    <img alt="będzie ładnie - partner" src="/wp-content/themes/4elements/img/bedzie-ladnie.png">
+                    <img alt="będzie ładnie - partner" src="/wp-content/themes/4elements/img/bedzie-ladnie.png" width="209" height="24">
                 </a>
             </div>
         </div>

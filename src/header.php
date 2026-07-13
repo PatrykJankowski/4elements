@@ -41,7 +41,7 @@
 
     <div class="nav">
         <a href="/" title="4elements – nauka pływania, Warszawa">
-            <img class="nav__logo" alt="4elements - nauka pływania, Warszawa" src="/wp-content/themes/4elements/img/logo.svg" />
+            <img class="nav__logo" alt="4elements - nauka pływania, Warszawa" src="/wp-content/themes/4elements/img/logo.svg" width="146" height="60" />
         </a>
 
         <nav class="nav__nav-desktop">
@@ -64,7 +64,7 @@
         <header id="header">
             <h1 class="screen-reader-text">Nauka pływania dla dzieci i dorosłych w Warszawie</h1>
             <div class="slider">
-                <img class="slider__img" alt="Nauka pływania dla dzieci w Warszawie" src="/wp-content/themes/4elements/img/nauka_plywania_dla_dzieci@1920.jpg">
+                <img class="slider__img" alt="Nauka pływania dla dzieci w Warszawie" src="/wp-content/themes/4elements/img/nauka_plywania_dla_dzieci@1920.jpg" fetchpriority="high">
                 <img class="slider__img" alt="Zimowy obóz sportowy dla dzieci" src="/wp-content/themes/4elements/img/obozy_zimowe@1920.jpg">
 
                 <div class="slider__caption">

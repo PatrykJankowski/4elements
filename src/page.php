@@ -6,7 +6,7 @@
         $class = "water";
     } else if ($post_id === 22) {
         $class = "wind";
-    } else if ($post_id === 15 || $post_id === 537 || $post_id === 525 || $post_id === 877 || $post_id === 1645) {
+    } else if ($post_id === 15 || $post_id === 537 || $post_id === 525 || $post_id === 601 || $post_id === 877 || $post_id === 1645 || $post_id === 1851 || $post_id === 1856 || $post_id === 1902 || $post_id === 2052) {
         $class = "ground";
     } else  {
         $class = "fire";

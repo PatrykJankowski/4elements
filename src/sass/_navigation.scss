@@ -213,8 +213,13 @@
 }
 
 
-
-
+.w-154 {
+  a {
+    display: flex;
+    justify-content: center;
+    width: 154px;
+  }
+}
 
 
 
@@ -243,6 +248,10 @@
 
   .current-menu-ancestor {
     background: $water;
+
+    &.menu-item-12 {
+      background: $fire;
+    }
 
     &.menu-item-17 {
       background: $ground;

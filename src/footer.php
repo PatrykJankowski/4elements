@@ -20,7 +20,7 @@
                 <div class="col-md-4">
                     <h5>4elements Warszawa – nauka pływania</h5>
                     <ul>
-                        <li><a href="/nauka-plywania-dla-dzieci-warszawa">Nauka pływania dla dzieci</a></li>
+                        <li><a href="/nauka-plywania-warszawa/dzieci">Nauka pływania dla dzieci</a></li>
                         <li><a href="/nauka-plywania-dla-doroslych-warszawa">Nauka pływania dla dorosłych</a></li>
                         <li><a href="/wazne-informacje-na-start">Ważne informacje</a></li>
                         <li><a href="/faq">FAQ</a></li>
@@ -63,9 +63,9 @@
                     <br>
                     <p><b>Operatorzy płatności online:</b></p>
                     <div style="display: flex;align-items: center;">
-                    <img alt="Płatności Dotpay" style="height: 20px; margin-top: 10px;" src="/wp-content/themes/4elements/img/dotpay.png">
-                    <img alt="Płatności Mastercard" style="height: 50px; margin: 10px 10px 0;" src="/wp-content/themes/4elements/img/mastercard.svg">
-                    <img alt="Płatności Visa" style="height: 60px; margin-top: 10px;" src="/wp-content/themes/4elements/img/visa.svg">
+                    <img alt="Płatności Dotpay" style="height: 20px; margin-top: 10px;" src="/wp-content/themes/4elements/img/dotpay.png" width="62" height="20">
+                    <img alt="Płatności Mastercard" style="height: 50px; margin: 10px 10px 0;" src="/wp-content/themes/4elements/img/mastercard.svg" width="61" height="50">
+                    <img alt="Płatności Visa" style="height: 60px; margin-top: 10px;" src="/wp-content/themes/4elements/img/visa.svg" width="60" height="60">
                     </div>
                 </div>
             </div>
