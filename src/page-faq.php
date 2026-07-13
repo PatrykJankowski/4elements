@@ -14,6 +14,14 @@ get_header();
     <section class="faq-page">
         <div class="container">
             <p class="faq-page__intro">Odpowiedzi na najczęściej zadawane pytania dotyczące zajęć nauki pływania w 4elements.</p>
+            <form class="faq-page__search" role="search" action="<?php echo esc_url(get_permalink()); ?>" toolname="search_4elements_faq" tooldescription="Wyszukuje odpowiedzi w publicznym FAQ 4elements dotyczącym zajęć nauki pływania, zapisów, płatności i pływalni.">
+                <label for="faq-site-search">Znajdź odpowiedź</label>
+                <div class="faq-page__search-controls">
+                    <input id="faq-site-search" type="search" name="query" autocomplete="off" placeholder="Np. płatność, odwołanie zajęć, basen" toolparamdescription="Pytanie lub fraza dotycząca zajęć, zapisów, płatności albo pływalni." aria-controls="faq-list" />
+                    <button type="submit">Szukaj</button>
+                </div>
+                <p class="faq-page__search-status" id="faq-search-status" aria-live="polite"></p>
+            </form>
             <?php
             $content = trim(get_the_content());
             if ($content !== '') {

@@ -4,6 +4,61 @@
   &__intro {
     margin: 0 0 $M;
   }
+
+  &__search {
+    margin: 0 0 $L;
+    padding: $S;
+    border: 1px solid #E5E5E5;
+    background: #f7fbff;
+
+    label {
+      display: block;
+      margin-bottom: $XS;
+    }
+  }
+
+  &__search-controls {
+    display: flex;
+    gap: $XS;
+
+    input {
+      min-width: 0;
+      flex: 1 1 auto;
+    }
+
+    button {
+      flex: 0 0 auto;
+      min-width: 120px;
+      padding: 0 $S;
+      border: 0;
+      border-radius: 2px;
+      background: $fire;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity .2s ease;
+
+      &:hover,
+      &:focus {
+        opacity: .85;
+      }
+    }
+
+    @media screen and (max-width: 479px) {
+      flex-direction: column;
+
+      button {
+        min-height: 50px;
+      }
+    }
+  }
+
+  &__search-status {
+    min-height: 1.44em;
+    margin: $XS 0 0;
+    font-size: 18px;
+  }
 }
 
 .faq {
@@ -18,6 +73,10 @@
 
   &__item {
     margin: 0 0 $M;
+
+    &[hidden] {
+      display: none;
+    }
   }
 
   h3 {
