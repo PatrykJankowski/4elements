@@ -23,6 +23,7 @@
                         <li><a href="/nauka-plywania-dla-dzieci-warszawa">Nauka pływania dla dzieci</a></li>
                         <li><a href="/nauka-plywania-dla-doroslych-warszawa">Nauka pływania dla dorosłych</a></li>
                         <li><a href="/wazne-informacje-na-start">Ważne informacje</a></li>
+                        <li><a href="/faq">FAQ</a></li>
                         <li><a href="/plywalnie-warszawa-wola">Nasze pływalnie</a></li>
                         <li><a href="/nauka-plywania-cennik">Cennik</a></li>
                         <li><a href="/blog">Blog</a></li>

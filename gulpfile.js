@@ -17,7 +17,7 @@ gulp.task('html', () => {
 });
 
 gulp.task('styles', function() {
-    const sass = require("gulp-sass")(require("node-sass"));
+    const sass = require("gulp-sass")(require("sass"));
     return gulp.src('src/sass/style.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(sass({outputStyle: 'compressed'}))
@@ -40,6 +40,11 @@ gulp.task('json', function () {
         .pipe(gulp.dest('dist'))
 });
 
+gulp.task('text', function () {
+    return gulp.src('src/*.txt')
+        .pipe(gulp.dest('dist'));
+});
+
 gulp.task('images', function() {
     return gulp.src('src/img/*')
         //.pipe(image())
@@ -58,9 +63,10 @@ gulp.task('watch', function() {
     gulp.watch('src/**/*.scss',gulp.series('styles'));
     gulp.watch('src/**/*.js',gulp.series('js'));
     gulp.watch('src/**/*.json',gulp.series('json'));
+    gulp.watch('src/*.txt',gulp.series('text'));
     gulp.watch('src/img/*',gulp.series('images'));
 });
 
 
 // Run tasks
-gulp.task('default', gulp.series(gulp.parallel(['watch', 'html', 'styles', 'js', 'json', 'images', 'fonts']), function a () {}));
+gulp.task('default', gulp.series(gulp.parallel(['watch', 'html', 'styles', 'js', 'json', 'text', 'images', 'fonts']), function a () {}));

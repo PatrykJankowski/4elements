@@ -78,8 +78,8 @@ function widgets_init()
         'id' => 'slogan',
         'name' => __('Slogan', '4elements'),
         'description' => 'Krótki tekst w nagłówku na stronie głównej',
-        'before_title' => '<h1>',
-        'after_title' => '</h1>',
+        'before_title' => '<h2 class="slider__title">',
+        'after_title' => '</h2>',
         'before_widget' => '',
         'after_widget' => '',
     ));
@@ -121,6 +121,32 @@ function csv_name()
 {
     $name = 'formularz_rejestracyjny';
     return $name;
+}
+
+
+/**
+ * Publish the AI-readable site guide at https://4elements.pl/llms.txt.
+ * This interception does not need a server-level rewrite or a permalink flush.
+ */
+add_action('parse_request', 'four_elements_serve_llms_txt');
+function four_elements_serve_llms_txt($wp)
+{
+    if (trim((string) $wp->request, '/') !== 'llms.txt') {
+        return;
+    }
+
+    $file = get_template_directory() . '/llms.txt';
+    if (!is_readable($file)) {
+        status_header(404);
+        exit;
+    }
+
+    status_header(200);
+    nocache_headers();
+    header('Content-Type: text/plain; charset=UTF-8');
+    header('X-Content-Type-Options: nosniff');
+    readfile($file);
+    exit;
 }
 
 
@@ -231,6 +257,123 @@ function four_elements_organization_schema()
     );
 
     echo '<script type="application/ld+json">' . wp_json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>' . "\n";
+}
+
+
+/**
+ * The FAQ data is shared by visible content and JSON-LD, so agents and people
+ * receive precisely the same, public information.
+ */
+function four_elements_faq_items()
+{
+    return array(
+        array(
+            'question' => 'Jak zapisać się na zajęcia nauki pływania?',
+            'answer' => 'Aby zapisać się na zajęcia, wypełnij formularz zapisu dostępny na stronie 4elements.',
+            'answer_html' => 'Aby zapisać się na zajęcia, wypełnij <a href="' . esc_url(home_url('/formularz-rejestracyjny/')) . '">formularz zapisu</a>.',
+        ),
+        array(
+            'question' => 'Ile wcześniej należy przyjść na pływalnię?',
+            'answer' => 'Na pływalni należy być 15 minut przed zajęciami, aby spokojnie przygotować się do lekcji.',
+        ),
+        array(
+            'question' => 'Ile trwają zajęcia nauki pływania?',
+            'answer' => 'Lekcje trwają 30 lub 45 minut. Należy także uwzględnić czas potrzebny na przebranie się przed i po zajęciach.',
+        ),
+        array(
+            'question' => 'Co zabrać na zajęcia na basenie?',
+            'answer' => 'Na zajęcia należy zabrać kostium lub kąpielówki, czepek, ręcznik, klapki i okulary pływackie.',
+        ),
+        array(
+            'question' => 'Czy rodzic może przebywać na płycie basenu podczas zajęć?',
+            'answer' => 'Rodzic nie może przebywać na płycie basenu podczas zajęć, chyba że korzysta z pływalni z wykupionym biletem wstępu. Może wejść z dzieckiem do szatni i po zmianie obuwia odprowadzić je na basen.',
+        ),
+        array(
+            'question' => 'Czy można odwołać i odrobić zajęcia?',
+            'answer' => 'Raz w miesiącu można odwołać zajęcia bez podania przyczyny, najpóźniej 24 godziny przed lekcją. Termin odrobienia jest ustalany wspólnie z 4elements, a lekcję można odrobić do końca bieżącego semestru.',
+        ),
+        array(
+            'question' => 'Kiedy i jak opłacić zajęcia?',
+            'answer' => 'Pod koniec miesiąca 4elements wysyła e-mail z informacją o wpłatach. Opłatę należy uiścić przed pierwszymi zajęciami w danym miesiącu; można zapłacić przelewem lub osobiście gotówką.',
+        ),
+        array(
+            'question' => 'Od jakiego wieku i w jakich grupach odbywają się zajęcia?',
+            'answer' => 'Dzieci są przyjmowane na zajęcia od 4. roku życia. Zajęcia grupowe dla dzieci, młodzieży i dorosłych odbywają się w grupach od 2 do 5 osób. Dobór grupy zależy od wieku i poziomu zaawansowania.',
+        ),
+        array(
+            'question' => 'Na jakich pływalniach odbywają się zajęcia?',
+            'answer' => 'Zajęcia odbywają się w Warszawie: OSiR Wola „FOKA” przy ul. Esperanto 5, Aqua Spa Wilanów przy ul. Sarmackiej 5 oraz Centrum Sportu Wilanów przy ul. Gubinowskiej 28/30 i ul. Wiertniczej 26a.',
+        ),
+    );
+}
+
+add_action('wp_head', 'four_elements_faq_schema', 21);
+function four_elements_faq_schema()
+{
+    if (!is_page('faq')) {
+        return;
+    }
+
+    $questions = array();
+    foreach (four_elements_faq_items() as $item) {
+        $questions[] = array(
+            '@type' => 'Question',
+            'name' => $item['question'],
+            'acceptedAnswer' => array(
+                '@type' => 'Answer',
+                'text' => $item['answer'],
+            ),
+        );
+    }
+
+    $schema = array(
+        '@context' => 'https://schema.org',
+        '@type' => 'FAQPage',
+        '@id' => trailingslashit(get_permalink()) . '#faq',
+        'mainEntity' => $questions,
+    );
+
+    echo '<script type="application/ld+json">' . wp_json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>' . "\n";
+}
+
+function four_elements_render_faq()
+{
+    $html = '<section class="faq" aria-labelledby="faq-heading">';
+    $html .= '<h2 id="faq-heading" class="faq__header header header--fire">Najczęściej zadawane pytania</h2>';
+    foreach (four_elements_faq_items() as $item) {
+        $answer = isset($item['answer_html']) ? $item['answer_html'] : esc_html($item['answer']);
+        $html .= '<article class="faq__item">';
+        $html .= '<h3>' . esc_html($item['question']) . '</h3>';
+        $html .= '<p>' . $answer . '</p>';
+        $html .= '</article>';
+    }
+    $html .= '</section>';
+
+    return $html;
+}
+
+/**
+ * Make the public FAQ page available immediately after the theme is deployed.
+ * An existing /faq/ page is never changed automatically.
+ */
+add_action('init', 'four_elements_ensure_faq_page', 20);
+function four_elements_ensure_faq_page()
+{
+    if (get_page_by_path('faq', OBJECT, 'page')) {
+        return;
+    }
+
+    $page_id = wp_insert_post(array(
+        'post_title' => 'Najczęściej zadawane pytania (FAQ)',
+        'post_name' => 'faq',
+        'post_status' => 'publish',
+        'post_type' => 'page',
+        'post_content' => '',
+    ), true);
+
+    if (!is_wp_error($page_id)) {
+        update_post_meta($page_id, '_wp_page_template', 'page-faq.php');
+    }
 }
 
 

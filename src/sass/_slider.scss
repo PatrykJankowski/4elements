@@ -42,9 +42,11 @@
             margin-left: 400px;
         }
 
-        h1 {
+        h1,
+        .slider__title {
             font-size: 30px;
             font-weight: 600;
+            color: #fff;
 
             @media screen and (min-width: $tablet) {
                 font-size: 48px;
