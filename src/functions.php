@@ -436,8 +436,8 @@ function four_elements_faq_items()
     return array(
         array(
             'question' => 'Jak zapisać się na zajęcia nauki pływania?',
-            'answer' => 'Aby zapisać się na zajęcia, wypełnij formularz zapisu dostępny na stronie 4elements lub skontaktuj się z nami.',
-            'answer_html' => 'Aby zapisać się na zajęcia, wypełnij <a href="' . esc_url(home_url('/nauka-plywania-warszawa/zapisz-sie/')) . '">formularz zapisu</a> lub skontaktuj się z nami.',
+            'answer' => 'Aby zapisać się na zajęcia nauki pływania w 4elements, należy wypełnić formularz rejestracyjny lub skontaktować się telefonicznie. Przy doborze zajęć uwzględniane są wiek, poziom uczestnika, preferowana pływalnia oraz aktualna dostępność. Wysłanie formularza jest zgłoszeniem i nie oznacza automatycznego potwierdzenia miejsca.',
+            'more_html' => '<a href="' . esc_url(home_url('/nauka-plywania-warszawa/zapisz-sie/')) . '">Przejdź do formularza zapisu</a>.',
         ),
         array(
             'question' => 'Ile wcześniej należy przyjść na pływalnię?',
@@ -473,7 +473,7 @@ function four_elements_faq_items()
         ),
         array(
             'question' => 'Czy dorosły może nauczyć się pływać od zera?',
-            'answer' => 'Tak. Naukę można rozpocząć w każdym wieku. Dobre pierwsze kroki to oswojenie z wodą, nauka spokojnego oddechu i wyporności, a następnie ćwiczenie prostych ruchów pod opieką instruktora.',
+            'answer' => 'Dorosły może rozpocząć naukę pływania od zera w każdym wieku. Pierwsze kroki obejmują oswojenie z wodą, naukę spokojnego oddechu i wyporności, a następnie ćwiczenie prostych ruchów pod opieką instruktora.',
         ),
         array(
             'question' => 'Ile czasu trwa nauka pływania?',
@@ -481,15 +481,15 @@ function four_elements_faq_items()
         ),
         array(
             'question' => 'Jak często warto chodzić na naukę pływania?',
-            'answer' => 'Najważniejsza jest regularność. Stałe zajęcia pozwalają utrwalać oddech, pracę nóg i koordynację. Częstotliwość warto dobrać do wieku, poziomu zaawansowania oraz czasu potrzebnego na regenerację.',
+            'answer' => 'W nauce pływania najważniejsza jest regularność. Stałe zajęcia pozwalają utrwalać oddech, pracę nóg i koordynację. Częstotliwość należy dobrać do wieku, poziomu zaawansowania oraz czasu potrzebnego na regenerację.',
         ),
         array(
             'question' => 'Od czego zaczyna się naukę pływania?',
-            'answer' => 'Zwykle od bezpiecznego oswojenia z wodą: zanurzania twarzy, wydechu do wody, unoszenia się na wodzie i poślizgu. Dopiero potem wprowadza się pracę nóg, rąk i łączenie ruchów z oddechem.',
+            'answer' => 'Naukę pływania zaczyna się zwykle od bezpiecznego oswojenia z wodą: zanurzania twarzy, wydechu do wody, unoszenia się na wodzie i poślizgu. Dopiero potem wprowadza się pracę nóg, rąk i łączenie ruchów z oddechem.',
         ),
         array(
             'question' => 'Czy można nauczyć się pływać, gdy boję się wody?',
-            'answer' => 'Tak, ale warto zacząć spokojnie i powiedzieć instruktorowi o obawach. Ćwiczenia powinny odbywać się stopniowo, w bezpiecznych warunkach i bez presji na szybkie przechodzenie do trudniejszych elementów.',
+            'answer' => 'Osoba, która boi się wody, może nauczyć się pływać, zaczynając spokojnie i informując instruktora o swoich obawach. Ćwiczenia powinny odbywać się stopniowo, w bezpiecznych warunkach i bez presji na szybkie przechodzenie do trudniejszych elementów.',
         ),
         array(
             'question' => 'Jak prawidłowo oddychać podczas pływania?',
@@ -497,7 +497,7 @@ function four_elements_faq_items()
         ),
         array(
             'question' => 'Czy do nauki pływania potrzebne są okulary pływackie?',
-            'answer' => 'Nie są obowiązkowe, ale dobrze dopasowane okulary ułatwiają otwieranie oczu pod wodą i koncentrację na ćwiczeniu. Nie powinny być jednak zbyt ciasne ani zastępować nauki swobodnego kontaktu z wodą.',
+            'answer' => 'Okulary pływackie nie są obowiązkowe podczas nauki pływania, ale ułatwiają otwieranie oczu pod wodą i koncentrację na ćwiczeniu. Nie powinny być zbyt ciasne ani zastępować nauki swobodnego kontaktu z wodą.',
         ),
         array(
             'question' => 'Lepiej wybrać indywidualną czy grupową naukę pływania?',
@@ -505,15 +505,15 @@ function four_elements_faq_items()
         ),
         array(
             'question' => 'Czy można nauczyć się pływać samemu?',
-            'answer' => 'Do podstaw można podchodzić samodzielnie, ale początkujący powinien ćwiczyć w bezpiecznym miejscu, pod nadzorem i nie wchodzić do wody sam. Instruktor pomaga szybciej wychwycić błędy techniczne i dobrać ćwiczenia do poziomu.',
+            'answer' => 'Samodzielna nauka podstaw pływania wymaga bezpiecznego miejsca i nadzoru; osoba początkująca nie powinna wchodzić do wody sama. Instruktor pomaga szybciej wychwycić błędy techniczne i dobrać ćwiczenia do poziomu uczestnika.',
         ),
         array(
             'question' => 'Jak pomóc dziecku polubić naukę pływania?',
-            'answer' => 'Pomaga spokojne oswajanie z wodą, zabawa dostosowana do wieku i docenianie małych postępów. Warto unikać porównywania dziecka z innymi oraz dać mu czas na zbudowanie zaufania do wody i instruktora.',
+            'answer' => 'Dziecku w polubieniu nauki pływania pomaga spokojne oswajanie z wodą, zabawa dostosowana do wieku i docenianie małych postępów. Warto unikać porównywania dziecka z innymi oraz dać mu czas na zbudowanie zaufania do wody i instruktora.',
         ),
         array(
             'question' => 'Jak poprawić technikę pływania?',
-            'answer' => 'Najlepiej pracować nad jednym elementem naraz: ułożeniem ciała, oddechem, pracą nóg albo rąk. Regularna informacja zwrotna od instruktora i krótkie, powtarzalne ćwiczenia pomagają utrwalić prawidłowy ruch.',
+            'answer' => 'Technikę pływania najlepiej poprawiać, pracując nad jednym elementem naraz: ułożeniem ciała, oddechem, pracą nóg albo rąk. Regularna informacja zwrotna od instruktora i krótkie, powtarzalne ćwiczenia pomagają utrwalić prawidłowy ruch.',
         ),
     );
 }
@@ -598,13 +598,15 @@ function four_elements_faq_schema()
 function four_elements_render_faq()
 {
     $html = '<section class="faq" id="faq-list" aria-labelledby="faq-heading">';
-    $html .= '<h2 id="faq-heading" class="faq__header header header--fire">Najczęściej zadawane pytania</h2>';
+    $html .= '<p id="faq-heading" class="faq__header header header--fire">Najczęściej zadawane pytania</p>';
     foreach (four_elements_faq_items() as $item) {
-        $answer = isset($item['answer_html']) ? $item['answer_html'] : esc_html($item['answer']);
         $search_text = wp_strip_all_tags($item['question'] . ' ' . $item['answer']);
         $html .= '<article class="faq__item" data-faq-item data-faq-search="' . esc_attr($search_text) . '">';
-        $html .= '<h3>' . esc_html($item['question']) . '</h3>';
-        $html .= '<p>' . $answer . '</p>';
+        $html .= '<h2>' . esc_html($item['question']) . '</h2>';
+        $html .= '<p class="faq__answer-capsule">' . esc_html($item['answer']) . '</p>';
+        if (isset($item['more_html'])) {
+            $html .= '<p class="faq__more">' . wp_kses_post($item['more_html']) . '</p>';
+        }
         $html .= '</article>';
     }
     $html .= '</section>';
@@ -634,6 +636,92 @@ function four_elements_ensure_faq_page()
     if (!is_wp_error($page_id)) {
         update_post_meta($page_id, '_wp_page_template', 'page-faq.php');
     }
+}
+
+
+/**
+ * Google reviews reproduced with the reviewers' names and original wording.
+ * The source links are included where they were provided by the reviewer.
+ */
+function four_elements_review_items()
+{
+    return array(
+        array(
+            'author' => 'Kuba Kowalski',
+            'author_url' => 'https://www.google.com/maps/contrib/117855336974771606367/reviews?hl=pl-PL',
+            'rating' => 5,
+            'text' => "Ta szkoła pływania to absolutny strzał w dziesiątkę! Instruktorka ma genialne podejście, jest super nauczycielem i potrafi świetnie złapać kontakt z dzieckiem. Jakość zajęć jest na najwyższym poziomie, dzięki czemu nasza pociecha zrobiła mega progres. Jedziemy na wakacje z pełnym spokojem, bo wiemy, że dziecko świetnie poradzi sobie w wodzie.\n\nBardzo doceniamy też bezproblemowy kontakt i pomoc z zaświadczeniem, które pomogło podbić ocenę z WF-u na upragnioną szóstkę!\n\nDo tego dochodzi wygodna aplikacja do odwoływania i odrabiania zajęć, co przy dzieciakach jest po prostu zbawieniem.\n\nPełna polecajka!",
+        ),
+        array(
+            'author' => 'Patrycja Mazińska',
+            'author_url' => 'https://www.google.com/maps/contrib/101208810727826357727/reviews?hl=pl-PL',
+            'rating' => 5,
+            'text' => "Bardzo serdecznie polecam 4elements!\n\nDwie moje córeczki uczestniczyły w „Moim pierwszym obozie” organizowanym przez 4elements i wróciły zachwycone.\n\nPierwszy obóz dziecka to przeżycie i dla dzieci i dla rodziców, jednak widząc codzienną relację z obozu, roześmiane oczy dzieci, uśmiechy, a potem słuchając niekończących się relacji co dziewczyny robiły na obozie mogę śmiało stwierdzić, że to była bardzo dobra decyzja, by wysłać je na ten obóz.\n\nWspaniała, ciepła kadra, piękne, sielankowe miejsce z dala od miasta i kameralna grupa. Wszystko bardzo dobrze przemyślane, a codzienne atrakcje bardzo różnorodne!\n\nPolecam z całego serca i bardzo dziękuję, za zaangażowanie i serce włożone w przygotowanie obozu ❤️",
+        ),
+        array(
+            'author' => 'Patrick Ney',
+            'author_url' => 'https://www.google.com/maps/contrib/117908510122048222246/reviews?hl=pl-PL',
+            'rating' => 5,
+            'text' => 'Miła obsługa. Dzieci są zachwycone lekcjami. Widać ogromny postęp. Jesteśmy bardzo zadowoleni. Dodam, że córka była na letnich koloniach i też 5/5 gwiazd. Szacun!',
+        ),
+        array(
+            'author' => 'Sławomir Gąsiorowski',
+            'author_url' => 'https://www.google.com/maps/contrib/114521734817097165315/reviews?hl=pl-PL',
+            'rating' => 5,
+            'text' => 'Nasza Janinka uwielbia te zajęcia i widzimy bardzo duży progres w umiejętnościach Jasi. Brawo Wy!',
+        ),
+        array(
+            'author' => 'Edyta B',
+            'author_url' => 'https://www.google.com/maps/contrib/111519970837561715241/reviews?hl=pl-PL',
+            'rating' => 5,
+            'text' => 'Dzięki za super przygodę! Bardzo fajne zajęcia z pływania! Trener Adrian wymiata! Polecam bardzo!!!!',
+        ),
+        array(
+            'author' => 'Aleksandra Nowicka',
+            'author_url' => 'https://www.google.com/maps/contrib/102849227915569490595/reviews?hl=pl-PL',
+            'rating' => 5,
+            'text' => 'Bardzo polecam zajęcia dla dorosłych na Wiertniczej 🙂 Super instruktorzy, świetna atmosfera i można się wiele nauczyć 🙂',
+        ),
+    );
+}
+
+
+/**
+ * Create the reviews page once. Existing content under /opinie/ is untouched.
+ */
+add_action('init', 'four_elements_ensure_reviews_page', 21);
+function four_elements_ensure_reviews_page()
+{
+    if (get_page_by_path('opinie', OBJECT, 'page')) {
+        return;
+    }
+
+    $page_id = wp_insert_post(array(
+        'post_title' => 'Opinie o 4elements',
+        'post_name' => 'opinie',
+        'post_status' => 'publish',
+        'post_type' => 'page',
+        'post_content' => '',
+    ), true);
+
+    if (!is_wp_error($page_id)) {
+        update_post_meta($page_id, '_wp_page_template', 'page-opinie.php');
+    }
+}
+
+
+add_filter('wpseo_schema_webpage', 'four_elements_reviews_collection_schema');
+function four_elements_reviews_collection_schema($data)
+{
+    if (!is_page('opinie')) {
+        return $data;
+    }
+
+    $types = isset($data['@type']) ? (array) $data['@type'] : array('WebPage');
+    $types[] = 'CollectionPage';
+    $data['@type'] = array_values(array_unique($types));
+
+    return $data;
 }
 
 
@@ -1194,10 +1282,24 @@ function four_elements_handle_nlweb_request()
     );
 
     foreach ($results as $result) {
+        if (isset($result['answer'])) {
+            $structured_results[] = array(
+                '@type' => 'Question',
+                'name' => $result['title'],
+                'acceptedAnswer' => array(
+                    '@type' => 'Answer',
+                    'text' => $result['answer'],
+                ),
+                'url' => $result['url'],
+                'grounding' => array('sources' => array(array('name' => 'FAQ 4elements', 'url' => $result['url']))),
+            );
+            continue;
+        }
+
         $structured_results[] = array(
-            '@type' => isset($result['answer']) ? 'Question' : 'WebPage',
+            '@type' => 'WebPage',
             'name' => $result['title'],
-            'description' => isset($result['answer']) ? $result['answer'] : $result['text'],
+            'description' => $result['text'],
             'url' => $result['url'],
             'grounding' => array('sources' => array(array('name' => $result['title'], 'url' => $result['url']))),
         );

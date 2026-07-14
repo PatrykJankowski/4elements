@@ -68,7 +68,9 @@
   border-top: 1px solid #E5E5E5;
 
   &__header {
-    margin-bottom: $S;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0 0 $S;
   }
 
   &__item {
@@ -79,13 +81,17 @@
     }
   }
 
-  h3 {
+  h2 {
     margin-bottom: $XS;
     font-size: 24px;
     font-weight: bold;
   }
 
   p {
-    margin: 0;
+    margin-top: 0;
+  }
+
+  &__more {
+    margin-top: $XS !important;
   }
 }
