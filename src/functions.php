@@ -284,40 +284,73 @@ function four_elements_organization_schema()
 }
 
 /**
- * Describe the core offer as individual Service entities. This gives search
- * engines and AI agents explicit, source-backed links between 4elements and
- * the services it provides in Warsaw.
+ * Describe only the service represented by the current offer page.
+ * Service entities do not belong on unrelated pages such as the blog index.
  */
 add_action('wp_head', 'four_elements_service_schema', 22);
 function four_elements_service_schema()
 {
-    if (is_admin()) {
+    if (is_admin() || !is_page()) {
         return;
     }
 
     $organization_id = trailingslashit(home_url('/')) . '#organization';
     $services = array(
-        array('name' => 'Nauka pływania dla dzieci', 'url' => home_url('/nauka-plywania-dla-dzieci-warszawa/'), 'description' => 'Zajęcia nauki i doskonalenia pływania dla dzieci w Warszawie.'),
-        array('name' => 'Nauka pływania dla dorosłych', 'url' => home_url('/nauka-plywania-dla-doroslych-warszawa/'), 'description' => 'Zajęcia nauki i doskonalenia pływania dla dorosłych w Warszawie.'),
-        array('name' => 'Indywidualna nauka pływania', 'url' => home_url('/nauka-plywania/'), 'description' => 'Indywidualne zajęcia nauki pływania dopasowane do poziomu uczestnika.'),
-        array('name' => 'Obozy i półkolonie', 'url' => home_url('/obozy-i-polkolonie/'), 'description' => 'Obozy sportowe i półkolonie dla dzieci.'),
-        array('name' => 'Treningi sportowe', 'url' => home_url('/treningi/'), 'description' => 'Zajęcia ogólnorozwojowe i treningi sportowe.'),
+        'nauka-plywania-dla-dzieci-warszawa' => array('name' => 'Nauka pływania dla dzieci', 'description' => 'Zajęcia nauki i doskonalenia pływania dla dzieci w Warszawie.'),
+        'nauka-plywania-dla-doroslych-warszawa' => array('name' => 'Nauka pływania dla dorosłych', 'description' => 'Zajęcia nauki i doskonalenia pływania dla dorosłych w Warszawie.'),
+        'nauka-plywania' => array('name' => 'Indywidualna nauka pływania', 'description' => 'Indywidualne zajęcia nauki pływania dopasowane do poziomu uczestnika.'),
+        'obozy-i-polkolonie' => array('name' => 'Obozy i półkolonie', 'description' => 'Obozy sportowe i półkolonie dla dzieci.'),
+        'treningi' => array('name' => 'Treningi sportowe', 'description' => 'Zajęcia ogólnorozwojowe i treningi sportowe.'),
     );
 
-    foreach ($services as $service) {
-        $service_schema = array(
-            '@context' => 'https://schema.org',
-            '@type' => 'Service',
-            '@id' => trailingslashit($service['url']) . '#service',
-            'name' => $service['name'],
-            'description' => $service['description'],
-            'url' => $service['url'],
-            'provider' => array('@id' => $organization_id),
-            'areaServed' => array('@type' => 'City', 'name' => 'Warszawa'),
-            'availableLanguage' => 'pl',
-        );
-        echo '<script type="application/ld+json">' . wp_json_encode($service_schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>' . "\n";
+    $page_slug = get_post_field('post_name', get_queried_object_id());
+    if (!isset($services[$page_slug])) {
+        return;
     }
+
+    $service = $services[$page_slug];
+    $service_url = get_permalink();
+    $service_schema = array(
+        '@context' => 'https://schema.org',
+        '@type' => 'Service',
+        '@id' => trailingslashit($service_url) . '#service',
+        'name' => $service['name'],
+        'description' => $service['description'],
+        'url' => $service_url,
+        'provider' => array('@id' => $organization_id),
+        'areaServed' => array('@type' => 'City', 'name' => 'Warszawa'),
+        'availableLanguage' => 'pl',
+    );
+
+    echo '<script type="application/ld+json">' . wp_json_encode($service_schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>' . "\n";
+}
+
+
+/**
+ * Keep the Yoast WebPage node explicit on the posts index. Yoast normally
+ * detects a blog homepage as CollectionPage; the filter protects that type
+ * from settings or theme-specific query changes without creating a duplicate
+ * JSON-LD graph.
+ */
+add_filter('wpseo_schema_webpage_type', 'four_elements_blog_schema_type');
+function four_elements_blog_schema_type($type)
+{
+    return is_home() ? 'CollectionPage' : $type;
+}
+
+
+/**
+ * A standard WordPress post in this theme is a blog article. Keep that
+ * meaning inside Yoast's connected graph instead of outputting separate JSON-LD.
+ */
+add_filter('wpseo_schema_article', 'four_elements_blog_post_schema');
+function four_elements_blog_post_schema($data)
+{
+    if (is_singular('post')) {
+        $data['@type'] = 'BlogPosting';
+    }
+
+    return $data;
 }
 
 

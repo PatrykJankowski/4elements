@@ -1,60 +1,114 @@
 <?php get_header(); ?>
-    <section class="top">
-        <h1 class="fire"><?php the_title(); ?></h1>
 
-        <div class="container">
-            <div class="row mt-60">
-                <div class="col-lg-9">
-                    <?php while (have_posts()) : the_post(); ?>
-                        <article>
-                            <?php if (has_post_thumbnail()) { the_post_thumbnail(array(835, 460)); } ?>
-                            <time class="date"><?php echo apply_filters('the_date', get_the_date()); ?></time>
-                            <h2 class="title"><?php the_title(); ?></h2>
-                            <div class="content"><?php the_content(); ?></div>
-                        </article>
-                    <?php endwhile; ?>
-                </div>
-                <div class="col-lg-3">
-                    <?php get_sidebar(); ?>
-                </div>
-            </div>
-        </div>
-    </section>
+<?php
+$current_post_id = 0;
+$category_ids = array();
+?>
 
-
-    <?php $args = array();
-    $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-    $args = array(
-        'post_type' => 'post',
-        'post_status' => 'publish',
-        'posts_per_page' => 4,
-        'paged' => $paged,
-        'category__in' =>  get_the_category()['0']->cat_ID,
-        'post__not_in' => array( $post->ID ) 
-    );
-    $posts = new WP_Query($args);
+<?php while (have_posts()) : the_post(); ?>
+    <?php
+    $current_post_id = get_the_ID();
+    $category_ids = wp_list_pluck(get_the_category(), 'term_id');
     ?>
 
-    <section id="featured">
+    <div class="top">
+        <h1 id="post-title" class="fire"><?php the_title(); ?></h1>
+    </div>
+
+    <section class="single-layout" aria-labelledby="post-title">
         <div class="container">
             <div class="row">
-                <div class="col">
-                <h1>Najnowsze artykuły z tej kategorii</h1>
-                    <div class="row">
-                        <?php while ($posts->have_posts()) : $posts->the_post(); ?>
-                        <div class="col-lg-3">
-                            <?php the_post_thumbnail(array(408, 250)); ?>
-                            <time class="date"><?php echo apply_filters('the_date', get_the_date()); ?></time>
-                            <a href="<?php the_permalink(); ?>"><h2 class="title"><?php the_title(); ?></h2></a>
-                            <div class="content"><?php echo wp_trim_words(get_the_content(), 30, '...' ); ?></div>
-                            <a class="more" href="<?php the_permalink(); ?>">Czytaj więcej</a>
-                        </div>
-                        <?php endwhile; ?>
-                        <?php wp_reset_postdata(); ?>
+                <article class="col-lg-9 single-article" aria-labelledby="post-title">
+                    <?php if (has_post_thumbnail()) : ?>
+                        <figure class="single-article__image">
+                            <?php the_post_thumbnail(array(835, 460), array(
+                                'fetchpriority' => 'high',
+                                'loading' => 'eager',
+                            )); ?>
+                        </figure>
+                    <?php endif; ?>
+
+                    <header class="single-article__meta">
+                        <span>
+                            Opublikowano
+                            <time class="date" datetime="<?php echo esc_attr(get_the_date(DATE_W3C)); ?>">
+                                <?php echo esc_html(get_the_date()); ?>
+                            </time>
+                        </span>
+
+                        <?php if ($category_ids) : ?>
+                            <span class="single-article__categories">Kategorie: <?php echo wp_kses_post(get_the_category_list(', ')); ?></span>
+                        <?php endif; ?>
+                    </header>
+
+                    <div class="content">
+                        <?php the_content(); ?>
                     </div>
-                </div>
+
+                    <?php if (has_tag()) : ?>
+                        <footer class="single-article__tags" aria-label="Tematy artykułu">
+                            <span>Tematy:</span> <?php the_tags('', ', '); ?>
+                        </footer>
+                    <?php endif; ?>
+                </article>
+
+                <aside class="col-lg-3 single-sidebar" aria-label="Dodatkowe informacje o blogu">
+                    <?php get_sidebar(); ?>
+                </aside>
             </div>
         </div>
     </section>
+<?php endwhile; ?>
 
+<?php
+$related_args = array(
+    'post_type' => 'post',
+    'post_status' => 'publish',
+    'posts_per_page' => 4,
+    'post__not_in' => array($current_post_id),
+    'ignore_sticky_posts' => true,
+    'no_found_rows' => true,
+);
+
+if ($category_ids) {
+    $related_args['category__in'] = $category_ids;
+}
+
+$related_posts = new WP_Query($related_args);
+?>
+
+<?php if ($related_posts->have_posts()) : ?>
+    <section id="featured" class="featured" aria-labelledby="related-posts-heading">
+        <div class="container">
+            <h2 id="related-posts-heading">Więcej artykułów z tej kategorii</h2>
+
+            <div class="row featured-grid">
+                <?php while ($related_posts->have_posts()) : $related_posts->the_post(); ?>
+                    <article class="col-lg-3 featured-card<?php echo has_post_thumbnail() ? '' : ' featured-card--no-image'; ?>">
+                        <?php if (has_post_thumbnail()) : ?>
+                            <a class="featured-card__image" href="<?php the_permalink(); ?>" tabindex="-1" aria-hidden="true">
+                                <?php the_post_thumbnail(array(408, 250), array('loading' => 'lazy')); ?>
+                            </a>
+                        <?php endif; ?>
+
+                        <div class="featured-card__body">
+                            <time class="date" datetime="<?php echo esc_attr(get_the_date(DATE_W3C)); ?>">
+                                <span class="screen-reader-text">Opublikowano: </span><?php echo esc_html(get_the_date()); ?>
+                            </time>
+                            <h3 class="title">
+                                <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                            </h3>
+                            <p class="content"><?php echo esc_html(wp_trim_words(wp_strip_all_tags(get_the_excerpt()), 24, '…')); ?></p>
+                            <a class="more" href="<?php the_permalink(); ?>" aria-label="Czytaj więcej: <?php echo esc_attr(get_the_title()); ?>">
+                                Czytaj więcej <span aria-hidden="true">→</span>
+                            </a>
+                        </div>
+                    </article>
+                <?php endwhile; ?>
+            </div>
+        </div>
+    </section>
+<?php endif; ?>
+
+<?php wp_reset_postdata(); ?>
 <?php get_footer(); ?>
