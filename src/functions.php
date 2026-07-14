@@ -54,6 +54,23 @@ function setup()
 }
 
 
+/**
+ * Keep one canonical query for blog listings. WordPress applies category,
+ * tag, author and date constraints to this query before index.php renders it.
+ */
+add_action('pre_get_posts', 'four_elements_blog_posts_per_page');
+function four_elements_blog_posts_per_page($query)
+{
+    if (is_admin() || !$query->is_main_query()) {
+        return;
+    }
+
+    if ($query->is_home() || $query->is_archive()) {
+        $query->set('posts_per_page', 4);
+    }
+}
+
+
 add_filter('the_title', 'title');
 function title($title)
 {

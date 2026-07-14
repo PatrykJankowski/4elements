@@ -12,7 +12,7 @@ gulp.task('clean', function() {
 });
 
 gulp.task('html', () => {
-    return gulp.src('./src/*.php')
+    return gulp.src('./src/**/*.php')
         .pipe(gulp.dest('./dist'))
 });
 
