@@ -208,6 +208,9 @@ function four_elements_enqueue_webmcp()
         'description' => get_bloginfo('description'),
         'homeUrl' => home_url('/'),
         'currentUrl' => four_elements_canonical_url(),
+        'registrationUrl' => home_url('/formularz-rejestracyjny/'),
+        'isRegistrationPage' => is_page(array('formularz-rejestracyjny', 'zapisz-sie')),
+        'isContactPage' => is_page('kontakt'),
         'contact' => array(
             'email' => 'kontakt@4elements.pl',
             'phones' => array('798 968 416', '798 784 748'),
@@ -226,10 +229,24 @@ function four_elements_enqueue_webmcp()
 }
 
 
+function four_elements_offer_catalog_schema()
+{
+    return array(
+        '@type' => 'OfferCatalog',
+        'name' => 'Usługi 4elements',
+        'itemListElement' => array(
+            array('@type' => 'Offer', 'itemOffered' => array('@type' => 'Service', 'name' => 'Nauka pływania dla dzieci', 'url' => home_url('/nauka-plywania-dla-dzieci-warszawa/'), 'areaServed' => 'Warszawa')),
+            array('@type' => 'Offer', 'itemOffered' => array('@type' => 'Service', 'name' => 'Nauka pływania dla dorosłych', 'url' => home_url('/nauka-plywania-dla-doroslych-warszawa/'), 'areaServed' => 'Warszawa')),
+            array('@type' => 'Offer', 'itemOffered' => array('@type' => 'Service', 'name' => 'Obozy i półkolonie dla dzieci', 'url' => home_url('/obozy-i-polkolonie/'), 'areaServed' => 'Polska')),
+        ),
+    );
+}
+
+
 add_action('wp_head', 'four_elements_organization_schema', 20);
 function four_elements_organization_schema()
 {
-    if (is_admin()) {
+    if (is_admin() || defined('WPSEO_VERSION')) {
         return;
     }
 
@@ -297,7 +314,46 @@ function four_elements_organization_schema()
         ),
     );
 
+    if (is_front_page()) {
+        $schema['hasOfferCatalog'] = four_elements_offer_catalog_schema();
+    }
+
     echo '<script type="application/ld+json">' . wp_json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>' . "\n";
+}
+
+
+/**
+ * Keep business details and the public offer inside Yoast's connected entity
+ * graph. The nested Service nodes are exposed on the homepage only, not on
+ * unrelated pages such as the blog.
+ */
+add_filter('wpseo_schema_organization', 'four_elements_yoast_organization_schema');
+function four_elements_yoast_organization_schema($data)
+{
+    $data['@type'] = array('Organization', 'SportsActivityLocation');
+    $data['email'] = 'mailto:kontakt@4elements.pl';
+    $data['telephone'] = '+48 798 968 416';
+    $data['openingHours'] = 'Mo-Su 08:00-20:00';
+    $data['openingHoursSpecification'] = array(
+        '@type' => 'OpeningHoursSpecification',
+        'dayOfWeek' => array('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'),
+        'opens' => '08:00',
+        'closes' => '20:00',
+    );
+    $data['areaServed'] = array('@type' => 'City', 'name' => 'Warszawa');
+    $data['contactPoint'] = array(
+        '@type' => 'ContactPoint',
+        'contactType' => 'customer service',
+        'telephone' => '+48 798 968 416',
+        'email' => 'kontakt@4elements.pl',
+        'availableLanguage' => 'pl',
+    );
+
+    if (is_front_page()) {
+        $data['hasOfferCatalog'] = four_elements_offer_catalog_schema();
+    }
+
+    return $data;
 }
 
 /**
@@ -462,15 +518,29 @@ function four_elements_faq_items()
     );
 }
 
-add_action('wp_head', 'four_elements_faq_schema', 21);
-function four_elements_faq_schema()
+function four_elements_answer_capsule_items()
 {
-    if (!is_page('faq')) {
-        return;
-    }
+    return array(
+        array(
+            'question' => 'Jak zapisać się na zajęcia nauki pływania?',
+            'answer' => 'Aby zapisać się na zajęcia nauki pływania w 4elements, należy wypełnić formularz rejestracyjny lub skontaktować się telefonicznie. Przy doborze zajęć uwzględniane są wiek, poziom uczestnika, preferowana pływalnia oraz aktualna dostępność. Samo wysłanie formularza jest zgłoszeniem i nie oznacza automatycznego potwierdzenia miejsca.',
+        ),
+        array(
+            'question' => 'Dla kogo przeznaczone są zajęcia pływackie?',
+            'answer' => '4elements prowadzi w Warszawie naukę i doskonalenie pływania dla dzieci od 4. roku życia, młodzieży oraz dorosłych. Dostępne są zajęcia indywidualne i grupowe, a grupy liczą od 2 do 5 osób. Uczestnicy są dobierani przede wszystkim według wieku i poziomu umiejętności.',
+        ),
+        array(
+            'question' => 'Gdzie odbywają się zajęcia nauki pływania?',
+            'answer' => 'Zajęcia odbywają się na warszawskich pływalniach: OSiR Wola „FOKA” przy ul. Esperanto 5, Aqua Spa Wilanów przy ul. Sarmackiej 5 oraz w obiektach Centrum Sportu Wilanów przy ul. Gubinowskiej 28/30 i ul. Wiertniczej 26a. Dostępność terminów zależy od wybranej lokalizacji.',
+        ),
+    );
+}
 
+function four_elements_faq_schema_questions($items = null)
+{
+    $items = is_array($items) ? $items : four_elements_faq_items();
     $questions = array();
-    foreach (four_elements_faq_items() as $item) {
+    foreach ($items as $item) {
         $questions[] = array(
             '@type' => 'Question',
             'name' => $item['question'],
@@ -481,11 +551,45 @@ function four_elements_faq_schema()
         );
     }
 
+    return $questions;
+}
+
+
+/**
+ * Add FAQPage to Yoast's connected WebPage node. This is easier for agents
+ * and validators to consume than a second, disconnected JSON-LD graph.
+ */
+add_filter('wpseo_schema_webpage', 'four_elements_faq_yoast_schema');
+function four_elements_faq_yoast_schema($data)
+{
+    if (!is_page('faq')) {
+        return $data;
+    }
+
+    $types = isset($data['@type']) ? (array) $data['@type'] : array('WebPage');
+    $types[] = 'FAQPage';
+    $data['@type'] = array_values(array_unique($types));
+    $data['mainEntity'] = four_elements_faq_schema_questions();
+
+    return $data;
+}
+
+
+/**
+ * Fallback for installations where Yoast SEO is not active.
+ */
+add_action('wp_head', 'four_elements_faq_schema', 21);
+function four_elements_faq_schema()
+{
+    if (!is_page('faq') || defined('WPSEO_VERSION')) {
+        return;
+    }
+
     $schema = array(
         '@context' => 'https://schema.org',
         '@type' => 'FAQPage',
         '@id' => trailingslashit(get_permalink()) . '#faq',
-        'mainEntity' => $questions,
+        'mainEntity' => four_elements_faq_schema_questions(),
     );
 
     echo '<script type="application/ld+json">' . wp_json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>' . "\n";
@@ -1037,34 +1141,75 @@ function four_elements_handle_nlweb_request()
     if ($query === '' && is_array($body) && isset($body['query'])) {
         $query = $body['query'];
     }
+    if (is_array($query)) {
+        $query = isset($query['text']) ? $query['text'] : '';
+    }
     $query = trim(sanitize_text_field((string) $query));
     if ($query === '') {
         four_elements_send_agent_json(array(
-            'error' => array('code' => 'missing_query', 'message' => 'Provide a natural-language question in the query parameter.'),
+            '_meta' => array(
+                'response_type' => 'elicitation',
+                'response_format' => 'conversational_search',
+                'version' => '0.55',
+            ),
+            'elicitation' => array(
+                'message' => 'Podaj pytanie o zajęcia, zapisy, płatności, pływalnie lub kontakt z 4elements.',
+                'requestedSchema' => array(
+                    'type' => 'object',
+                    'properties' => array('query' => array('type' => 'string', 'minLength' => 2)),
+                    'required' => array('query'),
+                ),
+            ),
             'examples' => array('Czy mogę odwołać zajęcia?', 'Gdzie są pływalnie?', 'Jak zapisać dziecko?'),
-        ), 400);
+        ));
     }
     if (strlen($query) > 300) {
-        four_elements_send_agent_json(array('error' => array('code' => 'query_too_long', 'message' => 'The query may contain at most 300 characters.')), 400);
+        four_elements_send_agent_json(array(
+            '_meta' => array('response_type' => 'failure', 'version' => '0.55'),
+            'error' => array('code' => 'INVALID_QUERY', 'message' => 'Pytanie może zawierać maksymalnie 300 znaków.'),
+        ));
     }
 
     $limit = four_elements_nlweb_rate_limit();
     if (!$limit['allowed']) {
         header('Retry-After: ' . $limit['retry_after']);
-        four_elements_send_agent_json(array('error' => array('code' => 'rate_limited', 'message' => 'Try again shortly.')), 429);
+        four_elements_send_agent_json(array(
+            '_meta' => array('response_type' => 'failure', 'version' => '0.55'),
+            'error' => array('code' => 'RATE_LIMITED', 'message' => 'Spróbuj ponownie za chwilę.'),
+        ), 429);
     }
 
     $results = four_elements_nlweb_search($query);
+    $answer = four_elements_nlweb_answer($results);
+    $structured_results = array(
+        array(
+            '@type' => 'SearchSummary',
+            'text' => $answer,
+            'grounding' => array(
+                'sources' => array_map(function ($result) {
+                    return array('name' => $result['title'], 'url' => $result['url']);
+                }, $results),
+            ),
+        ),
+    );
+
+    foreach ($results as $result) {
+        $structured_results[] = array(
+            '@type' => isset($result['answer']) ? 'Question' : 'WebPage',
+            'name' => $result['title'],
+            'description' => isset($result['answer']) ? $result['answer'] : $result['text'],
+            'url' => $result['url'],
+            'grounding' => array('sources' => array(array('name' => $result['title'], 'url' => $result['url']))),
+        );
+    }
+
     four_elements_send_agent_json(array(
-        'protocol' => 'NLWeb-compatible',
-        'version' => '1.0',
-        'query' => $query,
-        'answer' => four_elements_nlweb_answer($results),
-        'results' => $results,
-        'sources' => array_map(function ($result) {
-            return array('title' => $result['title'], 'url' => $result['url']);
-        }, $results),
-        'next' => array('endpoint' => home_url('/ask'), 'method' => 'GET or POST', 'parameter' => 'query'),
+        '_meta' => array(
+            'response_type' => 'answer',
+            'response_format' => 'conversational_search',
+            'version' => '0.55',
+        ),
+        'results' => $structured_results,
     ));
 }
 
@@ -1101,7 +1246,7 @@ function four_elements_nlweb_search($query)
         array('title' => 'Formularz rejestracyjny', 'text' => 'Zapisy i rejestracja na zajęcia.', 'url' => home_url('/formularz-rejestracyjny/')),
         array('title' => 'Kontakt', 'text' => 'Kontakt telefoniczny i e-mail z 4elements.', 'url' => home_url('/kontakt/')),
     );
-    foreach (four_elements_faq_items() as $item) {
+    foreach (array_merge(four_elements_answer_capsule_items(), four_elements_faq_items()) as $item) {
         $pages[] = array('title' => $item['question'], 'text' => $item['answer'], 'url' => home_url('/faq/'), 'answer' => $item['answer']);
     }
 
@@ -1159,7 +1304,7 @@ function four_elements_nlweb_answer($results)
 {
     $best = reset($results);
     if (isset($best['answer'])) {
-        return $best['answer'] . ' Źródło: ' . $best['url'];
+        return $best['answer'];
     }
-    return 'Najbardziej pomocna strona: ' . $best['title'] . '. ' . $best['text'] . ' Źródło: ' . $best['url'];
+    return 'Najbardziej pomocna będzie strona „' . $best['title'] . '”. ' . $best['text'];
 }
