@@ -337,6 +337,49 @@ function four_elements_service_schemas()
 }
 
 
+function four_elements_opening_hours_specification()
+{
+    return array(
+        '@type' => 'OpeningHoursSpecification',
+        'dayOfWeek' => array('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'),
+        'opens' => '09:00',
+        'closes' => '21:00',
+    );
+}
+
+
+function four_elements_business_location_schema()
+{
+    return array(
+        '@context' => 'https://schema.org',
+        '@type' => 'SportsActivityLocation',
+        '@id' => trailingslashit(home_url('/')) . '#swimming-school',
+        'name' => '4elements – nauka pływania Warszawa',
+        'url' => home_url('/'),
+        'parentOrganization' => array('@id' => trailingslashit(home_url('/')) . '#organization'),
+        'address' => array(
+            '@type' => 'PostalAddress',
+            'streetAddress' => 'ul. Sarmacka 5',
+            'addressLocality' => 'Warszawa',
+            'addressCountry' => 'PL',
+        ),
+        'telephone' => '+48 798 968 416',
+        'email' => 'kontakt@4elements.pl',
+        'openingHours' => array(
+            'Mo 09:00-21:00',
+            'Tu 09:00-21:00',
+            'We 09:00-21:00',
+            'Th 09:00-21:00',
+            'Fr 09:00-21:00',
+            'Sa 09:00-21:00',
+            'Su 09:00-21:00',
+        ),
+        'openingHoursSpecification' => array(four_elements_opening_hours_specification()),
+        'areaServed' => array('@type' => 'City', 'name' => 'Warszawa'),
+    );
+}
+
+
 add_action('wp_head', 'four_elements_organization_schema', 20);
 function four_elements_organization_schema()
 {
@@ -347,7 +390,7 @@ function four_elements_organization_schema()
     $home_url = home_url('/');
     $schema = array(
         '@context' => 'https://schema.org',
-        '@type' => array('Organization', 'SportsActivityLocation'),
+        '@type' => 'Organization',
         '@id' => trailingslashit($home_url) . '#organization',
         'name' => get_bloginfo('name') ?: '4elements',
         'url' => $home_url,
@@ -364,21 +407,6 @@ function four_elements_organization_schema()
         ),
         'email' => 'mailto:kontakt@4elements.pl',
         'telephone' => '+48 798 968 416',
-        'openingHours' => array(
-            'Mo 09:00-21:00',
-            'Tu 09:00-21:00',
-            'We 09:00-21:00',
-            'Th 09:00-21:00',
-            'Fr 09:00-21:00',
-            'Sa 09:00-21:00',
-            'Su 09:00-21:00',
-        ),
-        'openingHoursSpecification' => array(
-            '@type' => 'OpeningHoursSpecification',
-            'dayOfWeek' => array('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'),
-            'opens' => '09:00',
-            'closes' => '21:00',
-        ),
         'sameAs' => array(
             'https://www.facebook.com/4elementspl',
             'https://www.instagram.com/4elements_naukaplywania/'
@@ -393,12 +421,7 @@ function four_elements_organization_schema()
             'telephone' => '+48 798 968 416',
             'email' => 'kontakt@4elements.pl',
             'availableLanguage' => 'pl',
-            'hoursAvailable' => array(
-                '@type' => 'OpeningHoursSpecification',
-                'dayOfWeek' => array('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'),
-                'opens' => '09:00',
-                'closes' => '21:00',
-            ),
+            'hoursAvailable' => four_elements_opening_hours_specification(),
             'areaServed' => 'PL',
         ),
         'location' => array(
@@ -420,6 +443,7 @@ function four_elements_organization_schema()
     }
 
     echo '<script type="application/ld+json">' . wp_json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>' . "\n";
+    echo '<script type="application/ld+json">' . wp_json_encode(four_elements_business_location_schema(), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>' . "\n";
 
     if (is_front_page()) {
         foreach (four_elements_service_schemas() as $service_schema) {
@@ -437,7 +461,7 @@ function four_elements_organization_schema()
 add_filter('wpseo_schema_organization', 'four_elements_yoast_organization_schema');
 function four_elements_yoast_organization_schema($data)
 {
-    $data['@type'] = array('Organization', 'SportsActivityLocation');
+    $data['@type'] = 'Organization';
     $data['email'] = 'mailto:kontakt@4elements.pl';
     $data['telephone'] = '+48 798 968 416';
     $data['address'] = array(
@@ -446,21 +470,7 @@ function four_elements_yoast_organization_schema($data)
         'addressLocality' => 'Warszawa',
         'addressCountry' => 'PL',
     );
-    $data['openingHours'] = array(
-        'Mo 09:00-21:00',
-        'Tu 09:00-21:00',
-        'We 09:00-21:00',
-        'Th 09:00-21:00',
-        'Fr 09:00-21:00',
-        'Sa 09:00-21:00',
-        'Su 09:00-21:00',
-    );
-    $data['openingHoursSpecification'] = array(
-        '@type' => 'OpeningHoursSpecification',
-        'dayOfWeek' => array('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'),
-        'opens' => '09:00',
-        'closes' => '21:00',
-    );
+    unset($data['openingHours'], $data['openingHoursSpecification']);
     $data['areaServed'] = array('@type' => 'City', 'name' => 'Warszawa');
     $data['contactPoint'] = array(
         '@type' => 'ContactPoint',
@@ -482,6 +492,24 @@ function four_elements_yoast_organization_schema($data)
  * Service entities do not belong on unrelated pages such as the blog index.
  */
 add_action('wp_head', 'four_elements_service_schema', 22);
+function four_elements_prices_from_page($post_id)
+{
+    $content = html_entity_decode(wp_strip_all_tags((string) get_post_field('post_content', $post_id)), ENT_QUOTES, 'UTF-8');
+    if (!preg_match_all('/(\d+(?:[,.]\d{1,2})?)\s*(?:zł|PLN)/iu', $content, $matches)) {
+        return array();
+    }
+
+    $prices = array_map(function ($price) {
+        return (float) str_replace(',', '.', $price);
+    }, $matches[1]);
+    $prices = array_values(array_unique(array_filter($prices, function ($price) {
+        return $price > 0;
+    })));
+    sort($prices, SORT_NUMERIC);
+
+    return $prices;
+}
+
 function four_elements_service_schema()
 {
     if (is_admin() || !is_page()) {
@@ -493,6 +521,7 @@ function four_elements_service_schema()
         'nauka-plywania-warszawa/dzieci' => array('name' => 'Nauka pływania dla dzieci', 'description' => 'Zajęcia nauki i doskonalenia pływania dla dzieci w Warszawie.'),
         'nauka-plywania-warszawa/dorosli' => array('name' => 'Nauka pływania dla dorosłych', 'description' => 'Zajęcia nauki i doskonalenia pływania dla dorosłych w Warszawie.'),
         'nauka-plywania-warszawa' => array('name' => 'Nauka pływania w Warszawie', 'description' => 'Grupowe i indywidualne zajęcia nauki pływania dla dzieci i dorosłych w Warszawie.'),
+        'nauka-plywania-warszawa/cennik' => array('name' => 'Płatne zajęcia nauki pływania w Warszawie', 'description' => 'Cennik grupowych i indywidualnych zajęć nauki pływania dla dzieci i dorosłych w Warszawie.'),
         'obozy-i-polkolonie' => array('name' => 'Obozy i półkolonie', 'description' => 'Obozy sportowe i półkolonie dla dzieci.'),
         'treningi' => array('name' => 'Treningi sportowe', 'description' => 'Zajęcia ogólnorozwojowe i treningi sportowe.'),
     );
@@ -515,6 +544,27 @@ function four_elements_service_schema()
         'areaServed' => array('@type' => 'City', 'name' => 'Warszawa'),
         'availableLanguage' => 'pl',
     );
+
+    if ($page_path === 'nauka-plywania-warszawa/cennik') {
+        $prices = four_elements_prices_from_page(get_queried_object_id());
+        if (count($prices) === 1) {
+            $service_schema['offers'] = array(
+                '@type' => 'Offer',
+                'url' => $service_url,
+                'price' => (string) $prices[0],
+                'priceCurrency' => 'PLN',
+            );
+        } elseif (count($prices) > 1) {
+            $service_schema['offers'] = array(
+                '@type' => 'AggregateOffer',
+                'url' => $service_url,
+                'lowPrice' => (string) min($prices),
+                'highPrice' => (string) max($prices),
+                'offerCount' => count($prices),
+                'priceCurrency' => 'PLN',
+            );
+        }
+    }
 
     echo '<script type="application/ld+json">' . wp_json_encode($service_schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>' . "\n";
 }
@@ -1200,7 +1250,7 @@ function four_elements_agent_discovery_links()
         return;
     }
 
-    echo '<meta name="4elements-ai-schema-version" content="2026-07-15.2">' . "\n";
+    echo '<meta name="4elements-ai-schema-version" content="2026-07-15.3">' . "\n";
     echo '<link rel="alternate" type="application/json" title="A2A Agent Card" href="' . esc_url(home_url('/.well-known/agent-card.json')) . '">' . "\n";
     echo '<link rel="alternate" type="application/json" title="MCP Server Card" href="' . esc_url(home_url('/.well-known/mcp/server-card.json')) . '">' . "\n";
     echo '<link rel="mcp-server-card" type="application/json" href="' . esc_url(home_url('/.well-known/mcp/server-card.json')) . '">' . "\n";
@@ -1210,6 +1260,80 @@ function four_elements_agent_discovery_links()
     echo '<meta name="webmcp-manifest" content="' . esc_url(home_url('/.well-known/webmcp.json')) . '">' . "\n";
     echo '<link rel="alternate" type="application/json" title="Agents Manifest" href="' . esc_url(home_url('/.well-known/agents.json')) . '">' . "\n";
     echo '<link rel="alternate" type="application/json" title="NLWeb Ask API" href="' . esc_url(home_url('/ask')) . '">' . "\n";
+}
+
+add_action('wp_head', 'four_elements_imperative_webmcp', 6);
+function four_elements_imperative_webmcp()
+{
+    if (is_admin()) {
+        return;
+    }
+
+    $registration_url = home_url('/formularz-rejestracyjny/');
+    $contact_url = home_url('/kontakt/');
+    ?>
+    <script id="4elements-imperative-webmcp">
+        (function () {
+            if (!document.modelContext || typeof document.modelContext.registerTool !== 'function') {
+                return;
+            }
+
+            const toolName = 'open_swimming_registration_channel';
+            const registrationTool = {
+                name: toolName,
+                title: 'Otwórz wybrany kanał zapisów na naukę pływania',
+                description: 'Otwiera zapisy online ActiveNow albo stronę kontaktową 4elements. Użytkownik samodzielnie wybiera zajęcia lub wysyła wiadomość.',
+                inputSchema: {
+                    type: 'object',
+                    properties: {
+                        channel: {
+                            type: 'string',
+                            enum: ['activenow', 'contact'],
+                            description: 'Kanał zapisu wybrany przez użytkownika.'
+                        }
+                    },
+                    required: ['channel'],
+                    additionalProperties: false
+                },
+                annotations: { readOnlyHint: false, destructiveHint: false },
+                execute: function (input) {
+                    const useContact = input && input.channel === 'contact';
+                    const targetUrl = useContact
+                        ? <?php echo wp_json_encode($contact_url); ?>
+                        : <?php echo wp_json_encode($registration_url); ?>;
+
+                    window.location.assign(targetUrl);
+                    return {
+                        content: [{ type: 'text', text: 'Otwarto wybrany kanał zapisów.' }],
+                        structuredContent: { channel: useContact ? 'contact' : 'activenow', url: targetUrl }
+                    };
+                }
+            };
+
+            try {
+                document.modelContext.registerTool(registrationTool);
+            } catch (error) {}
+
+            if (typeof document.modelContext.provideContext === 'function') {
+                try {
+                    document.modelContext.provideContext({
+                        name: '4elements',
+                        description: 'Nauka pływania dla dzieci i dorosłych w Warszawie.',
+                        url: window.location.href
+                    });
+                } catch (error) {}
+            }
+
+            window.addEventListener('pagehide', function () {
+                if (document.modelContext && typeof document.modelContext.unregisterTool === 'function') {
+                    try {
+                        document.modelContext.unregisterTool(toolName);
+                    } catch (error) {}
+                }
+            }, { once: true });
+        }());
+    </script>
+    <?php
 }
 
 function four_elements_openapi_document()

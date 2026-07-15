@@ -128,48 +128,5 @@
 
 <?php wp_footer(); ?>
 
-<script>
-    (function () {
-        const registrationTool = {
-            name: 'open_swimming_registration_channel',
-            title: 'Otwórz wybrany kanał zapisów na naukę pływania',
-            description: 'Otwiera zapisy online z tabelą ActiveNow albo stronę kontaktową 4elements. Użytkownik samodzielnie wybiera zajęcia lub wysyła wiadomość.',
-            inputSchema: {
-                type: 'object',
-                properties: {
-                    channel: {
-                        type: 'string',
-                        enum: ['activenow', 'contact'],
-                        description: 'Wybierz activenow dla zapisów online albo contact dla telefonu i wiadomości.'
-                    }
-                },
-                required: ['channel'],
-                additionalProperties: false
-            },
-            annotations: { readOnlyHint: false, destructiveHint: false },
-            execute: function (input) {
-                const useContact = input && input.channel === 'contact';
-                const targetUrl = useContact
-                    ? '<?php echo esc_js(home_url('/kontakt/')); ?>'
-                    : '<?php echo esc_js(home_url('/formularz-rejestracyjny/')); ?>';
-
-                window.location.assign(targetUrl);
-                return Promise.resolve({
-                    opened: true,
-                    channel: useContact ? 'contact' : 'activenow',
-                    provider: useContact ? '4elements' : 'ActiveNow',
-                    url: targetUrl
-                });
-            }
-        };
-
-        if (navigator.modelContext && typeof navigator.modelContext.registerTool === 'function') {
-            navigator.modelContext.registerTool(registrationTool);
-        } else if (document.modelContext && typeof document.modelContext.registerTool === 'function') {
-            document.modelContext.registerTool(registrationTool);
-        }
-    }());
-</script>
-
 </body>
 </html>
