@@ -183,9 +183,21 @@
 
         form.setAttribute('toolname', name);
         form.setAttribute('tooldescription', description);
+        form.removeAttribute('toolautosubmit');
 
         Array.prototype.forEach.call(form.elements || [], function (control) {
-            if (!control.name || control.hasAttribute('toolparamdescription')) {
+            const isHoneypot = control.type === 'hidden'
+                || control.getAttribute('aria-hidden') === 'true'
+                || control.getAttribute('tabindex') === '-1'
+                || control.classList.contains('wpcf7-honeypot')
+                || control.closest('.honeypot, [class*="honeypot"], [data-honeypot]');
+
+            if (!control.name || isHoneypot) {
+                control.removeAttribute('toolparamdescription');
+                return;
+            }
+
+            if (control.hasAttribute('toolparamdescription')) {
                 return;
             }
 
