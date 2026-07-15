@@ -1,72 +1,156 @@
-.element {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 140px;
-    width: 140px;
-    padding: 24px;
-    margin-top: $M;
-    border: 1px solid #9E9C9C;
-    border-radius: 50%;
-    color: #9E9C9C;
-    font-size: 16px;
-    transition: all 1s;
+.elements-nav {
+    padding: $L 0 $XL;
+    background: $white;
+}
 
-    @media screen and (min-width: $tablet) {
-        height: 180px;
-        width: 180px;
-        padding: 40px;
-        margin: 60px 0 40px;
-        font-size: 18px;
+.elements-nav__header {
+    margin-bottom: $M;
+    text-align: center;
+
+    h2 {
+        margin: 0;
+        font-size: $h2-size;
+        line-height: 1.1;
+    }
+}
+
+.elements-nav__grid {
+    row-gap: $S;
+
+    > div {
+        display: flex;
+    }
+}
+
+.element {
+    position: relative;
+    display: flex;
+    width: 100%;
+    min-height: 170px;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: $S;
+    overflow: hidden;
+    border: 1px solid rgba($wind, .18);
+    border-top: 5px solid $wind;
+    border-radius: $XS;
+    background: linear-gradient(145deg, $white 20%, rgba($wind, .1) 100%);
+    box-shadow: 0 10px 28px rgba($text-main-color, .08);
+    color: $text-main-color;
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+
+    &::after {
+        content: '';
+        position: absolute;
+        right: -42px;
+        bottom: -58px;
+        width: 130px;
+        height: 130px;
+        border: 22px solid rgba($wind, .08);
+        border-radius: 50%;
+        transition: transform .35s ease;
     }
 
     &:hover {
-        background: #E46015;
-        color: #fff;
-        border: none;
+        border-color: $wind;
+        box-shadow: 0 18px 38px rgba($text-main-color, .14);
+        transform: translateY(-6px);
 
-        path {
-            fill: #fff;
+        &::after {
+            transform: scale(1.15);
+        }
+
+        .element__arrow {
+            transform: translateX(5px);
         }
     }
 
-    path {
-        transition: all 1s;
-    }
-
-    &--mt {
-        margin-top: $L;
-    }
-
-    &--mb {
-        margin-bottom: #{$L - 20px};
-    }
-
-    &--fire {
-        &:hover {
-            background: $fire;
-        }
-    }
-
-    &--water {
-        &:hover {
-            background: $water;
-        }
-    }
-
-    &--earth {
-        &:hover {
-            background: $ground;
-        }
-    }
-
-    &--wind {
-        &:hover {
-            background: $wind;
-        }
+    &:focus-visible {
+        outline: 2px solid $text-main-color;
+        outline-offset: 4px;
     }
 
     svg {
-        margin-bottom: 10px;
+        width: $L;
+        height: $L;
+        margin-bottom: $S;
+        padding: $XS;
+        box-sizing: border-box;
+        border-radius: 50%;
+        background: rgba($wind, .1);
+    }
+
+    path {
+        fill: $wind;
+        transition: fill .2s ease;
+    }
+
+    &--water {
+        border-top-color: $water;
+        background: linear-gradient(145deg, $white 20%, rgba($water, .12) 100%);
+
+        svg { background: rgba($water, .13); }
+        path { fill: $water; }
+        &::after { border-color: rgba($water, .1); }
+        &:hover { border-color: $water; }
+    }
+
+    &--earth {
+        border-top-color: $ground;
+        background: linear-gradient(145deg, $white 20%, rgba($ground, .12) 100%);
+
+        svg { background: rgba($ground, .13); }
+        path { fill: $ground; }
+        &::after { border-color: rgba($ground, .1); }
+        &:hover { border-color: $ground; }
+    }
+
+    &--fire {
+        border-top-color: $fire;
+        background: linear-gradient(145deg, $white 20%, rgba($fire, .12) 100%);
+
+        svg { background: rgba($fire, .13); }
+        path { fill: $fire; }
+        &::after { border-color: rgba($fire, .1); }
+        &:hover { border-color: $fire; }
+    }
+}
+
+.element__title {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 5px;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.element__description {
+    position: relative;
+    z-index: 1;
+    max-width: 210px;
+    font-size: 14px;
+    line-height: 1.35;
+    opacity: .76;
+}
+
+.element__arrow {
+    position: absolute;
+    top: $S;
+    right: $S;
+    z-index: 1;
+    font-size: 24px;
+    transition: transform .2s ease;
+}
+
+@include for-size(tablet) {
+    .element {
+        min-height: 220px;
+        padding: $M;
+    }
+
+    .element__arrow {
+        top: $M;
+        right: $M;
     }
 }
