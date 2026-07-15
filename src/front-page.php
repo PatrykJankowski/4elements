@@ -184,10 +184,10 @@
     <div class="container">
         <div class="home-locations__header">
             <div>
-                <p class="home-eyebrow">Warszawa Ursynów i Wilanów</p>
+                <p class="home-eyebrow">Lekcje w Warszawie</p>
                 <h2 id="home-locations-heading">Gdzie w Warszawie odbywa się nauka pływania?</h2>
             </div>
-            <p>Zajęcia prowadzimy na dwóch pływalniach. Wybierz dogodną lokalizację, a dostępny termin ustalimy po otrzymaniu zgłoszenia. Na zajęcia indywidualne możemy umówić się w dowolnym miejscu.</p>
+            <p>Zajęcia prowadzimy na dwóch pływalniach. Wybierz dogodną lokalizację, a dostępny termin ustalimy po otrzymaniu zgłoszenia. Na zajęcia indywidualne możemy umówić się w dowolnym miejscu w Warszawie.</p>
         </div>
 
         <div class="home-locations__grid">

@@ -65,7 +65,7 @@ function four_elements_front_page_seo_title()
 
 function four_elements_front_page_seo_description()
 {
-    return 'Nauka pływania w Warszawie dla dzieci od 4 lat i dorosłych. Małe grupy i zajęcia indywidualne na Ursynowie i w Wilanowie. Sprawdź ofertę 4elements.';
+    return 'Nauka pływania w Warszawie dla dzieci od 4 lat i dorosłych. Zajęcia indywidualne w całej Warszawie oraz małe grupy na wybranych pływalniach.';
 }
 
 add_filter('document_title_parts', 'four_elements_front_page_title_parts');
@@ -239,7 +239,8 @@ function four_elements_enqueue_webmcp()
     }
 
     wp_localize_script('4elements-webmcp', 'fourElementsAgentData', array(
-        'name' => get_bloginfo('name') ?: '4elements',
+        'name' => '4elements',
+        'alternateName' => '4elements Warszawa',
         'description' => get_bloginfo('description'),
         'homeUrl' => home_url('/'),
         'currentUrl' => four_elements_canonical_url(),
@@ -255,9 +256,9 @@ function four_elements_enqueue_webmcp()
             'phones' => array('798 968 416', '798 784 748'),
         ),
         'pages' => array(
-            array('name' => 'Nauka pływania', 'url' => home_url('/nauka-plywania-warszawa/'), 'keywords' => 'pływanie dzieci dorośli lekcje zajęcia Warszawa'),
+            array('name' => 'Nauka pływania', 'url' => home_url('/nauka-plywania-warszawa/'), 'keywords' => 'nauka pływania cała Warszawa dzieci dorośli lekcje grupowe indywidualne instruktor dojazd'),
             array('name' => 'Cennik', 'url' => home_url('/nauka-plywania-warszawa/cennik/'), 'keywords' => 'cena koszt płatność'),
-            array('name' => 'Pływalnie', 'url' => home_url('/nauka-plywania-warszawa/plywalnie-i-grafik/'), 'keywords' => 'basen adres lokalizacja Warszawa Ursynów Wilanów'),
+            array('name' => 'Pływalnie', 'url' => home_url('/nauka-plywania-warszawa/plywalnie-i-grafik/'), 'keywords' => 'basen adres lokalizacja cała Warszawa zajęcia indywidualne Ursynów Wilanów'),
             array('name' => 'Obozy i półkolonie', 'url' => home_url('/obozy-i-polkolonie/'), 'keywords' => 'obóz półkolonie lato zima dzieci'),
             array('name' => 'Treningi', 'url' => home_url('/treningi/'), 'keywords' => 'trening zajęcia sportowe personalne'),
             array('name' => 'Blog', 'url' => home_url('/blog/'), 'keywords' => 'artykuły poradniki aktualności'),
@@ -275,7 +276,7 @@ function four_elements_offer_catalog_schema()
         '@type' => 'OfferCatalog',
         'name' => 'Usługi 4elements',
         'itemListElement' => array(
-            array('@type' => 'Offer', 'itemOffered' => array('@type' => 'Service', 'name' => 'Nauka pływania dla dzieci i dorosłych w Warszawie', 'serviceType' => 'Nauka i doskonalenie pływania', 'url' => home_url('/nauka-plywania-warszawa/'), 'areaServed' => 'Warszawa')),
+            array('@type' => 'Offer', 'itemOffered' => array('@type' => 'Service', 'name' => 'Nauka pływania dla dzieci i dorosłych w Warszawie', 'description' => 'Zajęcia indywidualne na terenie całej Warszawy oraz zajęcia grupowe na wybranych pływalniach.', 'serviceType' => 'Nauka i doskonalenie pływania', 'url' => home_url('/nauka-plywania-warszawa/'), 'areaServed' => 'Warszawa', 'providerMobility' => 'dynamic')),
             array('@type' => 'Offer', 'itemOffered' => array('@type' => 'Service', 'name' => 'Obozy sportowe i półkolonie dla dzieci', 'serviceType' => 'Obozy sportowe i półkolonie', 'url' => home_url('/obozy-i-polkolonie/'), 'areaServed' => 'Polska')),
         ),
     );
@@ -292,12 +293,13 @@ function four_elements_service_schemas()
             '@type' => 'Service',
             '@id' => home_url('/nauka-plywania-warszawa/#service'),
             'name' => 'Nauka pływania dla dzieci i dorosłych w Warszawie',
-            'description' => 'Grupowe i indywidualne zajęcia nauki oraz doskonalenia pływania dla dzieci od 4 lat, młodzieży i dorosłych.',
+            'description' => 'Nauka i doskonalenie pływania dla dzieci od 4 lat, młodzieży i dorosłych. Zajęcia indywidualne prowadzimy na terenie całej Warszawy, a zajęcia grupowe na wybranych warszawskich pływalniach.',
             'serviceType' => 'Nauka i doskonalenie pływania',
             'category' => 'Nauka pływania',
             'url' => home_url('/nauka-plywania-warszawa/'),
             'provider' => array('@id' => $organization_id),
             'areaServed' => array('@type' => 'City', 'name' => 'Warszawa'),
+            'providerMobility' => 'dynamic',
             'audience' => array('@type' => 'PeopleAudience', 'audienceType' => 'Dzieci od 4 lat, młodzież i dorośli'),
             'availableChannel' => array(
                 array(
@@ -392,13 +394,16 @@ function four_elements_organization_schema()
         '@context' => 'https://schema.org',
         '@type' => 'Organization',
         '@id' => trailingslashit($home_url) . '#organization',
-        'name' => get_bloginfo('name') ?: '4elements',
+        'name' => '4elements',
+        'alternateName' => '4elements Warszawa',
         'url' => $home_url,
         'logo' => array(
             '@type' => 'ImageObject',
             'url' => get_template_directory_uri() . '/img/logo.png',
         ),
         'description' => get_bloginfo('description') ?: 'Nauka pływania w Warszawie, obozy i półkolonie.',
+        'slogan' => 'Nauka pływania dla dzieci i dorosłych w całej Warszawie',
+        'knowsAbout' => array('nauka pływania w Warszawie', 'indywidualna nauka pływania', 'grupowa nauka pływania', 'doskonalenie techniki pływania'),
         'address' => array(
             '@type' => 'PostalAddress',
             'streetAddress' => 'ul. Sarmacka 5',
@@ -454,37 +459,21 @@ function four_elements_organization_schema()
 
 
 /**
- * Keep business details and the public offer inside Yoast's connected entity
- * graph. The nested Service nodes are exposed on the homepage only, not on
- * unrelated pages such as the blog.
+ * The theme emits the canonical Organization node. Remove Yoast's copy while
+ * retaining its references to the same #organization ID, so consumers see a
+ * single company entity instead of two competing definitions.
  */
-add_filter('wpseo_schema_organization', 'four_elements_yoast_organization_schema');
-function four_elements_yoast_organization_schema($data)
+add_filter('wpseo_schema_graph', 'four_elements_dedupe_yoast_organization', 99, 2);
+function four_elements_dedupe_yoast_organization($graph, $context)
 {
-    $data['@type'] = 'Organization';
-    $data['email'] = 'mailto:kontakt@4elements.pl';
-    $data['telephone'] = '+48 798 968 416';
-    $data['address'] = array(
-        '@type' => 'PostalAddress',
-        'streetAddress' => 'ul. Sarmacka 5',
-        'addressLocality' => 'Warszawa',
-        'addressCountry' => 'PL',
-    );
-    unset($data['openingHours'], $data['openingHoursSpecification']);
-    $data['areaServed'] = array('@type' => 'City', 'name' => 'Warszawa');
-    $data['contactPoint'] = array(
-        '@type' => 'ContactPoint',
-        'contactType' => 'customer service',
-        'telephone' => '+48 798 968 416',
-        'email' => 'kontakt@4elements.pl',
-        'availableLanguage' => 'pl',
-    );
+    return array_values(array_filter($graph, function ($piece) {
+        if (!is_array($piece) || !isset($piece['@type'])) {
+            return true;
+        }
 
-    if (is_front_page()) {
-        $data['hasOfferCatalog'] = four_elements_offer_catalog_schema();
-    }
-
-    return $data;
+        $types = (array) $piece['@type'];
+        return !in_array('Organization', $types, true);
+    }));
 }
 
 /**
@@ -520,7 +509,7 @@ function four_elements_service_schema()
     $services = array(
         'nauka-plywania-warszawa/dzieci' => array('name' => 'Nauka pływania dla dzieci', 'description' => 'Zajęcia nauki i doskonalenia pływania dla dzieci w Warszawie.'),
         'nauka-plywania-warszawa/dorosli' => array('name' => 'Nauka pływania dla dorosłych', 'description' => 'Zajęcia nauki i doskonalenia pływania dla dorosłych w Warszawie.'),
-        'nauka-plywania-warszawa' => array('name' => 'Nauka pływania w Warszawie', 'description' => 'Grupowe i indywidualne zajęcia nauki pływania dla dzieci i dorosłych w Warszawie.'),
+        'nauka-plywania-warszawa' => array('name' => 'Nauka pływania dla dzieci i dorosłych w Warszawie', 'description' => 'Zajęcia indywidualne na terenie całej Warszawy oraz zajęcia grupowe na wybranych warszawskich pływalniach.'),
         'nauka-plywania-warszawa/cennik' => array('name' => 'Płatne zajęcia nauki pływania w Warszawie', 'description' => 'Cennik grupowych i indywidualnych zajęć nauki pływania dla dzieci i dorosłych w Warszawie.'),
         'obozy-i-polkolonie' => array('name' => 'Obozy i półkolonie', 'description' => 'Obozy sportowe i półkolonie dla dzieci.'),
         'treningi' => array('name' => 'Treningi sportowe', 'description' => 'Zajęcia ogólnorozwojowe i treningi sportowe.'),
@@ -542,6 +531,7 @@ function four_elements_service_schema()
         'url' => $service_url,
         'provider' => array('@id' => $organization_id),
         'areaServed' => array('@type' => 'City', 'name' => 'Warszawa'),
+        'providerMobility' => $page_path === 'nauka-plywania-warszawa' ? 'dynamic' : 'static',
         'availableLanguage' => 'pl',
     );
 
@@ -640,7 +630,7 @@ function four_elements_faq_items()
         ),
         array(
             'question' => 'Na jakich pływalniach odbywają się zajęcia?',
-            'answer' => 'Zajęcia odbywają się w Warszawie, na Ursynowie i w Wilanowie: w Aqua Spa Wilanów przy ul. Sarmackiej 5 oraz w Centrum Sportu Wilanów przy ul. Gubinowskiej 28/30.',
+            'answer' => 'Zajęcia grupowe odbywają się na wybranych warszawskich pływalniach, między innymi w Aqua Spa Wilanów przy ul. Sarmackiej 5 oraz w Centrum Sportu Wilanów przy ul. Gubinowskiej 28/30. Zajęcia indywidualne możemy prowadzić na terenie całej Warszawy, po wspólnym ustaleniu pływalni i terminu.',
         ),
         array(
             'question' => 'Czy dorosły może nauczyć się pływać od zera?',
@@ -702,7 +692,7 @@ function four_elements_answer_capsule_items()
         ),
         array(
             'question' => 'Gdzie odbywają się zajęcia nauki pływania?',
-            'answer' => 'Zajęcia odbywają się na warszawskich pływalniach na Ursynowie i w Wilanowie: w Aqua Spa Wilanów przy ul. Sarmackiej 5 oraz w Centrum Sportu Wilanów przy ul. Gubinowskiej 28/30. Dostępność terminów zależy od wybranej lokalizacji.',
+            'answer' => '4elements prowadzi naukę pływania w Warszawie. Zajęcia grupowe odbywają się na wybranych pływalniach, a zajęcia indywidualne możemy prowadzić na terenie całej Warszawy, po wspólnym ustaleniu pływalni i terminu.',
         ),
     );
 }
@@ -725,6 +715,10 @@ function four_elements_home_faq_items()
         array(
             'question' => 'Czy można zacząć od zera?',
             'answer' => 'Tak. Program dopasowujemy do poziomu uczestnika, również do osoby, która dopiero oswaja się z wodą.',
+        ),
+        array(
+            'question' => 'Czy prowadzicie naukę pływania w całej Warszawie?',
+            'answer' => 'Tak. Zajęcia indywidualne możemy prowadzić na terenie całej Warszawy, po ustaleniu dogodnej pływalni i terminu. Zajęcia grupowe odbywają się na wybranych warszawskich pływalniach.',
         ),
     );
 }
@@ -1250,7 +1244,7 @@ function four_elements_agent_discovery_links()
         return;
     }
 
-    echo '<meta name="4elements-ai-schema-version" content="2026-07-15.3">' . "\n";
+    echo '<meta name="4elements-ai-schema-version" content="2026-07-16.5">' . "\n";
     echo '<link rel="alternate" type="application/json" title="A2A Agent Card" href="' . esc_url(home_url('/.well-known/agent-card.json')) . '">' . "\n";
     echo '<link rel="alternate" type="application/json" title="MCP Server Card" href="' . esc_url(home_url('/.well-known/mcp/server-card.json')) . '">' . "\n";
     echo '<link rel="mcp-server-card" type="application/json" href="' . esc_url(home_url('/.well-known/mcp/server-card.json')) . '">' . "\n";
@@ -1556,9 +1550,9 @@ function four_elements_mcp_tools()
 function four_elements_public_pages()
 {
     return array(
-        array('name' => 'Nauka pływania', 'url' => home_url('/nauka-plywania-warszawa/'), 'keywords' => 'pływanie dzieci dorośli lekcje zajęcia Warszawa'),
+        array('name' => 'Nauka pływania', 'url' => home_url('/nauka-plywania-warszawa/'), 'keywords' => 'nauka pływania cała Warszawa dzieci dorośli lekcje grupowe indywidualne instruktor'),
         array('name' => 'Cennik', 'url' => home_url('/nauka-plywania-warszawa/cennik/'), 'keywords' => 'cena koszt płatność'),
-        array('name' => 'Pływalnie', 'url' => home_url('/nauka-plywania-warszawa/plywalnie-i-grafik/'), 'keywords' => 'basen adres lokalizacja Warszawa Ursynów Wilanów'),
+        array('name' => 'Pływalnie', 'url' => home_url('/nauka-plywania-warszawa/plywalnie-i-grafik/'), 'keywords' => 'basen adres lokalizacja cała Warszawa Ursynów Wilanów zajęcia indywidualne'),
         array('name' => 'Obozy i półkolonie', 'url' => home_url('/obozy-i-polkolonie/'), 'keywords' => 'obóz półkolonie lato zima dzieci'),
         array('name' => 'Treningi', 'url' => home_url('/treningi/'), 'keywords' => 'trening zajęcia sportowe personalne'),
         array('name' => 'Kontakt', 'url' => home_url('/kontakt/'), 'keywords' => 'telefon email wiadomość'),
@@ -1820,9 +1814,9 @@ function four_elements_nlweb_normalize($value)
 function four_elements_nlweb_search($query)
 {
     $pages = array(
-        array('title' => 'Nauka pływania', 'text' => 'Nauka pływania dla dzieci i dorosłych, zajęcia indywidualne i grupowe w Warszawie.', 'url' => home_url('/nauka-plywania-warszawa/')),
+        array('title' => 'Nauka pływania w całej Warszawie', 'text' => 'Nauka pływania dla dzieci i dorosłych. Zajęcia indywidualne na terenie całej Warszawy oraz zajęcia grupowe na wybranych pływalniach.', 'url' => home_url('/nauka-plywania-warszawa/')),
         array('title' => 'Cennik', 'text' => 'Aktualne ceny i informacje o płatnościach za zajęcia nauki pływania.', 'url' => home_url('/nauka-plywania-warszawa/cennik/')),
-        array('title' => 'Pływalnie', 'text' => 'Pływalnie i lokalizacje zajęć w Warszawie, na Ursynowie i w Wilanowie.', 'url' => home_url('/nauka-plywania-warszawa/plywalnie-i-grafik/')),
+        array('title' => 'Pływalnie', 'text' => 'Zajęcia grupowe na wybranych warszawskich pływalniach oraz zajęcia indywidualne na terenie całej Warszawy.', 'url' => home_url('/nauka-plywania-warszawa/plywalnie-i-grafik/')),
         array('title' => 'Formularz rejestracyjny', 'text' => 'Zapisy i rejestracja na zajęcia.', 'url' => home_url('/formularz-rejestracyjny/')),
         array('title' => 'Kontakt', 'text' => 'Kontakt telefoniczny i e-mail z 4elements.', 'url' => home_url('/kontakt/')),
     );
@@ -1835,7 +1829,7 @@ function four_elements_nlweb_search($query)
         'koszt' => array('platnosc', 'oplata', 'wplata', 'cennik'),
         'odwolanie' => array('odwolac', 'odrobic', 'sezon', 'aktywny klient'),
         'nieobecnosc' => array('odwolac', 'odrobic'),
-        'basen' => array('plywalnia', 'lokalizacja', 'ursynow', 'wilanow'),
+        'basen' => array('plywalnia', 'lokalizacja', 'warszawa', 'indywidualne', 'grupowe'),
         'adres' => array('plywalnia', 'lokalizacja', 'warszawa'),
         'zapis' => array('zapisy', 'rejestracja', 'formularz'),
         'dziecko' => array('dzieci', 'wiek', 'grupa'),

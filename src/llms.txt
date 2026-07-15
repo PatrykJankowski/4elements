@@ -2,16 +2,17 @@
 
 > Endpoint pytań językiem naturalnym: `GET https://4elements.pl/ask?query=...` lub `POST https://4elements.pl/ask` z polem `query`. Odpowiedzi są oparte wyłącznie na publicznym FAQ i stronach 4elements oraz zawierają źródła.
 
-> 4elements prowadzi w Warszawie naukę i doskonalenie pływania dla dzieci i dorosłych oraz organizuje obozy i półkolonie dla dzieci.
+> 4elements prowadzi naukę i doskonalenie pływania dla dzieci i dorosłych w całej Warszawie oraz organizuje obozy i półkolonie dla dzieci.
 
 ## Oficjalny opis
 
-4elements to organizator zajęć sportowych w Warszawie. Główna oferta obejmuje zajęcia nauki pływania dla dzieci i dorosłych, zajęcia indywidualne, treningi oraz obozy i półkolonie. Komunikacja i oferta są prowadzone w języku polskim.
+4elements to organizator zajęć sportowych w Warszawie. Zajęcia indywidualne z nauki pływania mogą odbywać się na terenie całej Warszawy, po ustaleniu dogodnej pływalni i terminu. Zajęcia grupowe odbywają się na wybranych warszawskich pływalniach. Oferta obejmuje dzieci, młodzież i dorosłych. Komunikacja i oferta są prowadzone w języku polskim.
 
 ## Najważniejsze usługi
 
 - Nauka pływania dla dzieci: od 4. roku życia; zajęcia grupowe w grupach od 2 do 5 osób oraz zajęcia indywidualne.
 - Nauka pływania dla dorosłych: zajęcia grupowe w grupach od 2 do 5 osób oraz zajęcia indywidualne; dostępna jest także grupa żeńska Lejdis.
+- Zajęcia indywidualne z nauki i doskonalenia pływania są dostępne na terenie całej Warszawy, nie tylko na Ursynowie i w Wilanowie.
 - Obozy sportowe, półkolonie i obozy rodzinne dla dzieci.
 - Treningi ogólnorozwojowe dla dzieci i młodzieży oraz treningi personalne dla dorosłych.
 
@@ -26,6 +27,8 @@
 
 ## Pływalnie
 
+- Zajęcia indywidualne: cała Warszawa, po wspólnym ustaleniu pływalni i terminu.
+- Zajęcia grupowe: wybrane warszawskie pływalnie, w tym:
 - Aqua Spa Wilanów, ul. Sarmacka 5, Warszawa.
 - Centrum Sportu Wilanów, ul. Gubinowska 28/30, Warszawa.
 
