@@ -62,7 +62,7 @@
             <div class="col-md-6">
                 <div class="person">
                     <div class="person__header">
-                        <h4 class="person__headline">Karolina Opara</h4>
+                        <h3 class="person__headline">Karolina Opara</h3>
                         <i class="person__icon"></i>
                     </div>
                     <div class="person__content">
@@ -77,7 +77,7 @@
             <div class="col-md-6">
                 <div class="person">
                     <div class="person__header">
-                        <h4 class="person__headline">Sandra Siperek</h4>
+                        <h3 class="person__headline">Sandra Siperek</h3>
                         <i class="person__icon"></i>
                     </div>
                     <div class="person__content">
@@ -193,7 +193,7 @@
             </div>
             <p>Zajęcia prowadzimy na trzech pływalniach. Wybierz dogodną lokalizację, a dostępny termin ustalimy po otrzymaniu zgłoszenia. Na zajęcia indywidualne możemy umówić się w dowolnym miejscu.</p>
         </div>
-        
+
         <div class="home-locations__grid">
             <a href="https://www.google.com/maps/place/Aqua+Spa+Wilanów/@52.1652764,21.0742219,17z/data=!3m1!4b1!4m6!3m5!1s0x47192da26254b0b7:0xc07183ae2bccfb3c!8m2!3d52.1652731!4d21.0767968!16s%2Fg%2F11t9lg26v9" target="_blank" rel="nofollow">
                 <div class="home-location">
@@ -267,7 +267,6 @@
 
 <script defer>
     let slideIndex = 1;
-    showDivs(slideIndex);
 
     function plusDivs(n) {
       showDivs(slideIndex += n);
@@ -287,10 +286,13 @@
       if (n < 1) {slideIndex = x.length}
 
       for (i = 0; i < x.length; i++) {
+        x[i].style.transition = "opacity 450ms ease";
         x[i].style.opacity = "0";
+        x[i].style.zIndex = "0";
       }
 
       for (i = 0; i < slogan.length; i++) {
+        slogan[i].style.transition = "opacity 350ms ease";
         slogan[i].style.opacity = "0";
         slogan[i].style.zIndex = "0";
       }
@@ -300,9 +302,8 @@
       }
 
       x[slideIndex-1].style.opacity = "1";
-      x[slideIndex-1].style.transition = "all 3s";
+      x[slideIndex-1].style.zIndex = "1";
       slogan[slideIndex-1].style.opacity = "1";
-      slogan[slideIndex-1].style.transition = "all 3s";
       slogan[slideIndex-1].style.zIndex = "1";
       dots[slideIndex-1].className += " slider__badge--active";
     }

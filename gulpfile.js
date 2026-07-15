@@ -2,9 +2,9 @@
 const gulp = require('gulp'),
       uglify = require('gulp-uglify-es').default,
       //image = require('gulp-image'),
-      clean = require('gulp-clean');
-
-      const webp = () => import('gulp-webp');
+      clean = require('gulp-clean'),
+      childProcess = require('child_process'),
+      path = require('path');
 
 
 gulp.task('clean', function() {
@@ -48,8 +48,36 @@ gulp.task('text', function () {
 gulp.task('images', function() {
     return gulp.src('src/img/*')
         //.pipe(image())
-        //.pipe(webp())
         .pipe(gulp.dest('dist/img'))
+});
+
+gulp.task('webp', async function() {
+    const cwebp = await import('cwebp-bin');
+
+    const imageJobs = [
+        ['nauka_plywania_dla_dzieci@1920.jpg', 'nauka_plywania_dla_dzieci@1920.webp', null, '76'],
+        ['obozy_zimowe@1920.jpg', 'obozy_zimowe@1920.webp', null, '76'],
+        ['nauka_plywania_dla_dzieci@1920.jpg', 'nauka_plywania_dla_dzieci@1080.webp', '1080', '74'],
+        ['obozy_zimowe@1920.jpg', 'obozy_zimowe@1080.webp', '1080', '74']
+    ];
+
+    await Promise.all(imageJobs.map(function(files) {
+        return new Promise(function(resolve, reject) {
+            const args = ['-quiet', '-q', files[3], '-m', '6'];
+            if (files[2]) {
+                args.push('-resize', files[2], '0');
+            }
+            args.push(path.resolve('src/img', files[0]), '-o', path.resolve('dist/img', files[1]));
+
+            childProcess.execFile(cwebp.default, args, function(error) {
+                if (error) {
+                    reject(error);
+                    return;
+                }
+                resolve();
+            });
+        });
+    }));
 });
 
 gulp.task('fonts', function() {
@@ -64,7 +92,7 @@ gulp.task('watch', function() {
     gulp.watch('src/**/*.js',gulp.series('js'));
     gulp.watch('src/**/*.json',gulp.series('json'));
     gulp.watch('src/*.txt',gulp.series('text'));
-    gulp.watch('src/img/*',gulp.series('images'));
+    gulp.watch('src/img/*',gulp.series('images', 'webp'));
 });
 
 

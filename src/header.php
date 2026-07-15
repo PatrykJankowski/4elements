@@ -6,6 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#67b0d6">
     <link rel="manifest" href="<?php echo esc_url(get_template_directory_uri() . '/manifest.json'); ?>">
+    <?php if (is_front_page() && !is_home()) : ?>
+        <link rel="preload" as="image" type="image/webp"
+              href="<?php echo esc_url(get_template_directory_uri() . '/img/nauka_plywania_dla_dzieci@1080.webp'); ?>"
+              imagesrcset="<?php echo esc_url(get_template_directory_uri() . '/img/nauka_plywania_dla_dzieci@1080.webp'); ?> 1080w, <?php echo esc_url(get_template_directory_uri() . '/img/nauka_plywania_dla_dzieci@1920.webp'); ?> 1920w"
+              imagesizes="(max-width: 767px) 270px, 1920px"
+              fetchpriority="high">
+    <?php endif; ?>
     <link rel="stylesheet" type="text/css" href="/wp-content/themes/4elements/style.css" />
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -64,8 +71,16 @@
         <header id="header">
             <h1 class="screen-reader-text">Nauka pływania dla dzieci i dorosłych w Warszawie</h1>
             <div class="slider">
-                <img class="slider__img" alt="Nauka pływania dla dzieci w Warszawie" src="/wp-content/themes/4elements/img/nauka_plywania_dla_dzieci@1920.jpg" fetchpriority="high">
-                <img class="slider__img" alt="Zimowy obóz sportowy dla dzieci" src="/wp-content/themes/4elements/img/obozy_zimowe@1920.jpg">
+                <img class="slider__img slider__img--initial" alt="Nauka pływania dla dzieci w Warszawie"
+                     src="/wp-content/themes/4elements/img/nauka_plywania_dla_dzieci@1080.webp"
+                     srcset="/wp-content/themes/4elements/img/nauka_plywania_dla_dzieci@1080.webp 1080w, /wp-content/themes/4elements/img/nauka_plywania_dla_dzieci@1920.webp 1920w"
+                     sizes="(max-width: 767px) 100vw, 100vw"
+                     width="1920" height="1315" loading="eager" fetchpriority="high" data-no-lazy="1">
+                <img class="slider__img" alt="Zimowy obóz sportowy dla dzieci"
+                     src="/wp-content/themes/4elements/img/obozy_zimowe@1080.webp"
+                     srcset="/wp-content/themes/4elements/img/obozy_zimowe@1080.webp 1080w, /wp-content/themes/4elements/img/obozy_zimowe@1920.webp 1920w"
+                     sizes="(max-width: 767px) 100vw, 100vw"
+                     width="1920" height="1326" fetchpriority="low">
 
                 <div class="slider__caption">
                     <?php dynamic_sidebar('slogan'); ?>

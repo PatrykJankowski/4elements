@@ -185,6 +185,8 @@
 
 .home-seo {
   padding: $XL 0;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
 }
 
 .home-seo__hero {
@@ -334,6 +336,8 @@
   position: relative;
   padding: $XL 0;
   background: rgba($water, .1);
+  content-visibility: auto;
+  contain-intrinsic-size: auto 650px;
 
   &::before {
     content: '';
@@ -425,6 +429,8 @@
 
 .home-start {
   padding: $XL 0;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 620px;
 }
 
 .home-start__grid {

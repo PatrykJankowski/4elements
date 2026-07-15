@@ -24,11 +24,14 @@ main {
 
   > header {
     width: 100%;
-    height: 400px;
+    height: calc(100vh - 80px);
+    height: calc(100svh - 80px);
+    min-height: 520px;
     position: relative;
 
     @media screen and (min-width: $tablet) {
       height: calc(100vh - 330px);
+      min-height: 400px;
       max-height: 560px;
     }
   }
