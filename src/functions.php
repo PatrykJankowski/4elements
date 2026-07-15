@@ -340,13 +340,13 @@ function four_elements_organization_schema()
             ),
             array(
                 '@type' => 'Place',
-                'name' => 'Centrum Sportu Wilanów',
-                'address' => array('@type' => 'PostalAddress', 'streetAddress' => 'ul. Gubinowska 28/30', 'addressLocality' => 'Warszawa', 'addressCountry' => 'PL'),
+                'name' => 'Pływalnia SGGW',
+                'address' => array('@type' => 'PostalAddress', 'streetAddress' => 'ul. Ciszewskiego 10', 'addressLocality' => 'Warszawa', 'addressCountry' => 'PL'),
             ),
             array(
                 '@type' => 'Place',
                 'name' => 'Centrum Sportu Wilanów',
-                'address' => array('@type' => 'PostalAddress', 'streetAddress' => 'ul. Wiertnicza 26a', 'addressLocality' => 'Warszawa', 'addressCountry' => 'PL'),
+                'address' => array('@type' => 'PostalAddress', 'streetAddress' => 'ul. Gubinowska 28/30', 'addressLocality' => 'Warszawa', 'addressCountry' => 'PL'),
             ),
         ),
     );
@@ -506,7 +506,7 @@ function four_elements_faq_items()
         ),
         array(
             'question' => 'Na jakich pływalniach odbywają się zajęcia?',
-            'answer' => 'Zajęcia odbywają się w Warszawie, na Ursynowie i w Wilanowie: w Aqua Spa Wilanów przy ul. Sarmackiej 5 oraz w obiektach Centrum Sportu Wilanów przy ul. Gubinowskiej 28/30 i ul. Wiertniczej 26a.',
+            'answer' => 'Zajęcia odbywają się w Warszawie, na Ursynowie i w Wilanowie: w Aqua Spa Wilanów przy ul. Sarmackiej 5, na Pływalni SGGW przy ul. Ciszewskiego 10 oraz w Centrum Sportu Wilanów przy ul. Gubinowskiej 28/30.',
         ),
         array(
             'question' => 'Czy dorosły może nauczyć się pływać od zera?',
@@ -568,7 +568,7 @@ function four_elements_answer_capsule_items()
         ),
         array(
             'question' => 'Gdzie odbywają się zajęcia nauki pływania?',
-            'answer' => 'Zajęcia odbywają się na warszawskich pływalniach na Ursynowie i w Wilanowie: w Aqua Spa Wilanów przy ul. Sarmackiej 5 oraz w obiektach Centrum Sportu Wilanów przy ul. Gubinowskiej 28/30 i ul. Wiertniczej 26a. Dostępność terminów zależy od wybranej lokalizacji.',
+            'answer' => 'Zajęcia odbywają się na warszawskich pływalniach na Ursynowie i w Wilanowie: w Aqua Spa Wilanów przy ul. Sarmackiej 5, na Pływalni SGGW przy ul. Ciszewskiego 10 oraz w Centrum Sportu Wilanów przy ul. Gubinowskiej 28/30. Dostępność terminów zależy od wybranej lokalizacji.',
         ),
     );
 }
@@ -736,12 +736,6 @@ function four_elements_review_items()
             'author_url' => 'https://www.google.com/maps/contrib/111519970837561715241/reviews?hl=pl-PL',
             'rating' => 5,
             'text' => 'Dzięki za super przygodę! Bardzo fajne zajęcia z pływania! Trener Adrian wymiata! Polecam bardzo!!!!',
-        ),
-        array(
-            'author' => 'Aleksandra Nowicka',
-            'author_url' => 'https://www.google.com/maps/contrib/102849227915569490595/reviews?hl=pl-PL',
-            'rating' => 5,
-            'text' => 'Bardzo polecam zajęcia dla dorosłych na Wiertniczej 🙂 Super instruktorzy, świetna atmosfera i można się wiele nauczyć 🙂',
         ),
     );
 }

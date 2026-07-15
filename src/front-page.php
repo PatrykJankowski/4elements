@@ -187,7 +187,7 @@
                 <p class="home-eyebrow">Warszawa Ursynów i Wilanów</p>
                 <h2 id="home-locations-heading">Gdzie w Warszawie odbywa się nauka pływania?</h2>
             </div>
-            <p>Zajęcia prowadzimy na trzech pływalniach. Wybierz dogodną lokalizację, a dostępny termin ustalimy po otrzymaniu zgłoszenia. Na zajęcia indywidualne możemy umówić się w dowolnym miejscu.</p>
+            <p>Zajęcia prowadzimy na dwóch pływalniach. Wybierz dogodną lokalizację, a dostępny termin ustalimy po otrzymaniu zgłoszenia. Na zajęcia indywidualne możemy umówić się w dowolnym miejscu.</p>
         </div>
 
         <div class="home-locations__grid">
@@ -204,14 +204,6 @@
                     <p class="home-location__district">Warszawa Wilanów</p>
                     <h3>Centrum Sportu Wilanów</h3>
                     <address>ul. Gubinowska 28/30</address>
-                </div>
-            </a>
-            
-            <a href="https://www.google.com/maps/place/Basen+Wiertnicza+-+Centrum+Sportu+Wilanów/@52.169144,21.085654,18.13z/data=!4m6!3m5!1s0x47192d4f7148b78d:0x45fa0adc226675a7!8m2!3d52.1690013!4d21.0863846!16s%2Fg%2F11clyqytph" target="_blank" rel="nofollow">
-                <div class="home-location">
-                    <p class="home-location__district">Warszawa Wilanów</p>
-                    <h3>Centrum Sportu Wilanów</h3>
-                    <address>ul. Wiertnicza 26a</address>
                 </div>
             </a>
         </div>

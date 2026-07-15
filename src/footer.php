@@ -49,12 +49,12 @@
                             <span>ul. Sarmacka 5</span>
                         </address>
                         <address class="footer__location">
-                            <strong>Centrum Sportu Wilanów</strong>
-                            <span>ul. Gubinowska 28/30</span>
+                            <strong>Pływalnia SGGW</strong>
+                            <span>ul. Ciszewskiego 10</span>
                         </address>
                         <address class="footer__location">
                             <strong>Centrum Sportu Wilanów</strong>
-                            <span>ul. Wiertnicza 26a</span>
+                            <span>ul. Gubinowska 28/30</span>
                         </address>
                     </div>
                 </section>
@@ -71,11 +71,11 @@
                     </div>
 
                     <div class="footer__socials" aria-label="4elements w mediach społecznościowych">
-                        <a class="footer__social" title="4elements na Facebooku" href="https://www.facebook.com/4elementspl" target="_blank" rel="nofollow noopener noreferrer">
+                        <a class="footer__social" title="4elements na Facebooku" href="https://www.facebook.com/4elementspl" target="_blank" rel="noopener">
                             <span class="footer__social-name">Facebook</span>
                             <span class="footer__social-handle">@4elementspl</span>
                         </a>
-                        <a class="footer__social" title="4elements na Instagramie" href="https://www.instagram.com/4elements_naukaplywania/" target="_blank" rel="nofollow noopener noreferrer">
+                        <a class="footer__social" title="4elements na Instagramie" href="https://www.instagram.com/4elements_naukaplywania/" target="_blank" rel="noopener">
                             <span class="footer__social-name">Instagram</span>
                             <span class="footer__social-handle">@4elements_naukaplywania</span>
                         </a>
