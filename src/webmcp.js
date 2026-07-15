@@ -171,18 +171,6 @@
         }
     });
 
-    register({
-        name: 'open_swimming_registration',
-        title: 'Rozpocznij zapis na zajęcia',
-        description: 'Otwiera formularz rejestracyjny na zajęcia 4elements. Nie wysyła zgłoszenia i nie gwarantuje dostępności miejsca.',
-        inputSchema: { type: 'object', properties: {}, additionalProperties: false },
-        annotations: { readOnlyHint: false, untrustedContentHint: false },
-        execute: async function () {
-            window.location.assign(data.registrationUrl || (data.homeUrl || '/') + 'formularz-rejestracyjny/');
-            return null;
-        }
-    });
-
     /*
      * Contact Form 7 may replace parts of a form while initializing or after
      * validation. Reapplying declarative attributes keeps WebMCP connected to
@@ -214,15 +202,6 @@
     };
 
     const annotateInteractiveForms = function () {
-        if (data.isRegistrationPage) {
-            const registrationForm = document.querySelector('.wpcf7 form');
-            annotateForm(
-                registrationForm,
-                'prepare_swimming_registration',
-                'Wypełnia formularz zapisu na zajęcia pływania. Użytkownik musi sprawdzić dane i samodzielnie zatwierdzić wysłanie; narzędzie nie gwarantuje miejsca.'
-            );
-        }
-
         if (data.isContactPage) {
             const contactForm = document.querySelector('.wpcf7 form');
             annotateForm(
@@ -235,7 +214,7 @@
 
     annotateInteractiveForms();
 
-    if ((data.isRegistrationPage || data.isContactPage) && document.body) {
+    if (data.isContactPage && document.body) {
         const formObserver = new MutationObserver(annotateInteractiveForms);
         formObserver.observe(document.body, { childList: true, subtree: true });
     }

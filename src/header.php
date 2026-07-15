@@ -60,7 +60,7 @@
             <img class="nav__logo" alt="4elements - nauka pływania, Warszawa" src="/wp-content/themes/4elements/img/logo.svg" width="146" height="60" />
         </a>
 
-        <nav class="nav__nav-desktop">
+        <nav class="nav__nav-desktop" role="navigation" aria-label="Główna nawigacja">
             <?php wp_nav_menu(array('theme_location' => 'main-menu')); ?>
         </nav>
 
@@ -68,13 +68,13 @@
             <div id="nav__toggle-icon" class="nav__toggle-icon"></div>
         </div>
 
-        <div id="nav__nav-mobile" class="nav__nav-mobile">
+        <div id="nav__nav-mobile" class="nav__nav-mobile" role="navigation" aria-label="Nawigacja mobilna">
             <?php wp_nav_menu(array('theme_location' => 'mobile-menu')); ?>
         </div>
     </div>
 
     <!-- closed in footer.php -->
-    <main>
+    <main role="main">
 
     <?php if (is_front_page() && !is_home()) { ?>
         <header id="header">
@@ -88,7 +88,7 @@
                      width="1080" height="746" fetchpriority="low">
 
                 <div class="slider__caption">
-                    <?php dynamic_sidebar('slogan'); ?>
+                    <?php echo four_elements_render_slogan_sidebar(); ?>
                 </div>
 
                 <div class="slider__arrows" aria-label="Sterowanie slajderem">

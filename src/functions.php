@@ -244,6 +244,7 @@ function four_elements_enqueue_webmcp()
         'homeUrl' => home_url('/'),
         'currentUrl' => four_elements_canonical_url(),
         'registrationUrl' => home_url('/formularz-rejestracyjny/'),
+        'registrationProvider' => 'ActiveNow',
         'isRegistrationPage' => is_page(array('formularz-rejestracyjny', 'zapisz-sie')),
         'isContactPage' => is_page('kontakt'),
         'faqUrl' => home_url('/faq/'),
@@ -274,9 +275,8 @@ function four_elements_offer_catalog_schema()
         '@type' => 'OfferCatalog',
         'name' => 'Usługi 4elements',
         'itemListElement' => array(
-            array('@type' => 'Offer', 'itemOffered' => array('@type' => 'Service', 'name' => 'Nauka pływania dla dzieci', 'url' => home_url('/nauka-plywania-warszawa/dzieci/'), 'areaServed' => 'Warszawa')),
-            array('@type' => 'Offer', 'itemOffered' => array('@type' => 'Service', 'name' => 'Nauka pływania dla dorosłych', 'url' => home_url('/nauka-plywania-warszawa/dorosli/'), 'areaServed' => 'Warszawa')),
-            array('@type' => 'Offer', 'itemOffered' => array('@type' => 'Service', 'name' => 'Obozy i półkolonie dla dzieci', 'url' => home_url('/obozy-i-polkolonie/'), 'areaServed' => 'Polska')),
+            array('@type' => 'Offer', 'itemOffered' => array('@type' => 'Service', 'name' => 'Nauka pływania dla dzieci i dorosłych w Warszawie', 'serviceType' => 'Nauka i doskonalenie pływania', 'url' => home_url('/nauka-plywania-warszawa/'), 'areaServed' => 'Warszawa')),
+            array('@type' => 'Offer', 'itemOffered' => array('@type' => 'Service', 'name' => 'Obozy sportowe i półkolonie dla dzieci', 'serviceType' => 'Obozy sportowe i półkolonie', 'url' => home_url('/obozy-i-polkolonie/'), 'areaServed' => 'Polska')),
         ),
     );
 }
@@ -290,32 +290,48 @@ function four_elements_service_schemas()
         array(
             '@context' => 'https://schema.org',
             '@type' => 'Service',
-            '@id' => home_url('/nauka-plywania-warszawa/dzieci/#service'),
-            'name' => 'Nauka pływania dla dzieci w Warszawie',
-            'serviceType' => 'Nauka i doskonalenie pływania dla dzieci',
-            'url' => home_url('/nauka-plywania-warszawa/dzieci/'),
+            '@id' => home_url('/nauka-plywania-warszawa/#service'),
+            'name' => 'Nauka pływania dla dzieci i dorosłych w Warszawie',
+            'description' => 'Grupowe i indywidualne zajęcia nauki oraz doskonalenia pływania dla dzieci od 4 lat, młodzieży i dorosłych.',
+            'serviceType' => 'Nauka i doskonalenie pływania',
+            'category' => 'Nauka pływania',
+            'url' => home_url('/nauka-plywania-warszawa/'),
             'provider' => array('@id' => $organization_id),
             'areaServed' => array('@type' => 'City', 'name' => 'Warszawa'),
-        ),
-        array(
-            '@context' => 'https://schema.org',
-            '@type' => 'Service',
-            '@id' => home_url('/nauka-plywania-warszawa/dorosli/#service'),
-            'name' => 'Nauka pływania dla dorosłych w Warszawie',
-            'serviceType' => 'Nauka i doskonalenie pływania dla dorosłych',
-            'url' => home_url('/nauka-plywania-warszawa/dorosli/'),
-            'provider' => array('@id' => $organization_id),
-            'areaServed' => array('@type' => 'City', 'name' => 'Warszawa'),
+            'audience' => array('@type' => 'PeopleAudience', 'audienceType' => 'Dzieci od 4 lat, młodzież i dorośli'),
+            'availableChannel' => array(
+                array(
+                    '@type' => 'ServiceChannel',
+                    'name' => 'Zapisy online przez ActiveNow',
+                    'serviceUrl' => home_url('/formularz-rejestracyjny/'),
+                    'availableLanguage' => 'pl',
+                ),
+                array(
+                    '@type' => 'ServiceChannel',
+                    'name' => 'Zapisy przez kontakt z 4elements',
+                    'serviceUrl' => home_url('/kontakt/'),
+                    'servicePhone' => array(
+                        '@type' => 'ContactPoint',
+                        'telephone' => '+48 798 968 416',
+                        'email' => 'kontakt@4elements.pl',
+                        'contactType' => 'rejestracja na zajęcia',
+                        'availableLanguage' => 'pl',
+                    ),
+                ),
+            ),
         ),
         array(
             '@context' => 'https://schema.org',
             '@type' => 'Service',
             '@id' => home_url('/obozy-i-polkolonie/#service'),
-            'name' => 'Obozy i półkolonie dla dzieci',
+            'name' => 'Obozy sportowe i półkolonie dla dzieci',
+            'description' => 'Obozy sportowe, wyjazdy i półkolonie dla dzieci.',
             'serviceType' => 'Obozy sportowe i półkolonie dla dzieci',
+            'category' => 'Obozy sportowe i półkolonie',
             'url' => home_url('/obozy-i-polkolonie/'),
             'provider' => array('@id' => $organization_id),
             'areaServed' => array('@type' => 'Country', 'name' => 'Polska'),
+            'audience' => array('@type' => 'PeopleAudience', 'audienceType' => 'Dzieci i młodzież'),
         ),
     );
 }
@@ -331,7 +347,7 @@ function four_elements_organization_schema()
     $home_url = home_url('/');
     $schema = array(
         '@context' => 'https://schema.org',
-        '@type' => 'Organization',
+        '@type' => array('Organization', 'SportsActivityLocation'),
         '@id' => trailingslashit($home_url) . '#organization',
         'name' => get_bloginfo('name') ?: '4elements',
         'url' => $home_url,
@@ -348,7 +364,15 @@ function four_elements_organization_schema()
         ),
         'email' => 'mailto:kontakt@4elements.pl',
         'telephone' => '+48 798 968 416',
-        'openingHours' => 'Mo-Su 09:00-21:00',
+        'openingHours' => array(
+            'Mo 09:00-21:00',
+            'Tu 09:00-21:00',
+            'We 09:00-21:00',
+            'Th 09:00-21:00',
+            'Fr 09:00-21:00',
+            'Sa 09:00-21:00',
+            'Su 09:00-21:00',
+        ),
         'openingHoursSpecification' => array(
             '@type' => 'OpeningHoursSpecification',
             'dayOfWeek' => array('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'),
@@ -382,11 +406,6 @@ function four_elements_organization_schema()
                 '@type' => 'Place',
                 'name' => 'Aqua Spa Wilanów',
                 'address' => array('@type' => 'PostalAddress', 'streetAddress' => 'ul. Sarmacka 5', 'addressLocality' => 'Warszawa', 'addressCountry' => 'PL'),
-            ),
-            array(
-                '@type' => 'Place',
-                'name' => 'Pływalnia SGGW',
-                'address' => array('@type' => 'PostalAddress', 'streetAddress' => 'ul. Ciszewskiego 10', 'addressLocality' => 'Warszawa', 'addressCountry' => 'PL'),
             ),
             array(
                 '@type' => 'Place',
@@ -427,7 +446,15 @@ function four_elements_yoast_organization_schema($data)
         'addressLocality' => 'Warszawa',
         'addressCountry' => 'PL',
     );
-    $data['openingHours'] = 'Mo-Su 09:00-21:00';
+    $data['openingHours'] = array(
+        'Mo 09:00-21:00',
+        'Tu 09:00-21:00',
+        'We 09:00-21:00',
+        'Th 09:00-21:00',
+        'Fr 09:00-21:00',
+        'Sa 09:00-21:00',
+        'Su 09:00-21:00',
+    );
     $data['openingHoursSpecification'] = array(
         '@type' => 'OpeningHoursSpecification',
         'dayOfWeek' => array('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'),
@@ -563,7 +590,7 @@ function four_elements_faq_items()
         ),
         array(
             'question' => 'Na jakich pływalniach odbywają się zajęcia?',
-            'answer' => 'Zajęcia odbywają się w Warszawie, na Ursynowie i w Wilanowie: w Aqua Spa Wilanów przy ul. Sarmackiej 5, na Pływalni SGGW przy ul. Ciszewskiego 10 oraz w Centrum Sportu Wilanów przy ul. Gubinowskiej 28/30.',
+            'answer' => 'Zajęcia odbywają się w Warszawie, na Ursynowie i w Wilanowie: w Aqua Spa Wilanów przy ul. Sarmackiej 5 oraz w Centrum Sportu Wilanów przy ul. Gubinowskiej 28/30.',
         ),
         array(
             'question' => 'Czy dorosły może nauczyć się pływać od zera?',
@@ -625,7 +652,7 @@ function four_elements_answer_capsule_items()
         ),
         array(
             'question' => 'Gdzie odbywają się zajęcia nauki pływania?',
-            'answer' => 'Zajęcia odbywają się na warszawskich pływalniach na Ursynowie i w Wilanowie: w Aqua Spa Wilanów przy ul. Sarmackiej 5, na Pływalni SGGW przy ul. Ciszewskiego 10 oraz w Centrum Sportu Wilanów przy ul. Gubinowskiej 28/30. Dostępność terminów zależy od wybranej lokalizacji.',
+            'answer' => 'Zajęcia odbywają się na warszawskich pływalniach na Ursynowie i w Wilanowie: w Aqua Spa Wilanów przy ul. Sarmackiej 5 oraz w Centrum Sportu Wilanów przy ul. Gubinowskiej 28/30. Dostępność terminów zależy od wybranej lokalizacji.',
         ),
     );
 }
@@ -733,6 +760,15 @@ function four_elements_render_faq()
     $html .= '</section>';
 
     return $html;
+}
+
+function four_elements_render_slogan_sidebar()
+{
+    ob_start();
+    dynamic_sidebar('slogan');
+    $html = (string) ob_get_clean();
+
+    return preg_replace(array('/<h1\\b([^>]*)>/i', '#</h1>#i'), array('<p$1>', '</p>'), $html);
 }
 
 /**
@@ -1115,6 +1151,23 @@ function four_elements_agent_document($type)
                         'additionalProperties' => false,
                     ),
                 ),
+                array(
+                    'name' => 'open_swimming_registration_channel',
+                    'description' => 'Otwiera zapisy online ActiveNow albo stronę kontaktową 4elements, zgodnie z wyborem użytkownika.',
+                    'execution' => 'imperative',
+                    'inputSchema' => array(
+                        'type' => 'object',
+                        'properties' => array(
+                            'channel' => array(
+                                'type' => 'string',
+                                'enum' => array('activenow', 'contact'),
+                                'description' => 'Kanał zapisu: system ActiveNow lub bezpośredni kontakt.',
+                            ),
+                        ),
+                        'required' => array('channel'),
+                        'additionalProperties' => false,
+                    ),
+                ),
             ),
             'imperative' => array(
                 'script' => get_template_directory_uri() . '/webmcp.js',
@@ -1311,7 +1364,7 @@ function four_elements_nlweb_extract_query($body)
 function four_elements_agent_cors_headers()
 {
     header('Access-Control-Allow-Origin: *');
-    header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+    header('Access-Control-Allow-Methods: GET, HEAD, POST, OPTIONS');
     header('Access-Control-Allow-Headers: Content-Type, MCP-Protocol-Version');
 }
 
@@ -1490,8 +1543,16 @@ function four_elements_a2a_reply($message)
 function four_elements_handle_nlweb_request()
 {
     four_elements_agent_cors_headers();
+    header('NLWeb-Version: 0.55');
+    header('X-NLWeb-Version: 0.55');
     if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
         status_header(204);
+        exit;
+    }
+
+    if ($_SERVER['REQUEST_METHOD'] === 'HEAD') {
+        status_header(200);
+        header('Content-Type: application/json; charset=UTF-8');
         exit;
     }
 
