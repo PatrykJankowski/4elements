@@ -126,90 +126,125 @@
 </section>
 
 
-<section>
+<section class="home-seo" aria-labelledby="home-swimming-heading">
     <div class="container">
-        <div class="row">
-            <div class="col">
-                <h2 class="header header--mt header--mb header--center header--fire">Dlaczego warto wybrać nas?</h2>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-6">
-                <div class="box box--center box--fire box--height-150">
-                    <p>Małe grupy od 2 do 5 osób</p>
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="box box--center box--fire box--height-150">
-                    <p>Możliwość współpracy indywidualnej</p>
+        <div class="home-seo__hero">
+            <figure class="home-seo__image">
+                <img src="/wp-content/themes/4elements/img/nauka-plywania-dla-dzieci.jpg" alt="Instruktorka 4elements podczas nauki pływania dzieci w Warszawie" width="963" height="666" loading="lazy">
+            </figure>
+            <div class="home-seo__intro">
+                <p class="home-seo__eyebrow">Szkoła pływania 4elements</p>
+                <h2 id="home-swimming-heading">Nauka pływania w Warszawie dla dzieci i dorosłych</h2>
+                <p>Prowadzimy naukę i doskonalenie pływania na warszawskiej Woli i w Wilanowie. Na zajęcia mogą zapisać się dzieci od 4. roku życia, młodzież i dorośli — zarówno osoby oswajające się z wodą, jak i pływające, które chcą poprawić technikę.</p>
+                <p>Uczymy w małych grupach od 2 do 5 osób oraz indywidualnie. Program i tempo ćwiczeń dopasowujemy do wieku, umiejętności i celu uczestnika.</p>
+                <div class="home-seo__actions">
+                    <a class="button button--water" href="/nauka-plywania-warszawa/">Poznaj ofertę zajęć</a>
+                    <a class="home-seo__text-link" href="/nauka-plywania-warszawa/cennik/">Sprawdź cennik</a>
                 </div>
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-md-6">
-                <div class="box box--center box--fire box--height-150">
-                    <p>Szeroki zakres oferty</p>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="box box--center box--fire box--height-150">
-                    <p>Wieloletnie doświadczenie</p>
-                 </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-6">
-                <div class="box box--center box--fire box--height-150">
-                    <p>Swobodna atmosfera</p>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="box box--center box--fire box--height-150">
-                    <p>Nieograniczony zapał :)</p>
-                </div>
+        <div class="home-benefits" aria-labelledby="home-benefits-heading">
+            <h2 id="home-benefits-heading" class="header header--center header--fire">Dlaczego warto pływać z 4elements?</h2>
+            <div class="home-benefits__grid">
+                <article class="home-benefit home-benefit--water">
+                    <span class="home-benefit__number" aria-hidden="true">01</span>
+                    <h3>Małe grupy</h3>
+                    <p>Od 2 do 5 osób, dzięki czemu instruktor może uważnie śledzić postępy każdego uczestnika.</p>
+                </article>
+                <article class="home-benefit home-benefit--ground">
+                    <span class="home-benefit__number" aria-hidden="true">02</span>
+                    <h3>Zajęcia indywidualne</h3>
+                    <p>Ćwiczenia i tempo pracy dopasowane do konkretnej osoby, jej celu oraz poziomu pływackiego.</p>
+                </article>
+                <article class="home-benefit home-benefit--wind">
+                    <span class="home-benefit__number" aria-hidden="true">03</span>
+                    <h3>Bezpieczna nauka</h3>
+                    <p>Spokojnie oswajamy z wodą, budujemy prawidłowe nawyki i rozwijamy kolejne umiejętności.</p>
+                </article>
+                <article class="home-benefit home-benefit--fire">
+                    <span class="home-benefit__number" aria-hidden="true">04</span>
+                    <h3>Doświadczone instruktorki</h3>
+                    <p>Łączymy przygotowanie sportowe i pedagogiczne z przyjazną, motywującą atmosferą.</p>
+                </article>
             </div>
         </div>
     </div>
 </section>
 
 
-<section>
+<section class="home-locations" aria-labelledby="home-locations-heading">
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="panel panel--mt">
-                  <h2 class="header header--fire header--center">Masz pytania?</h2>
-                  <p class="subheader subheader--fire subheader--small-margin subheader--center">Napisz lub zadzwoń</p>
-                  <a href="/kontakt" class="button button--fire">Przejdź do kontaktu</a>
-                </div>
+        <div class="home-locations__header">
+            <div>
+                <p class="home-seo__eyebrow">Warszawa Wola i Wilanów</p>
+                <h2 id="home-locations-heading">Gdzie w WArszawie odbywa się nauka pływania?</h2>
             </div>
+            <p>Zajęcia prowadzimy na czterech pływalniach. Wybierz dogodną lokalizację, a dostępny termin ustalimy po otrzymaniu zgłoszenia. Na zajęcia indywidualne możemy umówić się w dowolnym miejscu.</p>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="panel panel--mt panel--mb">
-                  <h2 class="header header--fire header--center">Chcesz się zapisać?</h2>
-                  <p class="subheader subheader--fire subheader--small-margin subheader--center">Wypełnij formularz rejestracyjny</p>
-                  <a href="formularz-rejestracyjny" class="button button--fire">Przejdź do formularza</a>
-                </div>
+        <div class="home-locations__grid">
+            <article class="home-location">
+                <p class="home-location__district">Warszawa Wola</p>
+                <h3>OSiR Wola „FOKA”</h3>
+                <address>ul. Esperanto 5</address>
+            </article>
+            <article class="home-location">
+                <p class="home-location__district">Warszawa Wilanów</p>
+                <h3>Aqua Spa Wilanów</h3>
+                <address>ul. Sarmacka 5</address>
+            </article>
+            <article class="home-location">
+                <p class="home-location__district">Warszawa Wilanów</p>
+                <h3>Centrum Sportu Wilanów</h3>
+                <address>ul. Gubinowska 28/30</address>
+            </article>
+            <article class="home-location">
+                <p class="home-location__district">Warszawa Wilanów</p>
+                <h3>Centrum Sportu Wilanów</h3>
+                <address>ul. Wiertnicza 26a</address>
+            </article>
+        </div>
+        <a class="home-locations__link" href="/nauka-plywania-warszawa/plywalnie-i-grafik/">Zobacz pływalnie i grafik <span aria-hidden="true">→</span></a>
+    </div>
+</section>
+
+
+<section class="home-start" aria-labelledby="home-start-heading">
+    <div class="container">
+        <div class="home-start__grid">
+            <div class="home-start__content">
+                <p class="home-seo__eyebrow">Jak się zapisać?</p>
+                <h2 id="home-start-heading">Pierwsze zajęcia</h2>
+                <p class="home-start__lead">Wypełnij formularz zapisu na zajęcia lub skontaktuj się z nami.</p>
+                <a class="button button--fire" href="/formularz-rejestracyjny/">Wypełnij formularz</a>
+                <ul class="home-start__checklist">
+                    <li>Wyposaż się w kostium lub kąpielówki, czepek, ręcznik, klapki i okulary.</li>
+                    <li>Postaraj się być na pływalni 15 minut przed zajęciami, by zdążyć się przygotować.</li>
+                </ul>
+            </div>
+
+            <div class="home-questions">
+                <h2>Najczęstsze pytania</h2>
+                <?php foreach (four_elements_home_faq_items() as $item) : ?>
+                    <details>
+                        <summary><?php echo esc_html($item['question']); ?></summary>
+                        <p><?php echo esc_html($item['answer']); ?></p>
+                    </details>
+                <?php endforeach; ?>
+                <a class="home-questions__link" href="/faq">Zobacz wszystkie pytania i odpowiedzi <span aria-hidden="true">→</span></a>
             </div>
         </div>
     </div>
 </section>
 
 
-<section class="partners">
+<section class="partners" aria-labelledby="partners-heading">
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h2 class="header header--center header--wind">Nasi partnerzy</h2>
-                <a href="http://bedzieladnie.com" target="_blank" rel="nofollow noopener">
-                    <img alt="będzie ładnie - partner" src="/wp-content/themes/4elements/img/bedzie-ladnie.png" width="209" height="24">
-                </a>
-            </div>
+        <div class="partners__inner">
+            <h2 id="partners-heading" class="header header--wind">Nasi partnerzy</h2>
+            <a href="http://bedzieladnie.com" target="_blank" rel="nofollow noopener">
+                <img alt="Będzie Ładnie – partner 4elements" src="/wp-content/themes/4elements/img/bedzie-ladnie.png" width="209" height="24" loading="lazy">
+            </a>
         </div>
     </div>
 </section>

@@ -55,6 +55,52 @@ function setup()
 
 
 /**
+ * Keep the homepage search snippet focused on the main local service.
+ * Yoast receives the same copy; the fallback is used when the plugin is off.
+ */
+function four_elements_front_page_seo_title()
+{
+    return 'Nauka pływania Warszawa | 4elements';
+}
+
+function four_elements_front_page_seo_description()
+{
+    return 'Nauka pływania w Warszawie dla dzieci od 4 lat i dorosłych. Małe grupy i zajęcia indywidualne na Woli i Wilanowie. Sprawdź ofertę 4elements.';
+}
+
+add_filter('document_title_parts', 'four_elements_front_page_title_parts');
+function four_elements_front_page_title_parts($parts)
+{
+    if (is_front_page()) {
+        $parts['title'] = 'Nauka pływania Warszawa';
+        $parts['site'] = '4elements';
+    }
+
+    return $parts;
+}
+
+add_filter('wpseo_title', 'four_elements_front_page_yoast_title');
+function four_elements_front_page_yoast_title($title)
+{
+    return is_front_page() ? four_elements_front_page_seo_title() : $title;
+}
+
+add_filter('wpseo_metadesc', 'four_elements_front_page_yoast_description');
+function four_elements_front_page_yoast_description($description)
+{
+    return is_front_page() ? four_elements_front_page_seo_description() : $description;
+}
+
+add_action('wp_head', 'four_elements_front_page_meta_description', 2);
+function four_elements_front_page_meta_description()
+{
+    if (is_front_page() && !defined('WPSEO_VERSION')) {
+        echo '<meta name="description" content="' . esc_attr(four_elements_front_page_seo_description()) . '">' . "\n";
+    }
+}
+
+
+/**
  * Keep one canonical query for blog listings. WordPress applies category,
  * tag, author and date constraints to this query before index.php renders it.
  */
@@ -211,18 +257,22 @@ function four_elements_enqueue_webmcp()
         'registrationUrl' => home_url('/formularz-rejestracyjny/'),
         'isRegistrationPage' => is_page(array('formularz-rejestracyjny', 'zapisz-sie')),
         'isContactPage' => is_page('kontakt'),
+        'faqUrl' => home_url('/faq/'),
+        'faq' => four_elements_faq_items(),
+        'answerCapsules' => four_elements_answer_capsule_items(),
         'contact' => array(
             'email' => 'kontakt@4elements.pl',
             'phones' => array('798 968 416', '798 784 748'),
         ),
         'pages' => array(
-            array('name' => 'Nauka pływania', 'url' => home_url('/nauka-plywania/'), 'keywords' => 'pływanie dzieci dorośli lekcje zajęcia'),
-            array('name' => 'Cennik', 'url' => home_url('/nauka-plywania-cennik/'), 'keywords' => 'cena koszt płatność'),
-            array('name' => 'Pływalnie', 'url' => home_url('/plywalnie-warszawa-wola/'), 'keywords' => 'basen adres lokalizacja Warszawa Wola Wilanów'),
+            array('name' => 'Nauka pływania', 'url' => home_url('/nauka-plywania-warszawa/'), 'keywords' => 'pływanie dzieci dorośli lekcje zajęcia Warszawa'),
+            array('name' => 'Cennik', 'url' => home_url('/nauka-plywania-warszawa/cennik/'), 'keywords' => 'cena koszt płatność'),
+            array('name' => 'Pływalnie', 'url' => home_url('/nauka-plywania-warszawa/plywalnie-i-grafik/'), 'keywords' => 'basen adres lokalizacja Warszawa Wola Wilanów'),
             array('name' => 'Obozy i półkolonie', 'url' => home_url('/obozy-i-polkolonie/'), 'keywords' => 'obóz półkolonie lato zima dzieci'),
             array('name' => 'Treningi', 'url' => home_url('/treningi/'), 'keywords' => 'trening zajęcia sportowe personalne'),
             array('name' => 'Blog', 'url' => home_url('/blog/'), 'keywords' => 'artykuły poradniki aktualności'),
             array('name' => 'Kontakt', 'url' => home_url('/kontakt/'), 'keywords' => 'telefon email wiadomość'),
+            array('name' => 'FAQ', 'url' => home_url('/faq/'), 'keywords' => 'pytania odpowiedzi zajęcia pływanie przygotowanie'),
             array('name' => 'Formularz rejestracyjny', 'url' => home_url('/formularz-rejestracyjny/'), 'keywords' => 'zapis zapisy rejestracja'),
         ),
     ));
@@ -235,8 +285,8 @@ function four_elements_offer_catalog_schema()
         '@type' => 'OfferCatalog',
         'name' => 'Usługi 4elements',
         'itemListElement' => array(
-            array('@type' => 'Offer', 'itemOffered' => array('@type' => 'Service', 'name' => 'Nauka pływania dla dzieci', 'url' => home_url('/nauka-plywania-dla-dzieci-warszawa/'), 'areaServed' => 'Warszawa')),
-            array('@type' => 'Offer', 'itemOffered' => array('@type' => 'Service', 'name' => 'Nauka pływania dla dorosłych', 'url' => home_url('/nauka-plywania-dla-doroslych-warszawa/'), 'areaServed' => 'Warszawa')),
+            array('@type' => 'Offer', 'itemOffered' => array('@type' => 'Service', 'name' => 'Nauka pływania dla dzieci', 'url' => home_url('/nauka-plywania-warszawa/dzieci/'), 'areaServed' => 'Warszawa')),
+            array('@type' => 'Offer', 'itemOffered' => array('@type' => 'Service', 'name' => 'Nauka pływania dla dorosłych', 'url' => home_url('/nauka-plywania-warszawa/dorosli/'), 'areaServed' => 'Warszawa')),
             array('@type' => 'Offer', 'itemOffered' => array('@type' => 'Service', 'name' => 'Obozy i półkolonie dla dzieci', 'url' => home_url('/obozy-i-polkolonie/'), 'areaServed' => 'Polska')),
         ),
     );
@@ -372,19 +422,19 @@ function four_elements_service_schema()
 
     $organization_id = trailingslashit(home_url('/')) . '#organization';
     $services = array(
-        'nauka-plywania-dla-dzieci-warszawa' => array('name' => 'Nauka pływania dla dzieci', 'description' => 'Zajęcia nauki i doskonalenia pływania dla dzieci w Warszawie.'),
-        'nauka-plywania-dla-doroslych-warszawa' => array('name' => 'Nauka pływania dla dorosłych', 'description' => 'Zajęcia nauki i doskonalenia pływania dla dorosłych w Warszawie.'),
-        'nauka-plywania' => array('name' => 'Indywidualna nauka pływania', 'description' => 'Indywidualne zajęcia nauki pływania dopasowane do poziomu uczestnika.'),
+        'nauka-plywania-warszawa/dzieci' => array('name' => 'Nauka pływania dla dzieci', 'description' => 'Zajęcia nauki i doskonalenia pływania dla dzieci w Warszawie.'),
+        'nauka-plywania-warszawa/dorosli' => array('name' => 'Nauka pływania dla dorosłych', 'description' => 'Zajęcia nauki i doskonalenia pływania dla dorosłych w Warszawie.'),
+        'nauka-plywania-warszawa' => array('name' => 'Nauka pływania w Warszawie', 'description' => 'Grupowe i indywidualne zajęcia nauki pływania dla dzieci i dorosłych w Warszawie.'),
         'obozy-i-polkolonie' => array('name' => 'Obozy i półkolonie', 'description' => 'Obozy sportowe i półkolonie dla dzieci.'),
         'treningi' => array('name' => 'Treningi sportowe', 'description' => 'Zajęcia ogólnorozwojowe i treningi sportowe.'),
     );
 
-    $page_slug = get_post_field('post_name', get_queried_object_id());
-    if (!isset($services[$page_slug])) {
+    $page_path = get_page_uri(get_queried_object_id());
+    if (!isset($services[$page_path])) {
         return;
     }
 
-    $service = $services[$page_slug];
+    $service = $services[$page_path];
     $service_url = get_permalink();
     $service_schema = array(
         '@context' => 'https://schema.org',
@@ -440,7 +490,7 @@ function four_elements_faq_items()
         array(
             'question' => 'Jak zapisać się na zajęcia nauki pływania?',
             'answer' => 'Aby zapisać się na zajęcia nauki pływania w 4elements, należy wypełnić formularz rejestracyjny lub skontaktować się telefonicznie. Przy doborze zajęć uwzględniane są wiek, poziom uczestnika, preferowana pływalnia oraz aktualna dostępność. Wysłanie formularza jest zgłoszeniem i nie oznacza automatycznego potwierdzenia miejsca.',
-            'more_html' => '<a href="' . esc_url(home_url('/nauka-plywania-warszawa/zapisz-sie/')) . '">Przejdź do formularza zapisu</a>.',
+            'more_html' => '<a href="' . esc_url(home_url('/formularz-rejestracyjny/')) . '">Przejdź do formularza zapisu</a>.',
         ),
         array(
             'question' => 'Ile wcześniej należy przyjść na pływalnię?',
@@ -539,6 +589,28 @@ function four_elements_answer_capsule_items()
     );
 }
 
+/**
+ * Questions shown on the homepage. This shared source keeps visible answers,
+ * WebMCP data and homepage JSON-LD identical.
+ */
+function four_elements_home_faq_items()
+{
+    return array(
+        array(
+            'question' => 'Od jakiego wieku prowadzicie zajęcia?',
+            'answer' => 'Na naukę pływania przyjmujemy dzieci od 4. roku życia, młodzież oraz osoby dorosłe.',
+        ),
+        array(
+            'question' => 'Ile trwają zajęcia?',
+            'answer' => 'Lekcje trwają 30 lub 45 minut. Warto pojawić się na pływalni około 15 minut wcześniej.',
+        ),
+        array(
+            'question' => 'Czy można zacząć od zera?',
+            'answer' => 'Tak. Program dopasowujemy do poziomu uczestnika, również do osoby, która dopiero oswaja się z wodą.',
+        ),
+    );
+}
+
 function four_elements_faq_schema_questions($items = null)
 {
     $items = is_array($items) ? $items : four_elements_faq_items();
@@ -565,14 +637,15 @@ function four_elements_faq_schema_questions($items = null)
 add_filter('wpseo_schema_webpage', 'four_elements_faq_yoast_schema');
 function four_elements_faq_yoast_schema($data)
 {
-    if (!is_page('faq')) {
+    if (!is_page('faq') && !is_front_page()) {
         return $data;
     }
 
+    $items = is_front_page() ? four_elements_home_faq_items() : four_elements_faq_items();
     $types = isset($data['@type']) ? (array) $data['@type'] : array('WebPage');
     $types[] = 'FAQPage';
     $data['@type'] = array_values(array_unique($types));
-    $data['mainEntity'] = four_elements_faq_schema_questions();
+    $data['mainEntity'] = four_elements_faq_schema_questions($items);
 
     return $data;
 }
@@ -584,15 +657,16 @@ function four_elements_faq_yoast_schema($data)
 add_action('wp_head', 'four_elements_faq_schema', 21);
 function four_elements_faq_schema()
 {
-    if (!is_page('faq') || defined('WPSEO_VERSION')) {
+    if ((!is_page('faq') && !is_front_page()) || defined('WPSEO_VERSION')) {
         return;
     }
 
+    $items = is_front_page() ? four_elements_home_faq_items() : four_elements_faq_items();
     $schema = array(
         '@context' => 'https://schema.org',
         '@type' => 'FAQPage',
         '@id' => trailingslashit(get_permalink()) . '#faq',
-        'mainEntity' => four_elements_faq_schema_questions(),
+        'mainEntity' => four_elements_faq_schema_questions($items),
     );
 
     echo '<script type="application/ld+json">' . wp_json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>' . "\n";
@@ -1103,9 +1177,9 @@ function four_elements_mcp_tools()
 function four_elements_public_pages()
 {
     return array(
-        array('name' => 'Nauka pływania', 'url' => home_url('/nauka-plywania/'), 'keywords' => 'pływanie dzieci dorośli lekcje zajęcia'),
-        array('name' => 'Cennik', 'url' => home_url('/nauka-plywania-cennik/'), 'keywords' => 'cena koszt płatność'),
-        array('name' => 'Pływalnie', 'url' => home_url('/plywalnie-warszawa-wola/'), 'keywords' => 'basen adres lokalizacja Warszawa Wola Wilanów'),
+        array('name' => 'Nauka pływania', 'url' => home_url('/nauka-plywania-warszawa/'), 'keywords' => 'pływanie dzieci dorośli lekcje zajęcia Warszawa'),
+        array('name' => 'Cennik', 'url' => home_url('/nauka-plywania-warszawa/cennik/'), 'keywords' => 'cena koszt płatność'),
+        array('name' => 'Pływalnie', 'url' => home_url('/nauka-plywania-warszawa/plywalnie-i-grafik/'), 'keywords' => 'basen adres lokalizacja Warszawa Wola Wilanów'),
         array('name' => 'Obozy i półkolonie', 'url' => home_url('/obozy-i-polkolonie/'), 'keywords' => 'obóz półkolonie lato zima dzieci'),
         array('name' => 'Treningi', 'url' => home_url('/treningi/'), 'keywords' => 'trening zajęcia sportowe personalne'),
         array('name' => 'Kontakt', 'url' => home_url('/kontakt/'), 'keywords' => 'telefon email wiadomość'),
@@ -1192,10 +1266,10 @@ function four_elements_a2a_reply($message)
         return 'Kontakt: 798 968 416 lub 798 784 748, e-mail kontakt@4elements.pl. Więcej: ' . home_url('/kontakt/');
     }
     if (strpos($message, 'cena') !== false || strpos($message, 'cennik') !== false || strpos($message, 'płat') !== false) {
-        return 'Aktualne informacje o opłatach znajdują się na stronie: ' . home_url('/nauka-plywania-cennik/');
+        return 'Aktualne informacje o opłatach znajdują się na stronie: ' . home_url('/nauka-plywania-warszawa/cennik/');
     }
     if (strpos($message, 'basen') !== false || strpos($message, 'pływal') !== false || strpos($message, 'lokal') !== false) {
-        return 'Informacje o pływalniach i lokalizacjach: ' . home_url('/plywalnie-warszawa-wola/');
+        return 'Informacje o pływalniach i lokalizacjach: ' . home_url('/nauka-plywania-warszawa/plywalnie-i-grafik/');
     }
     if (strpos($message, 'zapis') !== false || strpos($message, 'rejestr') !== false) {
         return 'Zapisy prowadzi formularz: ' . home_url('/formularz-rejestracyjny/');
@@ -1345,9 +1419,9 @@ function four_elements_nlweb_normalize($value)
 function four_elements_nlweb_search($query)
 {
     $pages = array(
-        array('title' => 'Nauka pływania', 'text' => 'Nauka pływania dla dzieci i dorosłych, zajęcia indywidualne i grupowe.', 'url' => home_url('/nauka-plywania/')),
-        array('title' => 'Cennik', 'text' => 'Aktualne ceny i informacje o płatnościach za zajęcia nauki pływania.', 'url' => home_url('/nauka-plywania-cennik/')),
-        array('title' => 'Pływalnie', 'text' => 'Pływalnie i lokalizacje zajęć w Warszawie, Woli i Wilanowie.', 'url' => home_url('/plywalnie-warszawa-wola/')),
+        array('title' => 'Nauka pływania', 'text' => 'Nauka pływania dla dzieci i dorosłych, zajęcia indywidualne i grupowe w Warszawie.', 'url' => home_url('/nauka-plywania-warszawa/')),
+        array('title' => 'Cennik', 'text' => 'Aktualne ceny i informacje o płatnościach za zajęcia nauki pływania.', 'url' => home_url('/nauka-plywania-warszawa/cennik/')),
+        array('title' => 'Pływalnie', 'text' => 'Pływalnie i lokalizacje zajęć w Warszawie, na Woli i w Wilanowie.', 'url' => home_url('/nauka-plywania-warszawa/plywalnie-i-grafik/')),
         array('title' => 'Formularz rejestracyjny', 'text' => 'Zapisy i rejestracja na zajęcia.', 'url' => home_url('/formularz-rejestracyjny/')),
         array('title' => 'Kontakt', 'text' => 'Kontakt telefoniczny i e-mail z 4elements.', 'url' => home_url('/kontakt/')),
     );

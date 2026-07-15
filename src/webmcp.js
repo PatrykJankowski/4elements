@@ -7,6 +7,8 @@
 
     const data = window.fourElementsAgentData || {};
     const pages = Array.isArray(data.pages) ? data.pages : [];
+    const faq = Array.isArray(data.faq) ? data.faq : [];
+    const answerCapsules = Array.isArray(data.answerCapsules) ? data.answerCapsules : [];
     const readOnly = { readOnlyHint: true, untrustedContentHint: false };
 
     const register = function (tool) {
@@ -101,6 +103,51 @@
                 phones: data.contact && data.contact.phones ? data.contact.phones : [],
                 contactPageUrl: contactPage ? contactPage.url : (data.homeUrl || '/') + 'kontakt/'
             };
+        }
+    });
+
+    register({
+        name: 'get_swimming_faq',
+        title: 'FAQ nauki pływania',
+        description: 'Zwraca publiczne odpowiedzi 4elements o nauce pływania, zapisach, przygotowaniu, pływalniach i płatnościach.',
+        inputSchema: {
+            type: 'object',
+            properties: {
+                query: {
+                    type: 'string',
+                    description: 'Opcjonalne pytanie lub temat, np. zapisy, czepek, odwołanie albo pływalnia.'
+                }
+            },
+            additionalProperties: false
+        },
+        annotations: readOnly,
+        execute: async function (input) {
+            const items = answerCapsules.concat(faq);
+            const query = String(input && input.query ? input.query : '').toLocaleLowerCase('pl-PL').trim();
+            const words = query.split(/\s+/).filter(function (word) { return word.length > 1; });
+            let results = items;
+
+            if (words.length) {
+                results = items.map(function (item) {
+                    const haystack = (item.question + ' ' + item.answer).toLocaleLowerCase('pl-PL');
+                    const score = words.reduce(function (total, word) {
+                        return total + (haystack.indexOf(word) !== -1 ? 1 : 0);
+                    }, 0);
+                    return { question: item.question, answer: item.answer, score: score };
+                }).filter(function (item) {
+                    return item.score > 0;
+                }).sort(function (a, b) {
+                    return b.score - a.score;
+                }).slice(0, 5);
+            }
+
+            return results.map(function (item) {
+                return {
+                    question: item.question,
+                    answer: item.answer,
+                    sourceUrl: data.faqUrl || (data.homeUrl || '/') + 'faq/'
+                };
+            });
         }
     });
 
