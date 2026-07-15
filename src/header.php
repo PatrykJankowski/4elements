@@ -9,11 +9,20 @@
     <?php if (is_front_page() && !is_home()) : ?>
         <link rel="preload" as="image" type="image/webp"
               href="<?php echo esc_url(get_template_directory_uri() . '/img/nauka_plywania_dla_dzieci@1080.webp'); ?>"
-              imagesrcset="<?php echo esc_url(get_template_directory_uri() . '/img/nauka_plywania_dla_dzieci@1080.webp'); ?> 1080w, <?php echo esc_url(get_template_directory_uri() . '/img/nauka_plywania_dla_dzieci@1920.webp'); ?> 1920w"
-              imagesizes="(max-width: 767px) 470px, 1920px"
               fetchpriority="high">
     <?php endif; ?>
-    <link rel="stylesheet" type="text/css" href="/wp-content/themes/4elements/style.css" />
+    <?php
+    $theme_stylesheet = 'content.css';
+
+    if (is_front_page() && !is_home()) {
+        $theme_stylesheet = 'home.css';
+    } elseif (is_home() || is_archive() || is_search() || is_singular('post')) {
+        $theme_stylesheet = 'blog-page.css';
+    } elseif (is_page_template('page-opinie.php')) {
+        $theme_stylesheet = 'reviews-page.css';
+    }
+    ?>
+    <link rel="stylesheet" type="text/css" href="<?php echo esc_url(get_template_directory_uri() . '/' . $theme_stylesheet); ?>" />
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133650290-1"></script>
@@ -81,6 +90,7 @@
                      srcset="/wp-content/themes/4elements/img/obozy_zimowe@1080.webp 1080w, /wp-content/themes/4elements/img/obozy_zimowe@1920.webp 1920w"
                      sizes="(max-width: 767px) 100vw, 100vw"
                      width="1920" height="1326" fetchpriority="low">
+
 
                 <div class="slider__caption">
                     <?php dynamic_sidebar('slogan'); ?>

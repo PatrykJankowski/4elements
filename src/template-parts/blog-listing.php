@@ -11,15 +11,15 @@ $description = isset($args['description']) ? $args['description'] : '';
 ?>
 
 <section class="top">
-    <h1 class="fire"><?php echo esc_html(wp_strip_all_tags($page_title)); ?></h1>
+    <h1 class="top__heading top__heading--fire"><?php echo esc_html(wp_strip_all_tags($page_title)); ?></h1>
 </section>
 
-<section id="blog" aria-labelledby="blog-heading">
+<section id="blog" class="blog" aria-labelledby="blog-heading">
     <div class="container">
-        <header class="blog-intro">
+        <header class="blog__intro">
             <h2 id="blog-heading"><?php echo esc_html($intro_title); ?></h2>
             <?php if ($description) : ?>
-                <div class="blog-intro__description"><?php echo wp_kses_post($description); ?></div>
+                <div class="blog__intro-description"><?php echo wp_kses_post($description); ?></div>
             <?php else : ?>
                 <p>Praktyczne porady o nauce pływania, bezpieczeństwie nad wodą, treningach oraz aktywnym wypoczynku dla dzieci i dorosłych.</p>
             <?php endif; ?>
@@ -28,7 +28,7 @@ $description = isset($args['description']) ? $args['description'] : '';
         <div class="row">
             <div class="col-lg-9">
                 <?php if ($blog_posts->have_posts()) : ?>
-                    <div class="row blog-grid">
+                    <div class="row blog__grid">
                         <?php while ($blog_posts->have_posts()) : $blog_posts->the_post(); ?>
                             <article class="col-lg-6 blog-card<?php echo has_post_thumbnail() ? '' : ' blog-card--no-image'; ?>">
                                 <?php if (has_post_thumbnail()) : ?>
@@ -38,16 +38,16 @@ $description = isset($args['description']) ? $args['description'] : '';
                                 <?php endif; ?>
 
                                 <div class="blog-card__body">
-                                    <time class="time" datetime="<?php echo esc_attr(get_the_date(DATE_W3C)); ?>">
+                                    <time class="blog-card__date" datetime="<?php echo esc_attr(get_the_date(DATE_W3C)); ?>">
                                         <span class="screen-reader-text">Opublikowano: </span><?php echo esc_html(get_the_date()); ?>
                                     </time>
-                                    <h2 class="title">
+                                    <h2 class="blog-card__title">
                                         <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                                     </h2>
-                                    <p class="content">
+                                    <p class="blog-card__excerpt">
                                         <?php echo esc_html(wp_trim_words(wp_strip_all_tags(get_the_excerpt()), 30, '…')); ?>
                                     </p>
-                                    <a class="more" href="<?php the_permalink(); ?>" aria-label="Czytaj więcej: <?php echo esc_attr(get_the_title()); ?>">
+                                    <a class="blog-card__more" href="<?php the_permalink(); ?>" aria-label="Czytaj więcej: <?php echo esc_attr(get_the_title()); ?>">
                                         Czytaj więcej <span aria-hidden="true">→</span>
                                     </a>
                                 </div>
@@ -72,11 +72,11 @@ $description = isset($args['description']) ? $args['description'] : '';
                         </nav>
                     <?php endif; ?>
                 <?php else : ?>
-                    <p class="blog-empty">Brak artykułów w tej kategorii.</p>
+                    <p class="blog__empty">Brak artykułów w tej kategorii.</p>
                 <?php endif; ?>
             </div>
 
-            <aside class="col-lg-3 blog-sidebar" aria-label="Dodatkowe informacje o blogu">
+            <aside class="col-lg-3 blog__sidebar" aria-label="Dodatkowe informacje o blogu">
                 <?php get_sidebar(); ?>
             </aside>
         </div>

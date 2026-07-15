@@ -23,7 +23,7 @@
                 </a>
             </div>
             <div class="col-sm-6 col-md-3 justify-content-center">
-                <a href="/blog/" class="element element--wind">
+                <a href="/blog/" class="element">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 67.06 55.44"><g><path d="M13.19 3a13.09 13.09 0 0113.07 13.09 1.45 1.45 0 01-2.91 0 10.17 10.17 0 10-10.16 10.18H65.5a1.45 1.45 0 110 2.91H13.19a13.08 13.08 0 010-26.18zm2.91 32h49.4a1.45 1.45 0 110 2.91H16.09a7.27 7.27 0 107.27 7.27 1.45 1.45 0 112.91 0A10.17 10.17 0 1116.09 35zM40.8.11a10.17 10.17 0 100 20.34h24.7a1.45 1.45 0 100-2.91H40.8a7.27 7.27 0 117.27-7.27 1.45 1.45 0 102.91 0A10.18 10.18 0 0040.8.11z" fill="#c4c1be" stroke="#c4c1be" stroke-miterlimit="22.93" stroke-width=".22" fill-rule="evenodd" data-name="Warstwa 1"/></g></svg>
                     <strong class="element__title">Blog</strong>
                     <span class="element__description">Porady o pływaniu i aktywności</span>
@@ -86,10 +86,6 @@
                            Jestem zawsza otwarta na nowe doświadczenia, pełna pomysłów i uśmiechu.</p>
                     </div>
                 </div>
-
-                <div class="container__widget">
-                    <?php /*dynamic_sidebar('swimming'); */?>
-                </div>
             </div>
         </div>
     </div>
@@ -144,7 +140,7 @@
                 <img src="/wp-content/themes/4elements/img/nauka-plywania-dla-dzieci.jpg" alt="Instruktorka 4elements podczas nauki pływania dzieci w Warszawie" width="963" height="666" loading="lazy">
             </figure>
             <div class="home-seo__intro">
-                <p class="home-seo__eyebrow">Szkoła pływania 4elements</p>
+                <p class="home-eyebrow">Szkoła pływania 4elements</p>
                 <h2 id="home-swimming-heading">Nauka pływania w Warszawie dla dzieci i dorosłych</h2>
                 <p>Prowadzimy naukę i doskonalenie pływania na warszawskim Ursynowie i w Wilanowie. Na zajęcia mogą zapisać się dzieci od 4. roku życia, młodzież i dorośli — zarówno osoby oswajające się z wodą, jak i pływające, które chcą poprawić technikę.</p>
                 <p>Uczymy w małych grupach od 2 do 5 osób oraz indywidualnie. Program i tempo ćwiczeń dopasowujemy do wieku, umiejętności i celu uczestnika.</p>
@@ -158,7 +154,7 @@
         <div class="home-benefits" aria-labelledby="home-benefits-heading">
             <h2 id="home-benefits-heading" class="header header--center header--fire">Dlaczego warto pływać z 4elements?</h2>
             <div class="home-benefits__grid">
-                <article class="home-benefit home-benefit--water">
+                <article class="home-benefit">
                     <span class="home-benefit__number" aria-hidden="true">01</span>
                     <h3>Małe grupy</h3>
                     <p>Od 2 do 5 osób, dzięki czemu instruktor może uważnie śledzić postępy każdego uczestnika.</p>
@@ -188,7 +184,7 @@
     <div class="container">
         <div class="home-locations__header">
             <div>
-                <p class="home-seo__eyebrow">Warszawa Ursynów i Wilanów</p>
+                <p class="home-eyebrow">Warszawa Ursynów i Wilanów</p>
                 <h2 id="home-locations-heading">Gdzie w Warszawie odbywa się nauka pływania?</h2>
             </div>
             <p>Zajęcia prowadzimy na trzech pływalniach. Wybierz dogodną lokalizację, a dostępny termin ustalimy po otrzymaniu zgłoszenia. Na zajęcia indywidualne możemy umówić się w dowolnym miejscu.</p>
@@ -228,7 +224,7 @@
     <div class="container">
         <div class="home-start__grid">
             <div class="home-start__content">
-                <p class="home-seo__eyebrow">Jak się zapisać?</p>
+                <p class="home-eyebrow">Jak się zapisać?</p>
                 <h2 id="home-start-heading">Pierwsze zajęcia</h2>
                 <p class="home-start__lead">Wypełnij formularz zapisu na zajęcia lub skontaktuj się z nami.</p>
                 <a class="button button--fire" href="/formularz-rejestracyjny/">Wypełnij formularz</a>

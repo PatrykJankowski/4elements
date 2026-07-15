@@ -1,7 +1,7 @@
-#blog {
+.blog {
     padding-bottom: $XL;
 
-    .blog-intro {
+    &__intro {
         max-width: 820px;
         margin-bottom: $L;
 
@@ -17,7 +17,7 @@
         }
     }
 
-    .blog-grid {
+    &__grid {
         align-items: stretch;
     }
 
@@ -60,7 +60,7 @@
         border-top: 1px solid rgba($third, .14);
     }
 
-    .title {
+    .blog-card__title {
         margin: $XS 0 $S;
         font-size: 24px;
 
@@ -74,20 +74,20 @@
         }
     }
 
-    .time {
+    .blog-card__date {
         color: $wind;
         font-size: 14px;
         font-weight: 600;
     }
 
-    .content {
+    .blog-card__excerpt {
         flex: 1;
         margin: 0 0 $S;
         font-size: 18px;
         line-height: 1.5;
     }
 
-    .more {
+    .blog-card__more {
         align-self: flex-start;
         color: $fire;
         font-size: 18px;
@@ -136,27 +136,27 @@
         }
     }
 
-    .title a:focus-visible,
-    .more:focus-visible,
+    .blog-card__title a:focus-visible,
+    .blog-card__more:focus-visible,
     .pagination a:focus-visible {
         outline: 3px solid $water;
         outline-offset: 3px;
     }
 
-    .blog-empty {
+    &__empty {
         padding: $M;
         background: $secondary;
         font-size: 18px;
     }
 
-    .blog-sidebar {
+    &__sidebar {
         @media screen and (min-width: $desktop) {
             padding-left: $M;
         }
     }
 
     @media screen and (max-width: $tablet - 1px) {
-        .blog-intro {
+        .blog__intro {
             margin-bottom: $M;
         }
 
@@ -172,12 +172,8 @@
         padding-bottom: $XL;
     }
 
-    .single-article {
-        .content {
-            a {
-                text-decoration: underline;
-            }
-        }
+    .single-article__content a {
+        text-decoration: underline;
     }
 
     .single-article__image {
@@ -200,7 +196,7 @@
         font-size: 15px;
 
         a,
-        .date {
+        .single-article__date {
             color: $text-main-color;
             font-weight: 600;
         }
@@ -210,12 +206,12 @@
         }
     }
 
-    .date {
+    .single-article__date {
         color: $text-main-color;
         font-size: 16px;
     }
 
-    .content {
+    .single-article__content {
         p,
         li {
             font-size: 18px;
@@ -250,7 +246,7 @@
         }
     }
 
-    .single-sidebar {
+    .single-layout__sidebar {
         @media screen and (min-width: $desktop) {
             padding-left: $M;
         }
@@ -267,7 +263,7 @@
             height: 280px;
         }
 
-        .content h2 {
+        .single-article__content h2 {
             margin-top: $M;
             font-size: 26px;
         }
@@ -314,7 +310,7 @@
         font-size: 30px;
     }
 
-    .featured-grid {
+    &__grid {
         align-items: stretch;
     }
 
@@ -356,13 +352,13 @@
         border-top: 1px solid rgba($third, .14);
     }
 
-    .date {
+    .featured-card__date {
         color: $wind;
         font-size: 14px;
         font-weight: 600;
     }
 
-    .title {
+    .featured-card__title {
         margin: $XS 0 $S;
         font-size: 18px;
 
@@ -371,22 +367,22 @@
         }
     }
 
-    .content {
+    .featured-card__excerpt {
         flex: 1;
         margin: 0 0 $S;
         font-size: 16px;
         line-height: 1.5;
     }
 
-    .more {
+    .featured-card__more {
         align-self: flex-start;
         color: $fire;
         font-size: 16px;
         font-weight: 600;
     }
 
-    .title a:focus-visible,
-    .more:focus-visible {
+    .featured-card__title a:focus-visible,
+    .featured-card__more:focus-visible {
         outline: 3px solid $water;
         outline-offset: 3px;
     }

@@ -6,35 +6,35 @@
   color: #fff;
   justify-content: center;
 
-  h1 {
+  &__heading {
     padding: 30px 20px;
     text-transform: uppercase;
     background: #3BB3C6;
     width: 100%;
     text-align: center;
 
-    &.fire {
+    &--fire {
       background: $fire;
     }
-    &.water {
+    &--water {
       background: $water;
     }
-    &.ground {
+    &--ground {
       background: $ground;
     }
-    &.wind {
+    &--wind {
       background: $wind;
     }
   }
 
-  img {
+  &__image {
     height: 300px;
     width: 100%;
     object-fit: cover;
   }
 
   @media screen and (min-width: $desktop) {
-    img {
+    .top__image {
       height: 560px;
     }
   }

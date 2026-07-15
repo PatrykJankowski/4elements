@@ -3,17 +3,17 @@
   <?php
     $post_id = get_post()->ID;
     if ($post_id === 7 || $post_id === 149 || $post_id === 144 || $post_id === 135 || $post_id === 129 || $post_id === 139) {
-        $class = "water";
+        $class = "footer--water";
     } else if ($post_id === 22) {
-        $class = "wind";
+        $class = "footer--wind";
     } else if ($post_id === 15 || $post_id === 537 || $post_id === 525 || $post_id === 877) {
-        $class = "ground";
+        $class = "footer--ground";
     } else  {
-        $class = "fire";
+        $class = "footer--fire";
     }
   ?>
 
-<footer id="footer" class="<?php echo $class ?>">
+<footer id="footer" class="footer <?php echo esc_attr($class); ?>">
     <div class="footer__elements" aria-hidden="true">
         <span class="footer__element footer__element--fire"></span>
         <span class="footer__element footer__element--water"></span>
@@ -93,7 +93,7 @@
             </div>
         </div>
     </div>
-    <div id="copyright">
+    <div id="copyright" class="footer__copyright">
         <p>&copy; <?php echo date('Y'); ?> 4elements <span aria-hidden="true">|</span> <?php echo esc_html(get_bloginfo('description')); ?></p>
         <p>Wykonanie: <a href="https://softcraft.pl" title="Softcraft – projektujemy strony internetowe i aplikacje mobilne na miarę twoich potrzeb" target="_blank" rel="noopener noreferrer">Softcraft.pl</a></p>
     </div>

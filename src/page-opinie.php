@@ -10,7 +10,7 @@ $google_reviews_url = 'https://www.google.com/maps/place/4elements/@52.1743547,2
 
 <?php while (have_posts()) : the_post(); ?>
     <section class="top">
-        <h1 class="fire"><?php the_title(); ?></h1>
+        <h1 class="top__heading top__heading--fire"><?php the_title(); ?></h1>
     </section>
 
     <section class="reviews-page" aria-labelledby="reviews-heading">

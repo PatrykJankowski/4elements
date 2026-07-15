@@ -1,4 +1,4 @@
-#footer {
+.footer {
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
@@ -28,19 +28,19 @@
     color: $white;
   }
 
-  &.fire {
+  &--fire {
     background: $fire;
   }
 
-  &.water {
+  &--water {
     background: $water;
   }
 
-  &.ground {
+  &--ground {
     background: $ground;
   }
 
-  &.wind {
+  &--wind {
     background: $wind;
   }
 
@@ -218,7 +218,7 @@
   background: $white;
 }
 
-#copyright {
+.footer__copyright {
   display: flex;
   flex-direction: column;
   gap: 4px;

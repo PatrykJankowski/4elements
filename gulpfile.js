@@ -18,9 +18,14 @@ gulp.task('html', () => {
 
 gulp.task('styles', function() {
     const sass = require("gulp-sass")(require("sass"));
-    return gulp.src('src/sass/style.scss')
-        .pipe(sass().on('error', sass.logError))
-        .pipe(sass({outputStyle: 'compressed'}))
+    return gulp.src([
+        'src/sass/style.scss',
+        'src/sass/home.scss',
+        'src/sass/content.scss',
+        'src/sass/blog-page.scss',
+        'src/sass/reviews-page.scss'
+    ])
+        .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
         .pipe(gulp.dest('dist'))});
 
 gulp.task('js', function () {
@@ -80,11 +85,6 @@ gulp.task('webp', async function() {
     }));
 });
 
-gulp.task('fonts', function() {
-    return gulp.src('src/fonts/*')
-        .pipe(gulp.dest('dist/fonts'));
-});
-
 // Watch tasks
 gulp.task('watch', function() {
     gulp.watch('src/**/*.php',gulp.series('html'));
@@ -97,4 +97,4 @@ gulp.task('watch', function() {
 
 
 // Run tasks
-gulp.task('default', gulp.series(gulp.parallel(['watch', 'html', 'styles', 'js', 'json', 'text', 'images', 'fonts']), function a () {}));
+gulp.task('default', gulp.series(gulp.parallel(['watch', 'html', 'styles', 'js', 'json', 'text', 'images']), function a () {}));

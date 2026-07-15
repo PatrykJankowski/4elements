@@ -44,38 +44,26 @@
 
 
   &--bg-water {
-    background-color: rgba(59, 179, 198, .1)
+    background-color: rgba(59, 179, 198, .1);
   }
 
   &--bg-fire {
-    background-color: rgba(228, 96, 21, .1)
+    background-color: rgba(228, 96, 21, .1);
   }
 
   &--bg-earth {
-    background-color: rgba(133, 175, 75, .1)
+    background-color: rgba(133, 175, 75, .1);
   }
 
   &--bg-wind {
-    background-color: rgba(102, 112, 128, .1)
+    background-color: rgba(102, 112, 128, .1);
   }
-
-
-
-/*  &--large {
-    p, h4, button {
-      font-size: 22px;
-    }
-  }*/
-
   svg {
     height: 48px;
   }
 
   h4 {
-     color: $water;
-  }
-
-  h4 {
+    color: $water;
     font-weight: 600;
   }
 

@@ -1,71 +1,3 @@
-#branding {
-  p {
-    font-size: 20px;
-
-    @media screen and (min-width: $tablet) {
-      font-size: 24px;
-    }
-  }
-
-  a {
-    padding: 10px 30px;
-    background: $fire;
-    color: #fff;
-    font-weight: 500;
-    font-size: 18px;
-  }
-}
-
-.offer {
-  padding: $L 0;
-  text-align: center;
-
-  &__img {
-    height: 100px;
-  }
-
-  &__header {
-    margin-bottom: $L;
-
-    @media screen and (min-width: $desktop) {
-      margin-bottom: 0;
-    }
-
-    &--wind {
-      margin-bottom: 0;
-    }
-  }
-
-  &__element {
-    display: block;
-
-    &:hover {
-      opacity: .8;
-    }
-
-    &:hover {
-      .offer__header--fire {
-        color: $fire;
-      }
-
-      .offer__header--water {
-        color: $water;
-      }
-
-      .offer__header--ground {
-        color: $ground;
-      }
-
-      .offer__header--wind {
-        color: $wind;
-      }
-    }
-  }
-}
-
-
-
-
 .about {
   padding: $M 0;
   background: $fire;
@@ -111,38 +43,8 @@
     background-image: url("/wp-content/themes/4elements/img/karolina_i_sandra@768.jpg");
   }
 
- /* @media screen and (max-width: 414px) {
-    background-image: url("/wp-content/themes/4elements/img/karolina_i_sandra@414.jpg");
-  }
-
-  @media screen and (max-width: 360px) {
-    background-image: url("/wp-content/themes/4elements/img/karolina_i_sandra@360.jpg");
-  }*/
-
-
   @media screen and (min-width: $tablet) {
     height: 1600px;
-
-    .c6 {
-      padding: 0 $L 0 0;
-    }
-  }
-
-  img {
-    width: 100%;
-    margin-bottom: $S;
-
-    @media screen and (min-width: $desktop) {
-      width: 100%;
-      margin-bottom: 20px;
-      height: 100%;
-      object-fit: cover;
-      min-height: 500px;
-    }
-  }
-
-  li, a {
-    color: #fff;
   }
 }
 
@@ -238,7 +140,7 @@
   }
 }
 
-.home-seo__eyebrow {
+.home-eyebrow {
   margin: 0 0 $XS !important;
   color: $fire;
   font-size: 14px !important;

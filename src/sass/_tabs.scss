@@ -10,7 +10,7 @@
         border-radius: 50%;
         color: $water;
         cursor: pointer;
-        transition: all .3s;
+        transition: background-color .3s, color .3s;
 
         position: relative;
         width: 50px;

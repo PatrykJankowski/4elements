@@ -12,7 +12,7 @@ $category_ids = array();
     ?>
 
     <div class="top">
-        <h1 id="post-title" class="fire"><?php the_title(); ?></h1>
+        <h1 id="post-title" class="top__heading top__heading--fire"><?php the_title(); ?></h1>
     </div>
 
     <section class="single-layout" aria-labelledby="post-title">
@@ -31,7 +31,7 @@ $category_ids = array();
                     <header class="single-article__meta">
                         <span>
                             Opublikowano
-                            <time class="date" datetime="<?php echo esc_attr(get_the_date(DATE_W3C)); ?>">
+                            <time class="single-article__date" datetime="<?php echo esc_attr(get_the_date(DATE_W3C)); ?>">
                                 <?php echo esc_html(get_the_date()); ?>
                             </time>
                         </span>
@@ -41,7 +41,7 @@ $category_ids = array();
                         <?php endif; ?>
                     </header>
 
-                    <div class="content">
+                    <div class="single-article__content">
                         <?php the_content(); ?>
                     </div>
 
@@ -52,7 +52,7 @@ $category_ids = array();
                     <?php endif; ?>
                 </article>
 
-                <aside class="col-lg-3 single-sidebar" aria-label="Dodatkowe informacje o blogu">
+                <aside class="col-lg-3 single-layout__sidebar" aria-label="Dodatkowe informacje o blogu">
                     <?php get_sidebar(); ?>
                 </aside>
             </div>
@@ -82,7 +82,7 @@ $related_posts = new WP_Query($related_args);
         <div class="container">
             <h2 id="related-posts-heading">Więcej artykułów z tej kategorii</h2>
 
-            <div class="row featured-grid">
+            <div class="row featured__grid">
                 <?php while ($related_posts->have_posts()) : $related_posts->the_post(); ?>
                     <article class="col-lg-3 featured-card<?php echo has_post_thumbnail() ? '' : ' featured-card--no-image'; ?>">
                         <?php if (has_post_thumbnail()) : ?>
@@ -92,14 +92,14 @@ $related_posts = new WP_Query($related_args);
                         <?php endif; ?>
 
                         <div class="featured-card__body">
-                            <time class="date" datetime="<?php echo esc_attr(get_the_date(DATE_W3C)); ?>">
+                            <time class="featured-card__date" datetime="<?php echo esc_attr(get_the_date(DATE_W3C)); ?>">
                                 <span class="screen-reader-text">Opublikowano: </span><?php echo esc_html(get_the_date()); ?>
                             </time>
-                            <h3 class="title">
+                            <h3 class="featured-card__title">
                                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                             </h3>
-                            <p class="content"><?php echo esc_html(wp_trim_words(wp_strip_all_tags(get_the_excerpt()), 24, '…')); ?></p>
-                            <a class="more" href="<?php the_permalink(); ?>" aria-label="Czytaj więcej: <?php echo esc_attr(get_the_title()); ?>">
+                            <p class="featured-card__excerpt"><?php echo esc_html(wp_trim_words(wp_strip_all_tags(get_the_excerpt()), 24, '…')); ?></p>
+                            <a class="featured-card__more" href="<?php the_permalink(); ?>" aria-label="Czytaj więcej: <?php echo esc_attr(get_the_title()); ?>">
                                 Czytaj więcej <span aria-hidden="true">→</span>
                             </a>
                         </div>

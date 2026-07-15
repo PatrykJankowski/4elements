@@ -176,17 +176,6 @@ function widgets_init()
     ));
 }
 
-
-
-add_filter( 'ninja_forms_submission_csv_name', 'csv_name' );
-
-function csv_name()
-{
-    $name = 'formularz_rejestracyjny';
-    return $name;
-}
-
-
 /**
  * Publish the AI-readable site guide at https://4elements.pl/llms.txt.
  * This interception does not need a server-level rewrite or a permalink flush.

@@ -19,7 +19,6 @@ main {
 
   & > section {
     display: flex;
-    //margin-bottom: $XL;
   }
 
   > header {
@@ -134,7 +133,7 @@ input[type="submit"] {
   padding: 10px;
   font-size: 18px;
   color: #fff;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 textarea {
@@ -144,25 +143,6 @@ textarea {
 form {
   p {
     margin: 0 0 10px 0;
-  }
-
-  .nf-form-content input:not([type="button"]), .nf-form-content textarea {
-    border: 1px solid #E5E5E5;
-    background: none;
-  }
-
-  .nf-form-content input[type="button"] {
-    background: $fire;
-    transition: opacity 0.3s;
-
-    &:hover {
-      background: rgba(228, 96, 21, .9);
-      color: #fff;
-    }
-  }
-
-  .nf-form-content {
-    margin: 0;
   }
 }
 
@@ -249,20 +229,4 @@ select:-moz-focusring {
   svg {
     height: 70px;
   }
-}
-
-
-
-
-
-
-
-
-
-.checkbox-container.label-right label {
-  font-weight: normal;
-}
-
-.nf-error-msg {
-  font-size: 16px;
 }
