@@ -71,14 +71,14 @@
                     <?php dynamic_sidebar('slogan'); ?>
                 </div>
 
-                <div class="slider__arrows">
-                    <button class="slider__arrow slider__arrow--left" onclick="plusDivs(-1)">&#10094;</button>
-                    <button class="slider__arrow slider__arrow--right" onclick="plusDivs(1)">&#10095;</button>
+                <div class="slider__arrows" aria-label="Sterowanie slajderem">
+                    <button type="button" class="slider__arrow slider__arrow--left" onclick="plusDivs(-1)" aria-label="Poprzedni slajd">&#10094;</button>
+                    <button type="button" class="slider__arrow slider__arrow--right" onclick="plusDivs(1)" aria-label="Następny slajd">&#10095;</button>
                 </div>
 
-                <div class="slider__badges">
-                    <span class="slider__badge slider__badge--active" onclick="currentDiv(1)"></span>
-                    <span class="slider__badge" onclick="currentDiv(2)"></span>
+                <div class="slider__badges" aria-label="Wybierz slajd">
+                    <button type="button" class="slider__badge slider__badge--active" onclick="currentDiv(1)" aria-label="Slajd 1: nauka pływania"></button>
+                    <button type="button" class="slider__badge" onclick="currentDiv(2)" aria-label="Slajd 2: obóz sportowy"></button>
                 </div>
             </div>
         </header>

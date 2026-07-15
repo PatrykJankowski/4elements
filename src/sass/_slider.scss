@@ -1,14 +1,27 @@
 .slider {
     position: relative;
     height: 100%;
+    overflow: hidden;
+    background: $text-main-color;
+
+    &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background: linear-gradient(90deg, rgba($text-main-color, .62) 0%, rgba($text-main-color, .28) 48%, rgba($text-main-color, .08) 100%);
+        pointer-events: none;
+    }
 
     &__img {
         position: absolute;
         width: 100%;
         height: 100%;
         object-fit: cover;
+        object-position: center;
         opacity: 0;
         z-index: 0;
+        transform: scale(1.015);
 
         &:first-of-type {
             z-index: 1;
@@ -18,145 +31,197 @@
 
     &__caption {
         position: absolute;
-        top: 280px;
-        transform: translateY(-50%);
-        margin: 0 $S;
-        width: calc(100% - 30px);
-        max-width: 700px;
+        top: 50%;
+        left: 50%;
+        width: calc(100% - 40px);
+        max-width: 1100px;
+        margin: 0;
         z-index: 2;
-
-        @media screen and (min-width: 340px) {
-            margin-left: $M;
-        }
-
-        @media screen and (min-width: $tablet) {
-            top: 50%;
-            margin-left: 220px;
-        }
-
-        @media screen and (min-width: $desktop) {
-            //margin-left: 200px;
-        }
-
-        @media screen and (min-width: 2000px) {
-            margin-left: 400px;
-        }
+        transform: translate(-50%, -50%);
 
         h1,
         .slider__title {
-            font-size: 30px;
+            margin: 0 0 $S;
+            color: $white;
+            font-size: 28px;
             font-weight: 600;
-            color: #fff;
+            line-height: 1.08;
+            text-shadow: 0 2px 12px rgba($text-main-color, .25);
 
             @media screen and (min-width: $tablet) {
-                font-size: 48px;
+                font-size: 40px;
             }
         }
 
-        h2 {
-            margin-top: 0;
-            font-size: 24px;
+        h2:not(.slider__title) {
+            margin: 0 0 $XS;
             color: $fire;
+            font-size: 24px;
 
             @media screen and (min-width: $tablet) {
-                font-size: 48px;
+                font-size: 40px;
+            }
+        }
+
+        p {
+            margin: 0;
+            color: $white;
+            font-size: 17px;
+            line-height: 1.4;
+
+            @media screen and (min-width: $tablet) {
+                font-size: 20px;
             }
         }
 
         .textwidget {
-            height: 200px;
+            position: relative;
             display: flex;
+            height: 230px;
             align-items: center;
         }
     }
 
     &__slogan {
         position: absolute;
+        width: 100%;
+        max-width: 620px;
+        padding: $S;
+        box-sizing: border-box;
         z-index: 0;
+        border: 1px solid rgba($white, .24);
+        border-left: 5px solid $fire;
+        background: rgba($text-main-color, .58);
+        box-shadow: 0 18px 45px rgba($text-main-color, .24);
         opacity: 0;
+        backdrop-filter: blur(7px);
+        -webkit-backdrop-filter: blur(7px);
 
         &:first-of-type {
             z-index: 1;
             opacity: 1;
         }
 
-        p {
-            padding: 0
+        @media screen and (min-width: $tablet) {
+            width: 620px;
+            padding: $M;
         }
     }
 
     &__arrows {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
         position: absolute;
-        top: 33%;
+        top: 50%;
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        z-index: 4;
         transform: translateY(-50%);
-        z-index: 1;
-
-        @media screen and (min-width: $tablet) {
-            top: 50%;
-        }
+        pointer-events: none;
     }
 
     &__arrow {
-        width: 50px;
-        height: 50px;
-        background: rgba(56, 74, 95, .8);
-        border: none;
-        border-radius: 50%;
-        color: #fff;
-        font-size: 28px;
+        display: flex;
+        width: 42px;
+        height: $L;
+        padding: 0;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba($white, .34);
+        background: rgba($text-main-color, .52);
+        box-shadow: 0 8px 22px rgba($text-main-color, .18);
+        color: $white;
+        font-size: 22px;
+        line-height: 1;
         cursor: pointer;
+        pointer-events: auto;
+        transition: width .2s ease, background .2s ease, border-color .2s ease;
 
-        @media screen and (min-width: $tablet) {
-            width: 120px;
-            height: 120px;
-            font-size: 48px;
+        &:hover {
+            width: 50px;
+            border-color: rgba($white, .7);
+            background: rgba($fire, .88);
+        }
+
+        &:focus-visible {
+            outline: 2px solid $white;
+            outline-offset: 3px;
         }
 
         &--left {
-            margin-left: $M;
-
-            @media screen and (min-width: $tablet) {
-                margin-left: $L;
-            }
+            border-left: 0;
+            border-radius: 0 $L $L 0;
         }
 
         &--right {
-            margin-right: $M;
+            border-right: 0;
+            border-radius: $L 0 0 $L;
+        }
 
-            @media screen and (min-width: $tablet) {
-                margin-right: $L;
+        @media screen and (min-width: $tablet) {
+            width: 52px;
+            height: $XL;
+            font-size: 28px;
+
+            &:hover {
+                width: $L;
             }
         }
     }
 
     &__badges {
         position: absolute;
-        top: 10px;
+        bottom: $S;
         left: 50%;
+        display: flex;
+        gap: $XS;
+        padding: 7px $XS;
+        z-index: 4;
+        border: 1px solid rgba($white, .2);
+        border-radius: $L;
+        background: rgba($text-main-color, .42);
         transform: translateX(-50%);
-        z-index: 1;
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
 
         @media screen and (min-width: $tablet) {
-            top: unset;
-            bottom: 30px;
+            bottom: $M;
         }
     }
 
     &__badge {
-        height: 13px;
-        width: 13px;
-        border: 1px solid $fire;
+        display: block;
+        width: 9px;
+        height: 9px;
+        padding: 0;
+        border: 1px solid rgba($white, .8);
         border-radius: 50%;
-        background-color: rgba(228,96,21,.2);
-        display: inline-block;
-        text-align: center;
+        background: transparent;
+        box-sizing: content-box;
         cursor: pointer;
+        transition: width .2s ease, border-radius .2s ease, background .2s ease;
+
+        &:hover,
+        &:focus-visible {
+            background: rgba($white, .55);
+        }
+
+        &:focus-visible {
+            outline: 2px solid $white;
+            outline-offset: 3px;
+        }
 
         &--active {
-            background-color: $fire;
+            width: $M;
+            border-color: $fire;
+            border-radius: $XS;
+            background: $fire;
         }
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .slider__arrow,
+    .slider__badge {
+        transition: none;
     }
 }

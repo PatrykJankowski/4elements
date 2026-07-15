@@ -189,7 +189,7 @@
         <div class="home-locations__header">
             <div>
                 <p class="home-seo__eyebrow">Warszawa Wola i Wilanów</p>
-                <h2 id="home-locations-heading">Gdzie w WArszawie odbywa się nauka pływania?</h2>
+                <h2 id="home-locations-heading">Gdzie w Warszawie odbywa się nauka pływania?</h2>
             </div>
             <p>Zajęcia prowadzimy na czterech pływalniach. Wybierz dogodną lokalizację, a dostępny termin ustalimy po otrzymaniu zgłoszenia. Na zajęcia indywidualne możemy umówić się w dowolnym miejscu.</p>
         </div>

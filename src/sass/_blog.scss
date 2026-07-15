@@ -172,6 +172,14 @@
         padding-bottom: $XL;
     }
 
+    .single-article {
+        .content {
+            a {
+                text-decoration: underline;
+            }
+        }
+    }
+
     .single-article__image {
         margin: 0 0 $S;
     }
