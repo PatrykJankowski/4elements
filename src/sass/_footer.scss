@@ -4,48 +4,267 @@
   flex-shrink: 0;
   margin-top: $M;
   font-size: 16px;
-  color: #fff;
+  color: $white;
 
-  padding-top: $M;
+  .container {
+    position: relative;
+  }
 
   p {
     margin: 0;
     font-size: 16px;
-    color: #fff;
+    color: $white;
   }
 
   ul {
-    margin-bottom: $M;
+    margin: 0;
 
     a {
-      color: #fff;
+      color: $white;
     }
   }
-  
+
   .link {
-    color: #fff;
+    color: $white;
   }
 
   &.fire {
-    background: $fire
+    background: $fire;
   }
+
   &.water {
-    background: $water
+    background: $water;
   }
+
   &.ground {
-    background: $ground
+    background: $ground;
   }
+
   &.wind {
-    background: $wind
+    background: $wind;
   }
+
+  a:focus-visible {
+    outline: 2px solid $white;
+    outline-offset: 3px;
+  }
+}
+
+.footer__elements {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  height: $XS;
+}
+
+.footer__element--fire { background: $fire; }
+.footer__element--water { background: $water; }
+.footer__element--ground { background: $ground; }
+.footer__element--wind { background: $wind; }
+
+.footer__info {
+  padding: $L 0;
+}
+
+.footer__grid {
+  display: grid;
+  gap: $S;
+}
+
+.footer__section {
+  padding: $M;
+  border: 1px solid rgba($white, .24);
+  background: rgba($white, .09);
+}
+
+.footer__heading {
+  margin: 0 0 $XS;
+  color: $white;
+  font-size: $h4-size;
+  line-height: 1.2;
+}
+
+.footer__lead {
+  margin-bottom: $S !important;
+}
+
+.footer__links {
+  display: grid;
+  gap: 6px $S;
+  padding: 0;
+  list-style: none;
+
+  a {
+    display: inline-block;
+    padding: 2px 0;
+    opacity: .9;
+    transition: opacity .2s ease, transform .2s ease;
+
+    &:hover {
+      opacity: 1;
+      text-decoration: underline;
+      transform: translateX(3px);
+    }
+  }
+}
+
+.footer__locations {
+  display: grid;
+  gap: $S;
+  margin-top: $S;
+}
+
+.footer__location {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin: 0;
+  padding-bottom: $S;
+  border-bottom: 1px solid rgba($white, .22);
+  font-style: normal;
+
+  &:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+
+  span {
+    opacity: .82;
+  }
+}
+
+.footer__contact {
+  display: grid;
+  gap: 6px;
+  margin-top: $S;
+}
+
+.footer__contact-link {
+  color: $white;
+  font-weight: 500;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.footer__phones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.footer__socials {
+  display: grid;
+  gap: $XS;
+  margin-top: $M;
+}
+
+.footer__social {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: $XS $S;
+  border: 1px solid rgba($white, .3);
+  border-radius: $L;
+  color: $white;
+  transition: background .2s ease, transform .2s ease;
+
+  &:hover {
+    background: rgba($white, .14);
+    transform: translateY(-2px);
+  }
+}
+
+.footer__social-name {
+  font-weight: 500;
+}
+
+.footer__social-handle {
+  overflow: hidden;
+  font-size: 13px;
+  opacity: .8;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.footer__payments {
+  margin-top: $M;
+  padding-top: $S;
+  border-top: 1px solid rgba($white, .22);
+}
+
+.footer__payments-title {
+  opacity: .9;
+}
+
+.footer__payment-logos {
+  display: flex;
+  align-items: center;
+  gap: $XS;
+  min-height: $L;
+  margin-top: $XS;
+}
+
+.footer__payment-logo {
+  display: block;
+  width: auto;
+  max-height: 50px;
+}
+
+.footer__payment-logo--dotpay {
+  height: 20px;
+  padding: 4px;
+  border-radius: 3px;
+  background: $white;
 }
 
 #copyright {
   display: flex;
   flex-direction: column;
-  padding: $XS;
+  gap: 4px;
+  padding: $S;
   justify-content: center;
   align-items: center;
   min-height: $L;
+  border-top: 1px solid rgba($white, .2);
+  background: rgba($text-main-color, .14);
   text-align: center;
+
+  p {
+    font-size: 13px;
+    opacity: .88;
+  }
+
+  a {
+    color: $white;
+    text-decoration: underline;
+  }
+}
+
+@include for-size(tablet) {
+  .footer__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footer__section--navigation {
+    grid-column: 1 / -1;
+  }
+
+  .footer__links {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@include for-size(desktop) {
+  .footer__grid {
+    grid-template-columns: 1.2fr 1fr 1fr;
+  }
+
+  .footer__section--navigation {
+    grid-column: auto;
+  }
+
+  .footer__links {
+    grid-template-columns: 1fr;
+  }
 }

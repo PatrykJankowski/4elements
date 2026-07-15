@@ -271,7 +271,10 @@ function four_elements_organization_schema()
             'opens' => '08:00',
             'closes' => '20:00',
         ),
-        'sameAs' => array('https://www.facebook.com/4elementspl'),
+        'sameAs' => array(
+            'https://www.facebook.com/4elementspl',
+            'https://www.instagram.com/4elements_naukaplywania/'
+        ),
         'areaServed' => array(
             '@type' => 'City',
             'name' => 'Warszawa',

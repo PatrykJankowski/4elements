@@ -14,66 +14,92 @@
   ?>
 
 <footer id="footer" class="<?php echo $class ?>">
-    <div id="info">
+    <div class="footer__elements" aria-hidden="true">
+        <span class="footer__element footer__element--fire"></span>
+        <span class="footer__element footer__element--water"></span>
+        <span class="footer__element footer__element--ground"></span>
+        <span class="footer__element footer__element--wind"></span>
+    </div>
+    <div id="info" class="footer__info">
         <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <h5>4elements Warszawa – nauka pływania</h5>
-                    <ul>
+            <div class="footer__grid">
+                <section class="footer__section footer__section--navigation" aria-labelledby="footer-navigation-heading">
+                    <h2 id="footer-navigation-heading" class="footer__heading">4elements Warszawa</h2>
+                    <p class="footer__lead"><strong>Nauka pływania dla dzieci i dorosłych</strong></p>
+                    <ul class="footer__links">
                         <li><a href="/nauka-plywania-warszawa/dzieci">Nauka pływania dla dzieci</a></li>
-                        <li><a href="/nauka-plywania-dla-doroslych-warszawa">Nauka pływania dla dorosłych</a></li>
-                        <li><a href="/wazne-informacje-na-start">Ważne informacje</a></li>
-                        <li><a href="/faq">FAQ</a></li>
-                        <li><a href="/opinie">Opinie</a></li>
+                        <li><a href="/nauka-plywania-warszawa/dorosli">Nauka pływania dla dorosłych</a></li>
                         <li><a href="/plywalnie-warszawa-wola">Nasze pływalnie</a></li>
                         <li><a href="/nauka-plywania-cennik">Cennik</a></li>
+                        <li><a href="/wazne-informacje-na-start">Ważne informacje</a></li>
+                        <li><a href="/faq">FAQ</a></li>
                         <li><a href="/blog">Blog</a></li>
                         <li><a href="/kontakt">Kontakt</a></li>
                         <li><a href="/regulamin-zajec-nauki-plywania">Regulamin zajęć i płatności</a></li>
                         <li><a href="/polityka-prywatnosci">Polityka prywatności</a></li>
                         <li><a href="/rodo">RODO</a></li>
                     </ul>
-                </div>
-                <div class="col-md-4">
-                    <h5>Nasze Pływalnie</h5>
-                    <p>
-                        OSiR Wola „FOKA”<br>
-                        ul. Esperanto 5, Warszawa Wola
-                    </p>
-                    <br>
-                    <p>
-                        Aqua Spa Wilanów<br>
-                        ul. Sarmacka 5
-                    </p>
-                    <br>
-                    <p>
-                      Centrum Sportu Wilanów<br>
-                      ul. Gubinowska 28/30
-                    </p>
-                    <br>
-                    <p>
-                      Centrum Sportu Wilanów<br>
-                      ul. Wiertnicza 26a
-                    </p>
-                    <br>
-                </div>
-                <div class="col-md-4">
-                    <p>Adres e-mail: <a class="link" href="mailto:kontakt@4elements.pl">kontakt@4elements.pl</a></p>
-                    <p>Numer telefonu: 798 968 416 lub 798 784 748</p>
-                    <p>Facebook: <a class="link" title="4elements - nauka pływania, Warszawa" href="https://www.facebook.com/4elementspl" target="_blank" rel="nofollow noopener">4elementspl</a></p>
-                    <br>
-                    <p><b>Operatorzy płatności online:</b></p>
-                    <div style="display: flex;align-items: center;">
-                    <img alt="Płatności Dotpay" style="height: 20px; margin-top: 10px;" src="/wp-content/themes/4elements/img/dotpay.png" width="62" height="20">
-                    <img alt="Płatności Mastercard" style="height: 50px; margin: 10px 10px 0;" src="/wp-content/themes/4elements/img/mastercard.svg" width="61" height="50">
-                    <img alt="Płatności Visa" style="height: 60px; margin-top: 10px;" src="/wp-content/themes/4elements/img/visa.svg" width="60" height="60">
+                </section>
+
+                <section class="footer__section" aria-labelledby="footer-pools-heading">
+                    <h2 id="footer-pools-heading" class="footer__heading">Nasze pływalnie</h2>
+                    <div class="footer__locations">
+                        <address class="footer__location">
+                            <strong>OSiR Wola „FOKA”</strong>
+                            <span>ul. Esperanto 5, Warszawa Wola</span>
+                        </address>
+                        <address class="footer__location">
+                            <strong>Aqua Spa Wilanów</strong>
+                            <span>ul. Sarmacka 5</span>
+                        </address>
+                        <address class="footer__location">
+                            <strong>Centrum Sportu Wilanów</strong>
+                            <span>ul. Gubinowska 28/30</span>
+                        </address>
+                        <address class="footer__location">
+                            <strong>Centrum Sportu Wilanów</strong>
+                            <span>ul. Wiertnicza 26a</span>
+                        </address>
                     </div>
-                </div>
+                </section>
+
+                <section class="footer__section" aria-labelledby="footer-contact-heading">
+                    <h2 id="footer-contact-heading" class="footer__heading">Kontakt</h2>
+                    <div class="footer__contact">
+                        <a class="footer__contact-link" href="mailto:kontakt@4elements.pl">kontakt@4elements.pl</a>
+                        <div class="footer__phones">
+                            <a class="footer__contact-link" href="tel:+48798968416">798 968 416</a>
+                            <span aria-hidden="true">/</span>
+                            <a class="footer__contact-link" href="tel:+48798784748">798 784 748</a>
+                        </div>
+                    </div>
+
+                    <div class="footer__socials" aria-label="4elements w mediach społecznościowych">
+                        <a class="footer__social" title="4elements na Facebooku" href="https://www.facebook.com/4elementspl" target="_blank" rel="nofollow noopener noreferrer">
+                            <span class="footer__social-name">Facebook</span>
+                            <span class="footer__social-handle">@4elementspl</span>
+                        </a>
+                        <a class="footer__social" title="4elements na Instagramie" href="https://www.instagram.com/4elements_naukaplywania/" target="_blank" rel="nofollow noopener noreferrer">
+                            <span class="footer__social-name">Instagram</span>
+                            <span class="footer__social-handle">@4elements_naukaplywania</span>
+                        </a>
+                    </div>
+
+                    <div class="footer__payments">
+                        <p class="footer__payments-title"><strong>Bezpieczne płatności online</strong></p>
+                        <div class="footer__payment-logos">
+                            <img class="footer__payment-logo footer__payment-logo--dotpay" alt="Dotpay" src="/wp-content/themes/4elements/img/dotpay.png" width="62" height="20">
+                            <img class="footer__payment-logo" alt="Mastercard" src="/wp-content/themes/4elements/img/mastercard.svg" width="61" height="50">
+                            <img class="footer__payment-logo" alt="Visa" src="/wp-content/themes/4elements/img/visa.svg" width="60" height="60">
+                        </div>
+                    </div>
+                </section>
             </div>
         </div>
     </div>
     <div id="copyright">
-        <?php echo sprintf( __( '%1$s %2$s %3$s | %4$s', '4elements' ), '&copy;', date( 'Y' ), esc_html( get_bloginfo( 'name' )  ), esc_html(get_bloginfo( 'description' ))); echo sprintf( __( '<p>Wykonanie: <a style="color: #fff; text-decoration: underline" href="https://softcraft.pl" title="Softcraft – projektujemy strony internetowe i aplikacje mobilne na miarę twoich potrzeb" target="_blank">Softcraft.pl</a></p>', '4elements' ) ); ?>
+        <p>&copy; <?php echo date('Y'); ?> <?php echo esc_html(get_bloginfo('name')); ?> <span aria-hidden="true">|</span> <?php echo esc_html(get_bloginfo('description')); ?></p>
+        <p>Wykonanie: <a href="https://softcraft.pl" title="Softcraft – projektujemy strony internetowe i aplikacje mobilne na miarę twoich potrzeb" target="_blank" rel="noopener noreferrer">Softcraft.pl</a></p>
     </div>
 </footer>
 
