@@ -146,7 +146,7 @@
             <div class="home-seo__intro">
                 <p class="home-seo__eyebrow">Szkoła pływania 4elements</p>
                 <h2 id="home-swimming-heading">Nauka pływania w Warszawie dla dzieci i dorosłych</h2>
-                <p>Prowadzimy naukę i doskonalenie pływania na warszawskiej Woli i w Wilanowie. Na zajęcia mogą zapisać się dzieci od 4. roku życia, młodzież i dorośli — zarówno osoby oswajające się z wodą, jak i pływające, które chcą poprawić technikę.</p>
+                <p>Prowadzimy naukę i doskonalenie pływania na warszawskim Ursynowie i w Wilanowie. Na zajęcia mogą zapisać się dzieci od 4. roku życia, młodzież i dorośli — zarówno osoby oswajające się z wodą, jak i pływające, które chcą poprawić technikę.</p>
                 <p>Uczymy w małych grupach od 2 do 5 osób oraz indywidualnie. Program i tempo ćwiczeń dopasowujemy do wieku, umiejętności i celu uczestnika.</p>
                 <div class="home-seo__actions">
                     <a class="button button--water" href="/nauka-plywania-warszawa/">Poznaj ofertę zajęć</a>
@@ -188,32 +188,36 @@
     <div class="container">
         <div class="home-locations__header">
             <div>
-                <p class="home-seo__eyebrow">Warszawa Wola i Wilanów</p>
+                <p class="home-seo__eyebrow">Warszawa Ursynów i Wilanów</p>
                 <h2 id="home-locations-heading">Gdzie w Warszawie odbywa się nauka pływania?</h2>
             </div>
-            <p>Zajęcia prowadzimy na czterech pływalniach. Wybierz dogodną lokalizację, a dostępny termin ustalimy po otrzymaniu zgłoszenia. Na zajęcia indywidualne możemy umówić się w dowolnym miejscu.</p>
+            <p>Zajęcia prowadzimy na trzech pływalniach. Wybierz dogodną lokalizację, a dostępny termin ustalimy po otrzymaniu zgłoszenia. Na zajęcia indywidualne możemy umówić się w dowolnym miejscu.</p>
         </div>
+        
         <div class="home-locations__grid">
-            <article class="home-location">
-                <p class="home-location__district">Warszawa Wola</p>
-                <h3>OSiR Wola „FOKA”</h3>
-                <address>ul. Esperanto 5</address>
-            </article>
-            <article class="home-location">
-                <p class="home-location__district">Warszawa Wilanów</p>
-                <h3>Aqua Spa Wilanów</h3>
-                <address>ul. Sarmacka 5</address>
-            </article>
-            <article class="home-location">
-                <p class="home-location__district">Warszawa Wilanów</p>
-                <h3>Centrum Sportu Wilanów</h3>
-                <address>ul. Gubinowska 28/30</address>
-            </article>
-            <article class="home-location">
-                <p class="home-location__district">Warszawa Wilanów</p>
-                <h3>Centrum Sportu Wilanów</h3>
-                <address>ul. Wiertnicza 26a</address>
-            </article>
+            <a href="https://www.google.com/maps/place/Aqua+Spa+Wilanów/@52.1652764,21.0742219,17z/data=!3m1!4b1!4m6!3m5!1s0x47192da26254b0b7:0xc07183ae2bccfb3c!8m2!3d52.1652731!4d21.0767968!16s%2Fg%2F11t9lg26v9" target="_blank" rel="nofollow">
+                <div class="home-location">
+                    <p class="home-location__district">Warszawa Wilanów</p>
+                    <h3>Aqua Spa Wilanów</h3>
+                    <address>ul. Sarmacka 5</address>
+                </div>
+            </a>
+            
+            <a href="https://www.google.com/maps/place/Basen+Gubinowska+-+Centrum+Sportu+Wilanów/@52.1736909,21.0685907,18z/data=!4m14!1m7!3m6!1s0x47192d44e17589d7:0x7af7cce0a5095884!2sBasen+Gubinowska+-+Centrum+Sportu+Wilanów!8m2!3d52.1736893!4d21.0698782!16s%2Fg%2F11rwq8pdzn!3m5!1s0x47192d44e17589d7:0x7af7cce0a5095884!8m2!3d52.1736893!4d21.0698782!16s%2Fg%2F11rwq8pdzn" target="_blank" rel="nofollow">
+                <div class="home-location">
+                    <p class="home-location__district">Warszawa Wilanów</p>
+                    <h3>Centrum Sportu Wilanów</h3>
+                    <address>ul. Gubinowska 28/30</address>
+                </div>
+            </a>
+            
+            <a href="https://www.google.com/maps/place/Basen+Wiertnicza+-+Centrum+Sportu+Wilanów/@52.169144,21.085654,18.13z/data=!4m6!3m5!1s0x47192d4f7148b78d:0x45fa0adc226675a7!8m2!3d52.1690013!4d21.0863846!16s%2Fg%2F11clyqytph" target="_blank" rel="nofollow">
+                <div class="home-location">
+                    <p class="home-location__district">Warszawa Wilanów</p>
+                    <h3>Centrum Sportu Wilanów</h3>
+                    <address>ul. Wiertnicza 26a</address>
+                </div>
+            </a>
         </div>
         <a class="home-locations__link" href="/nauka-plywania-warszawa/plywalnie-i-grafik/">Zobacz pływalnie i grafik <span aria-hidden="true">→</span></a>
     </div>

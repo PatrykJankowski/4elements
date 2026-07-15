@@ -45,10 +45,6 @@
                     <h2 id="footer-pools-heading" class="footer__heading">Nasze pływalnie</h2>
                     <div class="footer__locations">
                         <address class="footer__location">
-                            <strong>OSiR Wola „FOKA”</strong>
-                            <span>ul. Esperanto 5, Warszawa Wola</span>
-                        </address>
-                        <address class="footer__location">
                             <strong>Aqua Spa Wilanów</strong>
                             <span>ul. Sarmacka 5</span>
                         </address>
@@ -98,7 +94,7 @@
         </div>
     </div>
     <div id="copyright">
-        <p>&copy; <?php echo date('Y'); ?> <?php echo esc_html(get_bloginfo('name')); ?> <span aria-hidden="true">|</span> <?php echo esc_html(get_bloginfo('description')); ?></p>
+        <p>&copy; <?php echo date('Y'); ?> 4elements <span aria-hidden="true">|</span> <?php echo esc_html(get_bloginfo('description')); ?></p>
         <p>Wykonanie: <a href="https://softcraft.pl" title="Softcraft – projektujemy strony internetowe i aplikacje mobilne na miarę twoich potrzeb" target="_blank" rel="noopener noreferrer">Softcraft.pl</a></p>
     </div>
 </footer>

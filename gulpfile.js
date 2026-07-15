@@ -41,7 +41,7 @@ gulp.task('json', function () {
 });
 
 gulp.task('text', function () {
-    return gulp.src('src/*.txt')
+    return gulp.src(['src/*.txt', 'src/*.xml'])
         .pipe(gulp.dest('dist'));
 });
 

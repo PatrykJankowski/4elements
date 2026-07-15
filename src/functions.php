@@ -65,7 +65,7 @@ function four_elements_front_page_seo_title()
 
 function four_elements_front_page_seo_description()
 {
-    return 'Nauka pływania w Warszawie dla dzieci od 4 lat i dorosłych. Małe grupy i zajęcia indywidualne na Woli i Wilanowie. Sprawdź ofertę 4elements.';
+    return 'Nauka pływania w Warszawie dla dzieci od 4 lat i dorosłych. Małe grupy i zajęcia indywidualne na Ursynowie i w Wilanowie. Sprawdź ofertę 4elements.';
 }
 
 add_filter('document_title_parts', 'four_elements_front_page_title_parts');
@@ -267,7 +267,7 @@ function four_elements_enqueue_webmcp()
         'pages' => array(
             array('name' => 'Nauka pływania', 'url' => home_url('/nauka-plywania-warszawa/'), 'keywords' => 'pływanie dzieci dorośli lekcje zajęcia Warszawa'),
             array('name' => 'Cennik', 'url' => home_url('/nauka-plywania-warszawa/cennik/'), 'keywords' => 'cena koszt płatność'),
-            array('name' => 'Pływalnie', 'url' => home_url('/nauka-plywania-warszawa/plywalnie-i-grafik/'), 'keywords' => 'basen adres lokalizacja Warszawa Wola Wilanów'),
+            array('name' => 'Pływalnie', 'url' => home_url('/nauka-plywania-warszawa/plywalnie-i-grafik/'), 'keywords' => 'basen adres lokalizacja Warszawa Ursynów Wilanów'),
             array('name' => 'Obozy i półkolonie', 'url' => home_url('/obozy-i-polkolonie/'), 'keywords' => 'obóz półkolonie lato zima dzieci'),
             array('name' => 'Treningi', 'url' => home_url('/treningi/'), 'keywords' => 'trening zajęcia sportowe personalne'),
             array('name' => 'Blog', 'url' => home_url('/blog/'), 'keywords' => 'artykuły poradniki aktualności'),
@@ -344,11 +344,6 @@ function four_elements_organization_schema()
             'areaServed' => 'PL',
         ),
         'location' => array(
-            array(
-                '@type' => 'Place',
-                'name' => 'OSiR Wola „FOKA”',
-                'address' => array('@type' => 'PostalAddress', 'streetAddress' => 'ul. Esperanto 5', 'addressLocality' => 'Warszawa', 'addressCountry' => 'PL'),
-            ),
             array(
                 '@type' => 'Place',
                 'name' => 'Aqua Spa Wilanów',
@@ -510,7 +505,7 @@ function four_elements_faq_items()
         ),
         array(
             'question' => 'Czy można odwołać i odrobić zajęcia?',
-            'answer' => 'Raz w miesiącu można odwołać zajęcia bez podania przyczyny, najpóźniej 24 godziny przed lekcją. Termin odrobienia jest ustalany wspólnie z 4elements, a lekcję można odrobić do końca bieżącego semestru.',
+            'answer' => 'Przysługuje Ci 5 zajęć w sezonie, które możesz odwołać bez podania przyczyny, najpóźniej 24h przed lekcją. Lekcje można odrobić do końca bieżącego sezonu, będąc aktywnym klientem.',
         ),
         array(
             'question' => 'Kiedy i jak opłacić zajęcia?',
@@ -522,7 +517,7 @@ function four_elements_faq_items()
         ),
         array(
             'question' => 'Na jakich pływalniach odbywają się zajęcia?',
-            'answer' => 'Zajęcia odbywają się w Warszawie: OSiR Wola „FOKA” przy ul. Esperanto 5, Aqua Spa Wilanów przy ul. Sarmackiej 5 oraz Centrum Sportu Wilanów przy ul. Gubinowskiej 28/30 i ul. Wiertniczej 26a.',
+            'answer' => 'Zajęcia odbywają się w Warszawie, na Ursynowie i w Wilanowie: w Aqua Spa Wilanów przy ul. Sarmackiej 5 oraz w obiektach Centrum Sportu Wilanów przy ul. Gubinowskiej 28/30 i ul. Wiertniczej 26a.',
         ),
         array(
             'question' => 'Czy dorosły może nauczyć się pływać od zera?',
@@ -584,7 +579,7 @@ function four_elements_answer_capsule_items()
         ),
         array(
             'question' => 'Gdzie odbywają się zajęcia nauki pływania?',
-            'answer' => 'Zajęcia odbywają się na warszawskich pływalniach: OSiR Wola „FOKA” przy ul. Esperanto 5, Aqua Spa Wilanów przy ul. Sarmackiej 5 oraz w obiektach Centrum Sportu Wilanów przy ul. Gubinowskiej 28/30 i ul. Wiertniczej 26a. Dostępność terminów zależy od wybranej lokalizacji.',
+            'answer' => 'Zajęcia odbywają się na warszawskich pływalniach na Ursynowie i w Wilanowie: w Aqua Spa Wilanów przy ul. Sarmackiej 5 oraz w obiektach Centrum Sportu Wilanów przy ul. Gubinowskiej 28/30 i ul. Wiertniczej 26a. Dostępność terminów zależy od wybranej lokalizacji.',
         ),
     );
 }
@@ -1179,7 +1174,7 @@ function four_elements_public_pages()
     return array(
         array('name' => 'Nauka pływania', 'url' => home_url('/nauka-plywania-warszawa/'), 'keywords' => 'pływanie dzieci dorośli lekcje zajęcia Warszawa'),
         array('name' => 'Cennik', 'url' => home_url('/nauka-plywania-warszawa/cennik/'), 'keywords' => 'cena koszt płatność'),
-        array('name' => 'Pływalnie', 'url' => home_url('/nauka-plywania-warszawa/plywalnie-i-grafik/'), 'keywords' => 'basen adres lokalizacja Warszawa Wola Wilanów'),
+        array('name' => 'Pływalnie', 'url' => home_url('/nauka-plywania-warszawa/plywalnie-i-grafik/'), 'keywords' => 'basen adres lokalizacja Warszawa Ursynów Wilanów'),
         array('name' => 'Obozy i półkolonie', 'url' => home_url('/obozy-i-polkolonie/'), 'keywords' => 'obóz półkolonie lato zima dzieci'),
         array('name' => 'Treningi', 'url' => home_url('/treningi/'), 'keywords' => 'trening zajęcia sportowe personalne'),
         array('name' => 'Kontakt', 'url' => home_url('/kontakt/'), 'keywords' => 'telefon email wiadomość'),
@@ -1421,7 +1416,7 @@ function four_elements_nlweb_search($query)
     $pages = array(
         array('title' => 'Nauka pływania', 'text' => 'Nauka pływania dla dzieci i dorosłych, zajęcia indywidualne i grupowe w Warszawie.', 'url' => home_url('/nauka-plywania-warszawa/')),
         array('title' => 'Cennik', 'text' => 'Aktualne ceny i informacje o płatnościach za zajęcia nauki pływania.', 'url' => home_url('/nauka-plywania-warszawa/cennik/')),
-        array('title' => 'Pływalnie', 'text' => 'Pływalnie i lokalizacje zajęć w Warszawie, na Woli i w Wilanowie.', 'url' => home_url('/nauka-plywania-warszawa/plywalnie-i-grafik/')),
+        array('title' => 'Pływalnie', 'text' => 'Pływalnie i lokalizacje zajęć w Warszawie, na Ursynowie i w Wilanowie.', 'url' => home_url('/nauka-plywania-warszawa/plywalnie-i-grafik/')),
         array('title' => 'Formularz rejestracyjny', 'text' => 'Zapisy i rejestracja na zajęcia.', 'url' => home_url('/formularz-rejestracyjny/')),
         array('title' => 'Kontakt', 'text' => 'Kontakt telefoniczny i e-mail z 4elements.', 'url' => home_url('/kontakt/')),
     );
@@ -1432,9 +1427,9 @@ function four_elements_nlweb_search($query)
     $synonyms = array(
         'cena' => array('platnosc', 'oplata', 'wplata', 'cennik'),
         'koszt' => array('platnosc', 'oplata', 'wplata', 'cennik'),
-        'odwolanie' => array('odwolac', 'odrobic', 'semestr'),
+        'odwolanie' => array('odwolac', 'odrobic', 'sezon', 'aktywny klient'),
         'nieobecnosc' => array('odwolac', 'odrobic'),
-        'basen' => array('plywalnia', 'lokalizacja', 'wola', 'wilanow'),
+        'basen' => array('plywalnia', 'lokalizacja', 'ursynow', 'wilanow'),
         'adres' => array('plywalnia', 'lokalizacja', 'warszawa'),
         'zapis' => array('zapisy', 'rejestracja', 'formularz'),
         'dziecko' => array('dzieci', 'wiek', 'grupa'),

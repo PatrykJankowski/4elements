@@ -406,7 +406,7 @@
 }
 
 .home-location__district {
-  margin: 0 !important;
+  margin: 0 0 10px;
   color: $water;
   font-size: 13px !important;
   font-weight: 500;
@@ -570,8 +570,11 @@
 }
 
 @include for-size(desktop) {
-  .home-benefits__grid,
   .home-locations__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .home-benefits__grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
