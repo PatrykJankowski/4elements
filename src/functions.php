@@ -282,6 +282,45 @@ function four_elements_offer_catalog_schema()
 }
 
 
+function four_elements_service_schemas()
+{
+    $organization_id = trailingslashit(home_url('/')) . '#organization';
+
+    return array(
+        array(
+            '@context' => 'https://schema.org',
+            '@type' => 'Service',
+            '@id' => home_url('/nauka-plywania-warszawa/dzieci/#service'),
+            'name' => 'Nauka pływania dla dzieci w Warszawie',
+            'serviceType' => 'Nauka i doskonalenie pływania dla dzieci',
+            'url' => home_url('/nauka-plywania-warszawa/dzieci/'),
+            'provider' => array('@id' => $organization_id),
+            'areaServed' => array('@type' => 'City', 'name' => 'Warszawa'),
+        ),
+        array(
+            '@context' => 'https://schema.org',
+            '@type' => 'Service',
+            '@id' => home_url('/nauka-plywania-warszawa/dorosli/#service'),
+            'name' => 'Nauka pływania dla dorosłych w Warszawie',
+            'serviceType' => 'Nauka i doskonalenie pływania dla dorosłych',
+            'url' => home_url('/nauka-plywania-warszawa/dorosli/'),
+            'provider' => array('@id' => $organization_id),
+            'areaServed' => array('@type' => 'City', 'name' => 'Warszawa'),
+        ),
+        array(
+            '@context' => 'https://schema.org',
+            '@type' => 'Service',
+            '@id' => home_url('/obozy-i-polkolonie/#service'),
+            'name' => 'Obozy i półkolonie dla dzieci',
+            'serviceType' => 'Obozy sportowe i półkolonie dla dzieci',
+            'url' => home_url('/obozy-i-polkolonie/'),
+            'provider' => array('@id' => $organization_id),
+            'areaServed' => array('@type' => 'Country', 'name' => 'Polska'),
+        ),
+    );
+}
+
+
 add_action('wp_head', 'four_elements_organization_schema', 20);
 function four_elements_organization_schema()
 {
@@ -301,14 +340,20 @@ function four_elements_organization_schema()
             'url' => get_template_directory_uri() . '/img/logo.png',
         ),
         'description' => get_bloginfo('description') ?: 'Nauka pływania w Warszawie, obozy i półkolonie.',
+        'address' => array(
+            '@type' => 'PostalAddress',
+            'streetAddress' => 'ul. Sarmacka 5',
+            'addressLocality' => 'Warszawa',
+            'addressCountry' => 'PL',
+        ),
         'email' => 'mailto:kontakt@4elements.pl',
         'telephone' => '+48 798 968 416',
-        'openingHours' => 'Mo-Su 08:00-20:00',
+        'openingHours' => 'Mo-Su 09:00-21:00',
         'openingHoursSpecification' => array(
             '@type' => 'OpeningHoursSpecification',
             'dayOfWeek' => array('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'),
-            'opens' => '08:00',
-            'closes' => '20:00',
+            'opens' => '09:00',
+            'closes' => '21:00',
         ),
         'sameAs' => array(
             'https://www.facebook.com/4elementspl',
@@ -327,8 +372,8 @@ function four_elements_organization_schema()
             'hoursAvailable' => array(
                 '@type' => 'OpeningHoursSpecification',
                 'dayOfWeek' => array('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'),
-                'opens' => '08:00',
-                'closes' => '20:00',
+                'opens' => '09:00',
+                'closes' => '21:00',
             ),
             'areaServed' => 'PL',
         ),
@@ -356,6 +401,12 @@ function four_elements_organization_schema()
     }
 
     echo '<script type="application/ld+json">' . wp_json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>' . "\n";
+
+    if (is_front_page()) {
+        foreach (four_elements_service_schemas() as $service_schema) {
+            echo '<script type="application/ld+json">' . wp_json_encode($service_schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>' . "\n";
+        }
+    }
 }
 
 
@@ -370,12 +421,18 @@ function four_elements_yoast_organization_schema($data)
     $data['@type'] = array('Organization', 'SportsActivityLocation');
     $data['email'] = 'mailto:kontakt@4elements.pl';
     $data['telephone'] = '+48 798 968 416';
-    $data['openingHours'] = 'Mo-Su 08:00-20:00';
+    $data['address'] = array(
+        '@type' => 'PostalAddress',
+        'streetAddress' => 'ul. Sarmacka 5',
+        'addressLocality' => 'Warszawa',
+        'addressCountry' => 'PL',
+    );
+    $data['openingHours'] = 'Mo-Su 09:00-21:00';
     $data['openingHoursSpecification'] = array(
         '@type' => 'OpeningHoursSpecification',
         'dayOfWeek' => array('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'),
-        'opens' => '08:00',
-        'closes' => '20:00',
+        'opens' => '09:00',
+        'closes' => '21:00',
     );
     $data['areaServed'] = array('@type' => 'City', 'name' => 'Warszawa');
     $data['contactPoint'] = array(
@@ -1090,6 +1147,7 @@ function four_elements_agent_discovery_links()
         return;
     }
 
+    echo '<meta name="4elements-ai-schema-version" content="2026-07-15.2">' . "\n";
     echo '<link rel="alternate" type="application/json" title="A2A Agent Card" href="' . esc_url(home_url('/.well-known/agent-card.json')) . '">' . "\n";
     echo '<link rel="alternate" type="application/json" title="MCP Server Card" href="' . esc_url(home_url('/.well-known/mcp/server-card.json')) . '">' . "\n";
     echo '<link rel="mcp-server-card" type="application/json" href="' . esc_url(home_url('/.well-known/mcp/server-card.json')) . '">' . "\n";
@@ -1112,7 +1170,34 @@ function four_elements_openapi_document()
             '/a2a' => array('post' => array('summary' => 'A2A JSON-RPC endpoint', 'responses' => array('200' => array('description' => 'A2A task response')))),
             '/ask' => array(
                 'get' => array('summary' => 'NLWeb-compatible public information query', 'parameters' => array(array('name' => 'query', 'in' => 'query', 'required' => true, 'schema' => array('type' => 'string'))), 'responses' => array('200' => array('description' => 'Public information answer'))),
-                'post' => array('summary' => 'NLWeb-compatible public information query', 'responses' => array('200' => array('description' => 'Public information answer'))),
+                'post' => array(
+                    'summary' => 'NLWeb v0.55 public information query',
+                    'requestBody' => array(
+                        'required' => true,
+                        'content' => array(
+                            'application/json' => array(
+                                'schema' => array(
+                                    'type' => 'object',
+                                    'properties' => array(
+                                        'query' => array(
+                                            'type' => 'object',
+                                            'properties' => array('text' => array('type' => 'string')),
+                                            'required' => array('text'),
+                                        ),
+                                        'context' => array('type' => 'object'),
+                                        'prefer' => array('type' => 'object'),
+                                        'meta' => array('type' => 'object'),
+                                    ),
+                                    'required' => array('query'),
+                                ),
+                            ),
+                        ),
+                    ),
+                    'responses' => array(
+                        '200' => array('description' => 'NLWeb answer, elicitation or application-level failure'),
+                        '400' => array('description' => 'Malformed request'),
+                    ),
+                ),
             ),
         ),
     );
@@ -1133,6 +1218,94 @@ function four_elements_agent_request_body()
 {
     $body = json_decode((string) file_get_contents('php://input'), true);
     return is_array($body) ? $body : null;
+}
+
+/**
+ * Accept the NLWeb v0.55 request shape and the small compatibility variants
+ * commonly used by scanners, MCP bridges and WordPress clients.
+ */
+function four_elements_nlweb_request_body()
+{
+    $raw = trim((string) file_get_contents('php://input'));
+    if ($raw === '') {
+        return !empty($_POST) ? wp_unslash($_POST) : array();
+    }
+
+    $body = json_decode($raw, true);
+    if (is_array($body)) {
+        return $body;
+    }
+
+    $content_type = isset($_SERVER['CONTENT_TYPE']) ? strtolower((string) $_SERVER['CONTENT_TYPE']) : '';
+    if (strpos($content_type, 'text/plain') !== false) {
+        return array('query' => $raw);
+    }
+
+    if (!empty($_POST)) {
+        return wp_unslash($_POST);
+    }
+
+    return null;
+}
+
+function four_elements_nlweb_query_text($value, $depth = 0)
+{
+    if ($depth > 4) {
+        return '';
+    }
+    if (is_string($value) || is_numeric($value)) {
+        return trim((string) $value);
+    }
+    if (!is_array($value)) {
+        return '';
+    }
+
+    foreach (array('text', 'query', 'question', 'content', 'value') as $key) {
+        if (array_key_exists($key, $value)) {
+            $text = four_elements_nlweb_query_text($value[$key], $depth + 1);
+            if ($text !== '') {
+                return $text;
+            }
+        }
+    }
+
+    foreach (array_reverse($value) as $item) {
+        $text = four_elements_nlweb_query_text($item, $depth + 1);
+        if ($text !== '') {
+            return $text;
+        }
+    }
+
+    return '';
+}
+
+function four_elements_nlweb_extract_query($body)
+{
+    if (!is_array($body)) {
+        return '';
+    }
+
+    $candidates = array();
+    foreach (array('query', 'question', 'q', 'text', 'input', 'arguments', 'message', 'messages') as $key) {
+        if (array_key_exists($key, $body)) {
+            $candidates[] = $body[$key];
+        }
+    }
+    if (isset($body['params']) && is_array($body['params'])) {
+        $candidates[] = $body['params'];
+        if (isset($body['params']['arguments'])) {
+            $candidates[] = $body['params']['arguments'];
+        }
+    }
+
+    foreach ($candidates as $candidate) {
+        $query = four_elements_nlweb_query_text($candidate);
+        if ($query !== '') {
+            return $query;
+        }
+    }
+
+    return '';
 }
 
 function four_elements_agent_cors_headers()
@@ -1327,13 +1500,20 @@ function four_elements_handle_nlweb_request()
         four_elements_send_agent_json(array('error' => array('code' => 'method_not_allowed', 'message' => 'Use GET or POST.')), 405);
     }
 
-    $body = $_SERVER['REQUEST_METHOD'] === 'POST' ? four_elements_agent_request_body() : array();
+    $body = $_SERVER['REQUEST_METHOD'] === 'POST' ? four_elements_nlweb_request_body() : array();
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && $body === null) {
+        four_elements_send_agent_json(array(
+            '_meta' => array('response_type' => 'failure', 'response_format' => 'conversational_search', 'version' => '0.55'),
+            'error' => array('code' => 'INVALID_QUERY', 'message' => 'Treść żądania nie jest poprawnym JSON-em, formularzem ani tekstem.'),
+        ), 400);
+    }
+
     $query = isset($_GET['query']) ? wp_unslash($_GET['query']) : '';
     if ($query === '' && isset($_GET['q'])) {
         $query = wp_unslash($_GET['q']);
     }
-    if ($query === '' && is_array($body) && isset($body['query'])) {
-        $query = $body['query'];
+    if ($query === '' && is_array($body)) {
+        $query = four_elements_nlweb_extract_query($body);
     }
     if (is_array($query)) {
         $query = isset($query['text']) ? $query['text'] : '';
@@ -1347,7 +1527,14 @@ function four_elements_handle_nlweb_request()
                 'version' => '0.55',
             ),
             'elicitation' => array(
-                'message' => 'Podaj pytanie o zajęcia, zapisy, płatności, pływalnie lub kontakt z 4elements.',
+                'text' => 'Podaj pytanie o zajęcia, zapisy, płatności, pływalnie lub kontakt z 4elements.',
+                'questions' => array(
+                    array(
+                        'id' => 'query',
+                        'text' => 'O co chcesz zapytać 4elements?',
+                        'type' => 'free_text',
+                    ),
+                ),
                 'requestedSchema' => array(
                     'type' => 'object',
                     'properties' => array('query' => array('type' => 'string', 'minLength' => 2)),
