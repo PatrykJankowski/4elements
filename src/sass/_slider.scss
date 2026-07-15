@@ -99,6 +99,11 @@
             opacity: 1;
         }
 
+        h3 {
+            margin-bottom: $S;
+            color: $white;
+        }
+
         @media screen and (min-width: $tablet) {
             width: 620px;
             padding: $M;

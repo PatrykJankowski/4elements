@@ -1,7 +1,9 @@
 (function () {
     'use strict';
 
-    if (!document.modelContext || typeof document.modelContext.registerTool !== 'function') {
+    const modelContext = navigator.modelContext || document.modelContext;
+
+    if (!modelContext || typeof modelContext.registerTool !== 'function') {
         return;
     }
 
@@ -11,13 +13,31 @@
     const answerCapsules = Array.isArray(data.answerCapsules) ? data.answerCapsules : [];
     const readOnly = { readOnlyHint: true, untrustedContentHint: false };
 
+    const registeredTools = [];
     const register = function (tool) {
-        Promise.resolve(document.modelContext.registerTool(tool)).catch(function (error) {
+        registeredTools.push(tool.name);
+        try {
+            Promise.resolve(modelContext.registerTool(tool)).catch(function (error) {
+                if (window.console && console.debug) {
+                    console.debug('WebMCP tool registration skipped:', error);
+                }
+            });
+        } catch (error) {
             if (window.console && console.debug) {
                 console.debug('WebMCP tool registration skipped:', error);
             }
-        });
+        }
     };
+
+    if (typeof modelContext.provideContext === 'function') {
+        try {
+            Promise.resolve(modelContext.provideContext({
+                name: data.name || '4elements',
+                description: data.description || '',
+                url: data.currentUrl || window.location.href
+            })).catch(function () {});
+        } catch (error) {}
+    }
 
     register({
         name: 'get_site_information',
@@ -219,4 +239,16 @@
         const formObserver = new MutationObserver(annotateInteractiveForms);
         formObserver.observe(document.body, { childList: true, subtree: true });
     }
+
+    window.addEventListener('pagehide', function () {
+        if (typeof modelContext.unregisterTool !== 'function') {
+            return;
+        }
+
+        registeredTools.forEach(function (name) {
+            try {
+                Promise.resolve(modelContext.unregisterTool(name)).catch(function () {});
+            } catch (error) {}
+        });
+    }, { once: true });
 }());

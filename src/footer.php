@@ -99,6 +99,16 @@
     </div>
 </footer>
 
+<form class="hidden-fields-container" action="<?php echo esc_url(home_url('/ask')); ?>" method="get"
+      toolname="ask_4elements"
+      tooldescription="Odpowiada na publiczne pytania o naukę pływania, zapisy, pływalnie i kontakt z 4elements."
+      toolautosubmit
+      aria-hidden="true">
+    <label for="webmcp-public-query">Pytanie do 4elements</label>
+    <input id="webmcp-public-query" type="search" name="query"
+           toolparamdescription="Pytanie o publiczne informacje 4elements.">
+</form>
+
 <script defer>
     let navOpened = false;
     let initHeight = 408;

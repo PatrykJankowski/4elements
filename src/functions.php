@@ -285,7 +285,7 @@ function four_elements_offer_catalog_schema()
 add_action('wp_head', 'four_elements_organization_schema', 20);
 function four_elements_organization_schema()
 {
-    if (is_admin() || defined('WPSEO_VERSION')) {
+    if (is_admin()) {
         return;
     }
 
@@ -636,12 +636,15 @@ function four_elements_faq_yoast_schema($data)
 
 
 /**
- * Fallback for installations where Yoast SEO is not active.
+ * Emit an explicit FAQPage node as well as enriching Yoast's WebPage node.
+ *
+ * Some crawlers do not follow Yoast's connected @graph, so relying on the
+ * Yoast filter alone makes otherwise valid FAQ data invisible to them.
  */
 add_action('wp_head', 'four_elements_faq_schema', 21);
 function four_elements_faq_schema()
 {
-    if ((!is_page('faq') && !is_front_page()) || defined('WPSEO_VERSION')) {
+    if (!is_page('faq') && !is_front_page()) {
         return;
     }
 
@@ -944,6 +947,11 @@ function four_elements_agent_endpoints($wp)
         '.well-known/mcp.json' => 'mcp-card',
         '.well-known/mcp/server-card.json' => 'mcp-card',
         '.well-known/mcp-server-card.json' => 'mcp-card',
+        'mcp.json' => 'mcp-card',
+        'mcp/server-card.json' => 'mcp-card',
+        'server-card.json' => 'mcp-card',
+        '.well-known/webmcp.json' => 'webmcp-manifest',
+        'webmcp.json' => 'webmcp-manifest',
     );
 
     if (isset($aliases[$request])) {
@@ -1020,6 +1028,44 @@ function four_elements_agent_document($type)
         );
     }
 
+    if ($type === 'webmcp-manifest') {
+        return array(
+            'name' => '4elements WebMCP',
+            'version' => '1.0.0',
+            'description' => 'Public, read-only WebMCP tools for 4elements swimming lessons.',
+            'tools' => array(
+                array(
+                    'name' => 'ask_4elements',
+                    'description' => 'Answers public questions about 4elements lessons, registration, locations and contact.',
+                    'endpoint' => home_url('/ask'),
+                    'method' => 'GET, POST',
+                    'inputSchema' => array(
+                        'type' => 'object',
+                        'properties' => array('query' => array('type' => 'string', 'description' => 'A public-information question for 4elements.')),
+                        'required' => array('query'),
+                        'additionalProperties' => false,
+                    ),
+                ),
+                array(
+                    'name' => 'search_4elements_faq',
+                    'description' => 'Searches the public FAQ about swimming lessons.',
+                    'endpoint' => home_url('/faq/'),
+                    'method' => 'GET',
+                    'inputSchema' => array(
+                        'type' => 'object',
+                        'properties' => array('query' => array('type' => 'string')),
+                        'required' => array('query'),
+                        'additionalProperties' => false,
+                    ),
+                ),
+            ),
+            'imperative' => array(
+                'script' => get_template_directory_uri() . '/webmcp.js',
+                'api' => array('registerTool', 'provideContext', 'unregisterTool'),
+            ),
+        );
+    }
+
     return array(
         '$schema' => 'https://modelcontextprotocol.io/schemas/server-card.json',
         'version' => '1.0',
@@ -1034,8 +1080,8 @@ function four_elements_agent_document($type)
 
 /**
  * Browser-readable discovery links for the public agent manifests.
- * WebMCP itself is declared on the FAQ search form with toolname and
- * tooldescription; it has no separate manifest format.
+ * Expose machine-readable discovery links on every public page. The form
+ * declaration is rendered globally in footer.php, including on the homepage.
  */
 add_action('wp_head', 'four_elements_agent_discovery_links', 5);
 function four_elements_agent_discovery_links()
@@ -1046,6 +1092,11 @@ function four_elements_agent_discovery_links()
 
     echo '<link rel="alternate" type="application/json" title="A2A Agent Card" href="' . esc_url(home_url('/.well-known/agent-card.json')) . '">' . "\n";
     echo '<link rel="alternate" type="application/json" title="MCP Server Card" href="' . esc_url(home_url('/.well-known/mcp/server-card.json')) . '">' . "\n";
+    echo '<link rel="mcp-server-card" type="application/json" href="' . esc_url(home_url('/.well-known/mcp/server-card.json')) . '">' . "\n";
+    echo '<link rel="webmcp-manifest" type="application/json" href="' . esc_url(home_url('/.well-known/webmcp.json')) . '">' . "\n";
+    echo '<link rel="alternate" type="application/json" title="WebMCP Manifest" href="' . esc_url(home_url('/.well-known/webmcp.json')) . '">' . "\n";
+    echo '<meta name="mcp-server-card" content="' . esc_url(home_url('/.well-known/mcp/server-card.json')) . '">' . "\n";
+    echo '<meta name="webmcp-manifest" content="' . esc_url(home_url('/.well-known/webmcp.json')) . '">' . "\n";
     echo '<link rel="alternate" type="application/json" title="Agents Manifest" href="' . esc_url(home_url('/.well-known/agents.json')) . '">' . "\n";
     echo '<link rel="alternate" type="application/json" title="NLWeb Ask API" href="' . esc_url(home_url('/ask')) . '">' . "\n";
 }
@@ -1087,7 +1138,7 @@ function four_elements_agent_request_body()
 function four_elements_agent_cors_headers()
 {
     header('Access-Control-Allow-Origin: *');
-    header('Access-Control-Allow-Methods: POST, OPTIONS');
+    header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
     header('Access-Control-Allow-Headers: Content-Type, MCP-Protocol-Version');
 }
 
