@@ -1,13 +1,2 @@
-//@import url('https://fonts.googleapis.com/css?family=Lato:300,400&display=swap');
-@font-face {
-    font-family: SegoeUI;
-    src: url("/wp-content/themes/4elements/fonts/Segoe-UI.woff2") format("woff2");
-    font-weight: 400;
-    font-display: swap;
-}
-@font-face {
-    font-family: SegoeUI;
-    src: url("/wp-content/themes/4elements/fonts/Segoe-UI-Bold.woff2") format("woff2");
-    font-weight: 600;
-    font-display: swap;
-}
+// The theme uses the native UI font stack defined in _variables.scss.
+// This avoids downloading more than 300 KB of fonts in the critical path.

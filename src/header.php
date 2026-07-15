@@ -10,7 +10,7 @@
         <link rel="preload" as="image" type="image/webp"
               href="<?php echo esc_url(get_template_directory_uri() . '/img/nauka_plywania_dla_dzieci@1080.webp'); ?>"
               imagesrcset="<?php echo esc_url(get_template_directory_uri() . '/img/nauka_plywania_dla_dzieci@1080.webp'); ?> 1080w, <?php echo esc_url(get_template_directory_uri() . '/img/nauka_plywania_dla_dzieci@1920.webp'); ?> 1920w"
-              imagesizes="(max-width: 767px) 270px, 1920px"
+              imagesizes="(max-width: 767px) 470px, 1920px"
               fetchpriority="high">
     <?php endif; ?>
     <link rel="stylesheet" type="text/css" href="/wp-content/themes/4elements/style.css" />
