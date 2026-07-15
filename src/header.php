@@ -82,15 +82,10 @@
             <div class="slider">
                 <img class="slider__img slider__img--initial" alt="Nauka pływania dla dzieci w Warszawie"
                      src="/wp-content/themes/4elements/img/nauka_plywania_dla_dzieci@1080.webp"
-                     srcset="/wp-content/themes/4elements/img/nauka_plywania_dla_dzieci@1080.webp 1080w, /wp-content/themes/4elements/img/nauka_plywania_dla_dzieci@1920.webp 1920w"
-                     sizes="(max-width: 767px) 100vw, 100vw"
-                     width="1920" height="1315" loading="eager" fetchpriority="high" data-no-lazy="1">
+                     width="1080" height="740" loading="eager" fetchpriority="high" data-no-lazy="1">
                 <img class="slider__img" alt="Zimowy obóz sportowy dla dzieci"
                      src="/wp-content/themes/4elements/img/obozy_zimowe@1080.webp"
-                     srcset="/wp-content/themes/4elements/img/obozy_zimowe@1080.webp 1080w, /wp-content/themes/4elements/img/obozy_zimowe@1920.webp 1920w"
-                     sizes="(max-width: 767px) 100vw, 100vw"
-                     width="1920" height="1326" fetchpriority="low">
-
+                     width="1080" height="746" fetchpriority="low">
 
                 <div class="slider__caption">
                     <?php dynamic_sidebar('slogan'); ?>

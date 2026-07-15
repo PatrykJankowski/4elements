@@ -118,10 +118,6 @@
             document.getElementById('nav__toggle-icon').classList.add('nav__toggle-icon--open');
         }
     }
-
-    if('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/wp-content/themes/4elements/sw.js');
-    }
 </script>
 
 <?php wp_footer(); ?>
