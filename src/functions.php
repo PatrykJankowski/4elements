@@ -623,6 +623,7 @@ function four_elements_blog_post_schema($data)
  * The FAQ data is shared by visible content and JSON-LD, so agents and people
  * receive precisely the same, public information.
  */
+
 function four_elements_faq_items()
 {
     return array(
@@ -638,6 +639,10 @@ function four_elements_faq_items()
         array(
             'question' => 'Ile trwają zajęcia nauki pływania?',
             'answer' => 'Lekcje trwają 30 lub 45 minut. Należy także uwzględnić czas potrzebny na przebranie się przed i po zajęciach.',
+        ),
+        array(
+            'question' => 'Czy można zacząć od zera?',
+            'answer' => 'Tak. Program dopasowujemy do poziomu uczestnika, również do osoby, która dopiero oswaja się z wodą.',
         ),
         array(
             'question' => 'Co zabrać na zajęcia na basenie?',
@@ -658,6 +663,10 @@ function four_elements_faq_items()
         array(
             'question' => 'Od jakiego wieku i w jakich grupach odbywają się zajęcia?',
             'answer' => 'Dzieci są przyjmowane na zajęcia od 4. roku życia. Zajęcia grupowe dla dzieci, młodzieży i dorosłych odbywają się w grupach od 2 do 5 osób. Dobór grupy zależy od wieku i poziomu zaawansowania.',
+        ),
+        array(
+            'question' => 'Czy prowadzicie naukę pływania w całej Warszawie?',
+            'answer' => 'Tak. Zajęcia indywidualne możemy prowadzić na terenie całej Warszawy, po ustaleniu dogodnej pływalni i terminu. Zajęcia grupowe odbywają się na wybranych warszawskich pływalniach.',
         ),
         array(
             'question' => 'Na jakich pływalniach odbywają się zajęcia?',
@@ -736,7 +745,7 @@ function four_elements_home_faq_items()
 {
     return array(
         array(
-            'question' => 'Od jakiego wieku prowadzicie zajęcia?',
+            'question' => 'Dla osób od jakiego wieku prowadzicie zajęcia?',
             'answer' => 'Na naukę pływania przyjmujemy dzieci od 4. roku życia, młodzież oraz osoby dorosłe.',
         ),
         array(
@@ -1275,7 +1284,7 @@ function four_elements_agent_discovery_links()
         return;
     }
 
-    echo '<meta name="4elements-ai-schema-version" content="2026-07-16.6">' . "\n";
+    echo '<meta name="4elements-ai-schema-version" content="2026-07-16.7">' . "\n";
     echo '<link rel="alternate" type="application/json" title="A2A Agent Card" href="' . esc_url(home_url('/.well-known/agent-card.json')) . '">' . "\n";
     echo '<link rel="alternate" type="application/json" title="MCP Server Card" href="' . esc_url(home_url('/.well-known/mcp/server-card.json')) . '">' . "\n";
     echo '<link rel="mcp-server-card" type="application/json" href="' . esc_url(home_url('/.well-known/mcp/server-card.json')) . '">' . "\n";

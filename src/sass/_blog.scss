@@ -168,12 +168,25 @@
 
 
 .single-post {
-    .single-layout {
-        padding-bottom: $XL;
+    // Compatibility with the older single.php markup still present in caches.
+    .top {
+        margin-bottom: $L;
+
+        > h1:not(.top__heading) {
+            width: 100%;
+            margin: 0;
+            padding: $M $S;
+            background: $fire;
+            color: $white;
+            font-size: $h1-size;
+            line-height: 1.25;
+            text-align: center;
+            text-transform: uppercase;
+        }
     }
 
-    .single-article__content a {
-        text-decoration: underline;
+    .single-layout {
+        padding-bottom: $XL;
     }
 
     .single-article__image {
@@ -211,26 +224,135 @@
         font-size: 16px;
     }
 
-    .single-article__content {
-        p,
-        li {
+    .single-article__content,
+    .single-article > .content {
+        color: $text-main-color;
+
+        > p:first-child {
+            font-size: 20px;
+            line-height: 1.65;
+        }
+
+        p {
+            margin: 0 0 24px;
             font-size: 18px;
-            line-height: 1.6;
+            line-height: 1.7;
+        }
+
+        h2,
+        h3,
+        h4 {
+            color: $header-color;
+            font-weight: 700;
+            letter-spacing: -.015em;
         }
 
         h2 {
-            margin-top: $S;
+            margin: 50px 0 $S;
+            padding: 5px 0 5px $S;
+            border-left: 5px solid $water;
             font-size: 30px;
+            line-height: 1.25;
         }
 
         h3 {
-            margin-top: $XS;
+            margin: 38px 0 15px;
+            color: $water-dark;
             font-size: 24px;
+            line-height: 1.3;
+        }
+
+        h4 {
+            margin: $M 0 $XS;
+            font-size: 20px;
+        }
+
+        ul,
+        ol {
+            margin: 0 0 $M;
+            padding: $S $M $S 48px;
+            border-left: 4px solid rgba($water, .55);
+            background: $secondary;
+        }
+
+        ol {
+            border-left-color: rgba($fire, .65);
+        }
+
+        li {
+            padding-left: 5px;
+            font-size: 18px;
+            line-height: 1.65;
+
+            &::marker {
+                color: $water;
+                font-weight: 700;
+            }
+
+            + li {
+                margin-top: 14px;
+            }
+
+            p:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        ol li::marker {
+            color: $fire;
+        }
+
+        strong {
+            color: $header-color;
+            font-weight: 700;
+        }
+
+        a {
+            color: $water-dark;
+            font-weight: 600;
+            text-decoration: underline;
+            text-decoration-color: rgba($water, .55);
+            text-decoration-thickness: 2px;
+            text-underline-offset: 3px;
+
+            &:hover {
+                color: $fire;
+                text-decoration-color: $fire;
+            }
+
+            &:focus-visible {
+                outline: 3px solid rgba($water, .4);
+                outline-offset: 3px;
+            }
+        }
+
+        blockquote {
+            margin: $M 0;
+            padding: $S $M;
+            border-left: 5px solid $fire;
+            background: rgba($fire, .08);
+
+            p:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        figure {
+            margin: $M 0;
         }
 
         img {
+            display: block;
             max-width: 100%;
             height: auto;
+        }
+
+        figcaption {
+            margin-top: $XS;
+            color: $wind;
+            font-size: 14px;
+            line-height: 1.5;
+            text-align: center;
         }
     }
 
@@ -263,9 +385,27 @@
             height: 280px;
         }
 
-        .single-article__content h2 {
-            margin-top: $M;
-            font-size: 26px;
+        .single-article__content,
+        .single-article > .content {
+            > p:first-child {
+                font-size: 18px;
+            }
+
+            h2 {
+                margin-top: 38px;
+                padding-left: 15px;
+                font-size: 26px;
+            }
+
+            h3 {
+                margin-top: $M;
+                font-size: 22px;
+            }
+
+            ul,
+            ol {
+                padding: $S $S $S 42px;
+            }
         }
     }
 }
@@ -310,7 +450,8 @@
         font-size: 30px;
     }
 
-    &__grid {
+    &__grid,
+    .featured-grid {
         align-items: stretch;
     }
 
@@ -352,37 +493,49 @@
         border-top: 1px solid rgba($third, .14);
     }
 
-    .featured-card__date {
+    .featured-card__date,
+    .featured-card .date {
         color: $wind;
         font-size: 14px;
         font-weight: 600;
     }
 
-    .featured-card__title {
+    .featured-card__title,
+    .featured-card .title {
         margin: $XS 0 $S;
         font-size: 18px;
+        line-height: 1.35;
 
         a:hover {
             color: $fire;
         }
     }
 
-    .featured-card__excerpt {
+    .featured-card__excerpt,
+    .featured-card .content {
         flex: 1;
         margin: 0 0 $S;
         font-size: 16px;
         line-height: 1.5;
     }
 
-    .featured-card__more {
+    .featured-card__more,
+    .featured-card .more {
         align-self: flex-start;
         color: $fire;
         font-size: 16px;
         font-weight: 600;
+
+        &:hover {
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
     }
 
     .featured-card__title a:focus-visible,
-    .featured-card__more:focus-visible {
+    .featured-card__more:focus-visible,
+    .featured-card .title a:focus-visible,
+    .featured-card .more:focus-visible {
         outline: 3px solid $water;
         outline-offset: 3px;
     }
