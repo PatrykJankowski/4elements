@@ -44,6 +44,10 @@
     background: $wind;
   }
 
+  &--flush {
+    margin-top: 0;
+  }
+
   a:focus-visible {
     outline: 2px solid $white;
     outline-offset: 3px;

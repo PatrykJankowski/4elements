@@ -23,16 +23,6 @@
     }
     ?>
     <link rel="stylesheet" type="text/css" href="<?php echo esc_url(get_template_directory_uri() . '/' . $theme_stylesheet); ?>" />
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133650290-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'UA-133650290-1');
-    </script>
     <!-- Facebook Pixel Code -->
     <script>
         !function(f,b,e,v,n,t,s)

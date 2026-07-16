@@ -1,8 +1,8 @@
 </main>
 
   <?php
-    $post_id = get_post()->ID;
-    if ($post_id === 7 || $post_id === 149 || $post_id === 144 || $post_id === 135 || $post_id === 129 || $post_id === 139) {
+    $post_id = get_queried_object_id();
+    if (is_404() || $post_id === 7 || $post_id === 149 || $post_id === 144 || $post_id === 135 || $post_id === 129 || $post_id === 139) {
         $class = "footer--water";
     } else if ($post_id === 22) {
         $class = "footer--wind";
@@ -13,7 +13,7 @@
     }
   ?>
 
-<footer id="footer" class="footer <?php echo esc_attr($class); ?>" role="contentinfo">
+<footer id="footer" class="footer <?php echo esc_attr($class); ?><?php echo is_404() ? ' footer--flush' : ''; ?>" role="contentinfo">
     <div class="footer__elements" aria-hidden="true">
         <span class="footer__element footer__element--fire"></span>
         <span class="footer__element footer__element--water"></span>

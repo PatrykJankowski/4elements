@@ -382,16 +382,10 @@ function four_elements_business_location_schema()
 }
 
 
-add_action('wp_head', 'four_elements_organization_schema', 20);
-function four_elements_organization_schema()
+function four_elements_organization_schema_data($include_context = false)
 {
-    if (is_admin()) {
-        return;
-    }
-
     $home_url = home_url('/');
     $schema = array(
-        '@context' => 'https://schema.org',
         '@type' => 'Organization',
         '@id' => trailingslashit($home_url) . '#organization',
         'name' => '4elements',
@@ -447,7 +441,27 @@ function four_elements_organization_schema()
         $schema['hasOfferCatalog'] = four_elements_offer_catalog_schema();
     }
 
-    echo '<script type="application/ld+json">' . wp_json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>' . "\n";
+    if ($include_context) {
+        $schema = array_merge(array('@context' => 'https://schema.org'), $schema);
+    }
+
+    return $schema;
+}
+
+
+add_action('wp_head', 'four_elements_organization_schema', 20);
+function four_elements_organization_schema()
+{
+    if (is_admin()) {
+        return;
+    }
+
+    // Yoast normally receives the Organization node through wpseo_schema_graph.
+    // Keep a standalone fallback for pages where its schema graph is disabled.
+    if (empty($GLOBALS['four_elements_organization_in_yoast_graph'])) {
+        echo '<script type="application/ld+json">' . wp_json_encode(four_elements_organization_schema_data(true), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>' . "\n";
+    }
+
     echo '<script type="application/ld+json">' . wp_json_encode(four_elements_business_location_schema(), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>' . "\n";
 
     if (is_front_page()) {
@@ -459,21 +473,38 @@ function four_elements_organization_schema()
 
 
 /**
- * The theme emits the canonical Organization node. Remove Yoast's copy while
- * retaining its references to the same #organization ID, so consumers see a
- * single company entity instead of two competing definitions.
+ * Put the complete company entity directly in Yoast's @graph. Some AI audit
+ * tools do not resolve an @id reference when its node lives in another JSON-LD
+ * script, even though that layout is valid JSON-LD.
  */
-add_filter('wpseo_schema_graph', 'four_elements_dedupe_yoast_organization', 99, 2);
-function four_elements_dedupe_yoast_organization($graph, $context)
+add_filter('wpseo_schema_graph', 'four_elements_add_organization_to_yoast_graph', 99, 2);
+function four_elements_add_organization_to_yoast_graph($graph, $context)
 {
-    return array_values(array_filter($graph, function ($piece) {
+    $organization = four_elements_organization_schema_data(false);
+    $organization_added = false;
+
+    foreach ($graph as $index => $piece) {
         if (!is_array($piece) || !isset($piece['@type'])) {
-            return true;
+            continue;
         }
 
-        $types = (array) $piece['@type'];
-        return !in_array('Organization', $types, true);
-    }));
+        if (in_array('Organization', (array) $piece['@type'], true)) {
+            if (!$organization_added) {
+                $graph[$index] = $organization;
+                $organization_added = true;
+            } else {
+                unset($graph[$index]);
+            }
+        }
+    }
+
+    if (!$organization_added) {
+        $graph[] = $organization;
+    }
+
+    $GLOBALS['four_elements_organization_in_yoast_graph'] = true;
+
+    return array_values($graph);
 }
 
 /**
@@ -1244,7 +1275,7 @@ function four_elements_agent_discovery_links()
         return;
     }
 
-    echo '<meta name="4elements-ai-schema-version" content="2026-07-16.5">' . "\n";
+    echo '<meta name="4elements-ai-schema-version" content="2026-07-16.6">' . "\n";
     echo '<link rel="alternate" type="application/json" title="A2A Agent Card" href="' . esc_url(home_url('/.well-known/agent-card.json')) . '">' . "\n";
     echo '<link rel="alternate" type="application/json" title="MCP Server Card" href="' . esc_url(home_url('/.well-known/mcp/server-card.json')) . '">' . "\n";
     echo '<link rel="mcp-server-card" type="application/json" href="' . esc_url(home_url('/.well-known/mcp/server-card.json')) . '">' . "\n";
