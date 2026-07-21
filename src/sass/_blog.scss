@@ -151,7 +151,7 @@
 
     &__sidebar {
         @media screen and (min-width: $desktop) {
-            padding-left: $M;
+            padding-left: 16px;
         }
     }
 
@@ -168,7 +168,6 @@
 
 
 .single-post {
-    // Compatibility with the older single.php markup still present in caches.
     .top {
         margin-bottom: $L;
 
@@ -410,30 +409,110 @@
     }
 }
 
-#sidebar {
-    >ul:first-child, >ul:last-child, .pagenav {
-        display: none;
+.blog-sidebar-panel {
+    font-size: 16px;
+
+    @media screen and (min-width: $desktop) {
+        position: sticky;
+        top: 110px;
+    }
+}
+
+.blog-sidebar-panel__section {
+    position: relative;
+    padding: $S;
+    overflow: hidden;
+    border: 1px solid rgba($water, .2);
+    border-top: 5px solid $water;
+    background: linear-gradient(145deg, $white 40%, rgba($water, .08));
+    box-shadow: 0 12px 34px rgba($third, .09);
+
+    &::after {
+        position: absolute;
+        right: -52px;
+        bottom: -70px;
+        width: 140px;
+        height: 140px;
+        border: 24px solid rgba($water, .07);
+        border-radius: 50%;
+        content: '';
+        pointer-events: none;
+    }
+}
+
+.blog-sidebar-panel__eyebrow {
+    position: relative;
+    z-index: 1;
+    margin: 0 0 5px;
+    color: $water-dark;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.blog-sidebar-panel__title {
+    position: relative;
+    z-index: 1;
+    margin: 0 0 $S;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba($wind, .18);
+    color: $header-color;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.blog-sidebar-panel__list {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: $XS;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    > li {
+        margin: 0;
+        padding: 0;
+        color: $wind;
+        font-size: 13px;
+        list-style: none;
     }
 
-    >ul:nth-child(2) {
-        >li:nth-child(2) {
-            display: none;
+    a {
+        display: inline-block;
+        padding: 4px 0;
+        color: $text-main-color;
+        font-size: 15px;
+        font-weight: 600;
+        transition: color .2s ease, transform .2s ease;
+
+        &::before {
+            display: inline-block;
+            width: 7px;
+            height: 7px;
+            margin-right: $XS;
+            border-radius: 50%;
+            background: $water;
+            content: '';
+            vertical-align: 2px;
+        }
+
+        &:hover {
+            color: $fire;
+        }
+
+        &:focus-visible {
+            outline: 2px solid $water;
+            outline-offset: 3px;
         }
     }
 
-    ul {
-        margin: 0;
-    }
+    .current-cat a {
+        color: $fire;
 
-    li::marker {
-        content: '';
-    }
-    
-    li {
-        font-size: 18px;
-        h2 {
-            margin-top: 0;
-            font-size: 24px;
+        &::before {
+            background: $fire;
         }
     }
 }

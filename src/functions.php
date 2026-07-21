@@ -32,6 +32,35 @@ function my_css_attributes_filter($var)
     return is_array($var) ? array() : '';
 }
 
+/**
+ * Keep the relevant top-level navigation item active on content that belongs
+ * to Blog or O nas, even when WordPress cannot infer the menu relationship.
+ */
+add_filter('nav_menu_css_class', 'four_elements_contextual_menu_classes', 20, 4);
+function four_elements_contextual_menu_classes($classes, $item, $args, $depth)
+{
+    $menu_item_id = isset($item->ID) ? (int) $item->ID : 0;
+    $object_id = isset($item->object_id) ? (int) $item->object_id : 0;
+    $blog_page_id = (int) get_option('page_for_posts');
+    $is_blog_context = is_singular('post') || is_category() || is_tag() || is_author() || is_date();
+    $is_blog_item = $menu_item_id === 1754 || ($blog_page_id && $object_id === $blog_page_id);
+
+    if ($is_blog_context && $is_blog_item) {
+        $classes[] = 'current-menu-item';
+        $classes[] = 'current_page_item';
+    }
+
+    $is_opinions_context = is_page_template('page-opinie.php') || is_page(array('opinie', 'opinie-2'));
+    $is_about_item = $menu_item_id === 12 || $object_id === 20;
+
+    if ($is_opinions_context && $is_about_item) {
+        $classes[] = 'current-menu-parent';
+        $classes[] = 'current-menu-ancestor';
+    }
+
+    return array_values(array_unique($classes));
+}
+
 /*function add_google_fonts() {
     wp_enqueue_style('google_web_fonts', 'https://fonts.googleapis.com/css?family=Raleway:400,500');
 }

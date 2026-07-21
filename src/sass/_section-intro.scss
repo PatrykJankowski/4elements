@@ -1,0 +1,38 @@
+.instructors__intro,
+.reviews-page__intro {
+  max-width: 860px;
+  margin: 0 auto $L;
+  text-align: center;
+}
+
+.instructors__eyebrow,
+.reviews-page__eyebrow {
+  display: inline-flex;
+  margin: 0 0 $XS;
+  padding: 7px 14px;
+  border-radius: $L;
+  background: rgba($fire, .1);
+  color: $fire;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.instructors__title,
+.reviews-page__intro h2 {
+  margin: 0 0 $S;
+  color: $header-color;
+  font-size: clamp(34px, 6vw, 52px);
+  font-weight: 700;
+  letter-spacing: -.035em;
+  line-height: 1.1;
+}
+
+.instructors__lead,
+.reviews-page__intro > p:last-child {
+  margin: 0;
+  color: $text-main-color;
+  font-size: 19px;
+  line-height: 1.6;
+}

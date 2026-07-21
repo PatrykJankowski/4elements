@@ -32,6 +32,11 @@
     background: $wind;
   }
 
+  &--white {
+    background: $white;
+    color: $fire;
+  }
+
   &--no-margin {
     margin: 0;
   }

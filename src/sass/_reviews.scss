@@ -5,29 +5,6 @@
     padding-bottom: $XL;
   }
 
-  &__intro {
-    max-width: 820px;
-    margin: 0 auto $L;
-    text-align: center;
-
-    h2 {
-      margin: 0 0 $S;
-    }
-
-    p:last-child {
-      margin: 0;
-    }
-  }
-
-  &__eyebrow {
-    margin: 0 0 $XS;
-    color: $wind;
-    font-size: 16px;
-    font-weight: 600;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-  }
-
   &__grid {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
