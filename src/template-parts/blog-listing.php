@@ -20,7 +20,7 @@ $description = isset($args['description']) ? $args['description'] : '';
             <h2 id="blog-heading"><?php echo esc_html($intro_title); ?></h2>
             <?php if ($description) : ?>
                 <div class="blog__intro-description"><?php echo wp_kses_post($description); ?></div>
-            <?php else : ?>
+            <?php else : ?>asdasdas
                 <p>Praktyczne porady o nauce pływania, bezpieczeństwie nad wodą, treningach oraz aktywnym wypoczynku dla dzieci i dorosłych.</p>
             <?php endif; ?>
         </header>
@@ -38,9 +38,19 @@ $description = isset($args['description']) ? $args['description'] : '';
                                 <?php endif; ?>
 
                                 <div class="blog-card__body">
-                                    <time class="blog-card__date" datetime="<?php echo esc_attr(get_the_date(DATE_W3C)); ?>">
-                                        <span class="screen-reader-text">Opublikowano: </span><?php echo esc_html(get_the_date()); ?>
-                                    </time>
+                                    <div class="blog-card__meta">
+                                        <time class="blog-card__date" datetime="<?php echo esc_attr(get_the_date(DATE_W3C)); ?>">
+                                            <span class="screen-reader-text">Opublikowano: </span><?php echo esc_html(get_the_date()); ?>
+                                        </time>
+                                        <?php
+                                        $categories = get_the_category();
+                                        if (!empty($categories)) :
+                                        ?>
+                                            <a class="blog-card__category" href="<?php echo esc_url(get_category_link($categories[0]->term_id)); ?>">
+                                                <?php echo esc_html($categories[0]->name); ?>
+                                            </a>
+                                        <?php endif; ?>
+                                    </div>
                                     <h2 class="blog-card__title">
                                         <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                                     </h2>

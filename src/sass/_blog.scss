@@ -80,6 +80,31 @@
         font-weight: 600;
     }
 
+    .blog-card__meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px $XS;
+        align-items: center;
+    }
+
+    .blog-card__category {
+        display: inline-flex;
+        padding: 3px 8px;
+        border-radius: $L;
+        background: rgba($water, .13);
+        color: $water-dark;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 1.2;
+        transition: background .2s ease, color .2s ease;
+
+        &:hover,
+        &:focus {
+            background: $water;
+            color: $white;
+        }
+    }
+
     .blog-card__excerpt {
         flex: 1;
         margin: 0 0 $S;
@@ -138,6 +163,7 @@
 
     .blog-card__title a:focus-visible,
     .blog-card__more:focus-visible,
+    .blog-card__category:focus-visible,
     .pagination a:focus-visible {
         outline: 3px solid $water;
         outline-offset: 3px;

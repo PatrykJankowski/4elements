@@ -51,9 +51,10 @@ function four_elements_contextual_menu_classes($classes, $item, $args, $depth)
     }
 
     $is_opinions_context = is_page_template('page-opinie.php') || is_page(array('opinie', 'opinie-2'));
+    $is_instructor_profile_context = is_page(array(2342, 2343));
     $is_about_item = $menu_item_id === 12 || $object_id === 20;
 
-    if ($is_opinions_context && $is_about_item) {
+    if (($is_opinions_context || $is_instructor_profile_context) && $is_about_item) {
         $classes[] = 'current-menu-parent';
         $classes[] = 'current-menu-ancestor';
     }
@@ -973,6 +974,91 @@ function four_elements_ensure_reviews_page()
     }
 }
 
+/**
+ * Public instructor profiles. Article lists are derived from WordPress post authors,
+ * so publishing a post under either instructor's account updates the profile automatically.
+ */
+function four_elements_instructor_profile($slug)
+{
+    $profiles = array(
+        'karolina-opara' => array(
+            'name' => 'Karolina Opara',
+            'image_position' => 'left',
+            'role' => 'Trenerka i instruktorka sportu',
+            'image_alt' => 'Karolina Opara, instruktorka 4elements, na pływalni w Warszawie',
+            'bio' => array(
+                'Ukończyłam Akademię Wychowania Fizycznego w Warszawie na kierunkach Turystyka i Rekreacja oraz Wychowanie Fizyczne.',
+                'Jestem trenerką piłki siatkowej, instruktorką pływania, narciarstwa i piłki ręcznej. Kocham sport i jego wszechstronny rozwój — zarówno fizyczny, jak i mentalny. Pasjonuję się olimpizmem i ideą Fair Play.',
+            ),
+            'answers' => array(
+                array(
+                    'question' => 'Co łączy mnie z pływaniem?',
+                    'answer' => 'Sport! Kocham każdą jego odmianę i jego drogocenny wpływ na zdrowie. Pływanie jest cudownym lekiem na całe zło. Pokochałam je wielką miłością dopiero na studiach, odkrywając, jak można połączyć trening z zabawą.',
+                ),
+                array(
+                    'question' => 'Jaka jestem w pracy na pływalni?',
+                    'answer' => 'Ciepła i stanowcza. Lubię pożartować z podopiecznymi i porozmawiać o tym, co jedli na obiad, ale jednocześnie kładę nacisk na postępy i solidną pracę.',
+                ),
+                array(
+                    'question' => 'Gdybym nie była instruktorką pływania…',
+                    'answer' => 'Z tych przyziemnych zawodów wybrałabym prawo lub medycynę. A z tych mniej przyziemnych — spakowałabym plecak, zabrała swoje dziewczynki i męża, a następnie podróżowała po świecie.',
+                ),
+            ),
+        ),
+        'sandra-siperek' => array(
+            'name' => 'Sandra Siperek',
+            'image_position' => 'right',
+            'role' => 'Instruktorka pływania i współtwórczyni 4elements',
+            'image_alt' => 'Sandra Siperek, instruktorka 4elements, na pływalni w Warszawie',
+            'bio' => array(
+                'Ukończyłam Akademię Wychowania Fizycznego w Warszawie na kierunkach Turystyka i Rekreacja oraz Wychowanie Fizyczne.',
+                'Jestem instruktorką pływania, snowboardu, windsurfingu i fitnessu, a na co dzień pracuję jako nauczycielka wychowania fizycznego. Jestem otwarta na nowe doświadczenia, pełna pomysłów i uśmiechu.',
+            ),
+            'answers' => array(
+                array(
+                    'question' => 'Co łączy mnie z pływaniem?',
+                    'answer' => 'Pasja. Odkąd pamiętam, woda jest moim żywiołem. Od pływania na pływalni i wpław po windsurfing, kitesurfing i wakeboarding.',
+                ),
+                array(
+                    'question' => 'Jaka jestem w pracy na pływalni?',
+                    'answer' => 'Cierpliwa, elastyczna, pomysłowa i otwarta na potrzeby zarówno dzieci, jak i dorosłych.',
+                ),
+                array(
+                    'question' => 'Gdybym nie była instruktorką pływania…',
+                    'answer' => 'Prawdopodobnie zostałabym podróżującą mamą na cały etat.',
+                ),
+            ),
+        ),
+    );
+
+    return isset($profiles[$slug]) ? $profiles[$slug] : null;
+}
+
+function four_elements_instructor_articles($instructor_name)
+{
+    $authors = get_users(array(
+        'fields' => 'all',
+        'number' => -1,
+    ));
+    $author_ids = array();
+
+    foreach ($authors as $author) {
+        $author_full_name = trim($author->first_name . ' ' . $author->last_name);
+        if (sanitize_title($author->display_name) === sanitize_title($instructor_name)
+            || sanitize_title($author_full_name) === sanitize_title($instructor_name)) {
+            $author_ids[] = (int) $author->ID;
+        }
+    }
+
+    return new WP_Query(array(
+        'post_type' => 'post',
+        'post_status' => 'publish',
+        'posts_per_page' => 6,
+        // An empty author__in would otherwise show all blog posts.
+        'author__in' => $author_ids ? $author_ids : array(0),
+        'ignore_sticky_posts' => true,
+    ));
+}
 
 add_filter('wpseo_schema_webpage', 'four_elements_reviews_collection_schema');
 function four_elements_reviews_collection_schema($data)

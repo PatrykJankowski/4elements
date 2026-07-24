@@ -70,6 +70,7 @@
                             Jestem trenerką piłki siatkowej, instruktorką pływania, narciarstwa i piłki ręcznej.
                             Kocham sport i jego wszechstronny rozwój zarówno fizyczny, jak i mentalny.
                            Pasjonuje się olimpizmem i ideą FairPlay.</p>
+                        <a class="person__more" href="/instruktorzy/karolina-opara/">Zobacz więcej <span aria-hidden="true">→</span></a>
                     </div>
                 </div>
             </div>
@@ -84,6 +85,7 @@
                         <p>Ukończyłam Akademię Wychowania Fizycznego w Warszawie na kierunku Turystyka i Rekreacja oraz Wychowanie Fizyczne.
                            Jestem instruktorką pływania, snowboardu, windsurfingu i fitnessu, a na co dzień pracuję jako nauczycielka wychowania fizycznego.
                            Jestem zawsza otwarta na nowe doświadczenia, pełna pomysłów i uśmiechu.</p>
+                        <a class="person__more" href="/instruktorzy/sandra-siperek/">Zobacz więcej <span aria-hidden="true">→</span></a>
                     </div>
                 </div>
             </div>

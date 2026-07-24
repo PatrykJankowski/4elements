@@ -45,6 +45,8 @@
 }
 
 .instructor-card {
+  display: flex;
+  flex-direction: column;
   position: relative;
   padding: $M;
   border: 1px solid rgba($wind, .18);
@@ -223,5 +225,233 @@
 @media (prefers-reduced-motion: reduce) {
   .instructors__contact-link {
     transition: none;
+  }
+}
+
+.instructor-profile {
+  width: 100%;
+  padding-bottom: $XL;
+
+  &__hero {
+    display: grid;
+    overflow: hidden;
+    background: $secondary;
+
+    @media screen and (min-width: $tablet) {
+      grid-template-columns: minmax(280px, .85fr) minmax(0, 1.15fr);
+    }
+  }
+
+  &__photo {
+    min-height: 360px;
+    margin: 0;
+    overflow: hidden;
+    background: $water;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 20% center;
+    }
+
+    &--right img {
+      object-position: 80% center;
+    }
+  }
+
+  &__intro {
+    padding: $M;
+
+    @media screen and (min-width: $tablet) {
+      padding: $L;
+    }
+
+    h2 {
+      margin: 0 0 $XS;
+      color: $header-color;
+      font-size: clamp(34px, 5vw, 52px);
+      letter-spacing: -.035em;
+    }
+  }
+
+  &__eyebrow {
+    display: inline-flex;
+    margin: 0 0 $XS;
+    padding: 7px 14px;
+    border-radius: $L;
+    background: rgba($fire, .1);
+    color: $fire;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
+  &__role {
+    margin: 0 0 $S;
+    color: $water-dark;
+    font-size: 19px;
+    font-weight: 700;
+  }
+
+  &__bio p {
+    margin: 0 0 $S;
+    font-size: 19px;
+    line-height: 1.6;
+  }
+
+  &__articles {
+    margin-top: $XL;
+  }
+
+  &__about {
+    margin-top: $XL;
+
+    > h2 {
+      margin: 0 0 $M;
+    }
+  }
+
+  &__answers {
+    display: grid;
+    gap: $S;
+
+    @media screen and (min-width: $tablet) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  &__section-header {
+    display: flex;
+    flex-direction: column;
+    gap: $S;
+    margin-bottom: $M;
+
+    h2 {
+      margin: 0;
+    }
+
+    @media screen and (min-width: $tablet) {
+      flex-direction: row;
+      align-items: end;
+      justify-content: space-between;
+    }
+  }
+
+  &__blog-link,
+  &__more a,
+  .instructor-article__link {
+    color: $fire;
+    font-size: 17px;
+    font-weight: 700;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+
+  &__articles-grid {
+    display: grid;
+    gap: $S;
+
+    @media screen and (min-width: $tablet) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @media screen and (min-width: $desktop) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  &__empty {
+    margin: 0;
+    padding: $M;
+    background: $secondary;
+  }
+
+  &__more {
+    display: flex;
+    flex-direction: column;
+    gap: $XS;
+    align-items: center;
+    margin-top: $XL;
+    padding: $M;
+    border-top: 4px solid $ground;
+    background: rgba($ground, .1);
+    text-align: center;
+
+    p {
+      margin: 0;
+      font-weight: 700;
+    }
+  }
+}
+
+.instructor-article {
+  display: flex;
+  flex-direction: column;
+  padding: $M;
+  border: 1px solid rgba($wind, .2);
+  border-top: 4px solid $water;
+  background: $white;
+  box-shadow: 0 10px 28px rgba($third, .08);
+
+  &__meta {
+    margin: 0 0 $XS;
+    color: $wind;
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  h3 {
+    margin: 0 0 $S;
+    font-size: 25px;
+
+    a:hover,
+    a:focus {
+      color: $fire;
+    }
+  }
+
+  > p:not(.instructor-article__meta) {
+    margin: 0 0 $S;
+    font-size: 17px;
+    line-height: 1.55;
+  }
+
+  &__link {
+    margin-top: auto;
+  }
+}
+
+.instructor-answer {
+  position: relative;
+  padding: $M;
+  border: 1px solid rgba($wind, .2);
+  border-top: 4px solid $ground;
+  background: $white;
+  box-shadow: 0 10px 28px rgba($third, .08);
+
+  &:nth-child(2) {
+    border-top-color: $water;
+  }
+
+  &:nth-child(3) {
+    border-top-color: $fire;
+  }
+
+  h3 {
+    margin: 0 0 $S;
+    color: $header-color;
+    font-size: 22px;
+  }
+
+  p {
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.6;
   }
 }

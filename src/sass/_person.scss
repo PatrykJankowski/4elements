@@ -40,7 +40,9 @@
     }
 
     &__content {
-        height: 320px;
+        display: flex;
+        flex-direction: column;
+        height: 340px;
         margin-top: 10px;
         padding: $M;
         border-top: 2px solid $fire;
@@ -51,7 +53,21 @@
         transition: opacity 0.3s, visibility 0.3s;
 
         p {
+            margin: 0;
             font-size: 18px;
+        }
+    }
+
+    &__more {
+        display: inline-block;
+        margin-top: auto;
+        color: $fire;
+        font-size: 17px;
+        font-weight: 700;
+
+        &:hover,
+        &:focus {
+            text-decoration: underline;
         }
     }
 }
