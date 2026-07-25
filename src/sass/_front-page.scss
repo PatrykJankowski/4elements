@@ -461,9 +461,12 @@
     padding: $L;
   }
 
-  .home-benefits__grid,
-  .home-locations__grid {
+  .home-benefits__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .home-locations__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .home-start__grid {
@@ -479,7 +482,7 @@
 
 @include for-size(desktop) {
   .home-locations__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .home-benefits__grid {

@@ -46,11 +46,15 @@
                     <div class="footer__locations">
                         <address class="footer__location">
                             <strong>Aqua Spa Wilanów</strong>
-                            <span>ul. Sarmacka 5</span>
+                            <span>ul. Sarmacka 5, Warszawa</span>
                         </address>
                         <address class="footer__location">
                             <strong>Centrum Sportu Wilanów</strong>
-                            <span>ul. Gubinowska 28/30</span>
+                            <span>ul. Gubinowska 28/30, Warszawa</span>
+                        </address>
+                        <address class="footer__location">
+                            <strong>Pływalnia SGGW</strong>
+                            <span>ul. Jana Ciszewskiego 10, Warszawa</span>
                         </address>
                     </div>
                 </section>

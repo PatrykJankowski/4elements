@@ -464,6 +464,12 @@ function four_elements_organization_schema_data($include_context = false)
                 'name' => 'Centrum Sportu Wilanów',
                 'address' => array('@type' => 'PostalAddress', 'streetAddress' => 'ul. Gubinowska 28/30', 'addressLocality' => 'Warszawa', 'addressCountry' => 'PL'),
             ),
+            array(
+                '@type' => 'Place',
+                'name' => 'Pływalnia SGGW',
+                'url' => 'https://www.google.com/maps/place//data=!4m2!3m1!1s0x4719329b8cde33bf:0x9b50e12210f08822?sa=X&ved=1t:8290&ictx=111',
+                'address' => array('@type' => 'PostalAddress', 'streetAddress' => 'ul. Jana Ciszewskiego 10', 'postalCode' => '02-786', 'addressLocality' => 'Warszawa', 'addressCountry' => 'PL'),
+            ),
         ),
     );
 
@@ -700,7 +706,7 @@ function four_elements_faq_items()
         ),
         array(
             'question' => 'Na jakich pływalniach odbywają się zajęcia?',
-            'answer' => 'Zajęcia grupowe odbywają się na wybranych warszawskich pływalniach, między innymi w Aqua Spa Wilanów przy ul. Sarmackiej 5 oraz w Centrum Sportu Wilanów przy ul. Gubinowskiej 28/30. Zajęcia indywidualne możemy prowadzić na terenie całej Warszawy, po wspólnym ustaleniu pływalni i terminu.',
+            'answer' => 'Zajęcia grupowe odbywają się na wybranych warszawskich pływalniach, między innymi w Aqua Spa Wilanów przy ul. Sarmackiej 5, w Centrum Sportu Wilanów przy ul. Gubinowskiej 28/30 oraz na Pływalni SGGW przy ul. Jana Ciszewskiego 10 (02-786 Warszawa). Zajęcia indywidualne możemy prowadzić na terenie całej Warszawy, po wspólnym ustaleniu pływalni i terminu.',
         ),
         array(
             'question' => 'Czy dorosły może nauczyć się pływać od zera?',

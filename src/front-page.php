@@ -189,7 +189,7 @@
                 <p class="home-eyebrow">Lekcje w Warszawie</p>
                 <h2 id="home-locations-heading">Gdzie w Warszawie odbywa się nauka pływania?</h2>
             </div>
-            <p>Zajęcia prowadzimy na dwóch pływalniach. Wybierz dogodną lokalizację, a dostępny termin ustalimy po otrzymaniu zgłoszenia. Na zajęcia indywidualne możemy umówić się w dowolnym miejscu w Warszawie.</p>
+            <p>Zajęcia prowadzimy na trzech pływalniach. Wybierz dogodną lokalizację, a dostępny termin ustalimy po otrzymaniu zgłoszenia. Na zajęcia indywidualne możemy umówić się w dowolnym miejscu w Warszawie.</p>
         </div>
 
         <div class="home-locations__grid">
@@ -197,7 +197,7 @@
                 <div class="home-location">
                     <p class="home-location__district">Warszawa Wilanów</p>
                     <h3>Aqua Spa Wilanów</h3>
-                    <address>ul. Sarmacka 5</address>
+                    <address>ul. Sarmacka 5,<br>02-972 Warszawa</address>
                 </div>
             </a>
             
@@ -205,7 +205,14 @@
                 <div class="home-location">
                     <p class="home-location__district">Warszawa Wilanów</p>
                     <h3>Centrum Sportu Wilanów</h3>
-                    <address>ul. Gubinowska 28/30</address>
+                    <address>ul. Gubinowska 28/30,<br>02-956 Warszawa</address>
+                </div>
+            </a>
+            <a href="https://www.google.com/maps/place//data=!4m2!3m1!1s0x4719329b8cde33bf:0x9b50e12210f08822?sa=X&ved=1t:8290&ictx=111" target="_blank" rel="nofollow">
+                <div class="home-location">
+                    <p class="home-location__district">Warszawa Ursynów</p>
+                    <h3>Pływalnia SGGW</h3>
+                    <address>ul. Jana Ciszewskiego 10,<br>02-786 Warszawa</address>
                 </div>
             </a>
         </div>
